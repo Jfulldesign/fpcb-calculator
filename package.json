@@ -1,0 +1,180 @@
+{
+  "name": "fpcb-calculators",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --env.dev",
+    "build": "npm-run-all build:clean build:assets",
+    "build:assets": "webpack --mode production --env.prod",
+    "build:clean": "rm -rf ./dist",
+    "analyze": "webpack --mode production --env.analyze",
+    "test": "jest",
+    "flow": "flow",
+    "lint": "eslint --ext .jsx,.js src",
+    "format": "prettier --write './src/**/*.{js,jsx,css,json}'"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./src/**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/jestPlugins.js",
+    "testURL": "http://localhost",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.css$": "identity-obj-proxy"
+    }
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "plugins": [
+      "promise"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:jest/recommended",
+      "plugin:react/recommended",
+      "plugin:compat/recommended",
+      "plugin:promise/recommended",
+      "plugin:flowtype/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "settings": {
+      "polyfills": [
+        "fetch",
+        "promises"
+      ]
+    },
+    "rules": {
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "react/display-name": false
+    }
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "not dead"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,json,css,md}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "flow-typed/**",
+      "**/__generated__/**"
+    ]
+  },
+  "dependencies": {
+    "date-fns": "^1.29.0",
+    "final-form": "^4.11.0",
+    "react": "^16.6.3",
+    "react-a11y": "^1.1.0",
+    "react-dom": "^16.6.3",
+    "react-final-form": "^4.0.2",
+    "react-fns": "^1.4.0",
+    "react-motion": "^0.5.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-transition-group": "^2.5.0",
+    "unstated": "^2.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.2.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@svgr/webpack": "^4.1.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-react-css-modules": "^5.0.0",
+    "css-loader": "^2.0.0",
+    "cssnano": "^4.1.7",
+    "dotenv-webpack": "^1.5.7",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-compat": "^2.6.3",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^2.0.0",
+    "flow-bin": "^0.87.0",
+    "flow-typed": "^2.5.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^4.0.0-beta.4",
+    "husky": "^1.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "jest-plugin-action": "^2.9.0",
+    "jest-plugin-it-renders": "^2.9.0",
+    "jest-plugin-set": "^2.9.0",
+    "jest-plugin-unhandled-promise": "^2.9.0",
+    "jest-plugins": "^2.9.0",
+    "jest-plugins-react": "^2.9.0",
+    "lint-staged": "^8.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "postcss": "^7.0.6",
+    "postcss-color-function": "^4.0.1",
+    "postcss-custom-selectors": "^5.1.2",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.0",
+    "postcss-nested": "^4.1.0",
+    "postcss-preset-env": "^6.4.0",
+    "postcss-simple-vars": "^5.0.1",
+    "postcss-syntax": "^0.34.0",
+    "postcss-url": "^8.0.0",
+    "postcss-utilities": "^0.8.0",
+    "prettier": "^1.15.3",
+    "react-test-renderer": "^16.6.3",
+    "regenerator-runtime": "^0.13.1",
+    "relay-runtime": "^1.7.0",
+    "style-loader": "^0.23.1",
+    "stylelint": "^9.9.0",
+    "stylelint-config-standard": "^18.2.0",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.27.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-subresource-integrity": "^1.3.0"
+  }
+}
