@@ -1,9 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Questrial");
+@import url("https://www.myfloridaprepaid.com/wp-content/themes/html5-reset/_/css/bootstrap.20180921.css");
+@import url("https://www.myfloridaprepaid.com/wp-content/themes/html5-reset/_/css/styles.20180115.css");
 @import "pure-react-carousel/dist/react-carousel.es.css";
-
-body {
-  margin: 0;
-}
 
 :root {
   --color-blue: #2c3f7f;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Questrial";
+}
+
+:global(#app-root) {
+  border: 1px solid red;
+  max-width: 100%;
+  overflow: hidden;
 }

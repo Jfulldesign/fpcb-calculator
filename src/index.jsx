@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 const mount = document.createElement("div");
-mount.id = "app-root";
+mount.classList.add("container");
 if (document.body != undefined) {
   document.body.appendChild(mount);
   ReactDOM.render(

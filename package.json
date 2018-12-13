@@ -102,6 +102,7 @@
     "react-fns": "^1.4.0",
     "react-text-mask": "^5.4.3",
     "react-transition-group": "^2.5.0",
+    "text-mask-addons": "^3.8.0",
     "with-url-state": "^2.0.2"
   },
   "devDependencies": {
