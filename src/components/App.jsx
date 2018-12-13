@@ -1,111 +1,70 @@
 // @flow strict
 
 import React from "react";
-import Helmet from "react-helmet";
-import Loadable from "react-loadable";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  withRouter
-} from "react-router-dom";
+import IMask from "imask";
+import { format, parse } from "date-fns";
+import { IMaskInput } from "react-imask";
+import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
+import { plans } from "util/constants";
+import type { Plan } from "util/types";
+import "./styles/App.css";
 
-import Loading from "components/util/Loading";
-
-const Home = Loadable({
-  loader: () => import("components/routes/Home.jsx"),
-  loading: Loading
-});
-
-class Login extends React.Component {
-  state = { redirectToReferrer: false };
-
-  login = () => {
-    fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true });
-    });
-  };
-
-  render() {
-    let { from } = this.props.location.state || { from: { pathname: "/" } };
-    let { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer) return <Redirect to={from} />;
-
-    return (
-      <div>
-        <p>You must log in to view the page at {from.pathname}</p>
-        <button onClick={this.login}>Log in</button>
-      </div>
-    );
-  }
-}
-
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    this.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
-
-const AuthButton = withRouter(({ history }) =>
-  fakeAuth.isAuthenticated ? (
-    <p>
-      Welcome!{" "}
-      <button
-        onClick={() => {
-          fakeAuth.signout(() => history.push("/"));
-        }}
-      >
-        Sign out
-      </button>
-    </p>
-  ) : (
-    <p>You are not logged in.</p>
-  )
+const PlanCard = ({ plan }: { plan: Plan }) => (
+  <div>
+    <span>{plan.title}</span>
+    <span>Starting at</span>
+    <span>
+      {plan.prices.monthly[0]}
+      <span>/month</span>
+    </span>
+    <span>View details</span>
+  </div>
 );
 
-function PrivateRoute({ component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        fakeAuth.isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
-
 export default class App extends React.Component<void> {
+  state = {
+    birthdate: null
+  };
+
+  onHasBirthdate(birthdate) {
+    this.setState({ birthdate });
+  }
+
   render() {
     return (
-      <Router>
-        <React.Fragment>
-          <Helmet>
-            <title>Hello World!</title>
-          </Helmet>
-          <AuthButton />
-          <Switch>
-            <PrivateRoute exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </React.Fragment>
-      </Router>
+      <section styleName="app">
+        {this.state.birthdate == null && (
+          <div styleName="birthdate">
+            <span>Your Child&apos;s Birthdate</span>
+          </div>
+        )}
+        <span>{this.state.birthdate && this.state.birthdate.toString()}</span>
+        <div>
+          <CarouselProvider
+            naturalSlideWidth={100}
+            naturalSlideHeight={125}
+            totalSlides={6}
+          >
+            <Slider>
+              {plans.map((plan, idx) => (
+                <Slide index={idx} key={plan.id}>
+                  <PlanCard plan={plan} />
+                </Slide>
+              ))}
+            </Slider>
+          </CarouselProvider>
+          <a href="#">Enroll in this Plan</a>
+          <a href="#">Email Me These Prices</a>
+        </div>
+        <footer>
+          <h4>What does this plan cover?</h4>
+          <p>
+            All tuition, registration, tuition differential and local fees. Does
+            not include campus fees. <a href="#">Learn more about fees.</a>
+          </p>
+          <p>30 semester credit hours at a State University</p>
+        </footer>
+      </section>
     );
   }
 }

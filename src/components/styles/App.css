@@ -1,0 +1,15 @@
+.app {
+}
+
+.birthdate {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-blue);
+  grid-column: 1/5;
+  padding: 20px;
+
+  span {
+    color: white;
+    text-align: center;
+  }
+}

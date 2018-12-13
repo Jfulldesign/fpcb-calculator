@@ -2,7 +2,6 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "unstated";
 import App from "components/App";
 import ErrorBoundary from "components/util/ErrorBoundary";
 import "./index.css";
@@ -35,11 +34,9 @@ mount.id = "app-root";
 if (document.body != undefined) {
   document.body.appendChild(mount);
   ReactDOM.render(
-    <Provider>
-      <ErrorBoundary message="App has crashed!">
-        <App />
-      </ErrorBoundary>
-    </Provider>,
+    <ErrorBoundary message="App has crashed!">
+      <App />
+    </ErrorBoundary>,
     mount
   );
 } else {

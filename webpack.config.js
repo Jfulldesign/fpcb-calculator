@@ -11,7 +11,7 @@ module.exports = function(env) {
   const plugins = [
     new Dotenv(),
     new HtmlWebpackPlugin({
-      title: "..."
+      title: "FPCB Plan Calculator"
     })
   ];
 

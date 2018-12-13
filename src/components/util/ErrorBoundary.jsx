@@ -1,7 +1,6 @@
 // @flow strict
 
 import React from "react";
-import "./styles/ErrorBoundary.css";
 
 type Props = {
   message: string,
@@ -22,7 +21,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div styleName="error">
+        <div>
           <header>
             <span>That&apos;s an error</span>
           </header>
