@@ -11,7 +11,10 @@ module.exports = function(env) {
   const plugins = [
     new Dotenv(),
     new HtmlWebpackPlugin({
-      title: "FPCB Plan Calculator"
+      title: "FPCB Plan Calculator",
+      meta: {
+        viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
+      }
     })
   ];
 
@@ -37,7 +40,11 @@ module.exports = function(env) {
     plugins,
     context: __dirname,
     mode: env.prod ? "production" : "development",
-    entry: ["@babel/polyfill", "./src/index.jsx"],
+    entry: [
+      "@babel/polyfill",
+      "pure-react-carousel/dist/react-carousel.es.css",
+      "./src/index.jsx"
+    ],
     output: {
       path: path.resolve("./dist"),
       filename: env.prod ? "[name].[contenthash].js" : "bundle.js",
@@ -50,6 +57,7 @@ module.exports = function(env) {
     devtool: "cheap-module-source-map",
     devServer: {
       hot: true,
+      host: "0.0.0.0",
       historyApiFallback: true
     },
     module: {

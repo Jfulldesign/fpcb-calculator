@@ -2,35 +2,30 @@
 
 import React from "react";
 
-type Props = {
-  message: string,
-  children?: React.Node
-};
-
 type State = {
-  hasError: boolean
+  error: ?Error
 };
 
-export default class ErrorBoundary extends React.Component<Props, State> {
-  state = { hasError: false };
+export default class ErrorBoundary extends React.Component<void, State> {
+  state = { error: null };
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
+  static getDerivedStateFromError(error) {
+    return { error };
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state.error !== null) {
       return (
         <div>
           <header>
-            <span>That&apos;s an error</span>
+            <h1>That&apos;s an error</h1>
           </header>
           <main>
             <p>
               This part of the app has encountered an unrecoverable error, see
               the message below for further details:
             </p>
-            <code>{this.props.message}</code>
+            <pre>{this.state.error.stack}</pre>
           </main>
         </div>
       );

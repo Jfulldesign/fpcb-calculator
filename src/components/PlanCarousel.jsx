@@ -2,21 +2,9 @@
 
 import React from "react";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
+import PlanCard from "components/PlanCard";
 import { plans } from "util/constants";
-import type { Plan } from "util/types";
 import "./styles/PlanCarousel.css";
-
-const PlanCard = ({ plan }: { plan: Plan }) => (
-  <div>
-    <span>{plan.title}</span>
-    <span>Starting at</span>
-    <span>
-      {plan.prices.monthly[0]}
-      <span>/month</span>
-    </span>
-    <span>View details</span>
-  </div>
-);
 
 export default class PlanCarousel extends React.Component<void> {
   render() {
@@ -25,6 +13,7 @@ export default class PlanCarousel extends React.Component<void> {
         <CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={125}
+          lockOnWindowScroll={true}
           totalSlides={6}
         >
           <Slider>
