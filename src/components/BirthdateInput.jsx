@@ -14,7 +14,7 @@ const enhance = withUrlState(() => ({ birthdate: null }));
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
 
 type Props = {
-  onContinue: Date => void,
+  onHasDate: Date => void,
   setUrlState: () => void,
   urlState: {
     birthdate?: string
@@ -119,7 +119,7 @@ class BirthdateInput extends React.Component<Props, State> {
             </span>
             <button
               onClick={() => {
-                this.props.onContinue(this.state.date);
+                this.props.onHasDate(this.state.date);
               }}
             >
               Show My Rates

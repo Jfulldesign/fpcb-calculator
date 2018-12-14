@@ -15,17 +15,29 @@ export default class App extends React.Component<void, State> {
     date: null
   };
 
-  onHasBirthdate(date: Date) {
+  onHasDate(date: Date) {
     this.setState({ date });
+  }
+
+  onEdit() {
+    this.setState({ date: null });
+  }
+
+  onReset() {
+    this.setState({ date: null });
   }
 
   render() {
     return (
       <section styleName="calculator-app">
         {this.state.date === null ? (
-          <BirthdateInput onContinue={this.onHasBirthdate.bind(this)} />
+          <BirthdateInput onHasDate={this.onHasDate.bind(this)} />
         ) : (
-          <BirthdateDisplay date={this.state.date} />
+          <BirthdateDisplay
+            date={this.state.date}
+            onEdit={this.onEdit.bind(this)}
+            onReset={this.onReset.bind(this)}
+          />
         )}
         <PlanCarousel />
       </section>

@@ -2,26 +2,29 @@
 
 import React from "react";
 import { format } from "date-fns";
-import { describeChild } from "util/maths";
+import { describeChild, graduatesIn } from "util/maths";
 
 type Props = {
-  date: Date
+  date: Date,
+  onEdit: () => void,
+  onReset: () => void
 };
 
 export default class BirthdateDisplay extends React.Component<Props> {
   render() {
+    const { date, onEdit, onReset } = this.props;
     return (
       <div>
         <dl>
           <dt>Birthdate</dt>
-          <dd>{format(this.props.date, "MM/DD/YYYY")}</dd>
+          <dd>{format(date, "MM/DD/YYYY")}</dd>
           <dt>Ready to use</dt>
-          <dd>xxxx - xxxx</dd>
+          <dd>{graduatesIn(date)}</dd>
           <dt>Child is</dt>
-          <dd>{describeChild(this.props.date)}</dd>
+          <dd>{describeChild(date)}</dd>
         </dl>
-        <button>Edit</button>
-        <button>Reset</button>
+        <button onClick={onEdit}>Edit</button>
+        <button onClick={onReset}>Reset</button>
       </div>
     );
   }
