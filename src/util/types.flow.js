@@ -10,5 +10,9 @@ export type Plan = {|
     single: Array<number>,
     monthly: Array<number>,
     short: Array<number>
+  |},
+  credits: {|
+    state: number,
+    college: number
   |}
 |};

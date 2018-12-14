@@ -94,8 +94,10 @@
     ]
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "date-fns": "^1.29.0",
     "pure-react-carousel": "^1.17.0",
+    "rc-tooltip": "^3.7.3",
     "react": "^16.6.3",
     "react-a11y": "^1.1.0",
     "react-dom": "^16.6.3",

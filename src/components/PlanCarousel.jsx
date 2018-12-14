@@ -26,6 +26,17 @@ export default class PlanCarousel extends React.Component<void> {
         </CarouselProvider>
         <a href="#">Enroll in this Plan</a>
         <a href="#">Email Me These Prices</a>
+        <div>
+          <h4>What does this plan cover?</h4>
+          <ol>
+            <li>
+              All tuition, registration, tuition differential and local fees.
+              Does not include campus fees.{" "}
+              <a href="#">Learn more about fees.</a>
+            </li>
+            <li>30 semester credit hours at a State University</li>
+          </ol>
+        </div>
       </div>
     );
   }

@@ -5,6 +5,10 @@ export const plans: Array<Plan> = [
   {
     id: "4U",
     title: "4-Year University Plan",
+    credits: {
+      state: 120,
+      college: 0
+    },
     prices: {
       single: [
         29471.26,
@@ -70,6 +74,10 @@ export const plans: Array<Plan> = [
   {
     id: "1U",
     title: "1-Year University Plan",
+    credits: {
+      state: 30,
+      college: 0
+    },
     prices: {
       single: [
         7373.92,
@@ -135,6 +143,10 @@ export const plans: Array<Plan> = [
   {
     id: "2P",
     title: "2 + 2 Florida Plan",
+    credits: {
+      state: 60,
+      college: 60
+    },
     prices: {
       single: [
         23644.14,
@@ -200,6 +212,10 @@ export const plans: Array<Plan> = [
   {
     id: "4C",
     title: "4-Year Florida College Plan",
+    credits: {
+      state: 0,
+      college: 120
+    },
     prices: {
       single: [
         18924.02,
@@ -265,6 +281,10 @@ export const plans: Array<Plan> = [
   {
     id: "2C",
     title: "2-Year Florida College Plan",
+    credits: {
+      state: 0,
+      college: 60
+    },
     prices: {
       single: [
         8767.54,
@@ -330,6 +350,10 @@ export const plans: Array<Plan> = [
   {
     id: "1D",
     title: "University Dormitory Plan One Year",
+    credits: {
+      state: 0,
+      college: 0
+    },
     prices: {
       single: [
         7576.71,

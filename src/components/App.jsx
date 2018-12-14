@@ -2,31 +2,32 @@
 
 import React from "react";
 import BirthdateInput from "components/BirthdateInput";
+import BirthdateDisplay from "components/BirthdateDisplay";
 import PlanCarousel from "components/PlanCarousel";
 import "./styles/App.css";
 
-export default class App extends React.Component<void> {
+type State = {
+  date: Date
+};
+
+export default class App extends React.Component<void, State> {
   state = {
-    birthdate: null
+    date: null
   };
 
-  onHasBirthdate(birthdate) {
-    this.setState({ birthdate });
+  onHasBirthdate(date: Date) {
+    this.setState({ date });
   }
 
   render() {
     return (
       <section styleName="calculator-app">
-        <BirthdateInput />
+        {this.state.date === null ? (
+          <BirthdateInput onContinue={this.onHasBirthdate.bind(this)} />
+        ) : (
+          <BirthdateDisplay date={this.state.date} />
+        )}
         <PlanCarousel />
-        <footer>
-          <h4>What does this plan cover?</h4>
-          <p>
-            All tuition, registration, tuition differential and local fees. Does
-            not include campus fees. <a href="#">Learn more about fees.</a>
-          </p>
-          <p>30 semester credit hours at a State University</p>
-        </footer>
       </section>
     );
   }
