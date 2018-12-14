@@ -1,6 +1,7 @@
 // @flow strict
 
-import { differenceInYears, addYears, getYear } from "date-fns";
+import pluralize from "pluralize";
+import { differenceInYears, addYears, getYear, isFuture } from "date-fns";
 
 export function ordinal(i: number): string {
   const j = i % 10;
@@ -18,16 +19,17 @@ export function ordinal(i: number): string {
 }
 
 export function describeChild(date: Date) {
-  const now = new Date();
-  if (date > now) return "unborn!";
-  if (date < now) {
-    const age = differenceInYears(now, date);
-    if (age === 0) return "an infant.";
-    if (age > 0 && age < 6) return `${age} years old.`;
-    if (age === 6) return "in Kindergarten.";
-    if (age > 6) return `in ${ordinal(age - 6)} grade.`;
+  const cutoff = new Date(2018, 9, 1);
+  if (isFuture(date)) return "unborn";
+  if (date > cutoff) return "a newborn";
+  if (date < cutoff) {
+    const age = differenceInYears(new Date(), date);
+    if (age === 0) return "an infant";
+    if (age > 0 && age < 5) return `${age} ${pluralize("years", age)} old`;
+    if (age === 5) return "in Kindergarten";
+    if (age > 5 && age < 18) return `in ${ordinal(age - 5)} grade`;
+    if (age >= 18) return "grown";
   }
-  return "I dunno.";
 }
 
 export function graduatesIn(date: Date): number {

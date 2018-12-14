@@ -10,8 +10,7 @@ import { parse, addYears, subYears } from "date-fns";
 import { describeChild, graduatesIn } from "util/maths";
 import "./styles/BirthdateInput.css";
 
-const enhance = withUrlState(() => ({ birthdate: null }));
-const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
+const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yy");
 
 type Props = {
   onHasDate: Date => void,
@@ -72,7 +71,7 @@ class BirthdateInput extends React.Component<Props, State> {
       <div styleName={styleName}>
         <span>Your Child&apos;s Birthdate</span>
         <MaskedInput
-          mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+          mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/]}
           pipe={autoCorrectedDatePipe}
           guide={true}
           pattern="\d*"
@@ -80,7 +79,7 @@ class BirthdateInput extends React.Component<Props, State> {
           disabled={date !== null}
           keepCharPositions={true}
           placeholder={
-            this.state.active ? "" : "Enter MM/DD/YYYY for payment estimates"
+            this.state.active ? "" : "Enter MM/DD/YY for payment estimates"
           }
           onFocus={this.onFocus.bind(this)}
           onChange={this.onChange.bind(this)}
@@ -131,4 +130,4 @@ class BirthdateInput extends React.Component<Props, State> {
   }
 }
 
-export default enhance(BirthdateInput);
+export default withUrlState(() => ({ birthdate: null }))(BirthdateInput);
