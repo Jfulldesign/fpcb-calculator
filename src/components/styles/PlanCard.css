@@ -1,3 +1,74 @@
+.plan-card {
+  width: 255px;
+  height: 128px;
+  overflow: hidden;
+  padding: 1.5rem 0.5rem;
+
+  &.plan--1U {
+    border: 1px solid var(--color-1u);
+
+    .title {
+      color: var(--color-1u);
+    }
+  }
+
+  &.plan--4U {
+    border: 1px solid var(--color-4u);
+
+    .title {
+      color: var(--color-4u);
+    }
+  }
+
+  &.plan--2P {
+    border: 1px solid var(--color-2p);
+
+    .title {
+      color: var(--color-2p);
+    }
+  }
+
+  &.plan--2C {
+    border: 1px solid var(--color-2c);
+
+    .title {
+      color: var(--color-2c);
+    }
+  }
+
+  &.plan--4C {
+    border: 1px solid var(--color-4c);
+
+    .title {
+      color: var(--color-4c);
+    }
+  }
+}
+
+.title {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.starting {
+  display: block;
+  color: var(--color-dark-gray);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
 .price {
-  border: 1px solid brown;
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+
+  .per {
+    font-size: 1.5rem;
+  }
+}
+
+.note {
 }

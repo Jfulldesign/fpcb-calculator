@@ -4,24 +4,46 @@ import React from "react";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 import PlanCard from "components/PlanCard";
 import { plans } from "util/constants";
+import type { PaymentSchedule } from "util/types";
 import "./styles/PlanCarousel.css";
 
-export default class PlanCarousel extends React.Component<void> {
+type Props = {
+  date: Date,
+  paymentType: PaymentSchedule
+};
+
+export default class PlanCarousel extends React.Component<Props> {
   render() {
+    const { date, paymentType } = this.props;
     return (
       <div styleName="plan-carousel">
         <CarouselProvider
-          naturalSlideWidth={100}
-          naturalSlideHeight={125}
+          naturalSlideWidth={255}
+          naturalSlideHeight={148}
           lockOnWindowScroll={true}
-          totalSlides={6}
+          totalSlides={5}
         >
           <Slider>
-            {plans.map((plan, idx) => (
-              <Slide index={idx} key={plan.id}>
-                <PlanCard plan={plan} />
-              </Slide>
-            ))}
+            <Slide index={0}>
+              <PlanCard
+                plan={plans.get("1U")}
+                year={0}
+                type={paymentType}
+                note={<span>Most Popular</span>}
+              />
+            </Slide>
+            <Slide index={1}>
+              <PlanCard plan={plans.get("4U")} year={0} type={paymentType} />
+            </Slide>
+            <Slide index={2}>
+              <PlanCard plan={plans.get("2P")} year={0} type={paymentType} />
+            </Slide>
+            <Slide index={3}>
+              <PlanCard plan={plans.get("2C")} year={0} type={paymentType} />
+            </Slide>
+            <Slide index={4}>
+              <PlanCard plan={plans.get("4C")} year={0} type={paymentType} />
+            </Slide>
           </Slider>
         </CarouselProvider>
         <a href="#">Enroll in this Plan</a>

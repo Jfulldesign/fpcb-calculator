@@ -2,7 +2,7 @@
 
 type PlanID = "U4" | "U1" | "P2" | "C4" | "C2" | "D1";
 
-export type PaymentSchedule = "SINGLE" | "MONTHLY" | "SHORT";
+export type PaymentSchedule = "single" | "monthly" | "short";
 export type Plan = {|
   id: PlanID,
   title: string,

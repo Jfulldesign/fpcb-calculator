@@ -31,7 +31,7 @@ class BirthdateInput extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      active: props.urlState.birthdate != null,
+      active: props.urlState.birthdate != "",
       value: props.urlState.birthdate || "",
       date: null
     };
@@ -91,31 +91,53 @@ class BirthdateInput extends React.Component<Props, State> {
             </button>
           </div>
         ) : (
-          <div>
-            <span>
-              Your child is {describeChild(date)}
-              <Tooltip
-                placement="top"
-                trigger={["click"]}
-                overlay={<span>tooltip</span>}
-              >
-                <button>Info</button>
-              </Tooltip>
-            </span>
-            <button onClick={this.subtractYear.bind(this)}>
-              Subtract Year
-            </button>
-            <button onClick={this.addYear.bind(this)}>Add Year</button>
-            <span>
-              We project your child will graduate in {graduatesIn(date)}.
-              <Tooltip
-                placement="top"
-                trigger={["click"]}
-                overlay={<span>tooltip</span>}
-              >
-                <button>Info</button>
-              </Tooltip>
-            </span>
+          <div styleName="review-dates">
+            <div styleName="grade-adjust">
+              Your child is
+              <span styleName="grade-display">
+                {describeChild(date)}
+                <Tooltip
+                  placement="top"
+                  trigger={["hover"]}
+                  overlay={
+                    <span>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Voluptates quae voluptatum sunt culpa fugit saepe esse
+                      odio molestias officia delectus, doloribus fugiat atque
+                      ipsam quam nulla, porro animi cupiditate doloremque.
+                    </span>
+                  }
+                >
+                  <button styleName="info-tooltip">Info</button>
+                </Tooltip>
+              </span>
+              <div styleName="grade-adjust-buttons">
+                <button onClick={this.subtractYear.bind(this)}>
+                  Subtract Year
+                </button>
+                <button onClick={this.addYear.bind(this)}>Add Year</button>
+              </div>
+            </div>
+            <div styleName="graduation-estimate">
+              We project your child will graduate in
+              <span styleName="graduation-display">
+                {graduatesIn(date)}
+                <Tooltip
+                  placement="top"
+                  trigger={["hover"]}
+                  overlay={
+                    <span>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Voluptates quae voluptatum sunt culpa fugit saepe esse
+                      odio molestias officia delectus, doloribus fugiat atque
+                      ipsam quam nulla, porro animi cupiditate doloremque.
+                    </span>
+                  }
+                >
+                  <button>Info</button>
+                </Tooltip>
+              </span>
+            </div>
             <button
               onClick={() => {
                 this.props.onHasDate(this.state.date);

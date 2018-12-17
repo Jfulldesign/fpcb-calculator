@@ -1,4 +1,6 @@
 .birthdate-input {
+  color: white;
+  font-weight: 600;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -15,12 +17,6 @@
     .button-container {
       height: auto;
     }
-  }
-
-  span {
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 600;
   }
 
   input {
@@ -62,4 +58,38 @@
       outline: 0;
     }
   }
+}
+
+.review-dates {
+  display: flex;
+  flex-direction: column;
+}
+
+.grade-adjust {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grade-display {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gray);
+}
+
+.grade-adjust-buttons {
+}
+
+.info-tooltip {
+}
+
+.graduation-estimate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.graduation-display {
+  font-size: 2rem;
+  color: var(--color-gray);
 }

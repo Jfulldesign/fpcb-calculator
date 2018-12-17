@@ -6,6 +6,14 @@
   --color-blue: #2c3f7f;
   --color-black: #333;
   --color-yellow: #e2c548;
+  --color-gray: #d7d7d7;
+  --color-dark-gray: #b2b2b2;
+  --color-light-gray: #f2f2f2;
+  --color-1u: #932c39;
+  --color-4u: #39836e;
+  --color-2p: #3b2d52;
+  --color-2c: #e37639;
+  --color-4c: #762e54;
 }
 
 body {
@@ -24,7 +32,6 @@ h6 {
 }
 
 :global(#app-root) {
-  border: 1px solid red;
   max-width: 100%;
   overflow: hidden;
 }

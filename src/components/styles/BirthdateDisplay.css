@@ -1,0 +1,4 @@
+.birthdate-display {
+  display: flex;
+  background: var(--color-light-gray);
+}
