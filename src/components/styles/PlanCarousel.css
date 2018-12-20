@@ -1,5 +1,5 @@
 .plan-carousel {
-  overflow: hidden;
+  margin: 1rem 0;
 
   :global(.horizontalSlider___281Ls) {
     width: 255px;

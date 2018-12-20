@@ -42,8 +42,8 @@ module.exports = function(env) {
     mode: env.prod ? "production" : "development",
     entry: [
       "@babel/polyfill",
-      "rc-tooltip/assets/bootstrap_white.css",
       "pure-react-carousel/dist/react-carousel.es.css",
+      "react-tippy/dist/tippy.css",
       "./src/index.jsx"
     ],
     output: {

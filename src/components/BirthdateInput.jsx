@@ -2,11 +2,12 @@
 
 import React from "react";
 import cx from "classnames";
-import Tooltip from "rc-tooltip";
 import MaskedInput from "react-text-mask";
 import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrectedDatePipe";
+import { Tooltip } from "react-tippy";
 import { withUrlState } from "with-url-state";
 import { parse, addYears, subYears } from "date-fns";
+import { gatedKeyPress } from "util/keypress";
 import { describeChild, graduatesIn } from "util/maths";
 import "./styles/BirthdateInput.css";
 
@@ -35,6 +36,13 @@ class BirthdateInput extends React.Component<Props, State> {
       value: props.urlState.birthdate || "",
       date: null
     };
+
+    this.onFocus = this.onFocus.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.addYear = this.addYear.bind(this);
+    this.subtractYear = this.subtractYear.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onSetDate = this.onSetDate.bind(this);
   }
 
   onFocus() {
@@ -47,17 +55,21 @@ class BirthdateInput extends React.Component<Props, State> {
     this.setState({ value: event.currentTarget.value });
   }
 
-  onSubmit() {
-    this.props.setUrlState({ birthdate: this.state.value });
-    this.setState({ date: parse(this.state.value) });
-  }
-
   addYear() {
     this.setState({ date: subYears(this.state.date, 1) });
   }
 
   subtractYear() {
     this.setState({ date: addYears(this.state.date, 1) });
+  }
+
+  onSubmit() {
+    this.props.setUrlState({ birthdate: this.state.value });
+    this.setState({ date: parse(this.state.value) });
+  }
+
+  onSetDate() {
+    this.props.onHasDate(this.state.date);
   }
 
   render() {
@@ -81,12 +93,15 @@ class BirthdateInput extends React.Component<Props, State> {
           placeholder={
             this.state.active ? "" : "Enter MM/DD/YY for payment estimates"
           }
-          onFocus={this.onFocus.bind(this)}
-          onChange={this.onChange.bind(this)}
+          onFocus={this.onFocus}
+          onChange={this.onChange}
         />
         {date === null ? (
           <div styleName="button-container">
-            <button onClick={this.onSubmit.bind(this)}>
+            <button
+              onClick={this.onSubmit}
+              onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSubmit)}
+            >
               Start Calculating
             </button>
           </div>
@@ -97,25 +112,30 @@ class BirthdateInput extends React.Component<Props, State> {
               <span styleName="grade-display">
                 {describeChild(date)}
                 <Tooltip
-                  placement="top"
-                  trigger={["hover"]}
-                  overlay={
-                    <span>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates quae voluptatum sunt culpa fugit saepe esse
-                      odio molestias officia delectus, doloribus fugiat atque
-                      ipsam quam nulla, porro animi cupiditate doloremque.
-                    </span>
-                  }
+                  title="Hello World!"
+                  position="top"
+                  trigger="click"
+                  arrow
                 >
                   <button styleName="info-tooltip">Info</button>
                 </Tooltip>
               </span>
               <div styleName="grade-adjust-buttons">
-                <button onClick={this.subtractYear.bind(this)}>
+                <button
+                  onClick={this.subtractYear}
+                  onKeyPress={gatedKeyPress(
+                    ["Space", "Enter"],
+                    this.subtractYear
+                  )}
+                >
                   Subtract Year
                 </button>
-                <button onClick={this.addYear.bind(this)}>Add Year</button>
+                <button
+                  onClick={this.addYear}
+                  onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
+                >
+                  Add Year
+                </button>
               </div>
             </div>
             <div styleName="graduation-estimate">
@@ -123,25 +143,18 @@ class BirthdateInput extends React.Component<Props, State> {
               <span styleName="graduation-display">
                 {graduatesIn(date)}
                 <Tooltip
-                  placement="top"
-                  trigger={["hover"]}
-                  overlay={
-                    <span>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates quae voluptatum sunt culpa fugit saepe esse
-                      odio molestias officia delectus, doloribus fugiat atque
-                      ipsam quam nulla, porro animi cupiditate doloremque.
-                    </span>
-                  }
+                  title="Hello World!"
+                  position="top"
+                  trigger="click"
+                  arrow
                 >
-                  <button>Info</button>
+                  <button styleName="info-tooltip">Info</button>
                 </Tooltip>
               </span>
             </div>
             <button
-              onClick={() => {
-                this.props.onHasDate(this.state.date);
-              }}
+              onClick={this.onSetDate}
+              onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
             >
               Show My Rates
             </button>

@@ -2,6 +2,7 @@
 
 import React from "react";
 import cx from "classnames";
+import accounting from "accounting";
 import type { Plan, PaymentSchedule } from "util/types";
 import "./styles/PlanCard.css";
 
@@ -23,7 +24,7 @@ const PlanCard = ({ plan, year, type, note }: Props) => {
       <h1 styleName="title">{plan.title}</h1>
       <span styleName="starting">Starting at</span>
       <span styleName="price">
-        {plan.prices[type][year]}
+        {accounting.formatMoney(plan.prices[type][year], "$")}
         {type !== "single" && <span styleName="per">/ month</span>}
       </span>
       <span styleName="note">{note}</span>

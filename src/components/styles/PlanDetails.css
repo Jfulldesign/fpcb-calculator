@@ -1,0 +1,19 @@
+.plan-links {
+  display: flex;
+  margin: 2rem 0 1rem;
+  justify-content: space-around;
+
+  a {
+    display: inline-block;
+    border: 2px solid var(--color-1u);
+    padding: 0.5rem 1rem;
+    color: white;
+    background: var(--color-1u);
+    border-radius: 5px;
+    font-size: 1.125rem;
+  }
+}
+
+.plan-details {
+  display: block;
+}

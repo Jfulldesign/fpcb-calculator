@@ -1,8 +1,10 @@
 // @flow strict
 
 import React from "react";
-import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 import PlanCard from "components/PlanCard";
+import PlanDetails from "components/PlanDetails";
+import PlanProvider from "components/util/PlanProvider";
+import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 import { plans } from "util/constants";
 import type { PaymentSchedule } from "util/types";
 import "./styles/PlanCarousel.css";
@@ -12,9 +14,14 @@ type Props = {
   paymentType: PaymentSchedule
 };
 
-export default class PlanCarousel extends React.Component<Props> {
+type State = {
+  current: string
+};
+
+export default class PlanCarousel extends React.Component<Props, State> {
+  state = { current: "1U" };
   render() {
-    const { date, paymentType } = this.props;
+    const { paymentType } = this.props;
     return (
       <div styleName="plan-carousel">
         <CarouselProvider
@@ -45,20 +52,8 @@ export default class PlanCarousel extends React.Component<Props> {
               <PlanCard plan={plans.get("4C")} year={0} type={paymentType} />
             </Slide>
           </Slider>
+          <PlanProvider render={plan => <PlanDetails plan={plan} />} />
         </CarouselProvider>
-        <a href="#">Enroll in this Plan</a>
-        <a href="#">Email Me These Prices</a>
-        <div>
-          <h4>What does this plan cover?</h4>
-          <ol>
-            <li>
-              All tuition, registration, tuition differential and local fees.
-              Does not include campus fees.{" "}
-              <a href="#">Learn more about fees.</a>
-            </li>
-            <li>30 semester credit hours at a State University</li>
-          </ol>
-        </div>
       </div>
     );
   }
