@@ -115,6 +115,7 @@ class BirthdateInput extends React.Component<Props, State> {
                   title="Hello World!"
                   position="top"
                   trigger="click"
+                  tabIndex="0"
                   arrow
                 >
                   <button styleName="info-tooltip">Info</button>
@@ -146,6 +147,7 @@ class BirthdateInput extends React.Component<Props, State> {
                   title="Hello World!"
                   position="top"
                   trigger="click"
+                  tabIndex="0"
                   arrow
                 >
                   <button styleName="info-tooltip">Info</button>
