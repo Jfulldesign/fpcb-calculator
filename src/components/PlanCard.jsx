@@ -2,18 +2,16 @@
 
 import React from "react";
 import cx from "classnames";
-import accounting from "accounting";
 import type { Plan, PaymentSchedule } from "util/types";
 import "./styles/PlanCard.css";
 
 type Props = {
   plan: Plan,
-  year: number,
-  type: PaymentSchedule,
-  note?: React.Node
+  date: ?Date,
+  type: PaymentSchedule
 };
 
-const PlanCard = ({ plan, year, type, note }: Props) => {
+const PlanCard = ({ plan, type, date }: Props) => {
   const styleName = cx({
     [`plan--${plan.id}`]: true,
     "plan-card": true
@@ -22,12 +20,13 @@ const PlanCard = ({ plan, year, type, note }: Props) => {
   return (
     <div styleName={styleName}>
       <h1 styleName="title">{plan.title}</h1>
-      <span styleName="starting">Starting at</span>
-      <span styleName="price">
-        {accounting.formatMoney(plan.prices[type][year], "$")}
+      <p>{plan.description}</p>
+      <div styleName="price">
+        {!date && <span styleName="starting">Starting at</span>}
+        {`$${plan.prices[type][0].toLocaleString()}`}
         {type !== "single" && <span styleName="per">/ month</span>}
-      </span>
-      <span styleName="note">{note}</span>
+      </div>
+      {plan.note && <div styleName="note">{plan.note}</div>}
     </div>
   );
 };

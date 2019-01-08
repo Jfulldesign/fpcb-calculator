@@ -8,11 +8,11 @@
 
 .plan-card {
   width: 255px;
-  height: 128px;
+  height: 200px;
   overflow: hidden;
-  padding: 1.5rem 0.5rem;
+  padding: 10px;
   margin-right: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
 
   &.plan--1U {
     border-bottom: 5px solid var(--color-1u);
@@ -73,44 +73,51 @@
       background: var(--color-4c);
     }
   }
-}
 
-.title {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0.5rem 0;
-}
-
-.starting {
-  display: block;
-  color: var(--color-dark-gray);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0.5rem 0;
-}
-
-.price {
-  display: block;
-  font-size: 3rem;
-  font-weight: 700;
-
-  .per {
-    font-size: 1.5rem;
+  .title {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
   }
-}
 
-.note {
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 245px;
-  border-radius: 0 0 5px 5px;
-  color: white;
-  text-align: center;
-  padding: 0.5rem 0;
+  p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    margin-top: 5px;
+  }
 
-  &:empty {
-    display: none;
+  .starting {
+    display: block;
+    color: var(--color-dark-gray);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+
+  .price {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+
+    .per {
+      font-size: 1.5rem;
+    }
+  }
+
+  .note {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 245px;
+    border-radius: 0 0 5px 5px;
+    color: white;
+    text-align: center;
+    padding: 0.5rem 0;
+
+    &:empty {
+      display: none;
+    }
   }
 }

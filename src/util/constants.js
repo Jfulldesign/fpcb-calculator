@@ -1,12 +1,16 @@
 // @flow strict
 
 import type { Plan } from "types";
-export const plans: Map<string, Plan> = new Map([
+export const PLANS: Map<string, Plan> = new Map([
   [
     "4U",
     {
       id: "4U",
       title: "4-Year University Plan",
+      description:
+        "Covers a Bachelor’s Degree at a State University, allowing your student to graduate debt free.",
+      dorm: true,
+      note: "Most Popular",
       credits: {
         state: 120,
         college: 0
@@ -79,6 +83,9 @@ export const plans: Map<string, Plan> = new Map([
     {
       id: "1U",
       title: "1-Year University Plan",
+      description:
+        "Covers one year of State University tuition and can be bought separately, allowing family members to contribute to college savings.",
+      dorm: true,
       credits: {
         state: 30,
         college: 0
@@ -151,6 +158,9 @@ export const plans: Map<string, Plan> = new Map([
     {
       id: "2P",
       title: "2 + 2 Florida Plan",
+      description:
+        "Covers a Bachelor’s Degree from a State University for less by starting at a State College and transferring to a State University.",
+      dorm: true,
       credits: {
         state: 60,
         college: 60
@@ -223,6 +233,9 @@ export const plans: Map<string, Plan> = new Map([
     {
       id: "4C",
       title: "4-Year Florida College Plan",
+      description:
+        "Covers the equivalent of a Bachelor’s Degree. Students attending Florida colleges are guaranteed admission to state universities.",
+      dorm: false,
       credits: {
         state: 0,
         college: 120
@@ -295,6 +308,9 @@ export const plans: Map<string, Plan> = new Map([
     {
       id: "2C",
       title: "2-Year Florida College Plan",
+      description:
+        "Covers the equivalent of an Associate’s Degree. Students attending Florida colleges are guaranteed admission to state universities.",
+      dorm: false,
       credits: {
         state: 0,
         college: 60

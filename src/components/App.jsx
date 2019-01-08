@@ -1,10 +1,15 @@
 // @flow strict
 
 import React from "react";
+import { Media } from "react-fns";
+import PlanTable from "components/PlanTable";
+import PlanCarousel from "components/PlanCarousel";
 import BirthdateInput from "components/BirthdateInput";
 import BirthdateDisplay from "components/BirthdateDisplay";
 import PaymentPlanSelector from "components/PaymentPlanSelector";
-import PlanCarousel from "components/PlanCarousel";
+
+import { PLANS } from "util/constants";
+import heroImage from "assets/hero.jpg";
 import type { PaymentSchedule } from "util/types";
 import "./styles/App.css";
 
@@ -37,52 +42,56 @@ export default class App extends React.Component<void, State> {
 
   render() {
     const { date, paymentType } = this.state;
+    const plans = [
+      PLANS.get("2C"),
+      PLANS.get("4C"),
+      PLANS.get("2P"),
+      PLANS.get("1U"),
+      PLANS.get("4U")
+    ];
+
     return (
       <section styleName="calculator-app">
-        {date === null ? (
-          <BirthdateInput onHasDate={this.onHasDate.bind(this)} />
-        ) : (
-          <React.Fragment>
-            <BirthdateDisplay
-              date={date}
-              onEdit={this.onEdit.bind(this)}
-              onReset={this.onReset.bind(this)}
-            />
-            <PaymentPlanSelector
-              onSelectionChange={this.onUpdatePaymentType.bind(this)}
-            />
-          </React.Fragment>
-        )}
-        <PlanCarousel date={date} paymentType={paymentType} />
-        <footer>
-          <h3>Where can Florida Prepaid Plans be used?</h3>
-          <h6>University vs. College Credits</h6>
-          <p>
-            Our plans include a set number of credit hours configured for either
-            a Florida State College or University. What does that mean for each
-            plan?
-          </p>
-          <ul>
-            <li>
-              <h6>College Credit Hours</h6>
-              <p>
-                Our College plans are configured to suit Florida&apos;s
-                impressive 28 State Colleges. Any student earning an
-                Associate&apos;s Degree from a State College is guaranteed
-                admission to one of Florida&apos;s 12 Universities.
-              </p>
-            </li>
-            <li>
-              <h6>University Credit Hours</h6>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Perspiciatis, quibusdam. Iste numquam nam, magni soluta est
-                maxime autem laborum! Dolore veritatis saepe at earum eos iste
-                vitae explicabo eius pariatur?
-              </p>
-            </li>
-          </ul>
-        </footer>
+        <header>
+          <div styleName="header-content">
+            <img src={heroImage} />
+            <div className="header-copy">
+              <h1>Florida Prepaid College Plans</h1>
+              <h2>
+                Start saving for college with a plan that fits your budget.
+              </h2>
+            </div>
+            {date === null ? (
+              <BirthdateInput onHasDate={this.onHasDate.bind(this)} />
+            ) : (
+              <React.Fragment>
+                <BirthdateDisplay
+                  date={date}
+                  onEdit={this.onEdit.bind(this)}
+                  onReset={this.onReset.bind(this)}
+                />
+                <PaymentPlanSelector
+                  onSelectionChange={this.onUpdatePaymentType.bind(this)}
+                />
+              </React.Fragment>
+            )}
+          </div>
+        </header>
+        <div className="plans">
+          <Media.default query="(max-width: 599px)">
+            {matches =>
+              matches ? (
+                <PlanCarousel
+                  date={date}
+                  plans={plans}
+                  paymentType={paymentType}
+                />
+              ) : (
+                <PlanTable />
+              )
+            }
+          </Media.default>
+        </div>
       </section>
     );
   }

@@ -1,7 +1,7 @@
 .birthdate-input {
   color: white;
-  font-weight: 600;
-  padding: 1rem;
+  font-weight: 400;
+  padding: 10px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -10,7 +10,7 @@
 
   &.active {
     input {
-      padding: 1rem;
+      padding: 10px;
       text-align: center;
     }
 
@@ -22,11 +22,11 @@
   input {
     width: 100%;
     border: none;
-    margin: 1rem;
-    padding: 0.25rem;
+    margin: 10px 0 5px;
+    padding: 5px 0;
     font-weight: 600;
-    border-radius: 0.25rem;
-    text-indent: 0.5rem;
+    border-radius: 5px;
+    text-indent: 10px;
     transition: all 0.2s ease;
 
     &::placeholder {
@@ -58,6 +58,13 @@
       outline: 0;
     }
   }
+
+  .info-tooltip {
+    padding: 0;
+    font-size: 16px;
+    background: transparent;
+    color: var(--color-yellow);
+  }
 }
 
 .review-dates {
@@ -72,15 +79,26 @@
 }
 
 .grade-display {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  font-size: 24px;
   font-weight: 700;
   color: var(--color-gray);
+  margin-left: 34px;
 }
 
 .grade-adjust-buttons {
-}
+  line-height: 0;
+  margin: 5px 0 15px;
 
-.info-tooltip {
+  button {
+    padding: 0;
+    margin: 0 5px;
+    background: transparent;
+    color: white;
+    font-size: 34px;
+  }
 }
 
 .graduation-estimate {
@@ -90,6 +108,14 @@
 }
 
 .graduation-display {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
   color: var(--color-gray);
+  margin-left: 34px;
+}
+
+.button-submit {
+  align-self: center;
 }

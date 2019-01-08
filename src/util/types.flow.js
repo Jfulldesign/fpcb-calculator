@@ -6,6 +6,9 @@ export type PaymentSchedule = "single" | "monthly" | "short";
 export type Plan = {|
   id: PlanID,
   title: string,
+  description: string,
+  dorm: boolean,
+  note?: string,
   prices: {|
     single: Array<number>,
     monthly: Array<number>,

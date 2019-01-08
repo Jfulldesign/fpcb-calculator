@@ -13,20 +13,33 @@ export default class PlanDetails extends React.Component<Props> {
     const { plan } = this.props;
     return (
       <React.Fragment>
-        <div styleName="plan-links">
-          <a href="#">Enroll in this Plan {plan.id}</a>
-          <a href="#">Email Me These Prices</a>
-        </div>
         <div styleName="plan-details">
           <h4>What does this plan cover?</h4>
           <ol>
             <li>
-              All tuition, registration, tuition differential and local fees.
-              Does not include campus fees.{" "}
-              <a href="#">Learn more about fees.</a>
+              {plan.credits.college > 0 && (
+                <span>
+                  <strong>
+                    {plan.credits.college} lower division credit hours
+                  </strong>{" "}
+                  at a Florida College
+                  {plan.credits.state > 0 ? " and " : ". "}
+                </span>
+              )}
+              {plan.credits.state > 0 && (
+                <span>
+                  <strong>{plan.credits.state} semester credit hours</strong> at
+                  a State University.
+                </span>
+              )}
             </li>
-            <li>30 semester credit hours at a State University</li>
+            <li>
+              Covers tuition and most fees.{" "}
+              <a href="#">Learn more about fees</a>.
+            </li>
+            <li>Option to add a Dormitory Plan starting at $47.89/month.</li>
           </ol>
+          <a href="#">Enroll Online</a>
         </div>
       </React.Fragment>
     );

@@ -1,4 +1,35 @@
 .birthdate-display {
+  position: fixed;
   display: flex;
+  top: 50px;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 10px 20px;
+  border: 1px solid white;
+  justify-content: space-between;
   background: var(--color-light-gray);
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  dd {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  button {
+    background: var(--color-blue);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 0 20px;
+  }
 }

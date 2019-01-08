@@ -7,11 +7,11 @@ import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrect
 import { Tooltip } from "react-tippy";
 import { withUrlState } from "with-url-state";
 import { parse, addYears, subYears } from "date-fns";
-import { gatedKeyPress } from "util/keypress";
+import { gatedKeyPress } from "util/keyboard";
 import { describeChild, graduatesIn } from "util/maths";
 import "./styles/BirthdateInput.css";
 
-const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yy");
+const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
 
 type Props = {
   onHasDate: Date => void,
@@ -83,15 +83,14 @@ class BirthdateInput extends React.Component<Props, State> {
       <div styleName={styleName}>
         <span>Your Child&apos;s Birthdate</span>
         <MaskedInput
-          mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/]}
+          mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
           pipe={autoCorrectedDatePipe}
           guide={true}
           pattern="\d*"
           value={this.state.value}
           disabled={date !== null}
-          keepCharPositions={true}
           placeholder={
-            this.state.active ? "" : "Enter MM/DD/YY for payment estimates"
+            this.state.active ? "" : "Enter MM/DD/YYYY for payment estimates"
           }
           onFocus={this.onFocus}
           onChange={this.onChange}
@@ -112,13 +111,25 @@ class BirthdateInput extends React.Component<Props, State> {
               <span styleName="grade-display">
                 {describeChild(date)}
                 <Tooltip
-                  title="Hello World!"
-                  position="top"
+                  html={
+                    <div className="tip">
+                      <h6>Why is this important?</h6>
+                      <p>
+                        Your child&apos;s grade predicts the year they will
+                        graduate and begin using their Florida Prepaid Plan. The
+                        beneficiary has up to 10 years following graduation to
+                        use a Florida Prepaid Plan.
+                      </p>
+                    </div>
+                  }
+                  position="bottom"
                   trigger="click"
                   tabIndex="0"
                   arrow
                 >
-                  <button styleName="info-tooltip">Info</button>
+                  <button styleName="info-tooltip">
+                    <i className="fa fa-info-circle" />
+                  </button>
                 </Tooltip>
               </span>
               <div styleName="grade-adjust-buttons">
@@ -129,13 +140,13 @@ class BirthdateInput extends React.Component<Props, State> {
                     this.subtractYear
                   )}
                 >
-                  Subtract Year
+                  <i className="fa fa-minus-circle" />
                 </button>
                 <button
                   onClick={this.addYear}
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
                 >
-                  Add Year
+                  <i className="fa fa-plus-circle" />
                 </button>
               </div>
             </div>
@@ -144,17 +155,29 @@ class BirthdateInput extends React.Component<Props, State> {
               <span styleName="graduation-display">
                 {graduatesIn(date)}
                 <Tooltip
-                  title="Hello World!"
+                  html={
+                    <div className="tip">
+                      <h6>Why is this important?</h6>
+                      <p>
+                        Your child&apos;s birthdate predicts the year they will
+                        graduate and begin using their Florida Prepaid Plan. The
+                        date entered must be today or earlier.
+                      </p>
+                    </div>
+                  }
                   position="top"
                   trigger="click"
                   tabIndex="0"
                   arrow
                 >
-                  <button styleName="info-tooltip">Info</button>
+                  <button styleName="info-tooltip">
+                    <i className="fa fa-info-circle" />
+                  </button>
                 </Tooltip>
               </span>
             </div>
             <button
+              styleName="button-submit"
               onClick={this.onSetDate}
               onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
             >

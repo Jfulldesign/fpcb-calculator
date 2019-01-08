@@ -29,12 +29,10 @@ if (process.env.NODE_ENV === "development") {
   });
 }
 
-const mount = document.createElement("div");
+const mount = document.querySelector(".hook--calculators");
 const modal = document.createElement("div");
-mount.classList.add("container");
 modal.id = "modal-root";
 if (document.body != undefined) {
-  document.body.appendChild(mount);
   document.body.appendChild(modal);
   ReactDOM.render(
     <ErrorBoundary>

@@ -1,2 +1,47 @@
 .payment-selector {
+  display: flex;
+  align-items: center;
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  label {
+    background-color: white;
+    padding: 10px;
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+    color: var(--color-blue);
+    border: 2px solid var(--color-blue);
+    border-left: 0;
+    margin-bottom: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:last-of-type {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &:first-of-type {
+      border-radius: 5px 0 0 5px;
+      border-left: 2px solid var(--color-blue);
+    }
+
+    .description {
+      display: block;
+      font-weight: 300;
+      font-size: 12px;
+    }
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: var(--color-blue);
+    color: white;
+  }
+
+  .info-tooltip {
+    font-size: 24px;
+    margin-left: 5px;
+    color: var(--color-yellow);
+  }
 }

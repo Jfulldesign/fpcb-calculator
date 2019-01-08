@@ -11,10 +11,7 @@ module.exports = function(env) {
   const plugins = [
     new Dotenv(),
     new HtmlWebpackPlugin({
-      title: "FPCB Plan Calculator",
-      meta: {
-        viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
-      }
+      template: "index.html"
     })
   ];
 

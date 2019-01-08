@@ -8,12 +8,12 @@ type Props = {
   currentSlide: number
 };
 
-class PlanProvider extends React.Component<Props> {
+class CurrentPlanProvider extends React.Component<Props> {
   render() {
-    return this.props.render({ plan: this.props.currentSlide });
+    return this.props.render(this.props.currentSlide);
   }
 }
 
-export default WithStore(PlanProvider, state => ({
+export default WithStore(CurrentPlanProvider, state => ({
   currentSlide: state.currentSlide
 }));
