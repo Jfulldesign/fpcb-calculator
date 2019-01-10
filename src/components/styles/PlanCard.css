@@ -12,6 +12,8 @@
   overflow: hidden;
   padding: 10px;
   margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
 
   &.plan--1U {
@@ -86,6 +88,7 @@
     font-weight: 600;
     line-height: 18px;
     margin-top: 5px;
+    flex-grow: 1;
   }
 
   .starting {
@@ -93,13 +96,14 @@
     color: var(--color-dark-gray);
     font-size: 1.2rem;
     font-weight: 600;
-    margin: 0.5rem 0;
+    margin: 0;
   }
 
   .price {
     display: block;
     font-size: 3rem;
     font-weight: 700;
+    line-height: 22px;
 
     .per {
       font-size: 1.5rem;
@@ -107,14 +111,39 @@
   }
 
   .note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: -25px;
     width: 245px;
     border-radius: 0 0 5px 5px;
+    height: 30px;
     color: white;
-    text-align: center;
+    font-weight: 700;
     padding: 0.5rem 0;
+
+    :global(.note-inner) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      :global(.icon) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        background: #265c53;
+        width: 38px;
+        height: 38px;
+        margin-right: 10px;
+      }
+
+      img {
+        width: 22px;
+      }
+    }
 
     &:empty {
       display: none;

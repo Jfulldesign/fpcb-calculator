@@ -4,6 +4,7 @@ import React from "react";
 import { WithStore } from "pure-react-carousel";
 
 type Props = {
+  date: ?Date,
   render: () => void,
   currentSlide: number
 };

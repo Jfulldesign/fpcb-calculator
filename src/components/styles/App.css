@@ -1,16 +1,39 @@
 .calculator-app {
+  button:focus,
+  div:focus {
+    outline: 0;
+  }
+
   .header-content {
     h1,
     h2 {
+      font-family: "Open Sans";
+      font-weight: 300;
       color: var(--color-blue);
       text-align: center;
       margin: 10px 0;
+      font-size: 30px;
     }
 
     h2 {
       color: var(--color-black);
-      font-size: 28px;
+      font-size: 24px;
     }
+
+    img {
+      position: absolute;
+      width: 100%;
+      top: 50px;
+      left: 0;
+    }
+  }
+
+  .header-copy {
+    margin: 120px 0 20px;
+  }
+
+  &.has-date .header-copy {
+    margin-top: 80px;
   }
 
   @media (min-width: 599px) {
@@ -25,4 +48,8 @@
       z-index: 5;
     }
   }
+}
+
+:global(.calc-app-mounted) :global(#top-nav) :global(.bottom) {
+  display: none;
 }

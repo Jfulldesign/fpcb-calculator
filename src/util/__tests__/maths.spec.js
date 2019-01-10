@@ -2,6 +2,7 @@ import { describeChild } from "../maths";
 
 describe("maths", () => {
   describe("describeChild", () => {
+    // these should be rewritten to not depend on the current date
     test("unborn", () => {
       // date > now
       expect(describeChild(new Date(2020, 1, 1))).toBe("unborn");

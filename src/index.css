@@ -5,6 +5,7 @@
   --color-gray: #d7d7d7;
   --color-dark-gray: #b2b2b2;
   --color-light-gray: #f2f2f2;
+  --color-lighter-gray: #f1f1f1;
   --color-1u: #932c39;
   --color-4u: #39836e;
   --color-2p: #3b2d52;
@@ -30,4 +31,32 @@ h6 {
 :global(#app-root) {
   max-width: 100%;
   overflow: hidden;
+}
+
+:global(.tippy-tooltip) {
+  background: white;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
+  color: var(--color-black);
+  border-radius: 0;
+  text-align: left;
+  padding: 10px 20px;
+
+  h6 {
+    color: var(--color-blue);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+:global(.tippy-popper)[x-placement^="bottom"] [x-arrow] {
+  border-bottom-color: white !important;
+}
+
+:global(.tippy-popper)[x-placement^="top"] [x-arrow] {
+  border-top-color: white !important;
 }

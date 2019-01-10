@@ -38,7 +38,8 @@ export default class PlanCarousel extends React.Component<Props, State> {
             ))}
           </Slider>
           <CurrentPlanProvider
-            render={idx => <PlanDetails plan={plans[idx]} />}
+            date={date}
+            render={idx => <PlanDetails plan={plans[idx]} date={date} />}
           />
         </CarouselProvider>
       </div>

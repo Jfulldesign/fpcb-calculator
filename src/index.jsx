@@ -40,6 +40,7 @@ if (document.body != undefined) {
     </ErrorBoundary>,
     mount
   );
+  document.body.classList.add("calc-app-mounted");
 } else {
   throw new Error("Cannot find suitable mount.");
 }

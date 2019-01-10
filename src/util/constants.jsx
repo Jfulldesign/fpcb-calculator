@@ -1,6 +1,9 @@
 // @flow strict
 
+import React from "react";
 import type { Plan } from "types";
+import award from "assets/icon-award.png";
+
 export const PLANS: Map<string, Plan> = new Map([
   [
     "4U",
@@ -10,7 +13,14 @@ export const PLANS: Map<string, Plan> = new Map([
       description:
         "Covers a Bachelor’s Degree at a State University, allowing your student to graduate debt free.",
       dorm: true,
-      note: "Most Popular",
+      note: (
+        <span className="note-inner">
+          <span className="icon">
+            <img src={award} />
+          </span>
+          Most Popular
+        </span>
+      ),
       credits: {
         state: 120,
         college: 0

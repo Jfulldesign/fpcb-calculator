@@ -101,6 +101,7 @@
     "react-a11y": "^1.1.0",
     "react-dom": "^16.7.0",
     "react-fns": "^1.4.0",
+    "react-modal": "^3.8.1",
     "react-text-mask": "^5.4.3",
     "react-tippy": "^1.2.3",
     "react-transition-group": "^2.5.2",

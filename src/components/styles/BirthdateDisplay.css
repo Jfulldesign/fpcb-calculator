@@ -1,14 +1,21 @@
-.birthdate-display {
+.birthdate-display-container {
   position: fixed;
-  display: flex;
   top: 50px;
   right: 0;
   left: 0;
   z-index: 9999;
+  height: 280px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.birthdate-display {
+  display: flex;
   padding: 10px 20px;
   border: 1px solid white;
   justify-content: space-between;
   background: var(--color-light-gray);
+  pointer-events: all;
 
   dl {
     margin: 0;
@@ -24,12 +31,126 @@
     font-weight: 700;
   }
 
+  .button-container {
+    height: 0;
+    overflow: hidden;
+  }
+
   button {
-    background: var(--color-blue);
+    background: white;
+    padding: 1rem 2rem;
+    margin: 1rem;
     border: none;
-    border-radius: 5px;
-    color: white;
+    text-align: center;
+    font-size: 1.25rem;
     font-weight: 700;
-    padding: 0 20px;
+    color: var(--color-blue);
+    border-radius: 5px;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &.edit {
+      background: var(--color-blue);
+      color: white;
+      padding: 0 20px;
+      margin: 0;
+    }
+  }
+
+  .info-tooltip {
+    padding: 0;
+    font-size: 16px;
+    background: transparent;
+    color: var(--color-yellow);
+  }
+
+  .button-close {
+    appearance: none;
+    border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--color-dark-gray);
+    background: none;
+    font-size: 30px;
+  }
+
+  .display-edit {
+    background: var(--color-blue);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    padding: 25px 0;
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+    will-change: transform;
+
+    &.active {
+      transform: translateY(0);
+    }
+  }
+
+  .info-tooltip {
+    padding: 0;
+    font-size: 16px;
+    background: transparent;
+    color: var(--color-yellow);
+  }
+
+  .review-dates {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grade-adjust {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grade-display {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-gray);
+    margin-left: 34px;
+  }
+
+  .grade-adjust-buttons {
+    line-height: 0;
+    margin: 5px 0 15px;
+
+    button {
+      padding: 0;
+      margin: 0 5px;
+      background: transparent;
+      color: white;
+      font-size: 34px;
+    }
+  }
+
+  .graduation-estimate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .graduation-display {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-gray);
+    margin-left: 34px;
+  }
+
+  .button-submit {
+    align-self: center;
   }
 }

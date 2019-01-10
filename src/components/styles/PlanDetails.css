@@ -16,4 +16,234 @@
 
 .plan-details {
   display: block;
+
+  h4 {
+    color: var(--color-black);
+    font-size: 16px;
+    font-family: "Open Sans";
+    font-weight: 700;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 20px;
+
+    li {
+      display: flex;
+      padding: 10px;
+      align-items: center;
+
+      img {
+        width: 30px;
+        height: 100%;
+        margin-right: 10px;
+      }
+
+      &:nth-of-type(even) {
+        background: var(--color-lighter-gray);
+      }
+    }
+  }
+
+  .links {
+    display: flex;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      font-size: 16px;
+      flex-basis: 0;
+      flex-grow: 1;
+      text-align: center;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      transition: background 0.2s ease;
+    }
+  }
+
+  .email {
+    border: 2px solid var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  .enroll {
+    background: var(--color-blue);
+    color: white;
+    margin-right: 10px;
+  }
+
+  &.plan--1U {
+    .enroll {
+      background: var(--color-1u);
+    }
+  }
+
+  &.plan--4U {
+    .enroll {
+      background: var(--color-4u);
+    }
+  }
+
+  &.plan--2P {
+    .enroll {
+      background: var(--color-2p);
+    }
+  }
+
+  &.plan--2C {
+    .enroll {
+      background: var(--color-2c);
+    }
+  }
+
+  &.plan--4C {
+    .enroll {
+      background: var(--color-4c);
+    }
+  }
+}
+
+:global(.ReactModal__Overlay) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  position: relative;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
+  background: white;
+  margin: 0 10px;
+  padding: 20px;
+  width: 100%;
+  border-bottom: 5px solid var(--color-1u);
+
+  .button-close {
+    position: absolute;
+    color: var(--color-gray);
+    font-size: 24px;
+    top: 0;
+    right: 10px;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 16px;
+    color: var(--color-black);
+    margin: 10px 0;
+  }
+
+  button:focus {
+    outline: 0;
+  }
+
+  .emails {
+    position: relative;
+  }
+
+  i {
+    font-size: 20px;
+  }
+
+  input[type="email"] {
+    border: 1px solid var(--color-gray);
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: #f2f2f2;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: var(--color-black);
+    }
+
+    + input[type="email"] {
+      margin-top: 5px;
+    }
+
+    &:last-of-type {
+      border-radius: 4px 4px 0 0;
+    }
+
+    &:first-of-type {
+      background: white;
+    }
+  }
+
+  .add-email {
+    background: #c8c8c8;
+    color: white;
+    border: 0;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .remove-email {
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+    color: #c8c8c8;
+  }
+
+  .optin {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    input {
+      margin: 0 5px 0 0;
+    }
+
+    label {
+      color: #c8c8c8;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button[type="submit"] {
+    background: var(--color-blue);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 75%;
+    margin-top: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    align-self: center;
+  }
 }

@@ -1,6 +1,7 @@
 // @flow strict
 
 import React from "react";
+import cx from "classnames";
 import { Media } from "react-fns";
 import PlanTable from "components/PlanTable";
 import PlanCarousel from "components/PlanCarousel";
@@ -28,14 +29,6 @@ export default class App extends React.Component<void, State> {
     this.setState({ date });
   }
 
-  onEdit() {
-    this.setState({ date: null });
-  }
-
-  onReset() {
-    this.setState({ date: null });
-  }
-
   onUpdatePaymentType(paymentType) {
     this.setState({ paymentType });
   }
@@ -50,15 +43,21 @@ export default class App extends React.Component<void, State> {
       PLANS.get("4U")
     ];
 
+    const styleName = cx({
+      "calculator-app": true,
+      "has-date": date !== null
+    });
+
     return (
-      <section styleName="calculator-app">
+      <section styleName={styleName}>
         <header>
           <div styleName="header-content">
-            <img src={heroImage} />
-            <div className="header-copy">
-              <h1>Florida Prepaid College Plans</h1>
+            {date === null && <img src={heroImage} alt="Mother and baby" />}
+            <div styleName="header-copy">
+              <h1>Start Saving for College</h1>
               <h2>
-                Start saving for college with a plan that fits your budget.
+                Find the guaranteed Florida Prepaid College Plan that fits your
+                budget and enver lose your investment.
               </h2>
             </div>
             {date === null ? (
@@ -67,10 +66,10 @@ export default class App extends React.Component<void, State> {
               <React.Fragment>
                 <BirthdateDisplay
                   date={date}
-                  onEdit={this.onEdit.bind(this)}
-                  onReset={this.onReset.bind(this)}
+                  onEdit={this.onHasDate.bind(this)}
                 />
                 <PaymentPlanSelector
+                  date={date}
                   onSelectionChange={this.onUpdatePaymentType.bind(this)}
                 />
               </React.Fragment>

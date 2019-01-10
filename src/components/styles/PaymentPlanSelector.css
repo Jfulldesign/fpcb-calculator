@@ -39,6 +39,10 @@
     color: white;
   }
 
+  input[type="radio"]:disabled + label {
+    background-color: var(--color-gray);
+  }
+
   .info-tooltip {
     font-size: 24px;
     margin-left: 5px;
