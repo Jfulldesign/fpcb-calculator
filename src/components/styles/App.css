@@ -28,6 +28,11 @@
     }
   }
 
+  button {
+    -webkit-appearance: none;
+    border: none;
+  }
+
   .header-copy {
     margin: 120px 0 20px;
   }

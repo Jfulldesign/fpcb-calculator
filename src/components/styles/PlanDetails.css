@@ -123,6 +123,11 @@
   width: 100%;
   border-bottom: 5px solid var(--color-1u);
 
+  button {
+    -webkit-appearance: none;
+    border: none;
+  }
+
   .button-close {
     position: absolute;
     color: var(--color-gray);
