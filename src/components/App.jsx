@@ -52,7 +52,7 @@ export default class App extends React.Component<{}, State> {
       <section styleName={styleName}>
         <header>
           <div styleName="header-content">
-            {date === null && <img src={heroImage} alt="Mother and baby" />}
+            <img src={heroImage} alt="Mother and baby" />
             <div styleName="header-copy">
               <h1>Start Saving for College</h1>
               <h2>

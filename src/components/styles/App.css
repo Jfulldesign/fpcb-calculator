@@ -64,8 +64,18 @@
     }
   }
 
-  &.has-date .header-copy {
-    margin-top: 80px;
+  &.has-date {
+    img {
+      display: none;
+
+      @media (min-width: 599px) {
+        display: block;
+      }
+    }
+
+    .header-copy {
+      margin-top: 80px;
+    }
   }
 
   @media (min-width: 599px) {

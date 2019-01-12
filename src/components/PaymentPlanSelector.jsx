@@ -99,7 +99,7 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
             </div>
           }
           position="bottom"
-          trigger="click"
+          trigger="mouseenter"
           tabIndex="0"
           arrow
         >

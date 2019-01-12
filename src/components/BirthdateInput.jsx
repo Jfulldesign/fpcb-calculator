@@ -123,7 +123,7 @@ class BirthdateInput extends React.Component<Props, State> {
                     </div>
                   }
                   position="bottom"
-                  trigger="click"
+                  trigger="mouseenter"
                   tabIndex="0"
                   arrow
                 >
@@ -166,7 +166,7 @@ class BirthdateInput extends React.Component<Props, State> {
                     </div>
                   }
                   position="top"
-                  trigger="click"
+                  trigger="mouseenter"
                   tabIndex="0"
                   arrow
                 >
