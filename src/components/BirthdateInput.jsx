@@ -1,4 +1,4 @@
-// @flow strict
+// @flow
 
 import React from "react";
 import cx from "classnames";
@@ -45,31 +45,37 @@ class BirthdateInput extends React.Component<Props, State> {
     this.onSetDate = this.onSetDate.bind(this);
   }
 
+  onFocus: () => void;
   onFocus() {
     this.setState({
       active: true
     });
   }
 
+  onChange: () => void;
   onChange(event) {
     this.setState({ value: event.currentTarget.value });
   }
 
+  addYear: () => void;
   addYear() {
     this.setState({ date: subYears(this.state.date, 1) });
   }
 
+  subtractYear: () => void;
   subtractYear() {
     this.setState({ date: addYears(this.state.date, 1) });
   }
 
+  onSubmit: () => void;
   onSubmit() {
-    this.props.setUrlState({ birthdate: this.state.value });
+    // this.props.setUrlState({ birthdate: this.state.value });
     this.setState({ date: parse(this.state.value) });
   }
 
+  onSetDate: () => void;
   onSetDate() {
-    this.props.onHasDate(this.state.date);
+    if (this.state.date) this.props.onHasDate(this.state.date);
   }
 
   render() {
@@ -95,7 +101,7 @@ class BirthdateInput extends React.Component<Props, State> {
           onFocus={this.onFocus}
           onChange={this.onChange}
         />
-        {date === null ? (
+        {date == null ? (
           <div styleName="button-container">
             <button
               onClick={this.onSubmit}

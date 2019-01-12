@@ -1,14 +1,14 @@
 // @flow strict
 
 import React from "react";
-import type { Plan } from "types";
+import type { Plan, PlanID } from "util/types.flow.js";
 import award from "assets/icon-award.png";
 
-export const PLANS: Map<string, Plan> = new Map([
+export const PLANS: Map<PlanID, Plan> = new Map([
   [
-    "4U",
+    "U4",
     {
-      id: "4U",
+      id: "U4",
       title: "4-Year University Plan",
       description:
         "Covers a Bachelor’s Degree at a State University, allowing your student to graduate debt free.",
@@ -89,9 +89,9 @@ export const PLANS: Map<string, Plan> = new Map([
     }
   ],
   [
-    "1U",
+    "U1",
     {
-      id: "1U",
+      id: "U1",
       title: "1-Year University Plan",
       description:
         "Covers one year of State University tuition and can be bought separately, allowing family members to contribute to college savings.",
@@ -164,9 +164,9 @@ export const PLANS: Map<string, Plan> = new Map([
     }
   ],
   [
-    "2P",
+    "P2",
     {
-      id: "2P",
+      id: "P2",
       title: "2 + 2 Florida Plan",
       description:
         "Covers a Bachelor’s Degree from a State University for less by starting at a State College and transferring to a State University.",
@@ -239,9 +239,9 @@ export const PLANS: Map<string, Plan> = new Map([
     }
   ],
   [
-    "4C",
+    "C4",
     {
-      id: "4C",
+      id: "C4",
       title: "4-Year Florida College Plan",
       description:
         "Covers the equivalent of a Bachelor’s Degree. Students attending Florida colleges are guaranteed admission to state universities.",
@@ -314,9 +314,9 @@ export const PLANS: Map<string, Plan> = new Map([
     }
   ],
   [
-    "2C",
+    "C2",
     {
-      id: "2C",
+      id: "C2",
       title: "2-Year Florida College Plan",
       description:
         "Covers the equivalent of an Associate’s Degree. Students attending Florida colleges are guaranteed admission to state universities.",
@@ -389,9 +389,9 @@ export const PLANS: Map<string, Plan> = new Map([
     }
   ],
   [
-    "1D",
+    "D1",
     {
-      id: "1D",
+      id: "D1",
       title: "University Dormitory Plan One Year",
       credits: {
         state: 0,

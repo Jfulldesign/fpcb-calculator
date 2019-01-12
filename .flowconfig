@@ -8,13 +8,15 @@ untyped-type-import
 [ignore]
 <PROJECT_ROOT>/node_modules/graphql/.*
 
+[include]
+.*/src/.*
+
 [options]
 module.system.node.resolve_dirname=node_modules
-module.system.node.resolve_dirname=src
-module.system.node.resolve_dirname=assets
+module.system.node.resolve_dirname=./src
 esproposal.optional_chaining=enable
 module.use_strict=true
 emoji=true
 
 [version]
-^0.89.0
+^0.90.0

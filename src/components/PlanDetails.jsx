@@ -4,7 +4,7 @@ import React from "react";
 import cx from "classnames";
 import Modal from "react-modal";
 import "./styles/PlanDetails.css";
-import type { Plan } from "util/types";
+import type { Plan } from "util/types.flow.js";
 
 import icon60College from "assets/icon-60-college.png";
 import icon120College from "assets/icon-120-college.png";
@@ -37,19 +37,23 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
     this.removeEmail = this.removeEmail.bind(this);
   }
 
+  openModal: () => void;
   openModal() {
     this.setState({ modalAcitve: true });
   }
 
+  closeModal: () => void;
   closeModal() {
     this.setState({ modalAcitve: false });
   }
 
+  addEmail: () => void;
   addEmail(event: Event) {
     event.preventDefault();
     this.setState({ numEmails: this.state.numEmails + 1 });
   }
 
+  removeEmail: () => void;
   removeEmail(event: Event) {
     event.preventDefault();
     this.setState({ numEmails: this.state.numEmails - 1 });

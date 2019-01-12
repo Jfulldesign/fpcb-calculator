@@ -1,9 +1,9 @@
-// @flow strict
+// @flow
 
 import React from "react";
 import cx from "classnames";
 import { priceIndex } from "util/maths";
-import type { Plan, PaymentSchedule } from "util/types";
+import type { Plan, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanCard.css";
 
 type Props = {
@@ -18,8 +18,8 @@ const PlanCard = ({ plan, type, date }: Props) => {
     "plan-card": true
   });
 
-  const pidx = date === null ? 0 : priceIndex(date);
-  const price = pidx === undefined ? "–" : plan.prices[type][pidx];
+  const pidx = date == null ? 0 : priceIndex(date);
+  const price = pidx == null ? "–" : plan.prices[type][pidx];
 
   return (
     <div styleName={styleName}>

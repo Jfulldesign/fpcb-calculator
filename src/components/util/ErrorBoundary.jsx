@@ -1,20 +1,25 @@
 // @flow strict
 
 import React from "react";
+import type { Node } from "react";
+
+type Props = {
+  children?: Node
+};
 
 type State = {
   error: ?Error
 };
 
-export default class ErrorBoundary extends React.Component<void, State> {
+export default class ErrorBoundary extends React.Component<Props, State> {
   state = { error: null };
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: Error) {
     return { error };
   }
 
   render() {
-    if (this.state.error !== null) {
+    if (this.state.error != null) {
       return (
         <div>
           <header>
@@ -31,6 +36,6 @@ export default class ErrorBoundary extends React.Component<void, State> {
       );
     }
 
-    return this.props.children;
+    return this.props.children || null;
   }
 }

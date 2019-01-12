@@ -1,4 +1,4 @@
-// @flow strict
+// @flow
 
 import pluralize from "pluralize";
 import { differenceInYears, addYears, getYear, isFuture } from "date-fns";
@@ -38,9 +38,7 @@ export function graduatesIn(date: Date): number {
   return getYear(addYears(date, 18));
 }
 
-export function priceIndex(date: Date): ?number {
-  if (isFuture(date)) return undefined;
-  if (date > cutoff) return 0;
-  const age = differenceInYears(new Date(), date);
-  return age > 18 ? undefined : age;
+export function priceIndex(date: Date): number {
+  if (isFuture(date)) return 0;
+  return differenceInYears(new Date(), date);
 }

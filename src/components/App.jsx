@@ -1,4 +1,4 @@
-// @flow strict
+// @flow
 
 import React from "react";
 import cx from "classnames";
@@ -11,15 +11,15 @@ import PaymentPlanSelector from "components/PaymentPlanSelector";
 
 import { PLANS } from "util/constants";
 import heroImage from "assets/hero.jpg";
-import type { PaymentSchedule } from "util/types";
+import type { PaymentSchedule } from "util/types.flow.js";
 import "./styles/App.css";
 
 type State = {
-  date: Date,
+  date: ?Date,
   paymentType: PaymentSchedule
 };
 
-export default class App extends React.Component<void, State> {
+export default class App extends React.Component<{}, State> {
   state = {
     date: null,
     paymentType: "monthly"
@@ -29,18 +29,18 @@ export default class App extends React.Component<void, State> {
     this.setState({ date });
   }
 
-  onUpdatePaymentType(paymentType) {
+  onUpdatePaymentType(paymentType: PaymentSchedule) {
     this.setState({ paymentType });
   }
 
   render() {
     const { date, paymentType } = this.state;
     const plans = [
-      PLANS.get("2C"),
-      PLANS.get("4C"),
-      PLANS.get("2P"),
-      PLANS.get("1U"),
-      PLANS.get("4U")
+      PLANS.get("C2"),
+      PLANS.get("C4"),
+      PLANS.get("P2"),
+      PLANS.get("U1"),
+      PLANS.get("U4")
     ];
 
     const styleName = cx({
@@ -60,7 +60,7 @@ export default class App extends React.Component<void, State> {
                 budget and enver lose your investment.
               </h2>
             </div>
-            {date === null ? (
+            {date == null ? (
               <BirthdateInput onHasDate={this.onHasDate.bind(this)} />
             ) : (
               <React.Fragment>
@@ -82,6 +82,10 @@ export default class App extends React.Component<void, State> {
               matches ? (
                 <PlanCarousel
                   date={date}
+                  // We knoe all these plans exist because Flow would complain
+                  // if we didn't use a valid key above while we're building the
+                  // array.
+                  // $FlowFixMe
                   plans={plans}
                   paymentType={paymentType}
                 />

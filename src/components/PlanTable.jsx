@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default class PlanTable extends React.Component<void> {
+export default class PlanTable extends React.Component<{}> {
   render() {
     return (
       <div className="plan-table">

@@ -5,13 +5,14 @@ import { WithStore } from "pure-react-carousel";
 
 type Props = {
   date: ?Date,
-  render: () => void,
+  render: number => React$Element<*>,
   currentSlide: number
 };
 
 class CurrentPlanProvider extends React.Component<Props> {
   render() {
-    return this.props.render(this.props.currentSlide);
+    const { render, currentSlide } = this.props;
+    return render(currentSlide);
   }
 }
 

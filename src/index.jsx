@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === "development") {
 const mount = document.querySelector(".hook--calculators");
 const modal = document.createElement("div");
 modal.id = "modal-root";
-if (document.body != undefined) {
+if (document.body != undefined && mount != undefined) {
   document.body.appendChild(modal);
   ReactDOM.render(
     <ErrorBoundary>
@@ -40,6 +40,7 @@ if (document.body != undefined) {
     </ErrorBoundary>,
     mount
   );
+  // $FlowFixMe
   document.body.classList.add("calc-app-mounted");
 } else {
   throw new Error("Cannot find suitable mount.");

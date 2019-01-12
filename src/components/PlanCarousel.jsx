@@ -1,15 +1,15 @@
-// @flow strict
+// @flow
 
 import React from "react";
 import PlanCard from "components/PlanCard";
 import PlanDetails from "components/PlanDetails";
 import CurrentPlanProvider from "components/util/CurrentPlanProvider";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
-import type { PaymentSchedule, Plan } from "util/types";
+import type { PaymentSchedule, Plan } from "util/types.flow.js";
 import "./styles/PlanCarousel.css";
 
 type Props = {
-  date: Date,
+  date: ?Date,
   plans: Array<Plan>,
   paymentType: PaymentSchedule
 };

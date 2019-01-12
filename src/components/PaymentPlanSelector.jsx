@@ -1,22 +1,35 @@
-// @flow strict
+// @flow
 
 import React from "react";
 import { Tooltip } from "react-tippy";
 import { priceIndex } from "util/maths";
-import type { PaymentSchedule } from "util/types";
+import type { PaymentSchedule } from "util/types.flow.js";
 import "./styles/PaymentPlanSelector.css";
 
 type Props = {
-  date: ?Data,
+  date: Date,
   onSelectionChange: PaymentSchedule => void
 };
 
-export default class PaymentPlanSelector extends React.Component<Props> {
-  onChange = event => {
-    const value = event.currentTarget.value;
-    this.setState({ value });
-    this.props.onSelectionChange(value);
-  };
+type State = {
+  value: PaymentSchedule
+};
+
+export default class PaymentPlanSelector extends React.Component<Props, State> {
+  onChange: () => void;
+  onChange(event: Event) {
+    const target = event.currentTarget;
+    if (target instanceof HTMLInputElement) {
+      const value = target.value;
+      // these two don't like having a "string" being assigned where
+      // the PaymentSchedule enum belongs, but since we control the inputs
+      // below, we know they're always going to be one of the enum
+      // $FlowFixMe
+      this.setState({ value });
+      // $FlowFixMe
+      this.props.onSelectionChange(value);
+    }
+  }
 
   render() {
     const { date } = this.props;
