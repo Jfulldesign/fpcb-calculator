@@ -82,7 +82,7 @@ export default class App extends React.Component<{}, State> {
               matches ? (
                 <PlanCarousel
                   date={date}
-                  // We knoe all these plans exist because Flow would complain
+                  // We know all these plans exist because Flow would complain
                   // if we didn't use a valid key above while we're building the
                   // array.
                   // $FlowFixMe
@@ -90,7 +90,12 @@ export default class App extends React.Component<{}, State> {
                   paymentType={paymentType}
                 />
               ) : (
-                <PlanTable />
+                <PlanTable
+                  date={date}
+                  // $FlowFixMe
+                  plans={plans}
+                  paymentType={paymentType}
+                />
               )
             }
           </Media.default>

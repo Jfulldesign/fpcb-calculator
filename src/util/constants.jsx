@@ -94,7 +94,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "U1",
       title: "1-Year University Plan",
       description:
-        "Covers one year of State University tuition and can be bought separately, allowing family members to contribute to college savings.",
+        "Most flexible plan allows you or other family members to buy one year of State University at a time as your budget allows, up to four years.",
       dorm: true,
       credits: {
         state: 30,
@@ -169,7 +169,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "P2",
       title: "2 + 2 Florida Plan",
       description:
-        "Covers a Bachelor’s Degree from a State University for less by starting at a State College and transferring to a State University.",
+        "Best of both worlds...save money on lower-level courses while receiving a bachelor’s degree from one of Florida’s State Universities.",
       dorm: true,
       credits: {
         state: 60,
@@ -244,7 +244,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "C4",
       title: "4-Year Florida College Plan",
       description:
-        "Covers the equivalent of a Bachelor’s Degree. Students attending Florida colleges are guaranteed admission to state universities.",
+        "Most convenient and affordable way to earn a bachelor’s degree from a Florida College in high-demand fields.",
       dorm: false,
       credits: {
         state: 0,
@@ -319,7 +319,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "C2",
       title: "2-Year Florida College Plan",
       description:
-        "Covers the equivalent of an Associate’s Degree. Students attending Florida colleges are guaranteed admission to state universities.",
+        "Most affordable way to earn an AA degree from a Florida College and guaranteed admission to one of Florida’s State Universities.",
       dorm: false,
       credits: {
         state: 0,

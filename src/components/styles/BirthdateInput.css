@@ -10,6 +10,13 @@
 
   @media (min-width: 599px) {
     box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+  }
+
+  > span {
+    @media (min-width: 599px) {
+      font-size: 24px;
+    }
   }
 
   &.active {
@@ -40,11 +47,20 @@
     &:focus {
       outline: 0;
     }
+
+    @media (min-width: 599px) {
+      padding: 10px;
+      text-align: center;
+    }
   }
 
   .button-container {
     height: 0;
     overflow: hidden;
+
+    @media (min-width: 599px) {
+      height: auto;
+    }
   }
 
   button {
@@ -60,6 +76,11 @@
 
     &:focus {
       outline: 0;
+    }
+
+    @media (min-width: 599px) {
+      font-size: 16px;
+      margin: 10px 0 0 0;
     }
   }
 
