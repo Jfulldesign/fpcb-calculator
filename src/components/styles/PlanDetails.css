@@ -5,10 +5,10 @@
 
   a {
     display: inline-block;
-    border: 2px solid var(--color-1u);
+    border: 2px solid var(--color-u1);
     padding: 0.5rem 1rem;
     color: white;
-    background: var(--color-1u);
+    background: var(--color-u1);
     border-radius: 5px;
     font-size: 1.125rem;
   }
@@ -76,33 +76,33 @@
     margin-right: 10px;
   }
 
-  &.plan--1U {
+  &.plan--U1 {
     .enroll {
-      background: var(--color-1u);
+      background: var(--color-u1);
     }
   }
 
-  &.plan--4U {
+  &.plan--U4 {
     .enroll {
-      background: var(--color-4u);
+      background: var(--color-u4);
     }
   }
 
-  &.plan--2P {
+  &.plan--P2 {
     .enroll {
-      background: var(--color-2p);
+      background: var(--color-p2);
     }
   }
 
-  &.plan--2C {
+  &.plan--C2 {
     .enroll {
-      background: var(--color-2c);
+      background: var(--color-c2);
     }
   }
 
-  &.plan--4C {
+  &.plan--C4 {
     .enroll {
-      background: var(--color-4c);
+      background: var(--color-c4);
     }
   }
 }
@@ -121,7 +121,7 @@
   margin: 0 10px;
   padding: 20px;
   width: 100%;
-  border-bottom: 5px solid var(--color-1u);
+  border-bottom: 5px solid var(--color-u1);
 
   button {
     -webkit-appearance: none;

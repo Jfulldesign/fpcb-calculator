@@ -34,32 +34,26 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     };
   }
 
-  onEdit: () => void;
   onEdit() {
     this.setState({ editActive: true });
   }
 
-  onClose: () => void;
   onClose() {
     this.setState({ editActive: false });
   }
 
-  onUpdate: () => void;
   onUpdate() {
     this.setState({ editActive: false });
   }
 
-  addYear: () => void;
   addYear() {
     this.setState({ date: subYears(this.state.date, 1) });
   }
 
-  subtractYear: () => void;
   subtractYear() {
     this.setState({ date: addYears(this.state.date, 1) });
   }
 
-  onSetDate: () => void;
   onSetDate() {
     this.props.onEdit(this.state.date);
     this.setState({ editActive: false });

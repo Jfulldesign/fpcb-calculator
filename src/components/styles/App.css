@@ -1,10 +1,24 @@
 .calculator-app {
+  @media (min-width: 599px) {
+    margin: 20px 0;
+  }
+
+  header {
+    @media (min-width: 599px) {
+      margin-bottom: 30px;
+    }
+  }
+
   button:focus,
   div:focus {
     outline: 0;
   }
 
   .header-content {
+    @media (min-width: 599px) {
+      padding-right: 20px;
+    }
+
     h1,
     h2 {
       font-family: "Open Sans";
@@ -13,6 +27,10 @@
       text-align: center;
       margin: 10px 0;
       font-size: 30px;
+
+      @media (min-width: 599px) {
+        text-align: left;
+      }
     }
 
     h2 {
@@ -25,6 +43,11 @@
       width: 100%;
       top: 50px;
       left: 0;
+
+      @media (min-width: 599px) {
+        top: 0;
+        z-index: -1;
+      }
     }
   }
 
@@ -35,6 +58,10 @@
 
   .header-copy {
     margin: 120px 0 20px;
+
+    @media (min-width: 599px) {
+      margin-top: 30px;
+    }
   }
 
   &.has-date .header-copy {
@@ -57,4 +84,8 @@
 
 :global(.calc-app-mounted) :global(#top-nav) :global(.bottom) {
   display: none;
+
+  @media (min-width: 599px) {
+    display: block;
+  }
 }

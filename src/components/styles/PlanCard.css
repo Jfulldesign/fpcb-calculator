@@ -16,63 +16,63 @@
   flex-direction: column;
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
 
-  &.plan--1U {
-    border-bottom: 5px solid var(--color-1u);
+  &.plan--U1 {
+    border-bottom: 5px solid var(--color-u1);
 
     .title {
-      color: var(--color-1u);
+      color: var(--color-u1);
     }
 
     .note {
-      background: var(--color-1u);
+      background: var(--color-u1);
     }
   }
 
-  &.plan--4U {
-    border-bottom: 5px solid var(--color-4u);
+  &.plan--U4 {
+    border-bottom: 5px solid var(--color-u4);
 
     .title {
-      color: var(--color-4u);
+      color: var(--color-u4);
     }
 
     .note {
-      background: var(--color-4u);
+      background: var(--color-u4);
     }
   }
 
-  &.plan--2P {
-    border-bottom: 5px solid var(--color-2p);
+  &.plan--P2 {
+    border-bottom: 5px solid var(--color-p2);
 
     .title {
-      color: var(--color-2p);
+      color: var(--color-p2);
     }
 
     .note {
-      background: var(--color-2p);
+      background: var(--color-p2);
     }
   }
 
-  &.plan--2C {
-    border-bottom: 5px solid var(--color-2c);
+  &.plan--C2 {
+    border-bottom: 5px solid var(--color-c2);
 
     .title {
-      color: var(--color-2c);
+      color: var(--color-c2);
     }
 
     .note {
-      background: var(--color-2c);
+      background: var(--color-c2);
     }
   }
 
-  &.plan--4C {
-    border-bottom: 5px solid var(--color-4c);
+  &.plan--C4 {
+    border-bottom: 5px solid var(--color-c4);
 
     .title {
-      color: var(--color-4c);
+      color: var(--color-c4);
     }
 
     .note {
-      background: var(--color-4c);
+      background: var(--color-c4);
     }
   }
 

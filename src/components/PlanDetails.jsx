@@ -37,23 +37,19 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
     this.removeEmail = this.removeEmail.bind(this);
   }
 
-  openModal: () => void;
   openModal() {
     this.setState({ modalAcitve: true });
   }
 
-  closeModal: () => void;
   closeModal() {
     this.setState({ modalAcitve: false });
   }
 
-  addEmail: () => void;
   addEmail(event: Event) {
     event.preventDefault();
     this.setState({ numEmails: this.state.numEmails + 1 });
   }
 
-  removeEmail: () => void;
   removeEmail(event: Event) {
     event.preventDefault();
     this.setState({ numEmails: this.state.numEmails - 1 });

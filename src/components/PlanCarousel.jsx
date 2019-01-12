@@ -19,7 +19,7 @@ type State = {
 };
 
 export default class PlanCarousel extends React.Component<Props, State> {
-  state = { current: "1U" };
+  state = { current: "u1" };
   render() {
     const { paymentType, plans, date } = this.props;
     return (
