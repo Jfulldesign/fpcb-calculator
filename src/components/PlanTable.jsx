@@ -30,7 +30,10 @@ export default class PlanTable extends React.Component<Props> {
               {plans.map(({ id, title, description, prices, note }) => {
                 const price = pidx == null ? "–" : prices[paymentType][pidx];
                 return (
-                  <td styleName={`plan--${id}--info`} key={`plan--${id}--info`}>
+                  <td
+                    styleName={`plan--${id} plan--info`}
+                    key={`plan--${id}--info`}
+                  >
                     {note && <div styleName="note">{note}</div>}
                     <h3>{title}</h3>
                     <p>{description}</p>
@@ -48,12 +51,15 @@ export default class PlanTable extends React.Component<Props> {
             <tr>
               <td styleName="def--uni">State University Credit Hours</td>
               {plans.map(({ id, credits: { state } }) => (
-                <td styleName={`plan--${id}--uni`} key={`plan--${id}--uni`}>
+                <td
+                  styleName={`plan--${id} plan--uni`}
+                  key={`plan--${id}--uni`}
+                >
                   {state === 0 ? (
                     <i className="fa fa-minus" />
                   ) : (
                     <React.Fragment>
-                      <img src={iconUni} />
+                      <img styleName="icon icon--uni" src={iconUni} />
                       {state} Hours
                     </React.Fragment>
                   )}
@@ -64,14 +70,14 @@ export default class PlanTable extends React.Component<Props> {
               <td styleName="def--college">Florida College Credit Hours</td>
               {plans.map(({ id, credits: { college } }) => (
                 <td
-                  styleName={`plan--${id}--college`}
+                  styleName={`plan--${id} plan--college`}
                   key={`plan--${id}--college`}
                 >
                   {college === 0 ? (
                     <i className="fa fa-minus" />
                   ) : (
                     <React.Fragment>
-                      <img src={iconCollege} />
+                      <img styleName="icon icon--college" src={iconCollege} />
                       {college} Hours
                     </React.Fragment>
                   )}
@@ -83,7 +89,10 @@ export default class PlanTable extends React.Component<Props> {
                 Covers tuition and most fees. <a href="#">Learn about fees.</a>
               </td>
               {plans.map(({ id }) => (
-                <td styleName={`plan--${id}--fees`} key={`plan--${id}--fees`}>
+                <td
+                  styleName={`plan--${id} plan--fees`}
+                  key={`plan--${id}--fees`}
+                >
                   <i className="fa fa-check" />
                 </td>
               ))}
@@ -91,7 +100,10 @@ export default class PlanTable extends React.Component<Props> {
             <tr>
               <td styleName="def--dorm">Option to add a Dormitory Plan</td>
               {plans.map(({ id, dorm }) => (
-                <td styleName={`plan--${id}--dorm`} key={`plan--${id}--dorm`}>
+                <td
+                  styleName={`plan--${id} plan--dorm`}
+                  key={`plan--${id}--dorm`}
+                >
                   {dorm ? (
                     <React.Fragment>Starting at $47.89 / month</React.Fragment>
                   ) : (
@@ -105,12 +117,18 @@ export default class PlanTable extends React.Component<Props> {
                 Projected Actual Cost of College <a href="#">in 2025</a>
               </td>
               {plans.map(({ id }) => (
-                <td styleName={`plan--${id}--cost`} key={`plan--${id}--cost`}>
-                  {date ? (
-                    <span>Something here</span>
-                  ) : (
-                    <span>Enter birthdate to calculate</span>
-                  )}
+                <td
+                  styleName={`plan--${id} plan--cost`}
+                  key={`plan--${id}--cost`}
+                >
+                  <div styleName="college-price">
+                    {date ? (
+                      <span>Something here</span>
+                    ) : (
+                      <span>Enter birthdate to calculate</span>
+                    )}
+                  </div>
+                  <a href="">Enroll Online</a>
                 </td>
               ))}
             </tr>

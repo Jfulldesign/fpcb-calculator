@@ -1,89 +1,222 @@
 .plan-table {
+  table {
+    table-layout: fixed;
+    width: 100%;
+    min-width: 1000px;
+    overflow-x: scroll;
+  }
+
+  :global(.fa-minus) {
+    color: var(--color-dark-gray);
+  }
+
+  :global(.fa-check) {
+    color: var(--color-blue);
+  }
 }
+
 .def--info {
+  vertical-align: bottom;
 }
+
 .def--uni {
 }
+
 .def--college {
 }
+
 .def--fees {
 }
+
 .def--dorm {
 }
+
 .def--cost {
 }
-.plan--C2--info {
+
+.plan--info {
+  position: relative;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid var(--color-gray);
+  border-right: 1px solid var(--color-gray);
+  border-left: 1px solid var(--color-gray);
+
+  h3 {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+
+  .price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 0.85em;
+
+    .starting {
+      color: var(--color-dark-gray);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .per {
+      font-size: 16px;
+    }
+
+    &:after {
+      display: block;
+      content: "";
+      height: 1px;
+      width: 60%;
+      background-color: var(--color-gray);
+      margin-top: 10px;
+    }
+  }
+
+  &.plan--C2 {
+    .note {
+      background-color: var(--color-c2);
+    }
+  }
+
+  &.plan--C4 {
+    .note {
+      background-color: var(--color-c4);
+    }
+  }
+
+  &.plan--P2 {
+    .note {
+      background-color: var(--color-p2);
+    }
+  }
+
+  &.plan--U1 {
+    .note {
+      background-color: var(--color-u1);
+    }
+  }
+
+  &.plan--U4 {
+    .note {
+      background-color: var(--color-u4);
+    }
+  }
 }
-.plan--C4--info {
+
+.plan--uni,
+.plan--college,
+.plan--fees,
+.plan--dorm,
+.plan--cost {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-blue);
+  padding: 10px;
+  border-right: 1px solid var(--color-gray);
+  border-left: 1px solid var(--color-gray);
 }
-.plan--P2--info {
+
+.plan--college {
+  background-color: var(--color-lighter-gray);
 }
-.plan--U1--info {
+
+.plan--dorm {
+  background-color: var(--color-lighter-gray);
 }
-.plan--U4--info {
+
+.plan--cost {
+  text-align: center;
+  border-right: 1px solid var(--color-gray);
+  border-left: 1px solid var(--color-gray);
+  border-bottom: 5px solid var(--color-gray);
+
+  &.plan--C2 {
+    border-bottom-color: var(--color-c2);
+  }
+
+  &.plan--C4 {
+    border-bottom-color: var(--color-c4);
+  }
+
+  &.plan--P2 {
+    border-bottom-color: var(--color-p2);
+  }
+
+  &.plan--U1 {
+    border-bottom-color: var(--color-u1);
+  }
+
+  &.plan--U4 {
+    border-bottom-color: var(--color-u4);
+  }
+
+  .college-price {
+    &:after {
+      display: block;
+      content: "";
+      height: 1px;
+      width: 60%;
+      background-color: var(--color-gray);
+      margin-top: 10px;
+    }
+  }
 }
-.plan--C2--uni {
+
+.icon {
+  width: 28px;
 }
-.plan--C4--uni {
+
+.icon--uni {
 }
-.plan--P2--uni {
-}
-.plan--U1--uni {
-}
-.plan--U4--uni {
-}
-.plan--C2--college {
-}
-.plan--C4--college {
-}
-.plan--P2--college {
-}
-.plan--U1--college {
-}
-.plan--U4--college {
-}
-.plan--C2--fees {
-}
-.plan--C4--fees {
-}
-.plan--P2--fees {
-}
-.plan--U1--fees {
-}
-.plan--U4--fees {
-}
-.plan--C2--dorm {
-}
-.plan--C4--dorm {
-}
-.plan--P2--dorm {
-}
-.plan--U1--dorm {
-}
-.plan--U4--dorm {
-}
-.plan--C2--cost {
-}
-.plan--C4--cost {
-}
-.plan--P2--cost {
-}
-.plan--U1--cost {
-}
-.plan--U4--cost {
+
+.icon--college {
 }
 
 .note {
-}
+  position: absolute;
+  height: 35px;
+  top: -35px;
+  left: 0;
+  right: 0;
+  background-color: var(--color-gray);
+  border-radius: 5px 5px 0 0;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
 
-.price {
-  color: black;
-}
+  :global(.note-inner) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2px;
 
-.starting {
-  color: black;
-}
+    :global(.icon) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      background: #265c53;
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
 
-.per {
-  color: black;
+    img {
+      width: 22px;
+    }
+  }
+
+  &:empty {
+    display: none;
+  }
 }
