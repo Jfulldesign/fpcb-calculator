@@ -122,32 +122,35 @@ export default class PlanTable extends React.Component<Props> {
               <td styleName="def def--cost">
                 Projected Actual Cost of College
               </td>
-              {plans.map(({ id }) => (
-                <td
-                  styleName={`plan--${id} plan--cost`}
-                  key={`plan--${id}--cost`}
-                >
-                  <div styleName="college-price">
-                    {date ? (
-                      <span>Something here</span>
-                    ) : (
-                      <span>
-                        Enter Birthdate
-                        <br />
-                        to Calculate
-                      </span>
-                    )}
-                  </div>
-                  <a href="" styleName="enroll">
-                    Enroll Online
-                  </a>
-                  {date && (
-                    <a href="" styleName="email">
-                      Email Prices
+              {plans.map(({ id, estimatedCost }) => {
+                const price = pidx == null ? "–" : estimatedCost[pidx];
+                return (
+                  <td
+                    styleName={`plan--${id} plan--cost`}
+                    key={`plan--${id}--cost`}
+                  >
+                    <div styleName="college-price">
+                      {date ? (
+                        <span styleName="estimate">{`$${price.toLocaleString()}`}</span>
+                      ) : (
+                        <span>
+                          Enter Birthdate
+                          <br />
+                          to Calculate
+                        </span>
+                      )}
+                    </div>
+                    <a href="" styleName="enroll">
+                      Enroll Online
                     </a>
-                  )}
-                </td>
-              ))}
+                    {date && (
+                      <a href="" styleName="email">
+                        Email Prices
+                      </a>
+                    )}
+                  </td>
+                );
+              })}
             </tr>
           </tbody>
         </table>

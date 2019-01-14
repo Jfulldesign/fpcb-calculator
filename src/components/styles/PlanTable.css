@@ -212,6 +212,10 @@
       background-color: var(--color-gray);
       margin: 20px auto;
     }
+
+    .estimate {
+      color: var(--color-blue);
+    }
   }
 
   a {
