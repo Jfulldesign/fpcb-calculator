@@ -4,6 +4,12 @@
     width: 100%;
     min-width: 1000px;
     overflow-x: scroll;
+    line-height: 18px;
+    height: 0;
+  }
+
+  i {
+    font-size: 24px;
   }
 
   :global(.fa-minus) {
@@ -15,8 +21,24 @@
   }
 }
 
+.def {
+  width: 160px;
+  padding-right: 20px;
+}
+
 .def--info {
+  font-size: 16px;
   vertical-align: bottom;
+  padding: 20px 20px 20px 0;
+
+  &:after {
+    display: block;
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-gray);
+    margin-top: 10px;
+  }
 }
 
 .def--uni {
@@ -32,19 +54,33 @@
 }
 
 .def--cost {
+  vertical-align: top;
+  padding-top: 20px;
 }
 
 .plan--info {
   position: relative;
-  padding: 10px;
+  padding: 10px 10px 20px 10px;
   text-align: center;
+  vertical-align: top;
   border-top: 1px solid var(--color-gray);
   border-right: 1px solid var(--color-gray);
   border-left: 1px solid var(--color-gray);
 
+  .info-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    p {
+      flex-grow: 1;
+    }
+  }
+
   h3 {
     font-weight: 700;
     font-size: 24px;
+    margin: 0 0 5px 0;
   }
 
   p {
@@ -82,30 +118,50 @@
   }
 
   &.plan--C2 {
+    h3 {
+      color: var(--color-c2);
+    }
+
     .note {
       background-color: var(--color-c2);
     }
   }
 
   &.plan--C4 {
+    h3 {
+      color: var(--color-c4);
+    }
+
     .note {
       background-color: var(--color-c4);
     }
   }
 
   &.plan--P2 {
+    h3 {
+      color: var(--color-p2);
+    }
+
     .note {
       background-color: var(--color-p2);
     }
   }
 
   &.plan--U1 {
+    h3 {
+      color: var(--color-u1);
+    }
+
     .note {
       background-color: var(--color-u1);
     }
   }
 
   &.plan--U4 {
+    h3 {
+      color: var(--color-u4);
+    }
+
     .note {
       background-color: var(--color-u4);
     }
@@ -121,9 +177,13 @@
   font-size: 16px;
   font-weight: 700;
   color: var(--color-blue);
-  padding: 10px;
+  padding: 20px;
   border-right: 1px solid var(--color-gray);
   border-left: 1px solid var(--color-gray);
+}
+
+.plan--uni {
+  padding-top: 0;
 }
 
 .plan--college {
@@ -131,6 +191,7 @@
 }
 
 .plan--dorm {
+  padding: 15px;
   background-color: var(--color-lighter-gray);
 }
 
@@ -140,40 +201,73 @@
   border-left: 1px solid var(--color-gray);
   border-bottom: 5px solid var(--color-gray);
 
-  &.plan--C2 {
-    border-bottom-color: var(--color-c2);
-  }
-
-  &.plan--C4 {
-    border-bottom-color: var(--color-c4);
-  }
-
-  &.plan--P2 {
-    border-bottom-color: var(--color-p2);
-  }
-
-  &.plan--U1 {
-    border-bottom-color: var(--color-u1);
-  }
-
-  &.plan--U4 {
-    border-bottom-color: var(--color-u4);
-  }
-
   .college-price {
+    color: var(--color-dark-gray);
+
     &:after {
       display: block;
       content: "";
       height: 1px;
       width: 60%;
       background-color: var(--color-gray);
-      margin-top: 10px;
+      margin: 20px auto;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 10px;
+    color: white;
+    background-color: var(--color-blue);
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  &.plan--C2 {
+    border-bottom-color: var(--color-c2);
+
+    a {
+      background-color: var(--color-c2);
+    }
+  }
+
+  &.plan--C4 {
+    border-bottom-color: var(--color-c4);
+
+    a {
+      background-color: var(--color-c4);
+    }
+  }
+
+  &.plan--P2 {
+    border-bottom-color: var(--color-p2);
+
+    a {
+      background-color: var(--color-p2);
+    }
+  }
+
+  &.plan--U1 {
+    border-bottom-color: var(--color-u1);
+
+    a {
+      background-color: var(--color-u1);
+    }
+  }
+
+  &.plan--U4 {
+    border-bottom-color: var(--color-u4);
+
+    a {
+      background-color: var(--color-u4);
     }
   }
 }
 
 .icon {
   width: 28px;
+  margin-right: 5px;
+  margin-top: -4px;
 }
 
 .icon--uni {

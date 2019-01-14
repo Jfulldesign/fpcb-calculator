@@ -24,7 +24,7 @@ export default class PlanTable extends React.Component<Props> {
         <table>
           <tbody>
             <tr>
-              <td styleName="def--info">
+              <td styleName="def def--info">
                 <strong>What does each plan cover?</strong>
               </td>
               {plans.map(({ id, title, description, prices, note }) => {
@@ -35,21 +35,23 @@ export default class PlanTable extends React.Component<Props> {
                     key={`plan--${id}--info`}
                   >
                     {note && <div styleName="note">{note}</div>}
-                    <h3>{title}</h3>
-                    <p>{description}</p>
-                    <div styleName="price">
-                      {!date && <span styleName="starting">Starting at</span>}
-                      {`$${price.toLocaleString()}`}
-                      {paymentType !== "single" && (
-                        <span styleName="per"> / month</span>
-                      )}
+                    <div styleName="info-container">
+                      <h3>{title}</h3>
+                      <p>{description}</p>
+                      <div styleName="price">
+                        {!date && <span styleName="starting">Starting at</span>}
+                        {`$${price.toLocaleString()}`}
+                        {paymentType !== "single" && (
+                          <span styleName="per"> / month</span>
+                        )}
+                      </div>
                     </div>
                   </td>
                 );
               })}
             </tr>
             <tr>
-              <td styleName="def--uni">State University Credit Hours</td>
+              <td styleName="def def--uni">State University Credit Hours</td>
               {plans.map(({ id, credits: { state } }) => (
                 <td
                   styleName={`plan--${id} plan--uni`}
@@ -67,7 +69,7 @@ export default class PlanTable extends React.Component<Props> {
               ))}
             </tr>
             <tr>
-              <td styleName="def--college">Florida College Credit Hours</td>
+              <td styleName="def def--college">Florida College Credit Hours</td>
               {plans.map(({ id, credits: { college } }) => (
                 <td
                   styleName={`plan--${id} plan--college`}
@@ -85,7 +87,7 @@ export default class PlanTable extends React.Component<Props> {
               ))}
             </tr>
             <tr>
-              <td styleName="def--fees">
+              <td styleName="def def--fees">
                 Covers tuition and most fees. <a href="#">Learn about fees.</a>
               </td>
               {plans.map(({ id }) => (
@@ -98,14 +100,18 @@ export default class PlanTable extends React.Component<Props> {
               ))}
             </tr>
             <tr>
-              <td styleName="def--dorm">Option to add a Dormitory Plan</td>
+              <td styleName="def def--dorm">Option to add a Dormitory Plan</td>
               {plans.map(({ id, dorm }) => (
                 <td
                   styleName={`plan--${id} plan--dorm`}
                   key={`plan--${id}--dorm`}
                 >
                   {dorm ? (
-                    <React.Fragment>Starting at $47.89 / month</React.Fragment>
+                    <React.Fragment>
+                      Starting at
+                      <br />
+                      $47.89 / month
+                    </React.Fragment>
                   ) : (
                     <i className="fa fa-minus" />
                   )}
@@ -113,8 +119,8 @@ export default class PlanTable extends React.Component<Props> {
               ))}
             </tr>
             <tr>
-              <td styleName="def--cost">
-                Projected Actual Cost of College <a href="#">in 2025</a>
+              <td styleName="def def--cost">
+                Projected Actual Cost of College
               </td>
               {plans.map(({ id }) => (
                 <td
@@ -125,7 +131,11 @@ export default class PlanTable extends React.Component<Props> {
                     {date ? (
                       <span>Something here</span>
                     ) : (
-                      <span>Enter birthdate to calculate</span>
+                      <span>
+                        Enter Birthdate
+                        <br />
+                        to Calculate
+                      </span>
                     )}
                   </div>
                   <a href="">Enroll Online</a>
