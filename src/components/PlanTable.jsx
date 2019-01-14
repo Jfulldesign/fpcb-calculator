@@ -138,7 +138,14 @@ export default class PlanTable extends React.Component<Props> {
                       </span>
                     )}
                   </div>
-                  <a href="">Enroll Online</a>
+                  <a href="" styleName="enroll">
+                    Enroll Online
+                  </a>
+                  {date && (
+                    <a href="" styleName="email">
+                      Email Prices
+                    </a>
+                  )}
                 </td>
               ))}
             </tr>

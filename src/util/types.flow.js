@@ -8,7 +8,7 @@ export type Plan = {|
   id: PlanID,
   title: string,
   description?: string,
-  dorm?: boolean,
+  dorm: boolean,
   note?: Node,
   prices: {|
     single: Array<number>,
@@ -18,5 +18,6 @@ export type Plan = {|
   credits: {|
     state: number,
     college: number
-  |}
+  |},
+  estimatedCost: Array<number>
 |};

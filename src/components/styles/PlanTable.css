@@ -216,17 +216,24 @@
 
   a {
     display: block;
-    padding: 10px;
+    padding: 8px 10px;
     color: white;
     background-color: var(--color-blue);
     border-radius: 5px;
     font-size: 14px;
+
+    &.email {
+      background: white;
+      color: var(--color-blue);
+      border: 2px solid var(--color-blue);
+      margin-top: 10px;
+    }
   }
 
   &.plan--C2 {
     border-bottom-color: var(--color-c2);
 
-    a {
+    a.enroll {
       background-color: var(--color-c2);
     }
   }
@@ -234,7 +241,7 @@
   &.plan--C4 {
     border-bottom-color: var(--color-c4);
 
-    a {
+    a.enroll {
       background-color: var(--color-c4);
     }
   }
@@ -242,7 +249,7 @@
   &.plan--P2 {
     border-bottom-color: var(--color-p2);
 
-    a {
+    a.enroll {
       background-color: var(--color-p2);
     }
   }
@@ -250,7 +257,7 @@
   &.plan--U1 {
     border-bottom-color: var(--color-u1);
 
-    a {
+    a.enroll {
       background-color: var(--color-u1);
     }
   }
@@ -258,7 +265,7 @@
   &.plan--U4 {
     border-bottom-color: var(--color-u4);
 
-    a {
+    a.enroll {
       background-color: var(--color-u4);
     }
   }

@@ -7,6 +7,13 @@
   height: 280px;
   overflow: hidden;
   pointer-events: none;
+
+  @media (min-width: 599px) {
+    position: relative;
+    overflow: visible;
+    top: 0;
+    height: auto;
+  }
 }
 
 .birthdate-display {
@@ -17,18 +24,40 @@
   background: var(--color-light-gray);
   pointer-events: all;
 
+  @media (min-width: 599px) {
+    border: none;
+    flex-wrap: wrap;
+    background-color: var(--color-lighter-gray);
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    justify-content: space-evenly;
+  }
+
   dl {
     margin: 0;
+
+    @media (min-width: 599px) {
+      text-align: center;
+    }
   }
 
   dt {
     font-size: 14px;
     font-weight: 300;
+
+    @media (min-width: 599px) {
+      font-size: 16px;
+    }
   }
 
   dd {
     font-size: 16px;
     font-weight: 700;
+
+    @media (min-width: 599px) {
+      font-size: 24px;
+      font-weight: 600;
+    }
   }
 
   .button-container {
@@ -56,6 +85,13 @@
       color: white;
       padding: 0 20px;
       margin: 0;
+
+      @media (min-width: 599px) {
+        width: 75%;
+        padding: 10px;
+        margin-top: 5px;
+        font-size: 16px;
+      }
     }
   }
 
@@ -91,6 +127,10 @@
 
     &.active {
       transform: translateY(0);
+    }
+
+    @media (min-width: 599px) {
+      display: none;
     }
   }
 

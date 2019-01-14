@@ -2,6 +2,7 @@
 
 import React from "react";
 import cx from "classnames";
+import { Media } from "react-fns";
 import { format } from "date-fns";
 import { Tooltip } from "react-tippy";
 import { addYears, subYears } from "date-fns";
@@ -77,13 +78,27 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
             <dt>Child is</dt>
             <dd>{describeChild(date)}</dd>
           </dl>
-          <button
-            styleName="edit"
-            onClick={this.onEdit}
-            onKeyPress={gatedKeyPress(["Space", "Enter"], this.onEdit)}
-          >
-            Edit
-          </button>
+          <Media.default query="(max-width: 599px)">
+            {matches =>
+              matches ? (
+                <button
+                  styleName="edit"
+                  onClick={this.onEdit}
+                  onKeyPress={gatedKeyPress(["Space", "Enter"], this.onEdit)}
+                >
+                  Edit
+                </button>
+              ) : (
+                <button
+                  styleName="edit"
+                  onClick={this.onEdit}
+                  onKeyPress={gatedKeyPress(["Space", "Enter"], this.onEdit)}
+                >
+                  Update My Child’s Information
+                </button>
+              )
+            }
+          </Media.default>
           <div styleName={editStyleName}>
             <button
               styleName="button-close"
