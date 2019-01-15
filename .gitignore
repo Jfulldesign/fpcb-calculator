@@ -1,7 +1,6 @@
 build/*
 build.*.tar.gz
 node_modules
-dist
 vendor
 .vscode
 *.sublime-project
