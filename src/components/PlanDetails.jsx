@@ -3,6 +3,8 @@
 import React from "react";
 import cx from "classnames";
 import Modal from "react-modal";
+import { Tooltip } from "react-tippy";
+import { graduatesIn, priceIndex } from "util/maths";
 import "./styles/PlanDetails.css";
 import type { Plan } from "util/types.flow.js";
 
@@ -72,6 +74,9 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
         return icon6060Vert;
     })();
 
+    const pidx = date == null ? 0 : priceIndex(date);
+    const futurePrice = pidx == null ? "–" : plan.estimatedCost[pidx];
+
     return (
       <React.Fragment>
         <div styleName={styleName}>
@@ -109,6 +114,30 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                 <img src={iconBed} alt="Icon of bed." />
                 <div>
                   Option to add a Dormitory Plan starting at $47.89/month.
+                  <Tooltip
+                    html={
+                      <div className="tip">
+                        <p>
+                          The 1-year Dormitory Plan covers a standard,
+                          double-occupancy, air-conditioned dormitory room at a
+                          State University in Florida. The amount covered by
+                          this plan can also be used at some fraternity or
+                          sorority houses (if those houses are overseen by the
+                          State University) or dormitory housing costs at other
+                          colleges nationwide. A maximum of four years may be
+                          purchased.
+                        </p>
+                      </div>
+                    }
+                    position="bottom"
+                    trigger="mouseenter"
+                    tabIndex="0"
+                    arrow
+                  >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
                 </div>
               </li>
             )}
@@ -116,7 +145,32 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               <li>
                 <img src={iconMoney} alt="Icon of money." />
                 <div>
-                  Projected Actual Cost of College in 2025 is $1,000,000
+                  Projected Actual Cost of College in {graduatesIn(date)} is{" "}
+                  {futurePrice}
+                  <Tooltip
+                    html={
+                      <div className="tip">
+                        <p>
+                          This is an estimate of the amount we anticipate to pay
+                          for tuition and fees covered by your plan. The
+                          estimate is based on current in-state tuition and
+                          fees, anticipated inflation and historical usage
+                          patterns. The actual benefit (costs paid in the
+                          future) may be higher or lower. However, the actual
+                          benefit will never be less than the price you pay for
+                          a plan - you cannot lose money.
+                        </p>
+                      </div>
+                    }
+                    position="bottom"
+                    trigger="mouseenter"
+                    tabIndex="0"
+                    arrow
+                  >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
                 </div>
               </li>
             )}

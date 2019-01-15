@@ -703,6 +703,15 @@
 .src-components-styles-___PlanTable__plan-table___3iwtm .fa-check {
   color: var(--color-blue);
 }
+.src-components-styles-___PlanTable__info-tooltip___2Dskv {
+  padding: 0;
+  background: transparent;
+  color: var(--color-yellow);
+  margin: 0 5px;
+}
+.src-components-styles-___PlanTable__info-tooltip___2Dskv i {
+  font-size: 16px;
+}
 .src-components-styles-___PlanTable__def___10uEb {
   width: 160px;
   padding-right: 20px;
@@ -1203,6 +1212,15 @@
 .src-components-styles-___PlanDetails__plan-details___T5_ZY.src-components-styles-___PlanDetails__plan--C4___2Z87_
   .src-components-styles-___PlanDetails__enroll___2LPtV {
   background: var(--color-c4);
+}
+.src-components-styles-___PlanDetails__info-tooltip___23UAw {
+  padding: 0;
+  background: transparent;
+  color: var(--color-yellow);
+  margin: 0 5px;
+}
+.src-components-styles-___PlanDetails__info-tooltip___23UAw i {
+  font-size: 16px;
 }
 .ReactModal__Overlay {
   display: flex;
@@ -1975,4 +1993,4 @@ h6 {
   border-top-color: #fff !important;
 }
 
-/*# sourceMappingURL=main.e925612f01f4a5bac95e.css.map*/
+/*# sourceMappingURL=main.356a25a8bd0e053bd537.css.map*/

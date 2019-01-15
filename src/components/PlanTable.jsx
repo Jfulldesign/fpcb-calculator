@@ -1,6 +1,7 @@
 // @flow
 
 import React from "react";
+import { Tooltip } from "react-tippy";
 import { priceIndex } from "util/maths";
 import type { Plan, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanTable.css";
@@ -102,7 +103,32 @@ export default class PlanTable extends React.Component<Props> {
               ))}
             </tr>
             <tr>
-              <td styleName="def def--dorm">Option to add a Dormitory Plan</td>
+              <td styleName="def def--dorm">
+                Option to add a Dormitory Plan
+                <Tooltip
+                  html={
+                    <div className="tip">
+                      <p>
+                        The 1-year Dormitory Plan covers a standard,
+                        double-occupancy, air-conditioned dormitory room at a
+                        State University in Florida. The amount covered by this
+                        plan can also be used at some fraternity or sorority
+                        houses (if those houses are overseen by the State
+                        University) or dormitory housing costs at other colleges
+                        nationwide. A maximum of four years may be purchased.
+                      </p>
+                    </div>
+                  }
+                  position="bottom"
+                  trigger="mouseenter"
+                  tabIndex="0"
+                  arrow
+                >
+                  <button styleName="info-tooltip">
+                    <i className="fa fa-info-circle" />
+                  </button>
+                </Tooltip>
+              </td>
               {plans.map(({ id, dorm }) => (
                 <td
                   styleName={`plan--${id} plan--dorm`}
@@ -123,6 +149,30 @@ export default class PlanTable extends React.Component<Props> {
             <tr>
               <td styleName="def def--cost">
                 Projected Actual Cost of College
+                <Tooltip
+                  html={
+                    <div className="tip">
+                      <p>
+                        This is an estimate of the amount we anticipate to pay
+                        for tuition and fees covered by your plan. The estimate
+                        is based on current in-state tuition and fees,
+                        anticipated inflation and historical usage patterns. The
+                        actual benefit (costs paid in the future) may be higher
+                        or lower. However, the actual benefit will never be less
+                        than the price you pay for a plan - you cannot lose
+                        money.
+                      </p>
+                    </div>
+                  }
+                  position="bottom"
+                  trigger="mouseenter"
+                  tabIndex="0"
+                  arrow
+                >
+                  <button styleName="info-tooltip">
+                    <i className="fa fa-info-circle" />
+                  </button>
+                </Tooltip>
               </td>
               {plans.map(({ id, estimatedCost }) => {
                 const price = pidx == null ? "–" : estimatedCost[pidx];
