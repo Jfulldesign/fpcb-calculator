@@ -51,15 +51,17 @@ class BirthdateInput extends React.Component<Props, State> {
     });
   }
 
-  onChange(event) {
+  onChange(event: Event) {
     this.setState({ value: event.currentTarget.value });
   }
 
-  addYear() {
+  addYear(event: Event) {
+    event.preventDefault();
     this.setState({ date: subYears(this.state.date, 1) });
   }
 
-  subtractYear() {
+  subtractYear(event: Event) {
+    event.preventDefault();
     this.setState({ date: addYears(this.state.date, 1) });
   }
 

@@ -1467,6 +1467,12 @@
   background: transparent;
   color: var(--color-yellow);
 }
+@media (min-width: 599px) {
+  .src-components-styles-___BirthdateInput__birthdate-input___33euT
+    .src-components-styles-___BirthdateInput__info-tooltip___2hsLK {
+    margin: 10px;
+  }
+}
 .src-components-styles-___BirthdateInput__grade-adjust___kIxfe,
 .src-components-styles-___BirthdateInput__review-dates___1zLwF {
   display: flex;
@@ -1684,6 +1690,12 @@
   color: var(--color-gray);
   margin-left: 34px;
 }
+@media (min-width: 599px) {
+  .src-components-styles-___BirthdateDisplay__birthdate-display___2wubj
+    .src-components-styles-___BirthdateDisplay__grade-display___33FjF {
+    margin: 0;
+  }
+}
 .src-components-styles-___BirthdateDisplay__birthdate-display___2wubj
   .src-components-styles-___BirthdateDisplay__grade-adjust-buttons___cE161 {
   line-height: 0;
@@ -1712,6 +1724,12 @@
   font-weight: 700;
   color: var(--color-gray);
   margin-left: 34px;
+}
+@media (min-width: 599px) {
+  .src-components-styles-___BirthdateDisplay__birthdate-display___2wubj
+    .src-components-styles-___BirthdateDisplay__graduation-display___1yV-x {
+    margin: 0;
+  }
 }
 .src-components-styles-___BirthdateDisplay__birthdate-display___2wubj
   .src-components-styles-___BirthdateDisplay__button-submit___C35W8 {
@@ -1957,4 +1975,4 @@ h6 {
   border-top-color: #fff !important;
 }
 
-/*# sourceMappingURL=main.eaa36719b9a899982bc5.css.map*/
+/*# sourceMappingURL=main.e925612f01f4a5bac95e.css.map*/

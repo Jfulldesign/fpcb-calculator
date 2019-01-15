@@ -95,13 +95,6 @@
     }
   }
 
-  .info-tooltip {
-    padding: 0;
-    font-size: 16px;
-    background: transparent;
-    color: var(--color-yellow);
-  }
-
   .button-close {
     appearance: none;
     border: 0;
@@ -170,6 +163,10 @@
     font-weight: 700;
     color: var(--color-gray);
     margin-left: 34px;
+
+    @media (min-width: 599px) {
+      margin: 0;
+    }
   }
 
   .grade-adjust-buttons {
@@ -198,6 +195,10 @@
     font-weight: 700;
     color: var(--color-gray);
     margin-left: 34px;
+
+    @media (min-width: 599px) {
+      margin: 0;
+    }
   }
 
   .button-submit {

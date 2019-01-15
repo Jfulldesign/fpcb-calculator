@@ -26365,14 +26365,20 @@ object-assign
             },
             {
               key: "addYear",
-              value: function() {
-                this.setState({ date: Object(_.subYears)(this.state.date, 1) });
+              value: function(e) {
+                e.preventDefault(),
+                  this.setState({
+                    date: Object(_.subYears)(this.state.date, 1)
+                  });
               }
             },
             {
               key: "subtractYear",
-              value: function() {
-                this.setState({ date: Object(_.addYears)(this.state.date, 1) });
+              value: function(e) {
+                e.preventDefault(),
+                  this.setState({
+                    date: Object(_.addYears)(this.state.date, 1)
+                  });
               }
             },
             {
@@ -26617,8 +26623,6 @@ object-assign
         "button-container":
           "src-components-styles-___BirthdateDisplay__button-container___3p_pQ",
         edit: "src-components-styles-___BirthdateDisplay__edit___3ltFp",
-        "info-tooltip":
-          "src-components-styles-___BirthdateDisplay__info-tooltip___2w2sP",
         "button-close":
           "src-components-styles-___BirthdateDisplay__button-close___2bD-N",
         "edit-container":
@@ -26626,6 +26630,8 @@ object-assign
         "display-edit":
           "src-components-styles-___BirthdateDisplay__display-edit___1_NHe",
         active: "src-components-styles-___BirthdateDisplay__active___3diTC",
+        "info-tooltip":
+          "src-components-styles-___BirthdateDisplay__info-tooltip___2w2sP",
         "review-dates":
           "src-components-styles-___BirthdateDisplay__review-dates___6GAZe",
         "grade-adjust":
@@ -28010,4 +28016,4 @@ object-assign
       document.body.classList.add("calc-app-mounted");
   }
 ]);
-//# sourceMappingURL=main.49c7bba67d40698a6785.js.map
+//# sourceMappingURL=main.5091fd8e6292521907ad.js.map
