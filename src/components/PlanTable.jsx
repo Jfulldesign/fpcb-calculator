@@ -40,7 +40,9 @@ export default class PlanTable extends React.Component<Props> {
                       <p>{description}</p>
                       <div styleName="price">
                         {!date && <span styleName="starting">Starting at</span>}
-                        {`$${price.toLocaleString()}`}
+                        {`$${price.toLocaleString(undefined, {
+                          minimumFractionDigits: 2
+                        })}`}
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
                         )}
@@ -131,7 +133,10 @@ export default class PlanTable extends React.Component<Props> {
                   >
                     <div styleName="college-price">
                       {date ? (
-                        <span styleName="estimate">{`$${price.toLocaleString()}`}</span>
+                        <span styleName="estimate">{`$${price.toLocaleString(
+                          undefined,
+                          { minimumFractionDigits: 2 }
+                        )}`}</span>
                       ) : (
                         <span>
                           Enter Birthdate

@@ -16,7 +16,11 @@ type State = {
 };
 
 export default class PaymentPlanSelector extends React.Component<Props, State> {
-  onChange: () => void;
+  constructor(props: Props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+
   onChange(event: Event) {
     const target = event.currentTarget;
     if (target instanceof HTMLInputElement) {

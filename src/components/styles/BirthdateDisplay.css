@@ -113,24 +113,34 @@
     font-size: 30px;
   }
 
-  .display-edit {
-    background: var(--color-blue);
+  .edit-container {
     position: absolute;
-    width: 100%;
     top: 0;
     left: 0;
-    color: white;
-    padding: 25px 0;
-    transform: translateY(-100%);
-    transition: transform 0.2s ease;
-    will-change: transform;
+    right: 0;
+    height: 300px;
+    overflow: hidden;
+    pointer-events: none;
 
-    &.active {
-      transform: translateY(0);
+    .display-edit {
+      background: var(--color-blue);
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      color: white;
+      padding: 25px 0;
+      transform: translateY(-100%);
+      transition: transform 0.2s ease;
+      will-change: transform;
     }
 
-    @media (min-width: 599px) {
-      display: none;
+    &.active {
+      pointer-events: all;
+
+      .display-edit {
+        transform: translateY(0);
+      }
     }
   }
 

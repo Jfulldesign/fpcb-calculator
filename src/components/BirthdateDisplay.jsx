@@ -63,7 +63,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   render() {
     const { date, editActive } = this.state;
     const editStyleName = cx({
-      "display-edit": true,
+      "edit-container": true,
       active: editActive
     });
 
@@ -79,112 +79,107 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
             <dd>{describeChild(date)}</dd>
           </dl>
           <Media.default query="(max-width: 599px)">
-            {matches =>
-              matches ? (
+            {matches => (
+              <button
+                styleName="edit"
+                onClick={this.onEdit}
+                onKeyPress={gatedKeyPress(["Space", "Enter"], this.onEdit)}
+              >
+                {matches ? "Edit" : "Update My Child’s Information"}
+              </button>
+            )}
+          </Media.default>
+          <div styleName={editStyleName}>
+            <div styleName="display-edit">
+              <button
+                styleName="button-close"
+                onClick={this.onClose}
+                onKeyPress={gatedKeyPress(["Space", "Enter"], this.onClose)}
+              >
+                <i className="fa fa-times-circle" />
+              </button>
+              <div styleName="review-dates">
+                <div styleName="grade-adjust">
+                  Your child is
+                  <span styleName="grade-display">
+                    {describeChild(date)}
+                    <Tooltip
+                      html={
+                        <div className="tip">
+                          <h6>Why is this important?</h6>
+                          <p>
+                            Your child&apos;s grade predicts the year they will
+                            graduate and begin using their Florida Prepaid Plan.
+                            The beneficiary has up to 10 years following
+                            graduation to use a Florida Prepaid Plan.
+                          </p>
+                        </div>
+                      }
+                      position="bottom"
+                      trigger="mouseenter"
+                      tabIndex="0"
+                      arrow
+                    >
+                      <button styleName="info-tooltip">
+                        <i className="fa fa-info-circle" />
+                      </button>
+                    </Tooltip>
+                  </span>
+                  <div styleName="grade-adjust-buttons">
+                    <button
+                      onClick={this.subtractYear}
+                      onKeyPress={gatedKeyPress(
+                        ["Space", "Enter"],
+                        this.subtractYear
+                      )}
+                    >
+                      <i className="fa fa-minus-circle" />
+                    </button>
+                    <button
+                      onClick={this.addYear}
+                      onKeyPress={gatedKeyPress(
+                        ["Space", "Enter"],
+                        this.addYear
+                      )}
+                    >
+                      <i className="fa fa-plus-circle" />
+                    </button>
+                  </div>
+                </div>
+                <div styleName="graduation-estimate">
+                  We project your child will graduate in
+                  <span styleName="graduation-display">
+                    {graduatesIn(date)}
+                    <Tooltip
+                      html={
+                        <div className="tip">
+                          <h6>Why is this important?</h6>
+                          <p>
+                            Your child&apos;s birthdate predicts the year they
+                            will graduate and begin using their Florida Prepaid
+                            Plan. The date entered must be today or earlier.
+                          </p>
+                        </div>
+                      }
+                      position="top"
+                      trigger="mouseenter"
+                      tabIndex="0"
+                      arrow
+                    >
+                      <button styleName="info-tooltip">
+                        <i className="fa fa-info-circle" />
+                      </button>
+                    </Tooltip>
+                  </span>
+                </div>
                 <button
-                  styleName="edit"
-                  onClick={this.onEdit}
-                  onKeyPress={gatedKeyPress(["Space", "Enter"], this.onEdit)}
-                >
-                  Edit
-                </button>
-              ) : (
-                <button
-                  styleName="edit"
-                  onClick={this.onEdit}
-                  onKeyPress={gatedKeyPress(["Space", "Enter"], this.onEdit)}
+                  styleName="button-submit"
+                  onClick={this.onSetDate}
+                  onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
                 >
                   Update My Child’s Information
                 </button>
-              )
-            }
-          </Media.default>
-          <div styleName={editStyleName}>
-            <button
-              styleName="button-close"
-              onClick={this.onClose}
-              onKeyPress={gatedKeyPress(["Space", "Enter"], this.onClose)}
-            >
-              <i className="fa fa-times-circle" />
-            </button>
-            <div styleName="review-dates">
-              <div styleName="grade-adjust">
-                Your child is
-                <span styleName="grade-display">
-                  {describeChild(date)}
-                  <Tooltip
-                    html={
-                      <div className="tip">
-                        <h6>Why is this important?</h6>
-                        <p>
-                          Your child&apos;s grade predicts the year they will
-                          graduate and begin using their Florida Prepaid Plan.
-                          The beneficiary has up to 10 years following
-                          graduation to use a Florida Prepaid Plan.
-                        </p>
-                      </div>
-                    }
-                    position="bottom"
-                    trigger="mouseenter"
-                    tabIndex="0"
-                    arrow
-                  >
-                    <button styleName="info-tooltip">
-                      <i className="fa fa-info-circle" />
-                    </button>
-                  </Tooltip>
-                </span>
-                <div styleName="grade-adjust-buttons">
-                  <button
-                    onClick={this.subtractYear}
-                    onKeyPress={gatedKeyPress(
-                      ["Space", "Enter"],
-                      this.subtractYear
-                    )}
-                  >
-                    <i className="fa fa-minus-circle" />
-                  </button>
-                  <button
-                    onClick={this.addYear}
-                    onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
-                  >
-                    <i className="fa fa-plus-circle" />
-                  </button>
-                </div>
               </div>
-              <div styleName="graduation-estimate">
-                We project your child will graduate in
-                <span styleName="graduation-display">
-                  {graduatesIn(date)}
-                  <Tooltip
-                    html={
-                      <div className="tip">
-                        <h6>Why is this important?</h6>
-                        <p>
-                          Your child&apos;s birthdate predicts the year they
-                          will graduate and begin using their Florida Prepaid
-                          Plan. The date entered must be today or earlier.
-                        </p>
-                      </div>
-                    }
-                    position="top"
-                    trigger="mouseenter"
-                    tabIndex="0"
-                    arrow
-                  >
-                    <button styleName="info-tooltip">
-                      <i className="fa fa-info-circle" />
-                    </button>
-                  </Tooltip>
-                </span>
-              </div>
-              <button
-                styleName="button-submit"
-                onClick={this.onSetDate}
-                onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
-              >
-                Update My Child’s Information
-              </button>
             </div>
           </div>
         </div>

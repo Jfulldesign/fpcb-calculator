@@ -80,7 +80,7 @@ class BirthdateInput extends React.Component<Props, State> {
     });
 
     return (
-      <div styleName={styleName}>
+      <form styleName={styleName}>
         <span>Your Child&apos;s Birthdate</span>
         <MaskedInput
           mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
@@ -185,7 +185,7 @@ class BirthdateInput extends React.Component<Props, State> {
             </button>
           </div>
         )}
-      </div>
+      </form>
     );
   }
 }
