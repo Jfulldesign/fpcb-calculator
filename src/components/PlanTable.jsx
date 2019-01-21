@@ -64,7 +64,11 @@ export default class PlanTable extends React.Component<Props> {
                     <i className="fa fa-minus" />
                   ) : (
                     <React.Fragment>
-                      <img styleName="icon icon--uni" src={iconUni} />
+                      <img
+                        styleName="icon icon--uni"
+                        src={iconUni}
+                        alt={`Icon ${state} university hours`}
+                      />
                       {state} Hours
                     </React.Fragment>
                   )}
@@ -82,7 +86,11 @@ export default class PlanTable extends React.Component<Props> {
                     <i className="fa fa-minus" />
                   ) : (
                     <React.Fragment>
-                      <img styleName="icon icon--college" src={iconCollege} />
+                      <img
+                        styleName="icon icon--college"
+                        src={iconCollege}
+                        alt={`Icon ${college} college hours`}
+                      />
                       {college} Hours
                     </React.Fragment>
                   )}

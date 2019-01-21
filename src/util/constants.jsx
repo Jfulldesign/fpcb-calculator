@@ -16,7 +16,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       note: (
         <span className="note-inner">
           <span className="icon">
-            <img src={award} />
+            <img src={award} alt="Award Icon" />
           </span>
           Most Popular
         </span>
