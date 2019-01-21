@@ -96,6 +96,7 @@ class BirthdateInput extends React.Component<Props, State> {
           }
           onFocus={this.onFocus}
           onChange={this.onChange}
+          aria-label="Enter birthdate for payment estimates"
         />
         {date == null ? (
           <div styleName="button-container">
