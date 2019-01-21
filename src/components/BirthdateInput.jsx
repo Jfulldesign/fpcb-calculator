@@ -129,7 +129,7 @@ class BirthdateInput extends React.Component<Props, State> {
                   tabIndex="0"
                   arrow
                 >
-                  <button styleName="info-tooltip">
+                  <button type="button" styleName="info-tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
@@ -172,7 +172,7 @@ class BirthdateInput extends React.Component<Props, State> {
                   tabIndex="0"
                   arrow
                 >
-                  <button styleName="info-tooltip">
+                  <button type="button" styleName="info-tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
