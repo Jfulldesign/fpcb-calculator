@@ -144,12 +144,14 @@ class BirthdateInput extends React.Component<Props, State> {
                   )}
                 >
                   <i className="fa fa-minus-circle" />
+                  Subtract Year
                 </button>
                 <button
                   onClick={this.addYear}
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
                 >
                   <i className="fa fa-plus-circle" />
+                  Add Year
                 </button>
               </div>
             </div>

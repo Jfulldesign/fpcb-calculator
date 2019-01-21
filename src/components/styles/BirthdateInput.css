@@ -126,7 +126,11 @@
     margin: 0 5px;
     background: transparent;
     color: white;
-    font-size: 34px;
+    font-size: 0;
+
+    i {
+      font-size: 34px;
+    }
   }
 }
 
