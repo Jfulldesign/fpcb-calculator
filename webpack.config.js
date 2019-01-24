@@ -123,10 +123,7 @@ module.exports = function(env) {
         },
         {
           test: /\.(png|jpg|gif|eot|ttf|woff|woff2)$/,
-          loader: "url-loader",
-          options: {
-            limit: 10000
-          }
+          loader: "url-loader"
         }
       ]
     }

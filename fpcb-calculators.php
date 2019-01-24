@@ -49,7 +49,7 @@ class FPCBCalculators
         add_shortcode(
             'plan-calculator',
             function () {
-                echo ('<div class="hook--calculators" data-plugin-dir="' . plugin_dir_url(__FILE__) . '"></div>');
+                echo ('<div class="hook--calculators"></div>');
             }
         );
     }

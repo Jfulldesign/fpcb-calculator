@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Tooltip } from "react-tippy";
-import { PFX } from "config";
 import { priceIndex } from "util/maths";
 import type { Plan, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanTable.css";
@@ -67,7 +66,7 @@ export default class PlanTable extends React.Component<Props> {
                     <React.Fragment>
                       <img
                         styleName="icon icon--uni"
-                        src={`${PFX}${iconUni}`}
+                        src={iconUni}
                         alt={`Icon ${state} university hours`}
                       />
                       {state} Hours
@@ -89,7 +88,7 @@ export default class PlanTable extends React.Component<Props> {
                     <React.Fragment>
                       <img
                         styleName="icon icon--college"
-                        src={`${PFX}${iconCollege}`}
+                        src={iconCollege}
                         alt={`Icon ${college} college hours`}
                       />
                       {college} Hours
