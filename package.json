@@ -12,7 +12,7 @@
     "test": "jest",
     "flow": "flow",
     "lint": "eslint --ext .jsx,.js src",
-    "format": "prettier --write './src/**/*.{js,jsx,css,json}'",
+    "format": "prettier --write './src/**/*.{js,jsx,css,json}' README.md",
     "stage": "gsutil -m rsync -r -d dist gs://fast.mkrs.me/fpcb-calculators"
   },
   "jest": {
