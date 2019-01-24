@@ -5,7 +5,6 @@ import cx from "classnames";
 import MaskedInput from "react-text-mask";
 import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrectedDatePipe";
 import { Tooltip } from "react-tippy";
-import { withUrlState } from "with-url-state";
 import { parse, addYears, subYears } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
 import { describeChild, graduatesIn } from "util/maths";
@@ -24,17 +23,19 @@ type Props = {
 type State = {
   active: boolean,
   value: string,
-  date: ?Date
+  date: ?Date,
+  didx: number
 };
 
-class BirthdateInput extends React.Component<Props, State> {
+export default class BirthdateInput extends React.Component<Props, State> {
   constructor(props) {
     super(props);
 
     this.state = {
-      active: props.urlState.birthdate != "",
-      value: props.urlState.birthdate || "",
-      date: null
+      active: false,
+      value: null,
+      date: null,
+      didx: 0
     };
 
     this.onFocus = this.onFocus.bind(this);
@@ -56,17 +57,18 @@ class BirthdateInput extends React.Component<Props, State> {
   }
 
   addYear(event: Event) {
+    const { date, didx } = this.state;
     event.preventDefault();
-    this.setState({ date: subYears(this.state.date, 1) });
+    this.setState({ date: subYears(date, 1), didx: didx + 1 });
   }
 
   subtractYear(event: Event) {
+    const { date, didx } = this.state;
     event.preventDefault();
-    this.setState({ date: addYears(this.state.date, 1) });
+    this.setState({ date: addYears(date, 1), didx: didx - 1 });
   }
 
   onSubmit() {
-    // this.props.setUrlState({ birthdate: this.state.value });
     this.setState({ date: parse(this.state.value) });
   }
 
@@ -75,7 +77,7 @@ class BirthdateInput extends React.Component<Props, State> {
   }
 
   render() {
-    const { date } = this.state;
+    const { date, didx } = this.state;
     const styleName = cx({
       active: this.state.active,
       "birthdate-input": true
@@ -137,6 +139,7 @@ class BirthdateInput extends React.Component<Props, State> {
               </span>
               <div styleName="grade-adjust-buttons">
                 <button
+                  disabled={didx <= -1}
                   onClick={this.subtractYear}
                   onKeyPress={gatedKeyPress(
                     ["Space", "Enter"],
@@ -147,6 +150,7 @@ class BirthdateInput extends React.Component<Props, State> {
                   Subtract Year
                 </button>
                 <button
+                  disabled={didx >= 1}
                   onClick={this.addYear}
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
                 >
@@ -194,5 +198,3 @@ class BirthdateInput extends React.Component<Props, State> {
     );
   }
 }
-
-export default withUrlState(() => ({ birthdate: null }))(BirthdateInput);

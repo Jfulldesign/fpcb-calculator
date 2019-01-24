@@ -73,9 +73,15 @@
     font-weight: 700;
     color: var(--color-blue);
     border-radius: 0.25rem;
+    transition: color 0.2s ease;
 
     &:focus {
       outline: 0;
+    }
+
+    &:disabled {
+      color: var(--color-dark-gray);
+      cursor: not-allowed;
     }
 
     @media (min-width: 599px) {
