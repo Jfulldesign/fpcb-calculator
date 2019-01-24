@@ -9,6 +9,7 @@ import BirthdateInput from "components/BirthdateInput";
 import BirthdateDisplay from "components/BirthdateDisplay";
 import PaymentPlanSelector from "components/PaymentPlanSelector";
 
+import { PFX } from "config";
 import { PLANS } from "util/constants";
 import heroImage from "assets/hero.jpg";
 import type { PaymentSchedule } from "util/types.flow.js";
@@ -52,7 +53,7 @@ export default class App extends React.Component<{}, State> {
       <section styleName={styleName}>
         <header>
           <div styleName="header-content">
-            <img src={heroImage} alt="Mother and baby" />
+            <img src={`${PFX}${heroImage}`} alt="Mother and baby" />
             <div styleName="header-copy">
               <h1>Start Saving for College</h1>
               <h2>

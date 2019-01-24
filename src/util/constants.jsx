@@ -1,6 +1,7 @@
 // @flow strict
 
 import React from "react";
+import { PFX } from "config";
 import type { Plan, PlanID } from "util/types.flow.js";
 import award from "assets/icon-award.png";
 
@@ -16,7 +17,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       note: (
         <span className="note-inner">
           <span className="icon">
-            <img src={award} alt="Award Icon" />
+            <img src={`${PFX}${award}`} alt="Award Icon" />
           </span>
           Most Popular
         </span>

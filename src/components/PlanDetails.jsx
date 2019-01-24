@@ -4,6 +4,7 @@ import React from "react";
 import cx from "classnames";
 import Modal from "react-modal";
 import { Tooltip } from "react-tippy";
+import { PFX } from "config";
 import { graduatesIn, priceIndex } from "util/maths";
 import "./styles/PlanDetails.css";
 import type { Plan } from "util/types.flow.js";
@@ -83,7 +84,10 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
           <h4>What does this plan cover?</h4>
           <ol>
             <li>
-              <img src={creditsIcon} alt="Icon for school credits." />
+              <img
+                src={`${PFX}${creditsIcon}`}
+                alt="Icon for school credits."
+              />
               <div>
                 {plan.credits.college > 0 && (
                   <span>
@@ -103,7 +107,10 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               </div>
             </li>
             <li>
-              <img src={iconMortar} alt="Icon of mortarboard and diploma." />
+              <img
+                src={`${PFX}${iconMortar}`}
+                alt="Icon of mortarboard and diploma."
+              />
               <div>
                 Covers tuition and most fees.{" "}
                 <a href="#">Learn more about fees</a>.
@@ -111,7 +118,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
             </li>
             {plan.dorm && (
               <li>
-                <img src={iconBed} alt="Icon of bed." />
+                <img src={`${PFX}${iconBed}`} alt="Icon of bed." />
                 <div>
                   Option to add a Dormitory Plan starting at $47.89/month.
                   <Tooltip
@@ -143,7 +150,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
             )}
             {date !== null && (
               <li>
-                <img src={iconMoney} alt="Icon of money." />
+                <img src={`${PFX}${iconMoney}`} alt="Icon of money." />
                 <div>
                   Projected Actual Cost of College in {graduatesIn(date)} is{" "}
                   {futurePrice}
