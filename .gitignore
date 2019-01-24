@@ -1,6 +1,7 @@
 dist/*
 build/*
 build.*.tar.gz
+*.zip
 node_modules
 vendor
 .vscode
