@@ -13,22 +13,18 @@ import "./styles/BirthdateInput.css";
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
 
 type Props = {
-  onHasDate: Date => void,
-  setUrlState: () => void,
-  urlState: {
-    birthdate?: string
-  }
+  onHasDate: Date => void
 };
 
 type State = {
   active: boolean,
-  value: string,
+  value: ?string,
   date: ?Date,
   didx: number
 };
 
 export default class BirthdateInput extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -46,35 +42,37 @@ export default class BirthdateInput extends React.Component<Props, State> {
     this.onSetDate = this.onSetDate.bind(this);
   }
 
-  onFocus() {
+  onFocus = () => {
     this.setState({
       active: true
     });
-  }
+  };
 
-  onChange(event: Event) {
-    this.setState({ value: event.currentTarget.value });
-  }
+  onChange = (event: Event) => {
+    const target = event.currentTarget;
+    if (target instanceof HTMLInputElement)
+      this.setState({ value: target.value });
+  };
 
-  addYear(event: Event) {
+  addYear = (event: Event) => {
     const { date, didx } = this.state;
     event.preventDefault();
     this.setState({ date: subYears(date, 1), didx: didx + 1 });
-  }
+  };
 
-  subtractYear(event: Event) {
+  subtractYear = (event: Event) => {
     const { date, didx } = this.state;
     event.preventDefault();
     this.setState({ date: addYears(date, 1), didx: didx - 1 });
-  }
+  };
 
-  onSubmit() {
+  onSubmit = () => {
     this.setState({ date: parse(this.state.value) });
-  }
+  };
 
-  onSetDate() {
+  onSetDate = () => {
     if (this.state.date) this.props.onHasDate(this.state.date);
-  }
+  };
 
   render() {
     const { date, didx } = this.state;

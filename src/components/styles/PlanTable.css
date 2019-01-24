@@ -204,6 +204,10 @@
 .plan--dorm {
   padding: 15px;
   background-color: var(--color-lighter-gray);
+
+  .starting {
+    display: block;
+  }
 }
 
 .plan--cost {

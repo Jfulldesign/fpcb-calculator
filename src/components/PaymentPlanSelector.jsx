@@ -21,7 +21,7 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(event: Event) {
+  onChange = (event: Event) => {
     const target = event.currentTarget;
     if (target instanceof HTMLInputElement) {
       const value = target.value;
@@ -33,7 +33,7 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
       // $FlowFixMe
       this.props.onSelectionChange(value);
     }
-  }
+  };
 
   render() {
     const { date } = this.props;

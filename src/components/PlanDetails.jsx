@@ -1,4 +1,4 @@
-// @flow strict
+// @flow
 
 import React from "react";
 import cx from "classnames";
@@ -39,23 +39,23 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
     this.removeEmail = this.removeEmail.bind(this);
   }
 
-  openModal() {
+  openModal = () => {
     this.setState({ modalAcitve: true });
-  }
+  };
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ modalAcitve: false });
-  }
+  };
 
-  addEmail(event: Event) {
+  addEmail = (event: Event) => {
     event.preventDefault();
     this.setState({ numEmails: this.state.numEmails + 1 });
-  }
+  };
 
-  removeEmail(event: Event) {
+  removeEmail = (event: Event) => {
     event.preventDefault();
     this.setState({ numEmails: this.state.numEmails - 1 });
-  }
+  };
 
   render() {
     const { plan, date } = this.props;
@@ -141,7 +141,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                 </div>
               </li>
             )}
-            {date !== null && (
+            {date != null && (
               <li>
                 <img src={iconMoney} alt="Icon of money." />
                 <div>

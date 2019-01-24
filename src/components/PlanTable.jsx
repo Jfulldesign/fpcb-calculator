@@ -3,6 +3,7 @@
 import React from "react";
 import { Tooltip } from "react-tippy";
 import { priceIndex } from "util/maths";
+import { DORM } from "util/constants";
 import type { Plan, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanTable.css";
 
@@ -41,9 +42,7 @@ export default class PlanTable extends React.Component<Props> {
                       <p>{description}</p>
                       <div styleName="price">
                         {!date && <span styleName="starting">Starting at</span>}
-                        {`$${price.toLocaleString(undefined, {
-                          minimumFractionDigits: 2
-                        })}`}
+                        {`$${price.toLocaleString()}`}
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
                         )}
@@ -144,9 +143,11 @@ export default class PlanTable extends React.Component<Props> {
                 >
                   {dorm ? (
                     <React.Fragment>
-                      Starting at
-                      <br />
-                      $47.89 / month
+                      {!date && <span styleName="starting">Starting at</span>}
+                      {`$${DORM.prices[paymentType][pidx].toLocaleString()}`}
+                      {paymentType !== "single" && (
+                        <span styleName="per"> / month</span>
+                      )}
                     </React.Fragment>
                   ) : (
                     <i className="fa fa-minus" />
@@ -191,10 +192,7 @@ export default class PlanTable extends React.Component<Props> {
                   >
                     <div styleName="college-price">
                       {date ? (
-                        <span styleName="estimate">{`$${price.toLocaleString(
-                          undefined,
-                          { minimumFractionDigits: 2 }
-                        )}`}</span>
+                        <span styleName="estimate">{`$${price.toLocaleString()}`}</span>
                       ) : (
                         <span>
                           Enter Birthdate

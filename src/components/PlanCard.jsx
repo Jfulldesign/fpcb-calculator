@@ -27,7 +27,7 @@ const PlanCard = ({ plan, type, date }: Props) => {
       <p>{plan.description}</p>
       <div styleName="price">
         {!date && <span styleName="starting">Starting at</span>}
-        {`$${price.toLocaleString(undefined, { minimumFractionDigits: 2 })}`}
+        {`$${price.toLocaleString()}`}
         {type !== "single" && <span styleName="per"> / month</span>}
       </div>
       {plan.note && <div styleName="note">{plan.note}</div>}
