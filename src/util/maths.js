@@ -42,3 +42,12 @@ export function priceIndex(date: Date): number {
   if (isFuture(date)) return 0;
   return differenceInYears(new Date(), date);
 }
+
+export function isValidDate(d: ?Date): boolean {
+  return (
+    d instanceof Date &&
+    !isNaN(d) &&
+    !isFuture(d) &&
+    differenceInYears(new Date(), d) < 18
+  );
+}

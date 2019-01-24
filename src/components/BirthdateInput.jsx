@@ -7,7 +7,7 @@ import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrect
 import { Tooltip } from "react-tippy";
 import { parse, addYears, subYears } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
-import { describeChild, graduatesIn } from "util/maths";
+import { describeChild, graduatesIn, isValidDate } from "util/maths";
 import "./styles/BirthdateInput.css";
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
@@ -75,7 +75,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
   };
 
   render() {
-    const { date, didx } = this.state;
+    const { date, didx, value } = this.state;
     const styleName = cx({
       active: this.state.active,
       "birthdate-input": true
@@ -90,7 +90,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
           guide={true}
           pattern="\d*"
           value={this.state.value}
-          disabled={date !== null}
+          disabled={date != null}
           placeholder={
             this.state.active ? "" : "Enter MM/DD/YYYY for payment estimates"
           }
@@ -101,6 +101,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
         {date == null ? (
           <div styleName="button-container">
             <button
+              disabled={!isValidDate(new Date(value))}
               onClick={this.onSubmit}
               onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSubmit)}
             >
