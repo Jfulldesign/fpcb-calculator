@@ -19,14 +19,14 @@ function Get_Asset_name($path)
 
 function Register_glob($glob, $regFn)
 {
-    $asset_dir = __DIR__ . '/dist/';
+    $asset_dir = __DIR__ . '/';
     $handles = array();
     foreach (glob($asset_dir . $glob) as $filename) {
         $name = Get_Asset_name($filename);
         call_user_func(
             $regFn,
             $name,
-            str_replace(get_site_url(), '', plugin_dir_url(__FILE__) . 'dist/') . $name,
+            str_replace(get_site_url(), '', plugin_dir_url(__FILE__) . '/') . $name,
             array(),
             null,
             $regFn === 'wp_register_style' ? 'all' : true
@@ -47,8 +47,9 @@ class FPCBCalculators
         add_action('wp_enqueue_scripts', array($this, 'loadAssets'), 9999);
 
         add_shortcode(
-            'calculator', function () {
-                echo ('<div class="hook--calculators"></div>');
+            'plan-calculator',
+            function () {
+                echo ('<div class="hook--calculators" data-plugin-dir="' . plugin_dir_url(__FILE__) . '"></div>');
             }
         );
     }

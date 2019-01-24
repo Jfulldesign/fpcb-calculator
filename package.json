@@ -7,12 +7,13 @@
   "scripts": {
     "start": "webpack-dev-server --env.dev",
     "build": "rimraf dist && webpack --mode production --env.prod",
+    "package": "rimraf fpcb-calculators.zip && cp fpcb-calculators.php dist && cd dist; zip -r ../fpcb-calculators.zip *",
     "analyze": "webpack --mode production --env.analyze",
     "test": "jest",
     "flow": "flow",
     "lint": "eslint --ext .jsx,.js src",
     "format": "prettier --write './src/**/*.{js,jsx,css,json}'",
-    "deploy": "gsutil -m rsync dist gs://fast.mkrs.me/fpcb-calculators"
+    "stage": "gsutil -m rsync dist gs://fast.mkrs.me/fpcb-calculators"
   },
   "jest": {
     "collectCoverageFrom": [
