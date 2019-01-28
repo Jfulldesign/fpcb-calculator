@@ -17,8 +17,6 @@ import iconMortar from "assets/icon-mortarboard-diploma.png";
 import iconMoney from "assets/icon-money.png";
 import iconBed from "assets/icon-bed.png";
 
-Modal.setAppElement(".hook--calculators");
-
 type Props = {
   plan: Plan,
   date: ?Date
@@ -32,6 +30,8 @@ type State = {
 export default class PlanDetails extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
+
+    Modal.setAppElement(".hook--calculators");
     this.state = { modalAcitve: false, numEmails: 1 };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
