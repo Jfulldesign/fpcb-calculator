@@ -42,6 +42,4 @@ if (document.body != undefined && mount != undefined) {
   );
   // $FlowFixMe
   document.body.classList.add("calc-app-mounted");
-} else {
-  throw new Error("Cannot find suitable mount.");
 }
