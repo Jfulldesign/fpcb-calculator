@@ -47,6 +47,7 @@
   .info-tooltip {
     font-size: 24px;
     margin-left: 5px;
+    background: transparent;
     color: var(--color-yellow);
   }
 }
