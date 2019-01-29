@@ -8,14 +8,14 @@ import { graduatesIn, priceIndex } from "util/maths";
 import "./styles/PlanDetails.css";
 import type { Plan } from "util/types.flow.js";
 
-import icon60College from "assets/icon-60-college.png";
-import icon120College from "assets/icon-120-college.png";
-import icon6060Vert from "assets/icon-60+60-vert.png";
-import icon30Uni from "assets/icon-30-uni.png";
-import icon120Uni from "assets/icon-120-uni.png";
-import iconMortar from "assets/icon-mortarboard-diploma.png";
-import iconMoney from "assets/icon-money.png";
-import iconBed from "assets/icon-bed.png";
+import Icon60College from "assets/icon-60-college.svg";
+import Icon120College from "assets/icon-120-college.svg";
+import Icon6060Vert from "assets/icon-60_60-vert.svg";
+import Icon30Uni from "assets/icon-30-uni.svg";
+import Icon120Uni from "assets/icon-120-uni.svg";
+import IconMortar from "assets/icon-mortarboard-diploma.svg";
+import IconMoney from "assets/icon-money.svg";
+import IconBed from "assets/icon-bed.svg";
 
 type Props = {
   plan: Plan,
@@ -67,11 +67,15 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
 
     const creditsIcon = (() => {
       if (plan.credits.college === 0)
-        return plan.credits.state === 30 ? icon30Uni : icon120Uni;
+        return plan.credits.state === 30 ? <Icon30Uni /> : <Icon120Uni />;
       if (plan.credits.state === 0)
-        return plan.credits.college === 60 ? icon60College : icon120College;
+        return plan.credits.college === 60 ? (
+          <Icon60College />
+        ) : (
+          <Icon120College />
+        );
       if (plan.credits.state === 60 && plan.credits.college === 60)
-        return icon6060Vert;
+        return <Icon6060Vert />;
     })();
 
     const pidx = date == null ? 0 : priceIndex(date);
@@ -83,7 +87,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
           <h4>What does this plan cover?</h4>
           <ol>
             <li>
-              <img src={creditsIcon} alt="Icon for school credits." />
+              {creditsIcon}
               <div>
                 {plan.credits.college > 0 && (
                   <span>
@@ -103,7 +107,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               </div>
             </li>
             <li>
-              <img src={iconMortar} alt="Icon of mortarboard and diploma." />
+              <IconMortar />
               <div>
                 Covers tuition and most fees.{" "}
                 <a href="/resources/existing-customers/all-about-fees/">
@@ -114,7 +118,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
             </li>
             {plan.dorm && (
               <li>
-                <img src={iconBed} alt="Icon of bed." />
+                <IconBed />
                 <div>
                   Option to add a Dormitory Plan starting at $47.89/month.
                   <Tooltip
@@ -146,7 +150,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
             )}
             {date != null && (
               <li>
-                <img src={iconMoney} alt="Icon of money." />
+                <IconMoney />
                 <div>
                   Projected Actual Cost of College in {graduatesIn(date)} is{" "}
                   {futurePrice}

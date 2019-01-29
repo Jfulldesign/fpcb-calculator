@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 78 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-college</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-college" transform="translate(3.000000, 0.000000)">
+            <g id="Group" class="flag" transform="translate(34.000000, 0.000000)" fill="#000000">
+                <polygon id="Path" points="19.66 12.67 8.18 12.67 8.18 2.44 19.66 2.44 16.45 7.56"></polygon>
+                <rect id="Rectangle" x="0.52" y="0.51" width="11.48" height="10.23"></rect>
+            </g>
+            <polyline id="Path" stroke-width="5" points="11.71 69.49 11.71 39.49 60.29 39.49 60.29 69.49"></polyline>
+            <polyline id="Path" stroke-width="5" points="60.29 47.76 71.62 47.76 71.62 69.49 0.38 69.49 0.38 47.76 11.71 47.76"></polyline>
+            <circle id="Oval" stroke-width="5" cx="36" cy="29.11" r="3.55"></circle>
+            <path d="M36,0.51 L36,17.49" id="Path" stroke-width="5"></path>
+            <polyline id="Path" stroke-width="5" points="48.34 69.49 48.34 50.3 23.66 50.3 23.66 69.49"></polyline>
+            <polygon id="Path" stroke-width="5" points="55 39.49 17 39.49 17 24.96 36.11 17.49 55 24.96"></polygon>
+            <path d="M36,50.3 L36,69.49" id="Path" stroke-width="5"></path>
+        </g>
+    </g>
+</svg>

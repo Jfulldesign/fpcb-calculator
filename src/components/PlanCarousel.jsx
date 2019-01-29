@@ -5,29 +5,33 @@ import PlanCard from "components/PlanCard";
 import PlanDetails from "components/PlanDetails";
 import CurrentPlanProvider from "components/util/CurrentPlanProvider";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
-import type { PaymentSchedule, Plan } from "util/types.flow.js";
+import type { PaymentSchedule, Plan, PlanID } from "util/types.flow.js";
 import "./styles/PlanCarousel.css";
 
 type Props = {
   date: ?Date,
   plans: Array<Plan>,
+  focus: PlanID,
   paymentType: PaymentSchedule
 };
 
 type State = {
-  current: string
+  current: PlanID
 };
 
 export default class PlanCarousel extends React.Component<Props, State> {
-  state = { current: "u1" };
+  state = { current: this.props.focus || "U1" };
   render() {
-    const { paymentType, plans, date } = this.props;
+    const { paymentType, plans, focus, date } = this.props;
+    const currentSlide = plans.findIndex(({ id }) => id === focus);
+
     return (
       <div styleName="plan-carousel">
         <CarouselProvider
           naturalSlideWidth={255}
           naturalSlideHeight={200}
           lockOnWindowScroll={true}
+          currentSlide={currentSlide === -1 ? 0 : currentSlide}
           totalSlides={5}
         >
           <Slider>

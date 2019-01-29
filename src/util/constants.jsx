@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { Plan, PlanID } from "util/types.flow.js";
-import award from "assets/icon-award.png";
+import IconAward from "assets/icon-award.svg";
 
 export const PLANS: Map<PlanID, Plan> = new Map([
   [
@@ -16,7 +16,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       note: (
         <span className="note-inner">
           <span className="icon">
-            <img src={award} alt="Award Icon" />
+            <IconAward />
           </span>
           Most Popular
         </span>

@@ -114,7 +114,7 @@ module.exports = function(env) {
               issuer: {
                 test: /\.jsx?$/
               },
-              use: ["babel-loader", "@svgr/webpack", "url-loader"]
+              use: ["babel-loader", "@svgr/webpack"]
             },
             {
               loader: "url-loader"

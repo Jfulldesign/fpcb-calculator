@@ -1,24 +1,26 @@
 // @flow
 
 import React from "react";
+import cx from "classnames";
 import { Tooltip } from "react-tippy";
 import { priceIndex } from "util/maths";
 import { DORM } from "util/constants";
-import type { Plan, PaymentSchedule } from "util/types.flow.js";
+import type { Plan, PlanID, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanTable.css";
 
-import iconUni from "assets/icon-uni.png";
-import iconCollege from "assets/icon-college.png";
+import IconUni from "assets/icon-uni.svg";
+import IconCollege from "assets/icon-college.svg";
 
 type Props = {
   date: ?Date,
   plans: Array<Plan>,
+  focus: PlanID,
   paymentType: PaymentSchedule
 };
 
 export default class PlanTable extends React.Component<Props> {
   render() {
-    const { plans, date, paymentType } = this.props;
+    const { plans, date, focus, paymentType } = this.props;
     const pidx = date == null ? 0 : priceIndex(date);
 
     return (
@@ -31,9 +33,13 @@ export default class PlanTable extends React.Component<Props> {
               </td>
               {plans.map(({ id, title, description, prices, note }) => {
                 const price = pidx == null ? "–" : prices[paymentType][pidx];
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
                 return (
                   <td
-                    styleName={`plan--${id} plan--info`}
+                    styleName={`plan--${id} plan--info ${computedStyle}`}
                     key={`plan--${id}--info`}
                   >
                     {note && <div styleName="note">{note}</div>}
@@ -54,47 +60,51 @@ export default class PlanTable extends React.Component<Props> {
             </tr>
             <tr>
               <td styleName="def def--uni">State University Credit Hours</td>
-              {plans.map(({ id, credits: { state } }) => (
-                <td
-                  styleName={`plan--${id} plan--uni`}
-                  key={`plan--${id}--uni`}
-                >
-                  {state === 0 ? (
-                    <i className="fa fa-minus" />
-                  ) : (
-                    <React.Fragment>
-                      <img
-                        styleName="icon icon--uni"
-                        src={iconUni}
-                        alt={`Icon ${state} university hours`}
-                      />
-                      {state} Hours
-                    </React.Fragment>
-                  )}
-                </td>
-              ))}
+              {plans.map(({ id, credits: { state } }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--uni ${computedStyle}`}
+                    key={`plan--${id}--uni`}
+                  >
+                    {state === 0 ? (
+                      <i className="fa fa-minus" />
+                    ) : (
+                      <div styleName="stack--hours">
+                        <IconUni styleName="icon icon--uni" />
+                        {state} Hours
+                      </div>
+                    )}
+                  </td>
+                );
+              })}
             </tr>
             <tr>
               <td styleName="def def--college">Florida College Credit Hours</td>
-              {plans.map(({ id, credits: { college } }) => (
-                <td
-                  styleName={`plan--${id} plan--college`}
-                  key={`plan--${id}--college`}
-                >
-                  {college === 0 ? (
-                    <i className="fa fa-minus" />
-                  ) : (
-                    <React.Fragment>
-                      <img
-                        styleName="icon icon--college"
-                        src={iconCollege}
-                        alt={`Icon ${college} college hours`}
-                      />
-                      {college} Hours
-                    </React.Fragment>
-                  )}
-                </td>
-              ))}
+              {plans.map(({ id, credits: { college } }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--college ${computedStyle}`}
+                    key={`plan--${id}--college`}
+                  >
+                    {college === 0 ? (
+                      <i className="fa fa-minus" />
+                    ) : (
+                      <div styleName="stack--hours">
+                        <IconCollege styleName="icon icon--college" />
+                        {college} Hours
+                      </div>
+                    )}
+                  </td>
+                );
+              })}
             </tr>
             <tr>
               <td styleName="def def--fees">
@@ -103,14 +113,20 @@ export default class PlanTable extends React.Component<Props> {
                   Learn about fees.
                 </a>
               </td>
-              {plans.map(({ id }) => (
-                <td
-                  styleName={`plan--${id} plan--fees`}
-                  key={`plan--${id}--fees`}
-                >
-                  <i className="fa fa-check" />
-                </td>
-              ))}
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--fees ${computedStyle}`}
+                    key={`plan--${id}--fees`}
+                  >
+                    <i className="fa fa-check" />
+                  </td>
+                );
+              })}
             </tr>
             <tr>
               <td styleName="def def--dorm">
@@ -139,24 +155,30 @@ export default class PlanTable extends React.Component<Props> {
                   </button>
                 </Tooltip>
               </td>
-              {plans.map(({ id, dorm }) => (
-                <td
-                  styleName={`plan--${id} plan--dorm`}
-                  key={`plan--${id}--dorm`}
-                >
-                  {dorm ? (
-                    <React.Fragment>
-                      {!date && <span styleName="starting">Starting at</span>}
-                      {`$${DORM.prices[paymentType][pidx].toLocaleString()}`}
-                      {paymentType !== "single" && (
-                        <span styleName="per"> / month</span>
-                      )}
-                    </React.Fragment>
-                  ) : (
-                    <i className="fa fa-minus" />
-                  )}
-                </td>
-              ))}
+              {plans.map(({ id, dorm }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--dorm ${computedStyle}`}
+                    key={`plan--${id}--dorm`}
+                  >
+                    {dorm ? (
+                      <React.Fragment>
+                        {!date && <span styleName="starting">Starting at</span>}
+                        {`$${DORM.prices[paymentType][pidx].toLocaleString()}`}
+                        {paymentType !== "single" && (
+                          <span styleName="per"> / month</span>
+                        )}
+                      </React.Fragment>
+                    ) : (
+                      <i className="fa fa-minus" />
+                    )}
+                  </td>
+                );
+              })}
             </tr>
             <tr>
               <td styleName="def def--cost">
@@ -188,9 +210,13 @@ export default class PlanTable extends React.Component<Props> {
               </td>
               {plans.map(({ id, estimatedCost }) => {
                 const price = pidx == null ? "–" : estimatedCost[pidx];
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
                 return (
                   <td
-                    styleName={`plan--${id} plan--cost`}
+                    styleName={`plan--${id} plan--cost ${computedStyle}`}
                     key={`plan--${id}--cost`}
                   >
                     <div styleName="college-price">

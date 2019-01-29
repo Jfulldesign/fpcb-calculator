@@ -130,6 +130,45 @@
     }
   }
 
+  .note {
+    position: absolute;
+    height: 35px;
+    top: -35px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-gray);
+    border-radius: 5px 5px 0 0;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+
+    :global(.note-inner) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -2px;
+
+      :global(.icon) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        background: #265c53;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      svg {
+        width: 22px;
+      }
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
   &.plan--C2 {
     h3 {
       color: var(--color-c2);
@@ -179,6 +218,43 @@
       background-color: var(--color-u4);
     }
   }
+
+  &.dimmed {
+    color: var(--color-dark-gray);
+
+    h3 {
+      color: var(--color-dark-gray);
+    }
+
+    .note {
+      background-color: var(--color-dark-gray);
+
+      :global(.icon) {
+        background: var(--color-gray);
+      }
+    }
+  }
+}
+
+.icon {
+  width: 28px;
+  margin-right: 5px;
+  margin-top: -4px;
+  stroke: var(--color-blue);
+
+  :global(.icon-uni_svg__flag) {
+    fill: var(--color-blue);
+  }
+
+  :global(.icon-college_svg__flag) {
+    fill: var(--color-blue);
+  }
+}
+
+.icon--uni {
+}
+
+.icon--college {
 }
 
 .plan--uni,
@@ -193,6 +269,32 @@
   padding: 20px;
   border-right: 1px solid var(--color-gray);
   border-left: 1px solid var(--color-gray);
+
+  .stack--hours {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.dimmed {
+    color: var(--color-dark-gray);
+
+    i {
+      color: var(--color-dark-gray);
+    }
+
+    .icon {
+      stroke: var(--color-dark-gray);
+
+      :global(.icon-uni_svg__flag) {
+        fill: var(--color-dark-gray);
+      }
+
+      :global(.icon-college_svg__flag) {
+        fill: var(--color-dark-gray);
+      }
+    }
+  }
 }
 
 .plan--uni {
@@ -290,55 +392,12 @@
       background-color: var(--color-u4);
     }
   }
-}
 
-.icon {
-  width: 28px;
-  margin-right: 5px;
-  margin-top: -4px;
-}
+  &.dimmed {
+    border-bottom-color: var(--color-dark-gray);
 
-.icon--uni {
-}
-
-.icon--college {
-}
-
-.note {
-  position: absolute;
-  height: 35px;
-  top: -35px;
-  left: 0;
-  right: 0;
-  background-color: var(--color-gray);
-  border-radius: 5px 5px 0 0;
-  color: white;
-  font-weight: 700;
-  font-size: 16px;
-
-  :global(.note-inner) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: -2px;
-
-    :global(.icon) {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 100%;
-      background: #265c53;
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
+    a.enroll {
+      background-color: var(--color-dark-gray);
     }
-
-    img {
-      width: 22px;
-    }
-  }
-
-  &:empty {
-    display: none;
   }
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFC500;}
+	.st1{fill:none;stroke:#FFFFFF;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:#68A8DE;}
+	.st3{fill:#FFFFFF;}
+	.st4{opacity:0.39;fill:#FFFFFF;}
+	.st5{fill:#04755F;}
+	.st6{fill:#03846D;}
+	.st7{fill:#6B1B4B;}
+	.st8{fill:#802656;}
+	.st9{fill:#09846D;}
+	.st10{fill:#283D82;}
+	.st11{opacity:0.44;}
+	.st12{fill:none;stroke:#283D82;stroke-width:5;stroke-miterlimit:10;}
+	.st13{fill:#283D82;stroke:#283D82;stroke-width:5;stroke-miterlimit:10;}
+	.st14{fill:none;stroke:#FFFFFF;stroke-width:5;stroke-miterlimit:10;}
+	.st15{fill:#231F20;}
+	.st16{fill:#273E82;stroke:#283D82;stroke-width:5;stroke-miterlimit:10;}
+	.st17{fill:#283D82;stroke:#283D82;stroke-width:0.282;stroke-miterlimit:10;}
+	.st18{fill:none;stroke:#283D82;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st19{fill:#273E82;}
+	.st20{fill:#314A5E;}
+	.st21{fill:#B2B3B5;}
+	.st22{fill:#DB683B;}
+	.st23{fill:#55C0EA;}
+	.st24{fill:#EDEDEF;}
+	.st25{fill:#006EBD;}
+	.st26{fill:#56718C;}
+	.st27{opacity:0.5;fill:#415569;}
+	.st28{fill:#021D48;}
+	.st29{fill:#FFFFFF;stroke:#006EBD;stroke-width:4;stroke-miterlimit:10;}
+	.st30{fill:none;stroke:#006EBD;stroke-width:7.0257;stroke-miterlimit:10;}
+	.st31{fill:none;stroke:#006EBD;stroke-width:6;stroke-miterlimit:10;}
+	.st32{fill:none;stroke:#006EBD;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st33{fill:#FFFFFF;stroke:#006EBD;stroke-width:6;stroke-miterlimit:10;}
+</style>
+<g>
+	<g>
+		<polygon class="st10" points="66.06,13.83 55.37,13.83 55.37,4.3 66.06,4.3 63.07,9.06 		"/>
+		<rect x="48.24" y="2.5" class="st10" width="10.7" height="9.53"/>
+	</g>
+	<polygon class="st12" points="82.14,71.48 17.86,71.48 17.86,39.48 50,16.37 82.14,39.48 	"/>
+	<line class="st12" x1="11.38" y1="39.48" x2="88.62" y2="39.48"/>
+	<line class="st12" x1="11.38" y1="71.48" x2="88.62" y2="71.48"/>
+	<line class="st12" x1="17.86" y1="63.76" x2="82.14" y2="63.76"/>
+	<path class="st12" d="M32.52,47.43L32.52,47.43c2.73,0,4.94,2.21,4.94,4.94v11.39h-9.87V52.37C27.59,49.64,29.8,47.43,32.52,47.43z
+		"/>
+	<path class="st12" d="M50.1,47.43L50.1,47.43c2.73,0,4.94,2.21,4.94,4.94v11.39h-9.87V52.37C45.17,49.64,47.37,47.43,50.1,47.43z"
+		/>
+	<path class="st12" d="M67.68,47.43L67.68,47.43c2.73,0,4.94,2.21,4.94,4.94v11.39h-9.87V52.37C62.74,49.64,64.95,47.43,67.68,47.43
+		z"/>
+	<circle class="st12" cx="50.1" cy="29.1" r="3.55"/>
+	<line class="st12" x1="50" y1="2.5" x2="50" y2="16.37"/>
+</g>
+<g>
+	<polygon class="st10" points="26.65,83.11 29.39,85.99 32.53,82.83 32.53,95.34 37.34,95.34 37.34,76.67 33.17,76.67 	"/>
+	<path class="st10" d="M54.76,82.58c0-3.72-3.16-6.19-7.56-6.19c-2.6,0-5.57,0.92-7.56,3.11l2.66,3.19
+		c1.34-1.26,2.91-2.04,4.98-2.04c1.37,0,2.58,0.67,2.58,1.93c0,1.88-1.51,3.16-9.6,9.02v3.75H54.9v-4.2h-6.83
+		C52.72,87.9,54.76,85.46,54.76,82.58z"/>
+	<path class="st10" d="M72.76,86.02c0-4.93-2.55-9.63-8.01-9.63s-8.01,4.7-8.01,9.63c0,4.93,2.55,9.66,8.01,9.66
+		S72.76,90.95,72.76,86.02z M64.76,91.42c-2.24,0-3.14-2.1-3.14-5.4c0-3.3,0.9-5.38,3.14-5.38c2.24,0,3.14,2.07,3.14,5.38
+		C67.89,89.32,67,91.42,64.76,91.42z"/>
+</g>
+</svg>
