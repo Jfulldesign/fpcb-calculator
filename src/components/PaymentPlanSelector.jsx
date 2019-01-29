@@ -96,9 +96,9 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
                 including interest.
               </p>
               <p>
-                This option is a single payment for the plan purchased. There is
-                no interest fee applied. Your beneficiary is entitled to the
-                total value paid into the plan.
+                If you decide to make one lump sum payment, there is no interest
+                fee applied. Your beneficiary is entitled to the total value
+                paid into the plan.
               </p>
             </div>
           }
