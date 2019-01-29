@@ -5,7 +5,7 @@ import cx from "classnames";
 import MaskedInput from "react-text-mask";
 import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrectedDatePipe";
 import { Tooltip } from "react-tippy";
-import { parse, addYears, subYears } from "date-fns";
+import { parse, addYears, subYears, differenceInYears } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
 import { describeChild, graduatesIn, isValidDate } from "util/maths";
 import "./styles/BirthdateInput.css";
@@ -76,6 +76,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
   render() {
     const { date, didx, value } = this.state;
+    const isInSchool = date != null && differenceInYears(new Date(), date) >= 5;
     const styleName = cx({
       active: this.state.active,
       "birthdate-input": true
@@ -138,7 +139,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               </span>
               <div styleName="grade-adjust-buttons">
                 <button
-                  disabled={didx <= -1}
+                  disabled={didx <= -1 || !isInSchool}
                   onClick={this.subtractYear}
                   onKeyPress={gatedKeyPress(
                     ["Space", "Enter"],
@@ -149,7 +150,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   Subtract Year
                 </button>
                 <button
-                  disabled={didx >= 1}
+                  disabled={didx >= 1 || !isInSchool}
                   onClick={this.addYear}
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
                 >
