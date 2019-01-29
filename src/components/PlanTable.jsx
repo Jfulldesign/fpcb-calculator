@@ -204,7 +204,10 @@ export default class PlanTable extends React.Component<Props> {
                         </span>
                       )}
                     </div>
-                    <a href="" styleName="enroll">
+                    <a
+                      href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
+                      styleName="enroll"
+                    >
                       Enroll Online
                     </a>
                     {/* {date && (

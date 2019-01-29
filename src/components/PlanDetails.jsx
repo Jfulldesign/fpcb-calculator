@@ -179,7 +179,12 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
             )}
           </ol>
           <div styleName="links">
-            <a href="#" styleName="enroll">
+            <a
+              href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${
+                plan.id
+              }`}
+              styleName="enroll"
+            >
               Enroll Online
             </a>
             {/* {date !== null && (
