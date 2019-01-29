@@ -98,7 +98,10 @@ export default class PlanTable extends React.Component<Props> {
             </tr>
             <tr>
               <td styleName="def def--fees">
-                Covers tuition and most fees. <a href="#">Learn about fees.</a>
+                Covers tuition and most fees.{" "}
+                <a href="/resources/existing-customers/all-about-fees/">
+                  Learn about fees.
+                </a>
               </td>
               {plans.map(({ id }) => (
                 <td
