@@ -107,6 +107,8 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 0.85em;
+    min-height: 51px;
+    justify-content: flex-end;
 
     .starting {
       color: var(--color-dark-gray);
