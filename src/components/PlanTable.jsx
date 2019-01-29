@@ -204,11 +204,11 @@ export default class PlanTable extends React.Component<Props> {
                     <a href="" styleName="enroll">
                       Enroll Online
                     </a>
-                    {date && (
+                    {/* {date && (
                       <a href="" styleName="email">
                         Email Prices
                       </a>
-                    )}
+                    )} */}
                   </td>
                 );
               })}
