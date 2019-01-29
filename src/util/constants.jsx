@@ -11,7 +11,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "U4",
       title: "4-Year University Plan",
       description:
-        "Covers a Bachelor’s Degree at a State University, allowing your student to graduate debt free.",
+        "Widest variety of bachelor’s degree options from one of Florida’s 12 State Universities.",
       dorm: true,
       note: (
         <span className="note-inner">
