@@ -17,6 +17,7 @@ type Props = {
 
 type State = {
   date: Date,
+  didx: number,
   editActive: boolean
 };
 
@@ -31,7 +32,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     this.onSetDate = this.onSetDate.bind(this);
     this.state = {
       editActive: false,
-      date: this.props.date
+      date: this.props.date,
+      didx: 0
     };
   }
 
@@ -48,11 +50,15 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   addYear = () => {
-    this.setState({ date: subYears(this.state.date, 1) });
+    const { date, didx } = this.state;
+    event.preventDefault();
+    this.setState({ date: subYears(date, 1), didx: didx + 1 });
   };
 
   subtractYear = () => {
-    this.setState({ date: addYears(this.state.date, 1) });
+    const { date, didx } = this.state;
+    event.preventDefault();
+    this.setState({ date: addYears(date, 1), didx: didx - 1 });
   };
 
   onSetDate = () => {
@@ -61,7 +67,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   render() {
-    const { date, editActive } = this.state;
+    const { date, didx, editActive } = this.state;
     const editStyleName = cx({
       "edit-container": true,
       active: editActive
@@ -127,6 +133,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   </span>
                   <div styleName="grade-adjust-buttons">
                     <button
+                      disabled={didx <= -1}
                       onClick={this.subtractYear}
                       onKeyPress={gatedKeyPress(
                         ["Space", "Enter"],
@@ -136,6 +143,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       <i className="fa fa-minus-circle" />
                     </button>
                     <button
+                      disabled={didx >= 1}
                       onClick={this.addYear}
                       onKeyPress={gatedKeyPress(
                         ["Space", "Enter"],

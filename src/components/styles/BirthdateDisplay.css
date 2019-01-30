@@ -81,6 +81,16 @@
       outline: 0;
     }
 
+    &:disabled {
+      color: var(--color-dark-gray) !important;
+      cursor: not-allowed;
+    }
+
+    @media (min-width: 599px) {
+      font-size: 16px;
+      margin: 10px 0 0 0;
+    }
+
     &.edit {
       background: var(--color-blue);
       color: white;
@@ -142,6 +152,7 @@
     padding: 0;
     font-size: 16px;
     background: transparent;
+    margin: 0 10px;
     color: var(--color-yellow);
   }
 
@@ -166,7 +177,7 @@
     margin-left: 34px;
 
     @media (min-width: 599px) {
-      margin: 0;
+      margin: 10px 0;
     }
   }
 
@@ -178,7 +189,7 @@
       padding: 0;
       margin: 0 5px;
       background: transparent;
-      color: white;
+      color: inherit;
       font-size: 34px;
     }
   }
