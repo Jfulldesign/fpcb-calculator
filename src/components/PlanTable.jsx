@@ -138,7 +138,7 @@ export default class PlanTable extends React.Component<Props> {
                   html={
                     <div className="tip">
                       <p>
-                        The 1-year Dormitory Plan covers a standard,
+                        The 1-year University Dormitory Plan covers a standard,
                         double-occupancy, air-conditioned dormitory room at a
                         State University in Florida. The amount covered by this
                         plan can also be used at some fraternity or sorority

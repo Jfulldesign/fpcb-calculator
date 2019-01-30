@@ -5,8 +5,9 @@ import cx from "classnames";
 import Modal from "react-modal";
 import { Tooltip } from "react-tippy";
 import { graduatesIn, priceIndex } from "util/maths";
+import { DORM } from "util/constants";
 import "./styles/PlanDetails.css";
-import type { Plan } from "util/types.flow.js";
+import type { Plan, PaymentType } from "util/types.flow.js";
 
 import Icon60College from "assets/icon-60-college.svg";
 import Icon120College from "assets/icon-120-college.svg";
@@ -19,7 +20,8 @@ import IconBed from "assets/icon-bed.svg";
 
 type Props = {
   plan: Plan,
-  date: ?Date
+  date: ?Date,
+  type: PaymentType
 };
 
 type State = {
@@ -58,7 +60,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { plan, date } = this.props;
+    const { plan, date, type } = this.props;
     const { numEmails } = this.state;
     const styleName = cx({
       [`plan--${plan.id}`]: true,
@@ -120,7 +122,9 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               <li>
                 <IconBed />
                 <div>
-                  Option to add a Dormitory Plan starting at $47.89/month.
+                  Option to add a Dormitory Plan {!date && "starting"} at
+                  {` $${DORM.prices[type][pidx].toLocaleString()}`}
+                  {type !== "single" && <span>/month</span>}
                   <Tooltip
                     html={
                       <div className="tip">
