@@ -1,5 +1,3 @@
-const postcssSimpleVars = require("postcss-simple-vars");
-
 module.exports = () => ({
   plugins: {
     "postcss-mixins": {},
@@ -9,11 +7,7 @@ module.exports = () => ({
     "postcss-color-function": {},
     "postcss-custom-selectors": {},
     "postcss-url": { url: "inline" },
-    "postcss-preset-env": {
-      insertBefore: {
-        "all-property": postcssSimpleVars
-      }
-    },
+    "postcss-preset-env": {},
     cssnano: {}
   }
 });

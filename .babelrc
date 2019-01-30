@@ -11,8 +11,12 @@
       ]
   ],
   "presets": [
-      "@babel/env",
-      "@babel/flow",
-      "@babel/react"
+    ["@babel/env", {
+        "targets": {
+            "ie": "11"
+        }
+    }],
+    "@babel/flow",
+    "@babel/react"
   ]
 }

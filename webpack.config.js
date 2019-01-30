@@ -60,7 +60,11 @@ module.exports = function(env) {
     },
     module: {
       rules: [
-        { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: "babel-loader"
+        },
         {
           test: /\.css$/,
           oneOf: [
