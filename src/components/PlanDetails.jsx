@@ -125,14 +125,14 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                     html={
                       <div className="tip">
                         <p>
-                          The 1-year Dormitory Plan covers a standard,
-                          double-occupancy, air-conditioned dormitory room at a
-                          State University in Florida. The amount covered by
-                          this plan can also be used at some fraternity or
-                          sorority houses (if those houses are overseen by the
-                          State University) or dormitory housing costs at other
-                          colleges nationwide. A maximum of four years may be
-                          purchased.
+                          The 1-year University Dormitory Plan covers a
+                          standard, double-occupancy, air-conditioned dormitory
+                          room at a State University in Florida. The amount
+                          covered by this plan can also be used at some
+                          fraternity or sorority houses (if those houses are
+                          overseen by the State University) or dormitory housing
+                          costs at other colleges nationwide. A maximum of four
+                          years may be purchased.
                         </p>
                       </div>
                     }
@@ -152,7 +152,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               <li>
                 <IconMoney />
                 <div>
-                  Projected Actual Cost of College in {graduatesIn(date)} is{" "}
+                  Estimated Future Benefit in {graduatesIn(date)} is{" "}
                   {futurePrice}
                   <Tooltip
                     html={

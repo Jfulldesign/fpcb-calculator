@@ -130,7 +130,10 @@ export default class PlanTable extends React.Component<Props> {
             </tr>
             <tr>
               <td styleName="def def--dorm">
-                Option to add a Dormitory Plan
+                Option to add a Dormitory Plan.{" "}
+                <a href="/prepaid-plans/faqs/#dormitory-specific-questions">
+                  Learn more.
+                </a>
                 <Tooltip
                   html={
                     <div className="tip">
@@ -182,7 +185,7 @@ export default class PlanTable extends React.Component<Props> {
             </tr>
             <tr>
               <td styleName="def def--cost">
-                Projected Actual Cost of College
+                Estimated Future Benefit
                 <Tooltip
                   html={
                     <div className="tip">
