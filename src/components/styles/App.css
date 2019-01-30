@@ -3,6 +3,10 @@
     margin: 20px 0;
   }
 
+  i:before {
+    font-size: inherit !important;
+  }
+
   header {
     @media (min-width: 599px) {
       margin-bottom: 50px;
