@@ -62,7 +62,7 @@ export default class App extends React.Component<{}, State> {
               <h1>Start Saving for College</h1>
               <h2>
                 Find the guaranteed Florida Prepaid College Plan that fits your
-                budget and enver lose your investment.
+                budget and never lose your investment.
               </h2>
             </div>
             {date == null ? (
