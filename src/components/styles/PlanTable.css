@@ -241,6 +241,7 @@
   margin-right: 5px;
   margin-top: -4px;
   stroke: var(--color-blue);
+  stroke-width: 5px;
 
   :global(.icon-uni_svg__flag) {
     fill: var(--color-blue);
