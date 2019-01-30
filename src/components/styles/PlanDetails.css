@@ -1,16 +1,16 @@
 .plan-links {
   display: flex;
-  margin: 2rem 0 1rem;
+  margin: 28px 0 14px;
   justify-content: space-around;
 
   a {
     display: inline-block;
     border: 2px solid var(--color-u1);
-    padding: 0.5rem 1rem;
+    padding: 7px 14px;
     color: white;
     background: var(--color-u1);
     border-radius: 5px;
-    font-size: 1.125rem;
+    font-size: 16px;
   }
 }
 

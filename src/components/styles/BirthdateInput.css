@@ -65,14 +65,14 @@
 
   button {
     background: white;
-    padding: 1rem 2rem;
-    margin: 1rem;
+    padding: 14px 28px;
+    margin: 14px;
     border: none;
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 18px;
     font-weight: 700;
     color: var(--color-blue);
-    border-radius: 0.25rem;
+    border-radius: 4px;
     transition: color 0.2s ease;
 
     &:focus {
