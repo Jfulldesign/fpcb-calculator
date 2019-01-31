@@ -3,8 +3,12 @@
     margin: 20px 0;
   }
 
-  i:before {
+  i {
     font-size: inherit !important;
+
+    &:before {
+      font-size: inherit !important;
+    }
   }
 
   header {
