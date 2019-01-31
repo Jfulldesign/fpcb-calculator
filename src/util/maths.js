@@ -40,7 +40,8 @@ export function graduatesIn(date: Date): number {
 
 export function priceIndex(date: Date): number {
   if (isFuture(date)) return 0;
-  return differenceInYears(new Date(), date);
+  if (date > cutoff) return 0;
+  return differenceInYears(cutoff, date) + 1;
 }
 
 export function isValidDate(d: ?Date): boolean {
@@ -48,6 +49,6 @@ export function isValidDate(d: ?Date): boolean {
     d instanceof Date &&
     !isNaN(d) &&
     !isFuture(d) &&
-    differenceInYears(new Date(), d) < 18
+    differenceInYears(cutoff, d) < 18
   );
 }

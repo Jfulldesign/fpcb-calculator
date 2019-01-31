@@ -16,7 +16,6 @@ import {
 import { gatedKeyPress } from "util/keyboard";
 import { describeChild, graduatesIn, isValidDate, cutoff } from "util/maths";
 import "./styles/BirthdateInput.css";
-import { get } from "http";
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
 
