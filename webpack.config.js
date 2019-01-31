@@ -41,6 +41,7 @@ module.exports = function(env) {
       "@babel/polyfill",
       "pure-react-carousel/dist/react-carousel.es.css",
       "react-tippy/dist/tippy.css",
+      "scroll-hint/css/scroll-hint.css",
       "./src/index.jsx"
     ],
     output: {

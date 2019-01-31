@@ -26,4 +26,12 @@ describe("maths", () => {
       expect(kinder).toBe("in Kindergarten");
     });
   });
+
+  describe("graduatesIn", () => {
+    const cutoff = new Date("9/1/2018");
+    test("newborn", () => {
+      const newborn = describeChild(new Date("9/2/2018"), cutoff);
+      expect(newborn).toBe("2037");
+    });
+  });
 });

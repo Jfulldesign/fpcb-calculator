@@ -2,6 +2,7 @@
 
 import React from "react";
 import cx from "classnames";
+import ScrollHint from "scroll-hint";
 import { Tooltip } from "react-tippy";
 import { priceIndex, formatMoney } from "util/maths";
 import { DORM } from "util/constants";
@@ -19,12 +20,16 @@ type Props = {
 };
 
 export default class PlanTable extends React.Component<Props> {
+  componentDidMount() {
+    new ScrollHint(".js-scrollable", { suggestiveShadow: true });
+  }
+
   render() {
     const { plans, date, focus, paymentType } = this.props;
     const pidx = date == null ? 0 : priceIndex(date);
 
     return (
-      <div styleName="plan-table">
+      <div styleName="plan-table" className="js-scrollable">
         <table>
           <tbody>
             <tr>

@@ -109,6 +109,7 @@
     "react-tippy": "^1.2.3",
     "react-transition-group": "^2.5.3",
     "rimraf": "^2.6.3",
+    "scroll-hint": "^1.2.3",
     "text-mask-addons": "^3.8.0"
   },
   "devDependencies": {

@@ -1,9 +1,11 @@
 .plan-table {
+  padding-top: 40px;
+
   table {
     table-layout: fixed;
     width: 100%;
     min-width: 1000px;
-    overflow-x: scroll;
+    max-width: 100%;
     line-height: 18px;
     height: 0;
   }
@@ -264,6 +266,7 @@
 .plan--fees,
 .plan--dorm,
 .plan--cost {
+  position: relative;
   text-align: center;
   font-size: 16px;
   font-weight: 700;
@@ -303,13 +306,30 @@
   padding-top: 0;
 }
 
-.plan--college {
+.plan--college:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: var(--color-lighter-gray);
+  z-index: -1;
 }
 
 .plan--dorm {
   padding: 15px;
-  background-color: var(--color-lighter-gray);
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-lighter-gray);
+    z-index: -1;
+  }
 
   .starting {
     display: block;
