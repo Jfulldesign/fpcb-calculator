@@ -23,15 +23,16 @@ export function ordinal(i: number): string {
   return i + "th";
 }
 
-export function describeChild(date: Date) {
-  if (isFuture(date)) return "unborn";
-  if (date > cutoff) return "a newborn";
-  const age = differenceInYears(cutoff, date);
+export function describeChild(date: Date, cut?: number = cutoff): ?string {
+  if (isFuture(date)) return;
+  const age = differenceInYears(cut, date);
+  if (age >= 18) return;
+
+  if (date > cut) return "a newborn";
   if (age === 0) return "an infant";
   if (age > 0 && age < 5) return `${age} ${pluralize("years", age)} old`;
   if (age === 5) return "in Kindergarten";
   if (age > 5 && age < 18) return `in ${ordinal(age - 5)} grade`;
-  if (age >= 18) return "grown";
 }
 
 export function graduatesIn(date: Date): number {
