@@ -26,11 +26,19 @@ export default class ErrorBoundary extends React.Component<Props, State> {
             <h1>That&apos;s an error</h1>
           </header>
           <main>
-            <p>
-              This part of the app has encountered an unrecoverable error, see
-              the message below for further details:
-            </p>
-            <pre>{this.state.error.stack}</pre>
+            {process.env.NODE_ENV === "development" ? (
+              <React.Fragment>
+                <p>
+                  This part of the app has encountered an unrecoverable error,
+                  see the message below for further details:
+                </p>
+                <pre>{this.state.error.stack}</pre>
+              </React.Fragment>
+            ) : (
+              <p>
+                This part of the app has encountered an unrecoverable error.
+              </p>
+            )}
           </main>
         </div>
       );

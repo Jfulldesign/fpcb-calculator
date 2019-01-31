@@ -49,6 +49,6 @@ export function isValidDate(d: ?Date): boolean {
     d instanceof Date &&
     !isNaN(d) &&
     !isFuture(d) &&
-    differenceInYears(cutoff, d) < 18
+    differenceInYears(cutoff, d) < 17
   );
 }

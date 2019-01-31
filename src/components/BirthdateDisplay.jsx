@@ -22,6 +22,8 @@ type State = {
 };
 
 export default class BirthdateDisplay extends React.Component<Props, State> {
+  originalDate = this.props.date;
+
   constructor(props: Props) {
     super(props);
     this.onEdit = this.onEdit.bind(this);
@@ -80,7 +82,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
         <div styleName="birthdate-display">
           <dl>
             <dt>Birthdate</dt>
-            <dd>{format(date, "MM/DD/YYYY")}</dd>
+            <dd>{format(this.originalDate, "MM/DD/YYYY")}</dd>
           </dl>
           <dl>
             <dt>Child is</dt>
