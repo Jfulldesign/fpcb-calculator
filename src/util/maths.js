@@ -26,7 +26,7 @@ export function ordinal(i: number): string {
 export function describeChild(date: Date) {
   if (isFuture(date)) return "unborn";
   if (date > cutoff) return "a newborn";
-  const age = differenceInYears(new Date(), date);
+  const age = differenceInYears(cutoff, date);
   if (age === 0) return "an infant";
   if (age > 0 && age < 5) return `${age} ${pluralize("years", age)} old`;
   if (age === 5) return "in Kindergarten";
