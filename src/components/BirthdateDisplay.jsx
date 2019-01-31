@@ -5,7 +5,7 @@ import cx from "classnames";
 import { Media } from "react-fns";
 import { format } from "date-fns";
 import { Tooltip } from "react-tippy";
-import { addYears, subYears } from "date-fns";
+import { addYears, subYears, differenceInYears } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
 import { describeChild, graduatesIn } from "util/maths";
 import "./styles/BirthdateDisplay.css";
@@ -68,6 +68,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
 
   render() {
     const { date, didx, editActive } = this.state;
+    const isInSchool = date != null && differenceInYears(new Date(), date) >= 5;
     const editStyleName = cx({
       "edit-container": true,
       active: editActive
@@ -133,7 +134,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   </span>
                   <div styleName="grade-adjust-buttons">
                     <button
-                      disabled={didx <= -1}
+                      disabled={didx <= -1 || !isInSchool}
                       onClick={this.subtractYear}
                       onKeyPress={gatedKeyPress(
                         ["Space", "Enter"],
@@ -143,7 +144,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       <i className="fa fa-minus-circle" />
                     </button>
                     <button
-                      disabled={didx >= 1}
+                      disabled={didx <= -1 || !isInSchool}
                       onClick={this.addYear}
                       onKeyPress={gatedKeyPress(
                         ["Space", "Enter"],
