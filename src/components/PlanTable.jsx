@@ -169,7 +169,7 @@ export default class PlanTable extends React.Component<Props> {
                     {dorm ? (
                       <React.Fragment>
                         {!date && <span styleName="starting">Starting at</span>}
-                        {`$${DORM.prices[paymentType][pidx].toLocaleString()}`}
+                        {formatMoney(DORM.prices[paymentType][pidx])}
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
                         )}
