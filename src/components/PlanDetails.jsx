@@ -81,7 +81,8 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
     })();
 
     const pidx = date == null ? 0 : priceIndex(date);
-    const futurePrice = pidx == null ? "–" : plan.estimatedCost[pidx];
+    const futurePrice =
+      pidx == null ? "–" : `$${plan.estimatedCost[pidx].toLocaleString()}`;
 
     return (
       <React.Fragment>

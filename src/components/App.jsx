@@ -41,7 +41,6 @@ export default class App extends React.Component<{}, State> {
   }
 
   onHasCalcDate(calcDate: Date) {
-    console.log(calcDate)
     this.setState({ calcDate });
   }
 

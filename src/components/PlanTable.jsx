@@ -227,7 +227,7 @@ export default class PlanTable extends React.Component<Props> {
                   >
                     <div styleName="college-price">
                       {date ? (
-                        <span styleName="estimate">{formatMoney(price)}</span>
+                        <span styleName="estimate">{`$${price.toLocaleString()}`}</span>
                       ) : (
                         <span>
                           Enter Birthdate
