@@ -112,10 +112,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               <IconMortar />
               <div>
                 Covers tuition and most fees.{" "}
-                <a href="/resources/existing-customers/all-about-fees/">
-                  Learn more about fees
-                </a>
-                .
+                <a href="/existing-customers/fees/">Learn more about fees</a>.
               </div>
             </li>
             {plan.dorm && (

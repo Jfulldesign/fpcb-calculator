@@ -109,9 +109,7 @@ export default class PlanTable extends React.Component<Props> {
             <tr>
               <td styleName="def def--fees">
                 Covers tuition and most fees.{" "}
-                <a href="/resources/existing-customers/all-about-fees/">
-                  Learn about fees.
-                </a>
+                <a href="/existing-customers/fees/">Learn about fees.</a>
               </td>
               {plans.map(({ id }) => {
                 const computedStyle = cx({
