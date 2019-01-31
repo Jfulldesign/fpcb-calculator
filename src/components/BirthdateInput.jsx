@@ -5,10 +5,18 @@ import cx from "classnames";
 import MaskedInput from "react-text-mask";
 import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrectedDatePipe";
 import { Tooltip } from "react-tippy";
-import { parse, addYears, subYears, differenceInYears } from "date-fns";
+import {
+  parse,
+  addYears,
+  subYears,
+  differenceInYears,
+  getYear
+} from "date-fns";
+
 import { gatedKeyPress } from "util/keyboard";
-import { describeChild, graduatesIn, isValidDate } from "util/maths";
+import { describeChild, graduatesIn, isValidDate, cutoff } from "util/maths";
 import "./styles/BirthdateInput.css";
+import { get } from "http";
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
 
@@ -170,8 +178,10 @@ export default class BirthdateInput extends React.Component<Props, State> {
                       <h6>Why is this important?</h6>
                       <p>
                         Your child&apos;s birthdate predicts the year they will
-                        graduate and begin using their Florida Prepaid Plan. The
-                        date entered must be today or earlier.
+                        graduate and begin using their Florida Prepaid Plan,
+                        based on child’s age/grade on or before September 1,
+                        {` ${getYear(cutoff)}`}. The date entered must be today
+                        or earlier.
                       </p>
                     </div>
                   }

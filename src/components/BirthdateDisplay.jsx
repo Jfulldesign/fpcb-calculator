@@ -5,9 +5,9 @@ import cx from "classnames";
 import { Media } from "react-fns";
 import { format } from "date-fns";
 import { Tooltip } from "react-tippy";
-import { addYears, subYears, differenceInYears } from "date-fns";
+import { addYears, subYears, getYear, differenceInYears } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
-import { describeChild, graduatesIn } from "util/maths";
+import { describeChild, graduatesIn, cutoff } from "util/maths";
 import "./styles/BirthdateDisplay.css";
 
 type Props = {
@@ -167,7 +167,9 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                           <p>
                             Your child&apos;s birthdate predicts the year they
                             will graduate and begin using their Florida Prepaid
-                            Plan. The date entered must be today or earlier.
+                            Plan, based on child’s age/grade on or before
+                            September 1, {` ${getYear(cutoff)}`}. The date
+                            entered must be today or earlier.
                           </p>
                         </div>
                       }
