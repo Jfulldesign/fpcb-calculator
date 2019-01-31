@@ -75,7 +75,11 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
   onSubmit = (event: Event) => {
     event.preventDefault();
-    this.setState({ date: parse(this.state.value) });
+    const date = parse(this.state.value);
+    if (date) {
+      this.setState({ date });
+      this.props.onHasCalcDate(date);
+    }
   };
 
   onSetDate = (event: Event) => {
