@@ -90,7 +90,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
   render() {
     const { value, didx, date } = this.state;
     const age = getAge(date);
-    const isInSchool = date != null && age >= 5;
+    const isInSchool = date != null && age >= 4;
     const styleName = cx({
       active: this.state.active,
       "birthdate-input": true
@@ -155,7 +155,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               </span>
               <div styleName="grade-adjust-buttons">
                 <button
-                  disabled={didx <= -1 || !isInSchool || age <= 5}
+                  disabled={didx <= -1 || !isInSchool || age <= 4}
                   onClick={this.subtractYear}
                   onKeyPress={gatedKeyPress(
                     ["Space", "Enter"],

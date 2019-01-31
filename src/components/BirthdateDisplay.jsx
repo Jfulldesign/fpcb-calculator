@@ -66,7 +66,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     const { calcDate, editActive } = this.state;
     const { dispDate } = this.props;
     const age = getAge(calcDate);
-    const isInSchool = calcDate != null && age >= 5;
+    const isInSchool = calcDate != null && age >= 4;
     const editStyleName = cx({
       "edit-container": true,
       active: editActive
@@ -138,7 +138,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       disabled={
                         differenceInYears(dispDate, calcDate) < 0 ||
                         !isInSchool ||
-                        age <= 5
+                        age <= 4
                       }
                       onClick={this.subtractYear}
                       onKeyPress={gatedKeyPress(
