@@ -3,6 +3,7 @@
 import React from "react";
 import { Tooltip } from "react-tippy";
 import { priceIndex } from "util/maths";
+import { PAYMENT_COUNT } from "util/constants";
 import type { PaymentSchedule } from "util/types.flow.js";
 import "./styles/PaymentPlanSelector.css";
 
@@ -50,7 +51,8 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
           defaultChecked
         />
         <label htmlFor="pay-monthly">
-          Monthly <span styleName="description">88 payments</span>
+          Monthly{" "}
+          <span styleName="description">{PAYMENT_COUNT[pidx]} payments</span>
         </label>
 
         <input
