@@ -133,7 +133,9 @@ export default class BirthdateInput extends React.Component<Props, State> {
                         Your child&apos;s grade predicts the year they will
                         graduate and begin using their Florida Prepaid Plan. The
                         beneficiary has up to 10 years following graduation to
-                        use a Florida Prepaid Plan.
+                        use a Florida Prepaid Plan. You may enroll any Florida
+                        resident with a valid Social Security number, age
+                        newborn through 11th grade, in a Prepaid Plan.
                       </p>
                     </div>
                   }
