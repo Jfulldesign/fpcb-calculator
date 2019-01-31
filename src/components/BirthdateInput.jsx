@@ -5,7 +5,7 @@ import cx from "classnames";
 import MaskedInput from "react-text-mask";
 import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrectedDatePipe";
 import { Tooltip } from "react-tippy";
-import { parse, addYears, subYears, format } from "date-fns";
+import { parse, format, addYears, subYears } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
 import {
   describeChild,
@@ -19,7 +19,8 @@ import "./styles/BirthdateInput.css";
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
 
 type Props = {
-  onHasDate: Date => void
+  onHasCalcDate: Date => void,
+  onHasDispDate: Date => void
 };
 
 type State = {
@@ -79,11 +80,15 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
   onSetDate = (event: Event) => {
     event.preventDefault();
-    if (this.state.date) this.props.onHasDate(this.state.date);
+    const { date, didx } = this.state;
+    if (date) {
+      this.props.onHasCalcDate(date);
+      this.props.onHasDispDate(addYears(date, didx));
+    }
   };
 
   render() {
-    const { date, didx, value } = this.state;
+    const { value, didx, date } = this.state;
     const age = getAge(date);
     const isInSchool = date != null && age >= 5;
     const styleName = cx({

@@ -16,7 +16,8 @@ import type { PaymentSchedule, PlanID } from "util/types.flow.js";
 import "./styles/App.css";
 
 type State = {
-  date: ?Date,
+  dispDate: ?Date,
+  calcDate: ?Date,
   focus: ?PlanID,
   paymentType: PaymentSchedule
 };
@@ -25,13 +26,27 @@ const query = qs.parse(window.location.search);
 
 export default class App extends React.Component<{}, State> {
   state = {
-    date: query.date,
+    dispDate: null,
+    calcDate: null,
     focus: query.focus,
     paymentType: "monthly"
   };
 
-  onHasDate(date: Date) {
-    this.setState({ date });
+  constructor(props: Props) {
+    super(props);
+
+    this.onHasDispDate = this.onHasDispDate.bind(this);
+    this.onHasCalcDate = this.onHasCalcDate.bind(this);
+    this.onUpdatePaymentType = this.onUpdatePaymentType.bind(this);
+  }
+
+  onHasCalcDate(calcDate: Date) {
+    console.log(calcDate)
+    this.setState({ calcDate });
+  }
+
+  onHasDispDate(dispDate: Date) {
+    this.setState({ dispDate });
   }
 
   onUpdatePaymentType(paymentType: PaymentSchedule) {
@@ -39,7 +54,7 @@ export default class App extends React.Component<{}, State> {
   }
 
   render() {
-    const { date, focus, paymentType } = this.state;
+    const { calcDate, dispDate, focus, paymentType } = this.state;
     const plans = [
       PLANS.get("C2"),
       PLANS.get("C4"),
@@ -50,7 +65,7 @@ export default class App extends React.Component<{}, State> {
 
     const styleName = cx({
       "calculator-app": true,
-      "has-date": date !== null
+      "has-date": calcDate != null
     });
 
     return (
@@ -65,17 +80,22 @@ export default class App extends React.Component<{}, State> {
                 budget and never lose your investment.
               </h2>
             </div>
-            {date == null ? (
-              <BirthdateInput onHasDate={this.onHasDate.bind(this)} />
+            {dispDate == null ? (
+              <BirthdateInput
+                onHasCalcDate={this.onHasCalcDate}
+                onHasDispDate={this.onHasDispDate}
+              />
             ) : (
               <React.Fragment>
                 <BirthdateDisplay
-                  date={date}
-                  onEdit={this.onHasDate.bind(this)}
+                  calcDate={calcDate}
+                  dispDate={dispDate}
+                  onHasDispDate={this.onHasDispDate}
+                  onHasCalcDate={this.onHasCalcDate}
                 />
                 <PaymentPlanSelector
-                  date={date}
-                  onSelectionChange={this.onUpdatePaymentType.bind(this)}
+                  date={calcDate}
+                  onSelectionChange={this.onUpdatePaymentType}
                 />
               </React.Fragment>
             )}
@@ -86,7 +106,7 @@ export default class App extends React.Component<{}, State> {
             {matches =>
               matches ? (
                 <PlanCarousel
-                  date={date}
+                  date={calcDate}
                   // We know all these plans exist because Flow would complain
                   // if we didn't use a valid key above while we're building the
                   // array.
@@ -97,7 +117,7 @@ export default class App extends React.Component<{}, State> {
                 />
               ) : (
                 <PlanTable
-                  date={date}
+                  date={calcDate}
                   // $FlowFixMe
                   plans={plans}
                   focus={focus}

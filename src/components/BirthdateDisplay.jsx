@@ -4,45 +4,42 @@ import React from "react";
 import cx from "classnames";
 import { Media } from "react-fns";
 import { Tooltip } from "react-tippy";
-import { addYears, subYears, format } from "date-fns";
+import { addYears, subYears, format, differenceInYears } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
 import { describeChild, graduatesIn, cutoff, getAge } from "util/maths";
 import "./styles/BirthdateDisplay.css";
 
 type Props = {
-  date: Date,
-  onEdit: Date => void
+  calcDate: Date,
+  dispDate: Date,
+  onHasDispDate: Date => void,
+  onHasCalcDate: Date => void
 };
 
 type State = {
-  date: Date,
-  didx: number,
+  calcDate: Date,
   editActive: boolean
 };
 
 export default class BirthdateDisplay extends React.Component<Props, State> {
-  originalDate = this.props.date;
-
   constructor(props: Props) {
     super(props);
+
     this.onEdit = this.onEdit.bind(this);
     this.onClose = this.onClose.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.addYear = this.addYear.bind(this);
     this.subtractYear = this.subtractYear.bind(this);
     this.onSetDate = this.onSetDate.bind(this);
-    this.state = {
-      editActive: false,
-      date: this.props.date,
-      didx: 0
-    };
+    this.state = { editActive: false, calcDate: props.calcDate };
   }
 
   onEdit = () => {
     this.setState({ editActive: true });
   };
 
-  onClose = () => {
+  onClose = (event: Event) => {
+    event.preventDefault();
     this.setState({ editActive: false });
   };
 
@@ -50,27 +47,26 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     this.setState({ editActive: false });
   };
 
-  addYear = () => {
-    const { date, didx } = this.state;
+  addYear = (event: Event) => {
     event.preventDefault();
-    this.setState({ date: subYears(date, 1), didx: didx + 1 });
+    this.setState({ calcDate: subYears(this.state.calcDate, 1) });
   };
 
-  subtractYear = () => {
-    const { date, didx } = this.state;
+  subtractYear = (event: Event) => {
     event.preventDefault();
-    this.setState({ date: addYears(date, 1), didx: didx - 1 });
+    this.setState({ calcDate: addYears(this.state.calcDate, 1) });
   };
 
   onSetDate = () => {
-    this.props.onEdit(this.state.date);
+    this.props.onHasCalcDate(this.state.calcDate);
     this.setState({ editActive: false });
   };
 
   render() {
-    const { date, didx, editActive } = this.state;
-    const age = getAge(date);
-    const isInSchool = date != null && age >= 5;
+    const { calcDate, editActive } = this.state;
+    const { dispDate } = this.props;
+    const age = getAge(calcDate);
+    const isInSchool = calcDate != null && age >= 5;
     const editStyleName = cx({
       "edit-container": true,
       active: editActive
@@ -81,11 +77,11 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
         <div styleName="birthdate-display">
           <dl>
             <dt>Birthdate</dt>
-            <dd>{format(this.originalDate, "MM/DD/YYYY")}</dd>
+            <dd>{format(dispDate, "MM/DD/YYYY")}</dd>
           </dl>
           <dl>
             <dt>Child is</dt>
-            <dd>{describeChild(date)}</dd>
+            <dd>{describeChild(calcDate)}</dd>
           </dl>
           <Media.default query="(max-width: 599px)">
             {matches => (
@@ -111,7 +107,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 <div styleName="grade-adjust">
                   Your child is
                   <span styleName="grade-display">
-                    {describeChild(date)}
+                    {describeChild(calcDate)}
                     <Tooltip
                       html={
                         <div className="tip">
@@ -139,7 +135,11 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   </span>
                   <div styleName="grade-adjust-buttons">
                     <button
-                      disabled={didx <= -1 || !isInSchool || age <= 5}
+                      disabled={
+                        differenceInYears(dispDate, calcDate) < 0 ||
+                        !isInSchool ||
+                        age <= 5
+                      }
                       onClick={this.subtractYear}
                       onKeyPress={gatedKeyPress(
                         ["Space", "Enter"],
@@ -149,7 +149,11 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       <i className="fa fa-minus-circle" />
                     </button>
                     <button
-                      disabled={didx >= 1 || !isInSchool || age >= 17}
+                      disabled={
+                        differenceInYears(dispDate, calcDate) > 0 ||
+                        !isInSchool ||
+                        age >= 17
+                      }
                       onClick={this.addYear}
                       onKeyPress={gatedKeyPress(
                         ["Space", "Enter"],
@@ -163,7 +167,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 <div styleName="graduation-estimate">
                   We project your child will graduate in
                   <span styleName="graduation-display">
-                    {graduatesIn(date)}
+                    {graduatesIn(calcDate)}
                     <Tooltip
                       html={
                         <div className="tip">

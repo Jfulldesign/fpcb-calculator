@@ -98,12 +98,6 @@
     }
   }
 
-  @media (min-width: 599px) {
-    .header-content img {
-      display: none;
-    }
-  }
-
   @media (min-width: 769px) {
     header {
       position: relative;
