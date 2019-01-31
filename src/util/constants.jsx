@@ -9,7 +9,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
     "U4",
     {
       id: "U4",
-      title: "4-Year University Plan",
+      title: "4-Year Florida University Plan",
       description:
         "Widest variety of bachelor’s degree options from one of Florida’s 12 State Universities.",
       dorm: true,
@@ -113,7 +113,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
     "U1",
     {
       id: "U1",
-      title: "1-Year University Plan",
+      title: "1-Year Florida University Plan",
       description:
         "Most flexible plan allows you or other family members to buy one year of State University at a time as your budget allows, up to four years.",
       dorm: true,
