@@ -10,8 +10,9 @@ import BirthdateInput from "components/BirthdateInput";
 import BirthdateDisplay from "components/BirthdateDisplay";
 import PaymentPlanSelector from "components/PaymentPlanSelector";
 
-import { PLANS } from "util/constants";
 import heroImage from "assets/hero.jpg";
+import { PLANS } from "util/constants";
+import { priceIndex } from "util/maths";
 import type { PaymentSchedule, PlanID } from "util/types.flow.js";
 import "./styles/App.css";
 
@@ -41,7 +42,11 @@ export default class App extends React.Component<{}, State> {
   }
 
   onHasCalcDate(calcDate: Date) {
-    this.setState({ calcDate });
+    if (priceIndex(calcDate) > 14 && this.state.paymentType === "short") {
+      this.setState({ calcDate, paymentType: "monthly" });
+    } else {
+      this.setState({ calcDate });
+    }
   }
 
   onHasDispDate(dispDate: Date) {
@@ -94,6 +99,7 @@ export default class App extends React.Component<{}, State> {
                 />
                 <PaymentPlanSelector
                   date={calcDate}
+                  paymentType={paymentType}
                   onSelectionChange={this.onUpdatePaymentType}
                 />
               </React.Fragment>

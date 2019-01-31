@@ -9,14 +9,11 @@ import "./styles/PaymentPlanSelector.css";
 
 type Props = {
   date: Date,
+  paymentType: PaymentSchedule,
   onSelectionChange: PaymentSchedule => void
 };
 
-type State = {
-  value: PaymentSchedule
-};
-
-export default class PaymentPlanSelector extends React.Component<Props, State> {
+export default class PaymentPlanSelector extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     this.onChange = this.onChange.bind(this);
@@ -30,14 +27,12 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
       // the PaymentSchedule enum belongs, but since we control the inputs
       // below, we know they're always going to be one of the enum
       // $FlowFixMe
-      this.setState({ value });
-      // $FlowFixMe
       this.props.onSelectionChange(value);
     }
   };
 
   render() {
-    const { date } = this.props;
+    const { date, paymentType } = this.props;
     const pidx = date === null ? 0 : priceIndex(date);
 
     return (
@@ -48,6 +43,7 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
           name="payment"
           value="monthly"
           onChange={this.onChange}
+          checked={paymentType === "monthly"}
           defaultChecked
         />
         <label htmlFor="pay-monthly">
@@ -61,6 +57,7 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
           name="payment"
           value="short"
           disabled={pidx > 14}
+          checked={paymentType === "short"}
           onChange={this.onChange}
         />
         <label htmlFor="pay-short">
@@ -72,6 +69,7 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
           id="pay-single"
           name="payment"
           value="single"
+          checked={paymentType === "single"}
           onChange={this.onChange}
         />
         <label htmlFor="pay-single">
