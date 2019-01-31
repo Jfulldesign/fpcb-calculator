@@ -11,13 +11,13 @@ describe("maths", () => {
       expect(old).toBeUndefined();
     });
 
-    test("describes infant", () => {
-      expect(describeChild(new Date("8/1/2018"), cutoff)).toBe("an infant");
-      expect(describeChild(new Date("9/1/2018"), cutoff)).toBe("an infant");
+    test("describes newborn", () => {
+      expect(describeChild(new Date("9/1/2018"), cutoff)).toBe("a newborn");
     });
 
-    test("describes newborn", () => {
-      expect(describeChild(new Date("9/2/2018"), cutoff)).toBe("a newborn");
+    test("describes infant", () => {
+      expect(describeChild(new Date("9/2/2018"), cutoff)).toBe("an infant");
+      expect(describeChild(new Date("1/1/2019"), cutoff)).toBe("an infant");
     });
 
     test("describes matt", () => {
