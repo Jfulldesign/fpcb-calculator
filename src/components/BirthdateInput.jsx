@@ -5,16 +5,15 @@ import cx from "classnames";
 import MaskedInput from "react-text-mask";
 import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrectedDatePipe";
 import { Tooltip } from "react-tippy";
-import {
-  parse,
-  addYears,
-  subYears,
-  differenceInYears,
-  getYear
-} from "date-fns";
-
+import { parse, addYears, subYears, format } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
-import { describeChild, graduatesIn, isValidDate, cutoff } from "util/maths";
+import {
+  describeChild,
+  graduatesIn,
+  isValidDate,
+  getAge,
+  cutoff
+} from "util/maths";
 import "./styles/BirthdateInput.css";
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
@@ -85,7 +84,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
   render() {
     const { date, didx, value } = this.state;
-    const age = differenceInYears(new Date(), date);
+    const age = getAge(date);
     const isInSchool = date != null && age >= 5;
     const styleName = cx({
       active: this.state.active,
@@ -182,9 +181,9 @@ export default class BirthdateInput extends React.Component<Props, State> {
                       <p>
                         Your child&apos;s birthdate predicts the year they will
                         graduate and begin using their Florida Prepaid Plan,
-                        based on child’s age/grade on or before September 1,
-                        {` ${getYear(cutoff)}`}. The date entered must be today
-                        or earlier.
+                        based on child’s age/grade on or before{" "}
+                        {` ${format(cutoff, "MMMM D, YYYY")}`}. The date entered
+                        must be today or earlier.
                       </p>
                     </div>
                   }

@@ -3,11 +3,10 @@
 import React from "react";
 import cx from "classnames";
 import { Media } from "react-fns";
-import { format } from "date-fns";
 import { Tooltip } from "react-tippy";
-import { addYears, subYears, getYear, differenceInYears } from "date-fns";
+import { addYears, subYears, format } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
-import { describeChild, graduatesIn, cutoff } from "util/maths";
+import { describeChild, graduatesIn, cutoff, getAge } from "util/maths";
 import "./styles/BirthdateDisplay.css";
 
 type Props = {
@@ -70,7 +69,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
 
   render() {
     const { date, didx, editActive } = this.state;
-    const age = differenceInYears(new Date(), date);
+    const age = getAge(date);
     const isInSchool = date != null && age >= 5;
     const editStyleName = cx({
       "edit-container": true,
@@ -172,9 +171,9 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                           <p>
                             Your child&apos;s birthdate predicts the year they
                             will graduate and begin using their Florida Prepaid
-                            Plan, based on child’s age/grade on or before
-                            September 1, {` ${getYear(cutoff)}`}. The date
-                            entered must be today or earlier.
+                            Plan, based on child’s age/grade on or before{" "}
+                            {format(cutoff, "MMMM D, YYYY")}. The date entered
+                            must be today or earlier.
                           </p>
                         </div>
                       }
