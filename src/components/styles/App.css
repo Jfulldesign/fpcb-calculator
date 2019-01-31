@@ -65,7 +65,7 @@
   }
 
   .header-copy {
-    margin: 120px 0 20px;
+    margin: 20px 0;
 
     @media (min-width: 599px) {
       margin-top: 30px;
@@ -84,7 +84,7 @@
     }
 
     .header-copy {
-      margin-top: 80px;
+      margin-top: 20px;
 
       @media (min-width: 599px) {
         margin-top: 20px;

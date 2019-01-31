@@ -78,7 +78,7 @@
 
   .title {
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     margin: 0;
   }
@@ -94,14 +94,14 @@
   .starting {
     display: block;
     color: var(--color-dark-gray);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     margin: 0;
   }
 
   .price {
     display: block;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     line-height: 22px;
 

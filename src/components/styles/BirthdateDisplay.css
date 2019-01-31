@@ -1,18 +1,10 @@
 .birthdate-display-container {
-  position: fixed;
-  top: 50px;
-  right: 0;
-  left: 0;
-  z-index: 9999;
-  height: 280px;
-  overflow: hidden;
-  pointer-events: none;
+  margin: 20px 0;
+  z-index: 999;
+  position: relative;
 
   @media (min-width: 599px) {
     position: relative;
-    overflow: visible;
-    top: 0;
-    height: auto;
   }
 }
 
@@ -43,7 +35,7 @@
   }
 
   dt {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
 
     @media (min-width: 599px) {
@@ -52,7 +44,7 @@
   }
 
   dd {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
 
     @media (min-width: 599px) {
@@ -115,6 +107,9 @@
     color: var(--color-dark-gray);
     background: none;
     font-size: 30px;
+    padding: 10px;
+    margin: 0;
+    line-height: 0;
   }
 
   .edit-container {
@@ -177,7 +172,7 @@
     font-size: 24px;
     font-weight: 700;
     color: var(--color-gray);
-    margin-left: 34px;
+    margin: 10px 0 10px 34px;
 
     @media (min-width: 599px) {
       margin: 10px 0;
@@ -222,5 +217,7 @@
 
   .button-submit {
     align-self: center;
+    font-size: 14px;
+    margin-bottom: 0;
   }
 }

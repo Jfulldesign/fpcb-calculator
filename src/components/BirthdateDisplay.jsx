@@ -144,7 +144,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       <i className="fa fa-minus-circle" />
                     </button>
                     <button
-                      disabled={didx <= -1 || !isInSchool}
+                      disabled={didx >= 1 || !isInSchool}
                       onClick={this.addYear}
                       onKeyPress={gatedKeyPress(
                         ["Space", "Enter"],
