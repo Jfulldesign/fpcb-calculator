@@ -3,7 +3,7 @@
 import React from "react";
 import cx from "classnames";
 import { Tooltip } from "react-tippy";
-import { priceIndex } from "util/maths";
+import { priceIndex, formatMoney } from "util/maths";
 import { DORM } from "util/constants";
 import type { Plan, PlanID, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanTable.css";
@@ -48,7 +48,7 @@ export default class PlanTable extends React.Component<Props> {
                       <p>{description}</p>
                       <div styleName="price">
                         {!date && <span styleName="starting">Starting at</span>}
-                        {`$${price.toLocaleString()}`}
+                        {formatMoney(price)}
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
                         )}

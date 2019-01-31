@@ -18,5 +18,12 @@ describe("maths", () => {
     test("newborn", () => {
       expect(describeChild(new Date(2018, 10, 1), cutoff)).toBe("a newborn");
     });
+
+    test("matt", () => {
+      const first = describeChild(new Date(2012, 8, 18), cutoff);
+      const kinder = describeChild(new Date(2012, 9, 18), cutoff);
+      expect(first).toBe("in 1st grade");
+      expect(kinder).toBe("in Kindergarten");
+    });
   });
 });

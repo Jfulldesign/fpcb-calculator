@@ -4,7 +4,7 @@ import React from "react";
 import cx from "classnames";
 import Modal from "react-modal";
 import { Tooltip } from "react-tippy";
-import { graduatesIn, priceIndex } from "util/maths";
+import { graduatesIn, priceIndex, formatMoney } from "util/maths";
 import { DORM } from "util/constants";
 import "./styles/PlanDetails.css";
 import type { Plan, PaymentType } from "util/types.flow.js";
@@ -120,7 +120,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                 <IconBed />
                 <div>
                   Option to add a Dormitory Plan {!date && "starting"} at
-                  {` $${DORM.prices[type][pidx].toLocaleString()}`}
+                  {` ${formatMoney(DORM.prices[type][pidx])}`}
                   {type !== "single" && <span>/month</span>}
                   <Tooltip
                     html={

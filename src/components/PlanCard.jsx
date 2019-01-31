@@ -2,7 +2,7 @@
 
 import React from "react";
 import cx from "classnames";
-import { priceIndex } from "util/maths";
+import { priceIndex, formatMoney } from "util/maths";
 import type { Plan, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanCard.css";
 
@@ -27,7 +27,7 @@ const PlanCard = ({ plan, type, date }: Props) => {
       <p>{plan.description}</p>
       <div styleName="price">
         {!date && <span styleName="starting">Starting at</span>}
-        {`$${price.toLocaleString()}`}
+        {formatMoney(price)}
         {type !== "single" && <span styleName="per"> / month</span>}
       </div>
       {plan.note && <div styleName="note">{plan.note}</div>}
