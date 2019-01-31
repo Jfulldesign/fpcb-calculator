@@ -28,8 +28,8 @@ export function describeChild(date: Date, cut?: number = cutoff): ?string {
   const age = differenceInYears(cut, date);
   if (age >= 18) return;
 
-  if (date > cut) return "an infant";
-  if (age === 0) return "a newborn";
+  if (date > cut) return "a newborn";
+  if (age === 0) return "an infant";
   if (age > 0 && age < 5) return `${age} ${pluralize("years", age)} old`;
   if (age === 5) return "in Kindergarten";
   if (age > 5 && age < 18) return `in ${ordinal(age - 5)} grade`;
@@ -39,8 +39,7 @@ export function graduatesIn(date: Date, cut?: number = cutoff): ?number {
   if (isFuture(date)) return;
   const age = differenceInYears(cut, date);
   if (age > 17) return;
-  if (date > cut) return getYear(addYears(cut, 18 - age));
-  if (age === 0) return getYear(addYears(cut, 19 - age));
+  if (Object.is(age, -0) && date > cut) return getYear(addYears(cut, 19 - age));
   return getYear(addYears(cut, 18 - age));
 }
 

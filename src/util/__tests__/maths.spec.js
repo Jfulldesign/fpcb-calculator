@@ -12,12 +12,12 @@ describe("maths", () => {
     });
 
     test("describes newborn", () => {
-      expect(describeChild(new Date("9/1/2018"), cutoff)).toBe("a newborn");
+      expect(describeChild(new Date("9/2/2018"), cutoff)).toBe("a newborn");
+      expect(describeChild(new Date("1/1/2019"), cutoff)).toBe("a newborn");
     });
 
     test("describes infant", () => {
-      expect(describeChild(new Date("9/2/2018"), cutoff)).toBe("an infant");
-      expect(describeChild(new Date("1/1/2019"), cutoff)).toBe("an infant");
+      expect(describeChild(new Date("8/1/2018"), cutoff)).toBe("an infant");
     });
 
     test("describes matt", () => {
@@ -37,25 +37,31 @@ describe("maths", () => {
 
   describe("graduatesIn", () => {
     test("newborn", () => {
-      const newborn = graduatesIn(new Date("9/1/2018"), cutoff);
+      const newborn = graduatesIn(new Date("9/2/2018"), cutoff);
+      const newbornPlus = graduatesIn(new Date("1/1/2019"), cutoff);
       expect(newborn).toBe(2037);
+      expect(newbornPlus).toBe(2037);
     });
 
     test("infant", () => {
-      const infant = graduatesIn(new Date("9/2/2018"), cutoff);
-      const infantPlus = graduatesIn(new Date("1/1/2019"), cutoff);
+      const infant = graduatesIn(new Date("9/1/2018"), cutoff);
+      const infantPlus = graduatesIn(new Date("9/2/2017"), cutoff);
       expect(infant).toBe(2036);
       expect(infantPlus).toBe(2036);
     });
 
     test("one", () => {
       const one = graduatesIn(new Date("9/1/2017"), cutoff);
+      const onePlus = graduatesIn(new Date("9/2/2016"), cutoff);
       expect(one).toBe(2035);
+      expect(onePlus).toBe(2035);
     });
 
     test("two", () => {
       const two = graduatesIn(new Date("9/1/2016"), cutoff);
+      const twoPlus = graduatesIn(new Date("9/2/2015"), cutoff);
       expect(two).toBe(2034);
+      expect(twoPlus).toBe(2034);
     });
   });
 });
