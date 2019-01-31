@@ -60,7 +60,7 @@ export default class PaymentPlanSelector extends React.Component<Props, State> {
           id="pay-short"
           name="payment"
           value="short"
-          disabled={pidx > 13}
+          disabled={pidx > 14}
           onChange={this.onChange}
         />
         <label htmlFor="pay-short">

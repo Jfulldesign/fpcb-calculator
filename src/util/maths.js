@@ -35,8 +35,13 @@ export function describeChild(date: Date, cut?: number = cutoff): ?string {
   if (age > 5 && age < 18) return `in ${ordinal(age - 5)} grade`;
 }
 
-export function graduatesIn(date: Date): number {
-  return getYear(addYears(date, 18));
+export function graduatesIn(date: Date, cut?: number = cutoff): ?number {
+  if (isFuture(date)) return;
+  const age = differenceInYears(cut, date);
+  if (age > 17) return;
+  if (date > cut) return getYear(addYears(cut, 18 - age));
+  if (age === 0) return getYear(addYears(cut, 19 - age));
+  return getYear(addYears(cut, 18 - age));
 }
 
 export function priceIndex(date: Date): number {

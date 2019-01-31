@@ -27,7 +27,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       },
       prices: {
         single: [
-          29471.26,
+          29472.26,
           29472.26,
           29466.16,
           29447.83,
