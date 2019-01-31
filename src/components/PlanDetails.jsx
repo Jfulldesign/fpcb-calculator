@@ -95,7 +95,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                 {plan.credits.college > 0 && (
                   <span>
                     <strong>
-                      {plan.credits.college} lower division credit hours
+                      {plan.credits.college} credit hours at a Florida College.
                     </strong>{" "}
                     at a Florida College
                     {plan.credits.state > 0 ? " and " : ". "}
