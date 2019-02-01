@@ -138,7 +138,6 @@ export default class BirthdateInput extends React.Component<Props, State> {
             placeholder={
               this.state.active ? "" : "Enter MM/DD/YYYY for payment estimates"
             }
-            onBlur={this.onBlur}
             onFocus={this.onFocus}
             onChange={this.onChange}
             aria-label="Enter birthdate for payment estimates"
