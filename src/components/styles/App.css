@@ -119,11 +119,3 @@
     }
   }
 }
-
-:global(.calc-app-mounted) :global(#top-nav) :global(.bottom) {
-  display: none;
-
-  @media (min-width: 599px) {
-    display: block;
-  }
-}
