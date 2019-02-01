@@ -67,7 +67,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
       if (isValidDate(date)) {
         this.setState({ date, value, dateError: false });
-        this.props.onHasCalcDate(value);
+        this.props.onHasCalcDate(date);
       } else if (isValid(date)) {
         this.setState({ value, dateError: true });
       } else {
