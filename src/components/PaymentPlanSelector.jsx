@@ -44,7 +44,6 @@ export default class PaymentPlanSelector extends React.Component<Props> {
           value="monthly"
           onChange={this.onChange}
           checked={paymentType === "monthly"}
-          defaultChecked
         />
         <label htmlFor="pay-monthly">
           Monthly{" "}

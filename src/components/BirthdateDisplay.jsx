@@ -2,11 +2,27 @@
 
 import React from "react";
 import cx from "classnames";
+import MaskedInput from "react-text-mask";
 import { Media } from "react-fns";
 import { Tooltip } from "react-tippy";
-import { addYears, subYears, format, differenceInYears } from "date-fns";
+import {
+  parse,
+  format,
+  getYear,
+  isValid,
+  addYears,
+  subYears,
+  differenceInYears
+} from "date-fns";
+
 import { gatedKeyPress } from "util/keyboard";
-import { describeChild, graduatesIn, cutoff, getAge } from "util/maths";
+import {
+  describeChild,
+  graduatesIn,
+  cutoff,
+  getAge,
+  isValidDate
+} from "util/maths";
 import "./styles/BirthdateDisplay.css";
 
 type Props = {
@@ -18,21 +34,56 @@ type Props = {
 
 type State = {
   calcDate: Date,
-  editActive: boolean
+  editActive: boolean,
+  dateError: boolean,
+  value: ?string
 };
 
 export default class BirthdateDisplay extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
+    this.onBlur = this.onBlur.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.onClose = this.onClose.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.addYear = this.addYear.bind(this);
     this.subtractYear = this.subtractYear.bind(this);
     this.onSetDate = this.onSetDate.bind(this);
-    this.state = { editActive: false, calcDate: props.calcDate };
+    this.state = {
+      editActive: false,
+      calcDate: props.calcDate,
+      dateError: false,
+      value: format(props.calcDate, "MM/DD/YYYY")
+    };
   }
+
+  onBlur = () => {
+    this.setState({ active: false });
+  };
+
+  onFocus = () => {
+    this.setState({ active: true });
+  };
+
+  onChange = (event: Event) => {
+    const target = event.currentTarget;
+    if (target instanceof HTMLInputElement) {
+      const value = target.value;
+      const date = parse(value);
+
+      if (isValidDate(date)) {
+        this.setState({ date, value, dateError: false });
+        this.props.onHasCalcDate(value);
+      } else if (isValid(date)) {
+        this.setState({ value, dateError: true });
+      } else {
+        this.setState({ value, dateError: false });
+      }
+    }
+  };
 
   onEdit = () => {
     this.setState({ editActive: true });
@@ -63,7 +114,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   render() {
-    const { calcDate, editActive } = this.state;
+    const { calcDate, editActive, dateError, value } = this.state;
     const { dispDate } = this.props;
     const age = getAge(calcDate);
     const isInSchool = calcDate != null && age >= 4;
@@ -104,6 +155,49 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 <i className="fa fa-times-circle" />
               </button>
               <div styleName="review-dates">
+                <Tooltip
+                  styleName="date-input-tooltip-container"
+                  html={
+                    <div className="tip">
+                      <p>
+                        Prepaid Plans are only available for students in the
+                        11th grade or below and children born on, or before,
+                        April 30, {getYear(addYears(cutoff, 1))}.
+                      </p>
+                    </div>
+                  }
+                  open={dateError}
+                  position="top"
+                  tabIndex="0"
+                  arrow
+                >
+                  <MaskedInput
+                    mask={[
+                      /\d/,
+                      /\d/,
+                      "/",
+                      /\d/,
+                      /\d/,
+                      "/",
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      /\d/
+                    ]}
+                    guide={true}
+                    pattern="\d*"
+                    value={value}
+                    placeholder={
+                      this.state.active
+                        ? ""
+                        : "Enter MM/DD/YYYY for payment estimates"
+                    }
+                    onBlur={this.onBlur}
+                    onFocus={this.onFocus}
+                    onChange={this.onChange}
+                    aria-label="Enter birthdate for payment estimates"
+                  />
+                </Tooltip>
                 <div styleName="grade-adjust">
                   Your child is
                   <span styleName="grade-display">
