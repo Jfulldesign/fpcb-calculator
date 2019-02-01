@@ -29,7 +29,7 @@ export default class PlanCarousel extends React.Component<Props, State> {
       <div styleName="plan-carousel">
         <CarouselProvider
           naturalSlideWidth={255}
-          naturalSlideHeight={200}
+          naturalSlideHeight={210}
           lockOnWindowScroll={true}
           currentSlide={currentSlide === -1 ? 0 : currentSlide}
           totalSlides={5}

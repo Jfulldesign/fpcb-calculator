@@ -56,7 +56,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
       editActive: false,
       calcDate: props.calcDate,
       dateError: false,
-      value: format(props.calcDate, "MM/DD/YYYY")
+      value: format(props.dispDate, "MM/DD/YYYY")
     };
   }
 
@@ -76,7 +76,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
 
       if (isValidDate(date)) {
         this.setState({ date, value, dateError: false });
-        this.props.onHasCalcDate(value);
+        this.props.onHasDispDate(date);
+        this.props.onHasCalcDate(date);
       } else if (isValid(date)) {
         this.setState({ value, dateError: true });
       } else {
@@ -100,12 +101,14 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
 
   addYear = (event: Event) => {
     event.preventDefault();
-    this.setState({ calcDate: subYears(this.state.calcDate, 1) });
+    const { calcDate, onHasCalcDate } = this.props;
+    onHasCalcDate(subYears(calcDate, 1));
   };
 
   subtractYear = (event: Event) => {
     event.preventDefault();
-    this.setState({ calcDate: addYears(this.state.calcDate, 1) });
+    const { calcDate, onHasCalcDate } = this.props;
+    onHasCalcDate(addYears(calcDate, 1));
   };
 
   onSetDate = () => {
@@ -114,8 +117,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   render() {
-    const { calcDate, editActive, dateError, value } = this.state;
-    const { dispDate } = this.props;
+    const { editActive, dateError, value } = this.state;
+    const { dispDate, calcDate } = this.props;
     const age = getAge(calcDate);
     const isInSchool = calcDate != null && age >= 4;
     const editStyleName = cx({
