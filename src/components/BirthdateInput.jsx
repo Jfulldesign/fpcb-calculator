@@ -144,7 +144,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             aria-label="Enter birthdate for payment estimates"
           />
         </Tooltip>
-        {!expand ? (
+        {expand === false ? (
           <div styleName="button-container">
             <button
               disabled={!isValidDate(new Date(value))}
