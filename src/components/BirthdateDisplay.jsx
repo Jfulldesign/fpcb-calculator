@@ -112,7 +112,6 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   onSetDate = () => {
-    this.props.onHasCalcDate(this.state.calcDate);
     this.setState({ editActive: false });
   };
 
