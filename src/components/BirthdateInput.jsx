@@ -3,9 +3,8 @@
 import React from "react";
 import cx from "classnames";
 import MaskedInput from "react-text-mask";
-import createAutoCorrectedDatePipe from "text-mask-addons/dist/createAutoCorrectedDatePipe";
 import { Tooltip } from "react-tippy";
-import { parse, format, addYears, subYears } from "date-fns";
+import { parse, format, addYears, subYears, isValid, getYear } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
 import {
   describeChild,
@@ -16,8 +15,6 @@ import {
 } from "util/maths";
 import "./styles/BirthdateInput.css";
 
-const autoCorrectedDatePipe = createAutoCorrectedDatePipe("mm/dd/yyyy");
-
 type Props = {
   onHasCalcDate: Date => void,
   onHasDispDate: Date => void
@@ -25,9 +22,11 @@ type Props = {
 
 type State = {
   active: boolean,
+  expand: boolean,
   value: ?string,
   date: ?Date,
-  didx: number
+  didx: number,
+  dateError: boolean
 };
 
 export default class BirthdateInput extends React.Component<Props, State> {
@@ -36,11 +35,14 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
     this.state = {
       active: false,
+      expand: false,
       value: null,
       date: null,
-      didx: 0
+      didx: 0,
+      dateError: false
     };
 
+    this.onBlur = this.onBlur.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onChange = this.onChange.bind(this);
     this.addYear = this.addYear.bind(this);
@@ -49,16 +51,29 @@ export default class BirthdateInput extends React.Component<Props, State> {
     this.onSetDate = this.onSetDate.bind(this);
   }
 
+  onBlur = () => {
+    this.setState({ active: false });
+  };
+
   onFocus = () => {
-    this.setState({
-      active: true
-    });
+    this.setState({ active: true });
   };
 
   onChange = (event: Event) => {
     const target = event.currentTarget;
-    if (target instanceof HTMLInputElement)
-      this.setState({ value: target.value });
+    if (target instanceof HTMLInputElement) {
+      const value = target.value;
+      const date = parse(value);
+
+      if (isValidDate(date)) {
+        this.setState({ date, value, dateError: false });
+        this.props.onHasCalcDate(value);
+      } else if (isValid(date)) {
+        this.setState({ value, dateError: true });
+      } else {
+        this.setState({ value, dateError: false });
+      }
+    }
   };
 
   addYear = (event: Event) => {
@@ -75,11 +90,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
   onSubmit = (event: Event) => {
     event.preventDefault();
-    const date = parse(this.state.value);
-    if (date) {
-      this.setState({ date });
-      this.props.onHasCalcDate(date);
-    }
+    this.setState({ expand: true });
   };
 
   onSetDate = (event: Event) => {
@@ -92,7 +103,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
   };
 
   render() {
-    const { value, didx, date } = this.state;
+    const { value, didx, date, expand, dateError } = this.state;
     const age = getAge(date);
     const isInSchool = date != null && age >= 4;
     const styleName = cx({
@@ -103,21 +114,37 @@ export default class BirthdateInput extends React.Component<Props, State> {
     return (
       <form styleName={styleName}>
         <span>Your Child&apos;s Birthdate</span>
-        <MaskedInput
-          mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
-          pipe={autoCorrectedDatePipe}
-          guide={true}
-          pattern="\d*"
-          value={this.state.value}
-          disabled={date != null}
-          placeholder={
-            this.state.active ? "" : "Enter MM/DD/YYYY for payment estimates"
+        <Tooltip
+          styleName="date-input-tooltip-container"
+          html={
+            <div className="tip error">
+              <p>
+                Prepaid Plans are only available for students in the 11th grade
+                or below and children born on, or before, April 30,{" "}
+                {getYear(addYears(cutoff, 1))}.
+              </p>
+            </div>
           }
-          onFocus={this.onFocus}
-          onChange={this.onChange}
-          aria-label="Enter birthdate for payment estimates"
-        />
-        {date == null ? (
+          open={dateError}
+          position="top"
+          tabIndex="0"
+          arrow
+        >
+          <MaskedInput
+            mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+            guide={true}
+            pattern="\d*"
+            value={this.state.value}
+            placeholder={
+              this.state.active ? "" : "Enter MM/DD/YYYY for payment estimates"
+            }
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            onChange={this.onChange}
+            aria-label="Enter birthdate for payment estimates"
+          />
+        </Tooltip>
+        {!expand ? (
           <div styleName="button-container">
             <button
               disabled={!isValidDate(new Date(value))}
@@ -170,7 +197,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   Subtract Year
                 </button>
                 <button
-                  disabled={didx >= 1 || !isInSchool || age >= 17}
+                  disabled={didx >= 1 || !isInSchool || age >= 16}
                   onClick={this.addYear}
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
                 >

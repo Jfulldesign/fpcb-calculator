@@ -81,24 +81,20 @@ export default class PaymentPlanSelector extends React.Component<Props> {
             <div className="tip">
               <h6>What are my payment options?</h6>
               <p>
-                The monthly option breaks down plan prices into monthly payments
-                through October of the year your child graduates from high
-                school.
+                The monthly payment option breaks down plan prices into monthly
+                payments through the year your child graduates from high school.
               </p>
               <p>
-                The 5-year option breaks down plan prices into 55 monthly
+                The 5-Year option breaks down plan prices into 55 monthly
                 payments over five years.
               </p>
               <p>
-                Both monthly and 5-year options include an interest fee that is
-                determined by the contract year and will not change. Your
-                beneficiary is entitled to the total value paid into the plan,
-                including interest.
+                Both the monthly and 5-year options include an interest fee that
+                is determined by the contract year and will not change.
               </p>
               <p>
-                If you decide to make one lump sum payment, there is no interest
-                fee applied. Your beneficiary is entitled to the total value
-                paid into the plan.
+                If you decide to make one lump-sum payment, there is no interest
+                fee applied.
               </p>
             </div>
           }
