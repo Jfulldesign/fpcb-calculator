@@ -2,7 +2,7 @@
 
 import React from "react";
 import cx from "classnames";
-import MaskedInput from "react-text-mask";
+import MaskedInput from "react-maskedinput";
 import { Tooltip } from "react-tippy";
 import { parse, format, addYears, subYears, isValid, getYear } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
@@ -131,12 +131,10 @@ export default class BirthdateInput extends React.Component<Props, State> {
           arrow
         >
           <MaskedInput
-            mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
-            guide={true}
-            pattern="\d*"
+            mask="11/11/1111"
             value={this.state.value}
             placeholder={
-              this.state.active ? "" : "Enter MM/DD/YYYY for payment estimates"
+              this.state.active ? "MM/DD/YYYY" : "Enter MM/DD/YYYY for payment estimates"
             }
             onFocus={this.onFocus}
             onChange={this.onChange}
