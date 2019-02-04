@@ -261,7 +261,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   </div>
                 </div>
                 <div styleName="graduation-estimate">
-                  We project your child will graduate in
+                  Your child will graduate in
                   <span styleName="graduation-display">
                     {graduatesIn(calcDate)}
                     <Tooltip
@@ -270,7 +270,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                           <h6>Why is this important?</h6>
                           <p>
                             Your child&apos;s birthdate predicts the year they
-                            will graduate and begin using their Florida Prepaid
+                            will graduate high school and begin using their Florida Prepaid
                             Plan, based on child’s age/grade on or before{" "}
                             {format(cutoff, "MMMM D, YYYY")}. The date entered
                             must be today or earlier.

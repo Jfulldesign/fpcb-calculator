@@ -164,12 +164,14 @@ export default class BirthdateInput extends React.Component<Props, State> {
                     <div className="tip">
                       <h6>Why is this important?</h6>
                       <p>
-                        Your child&apos;s grade predicts the year they will
-                        graduate and begin using their Florida Prepaid Plan. The
-                        beneficiary has up to 10 years following graduation to
+                        Your child&apos;s age and grade predicts the year they will
+                        graduate high school and begin using their Florida Prepaid Plan. The
+                        beneficiary has up to 10 years following high school graduation to
                         use a Florida Prepaid Plan. You may enroll any Florida
                         resident with a valid Social Security number, age
-                        newborn through 11th grade, in a Prepaid Plan.
+                        newborn through 11th grade, in a Prepaid Plan. For newborns, the
+                        Social Security Number is not required when the Application is submitted,
+                        but it must be provided shortly thereafter.
                       </p>
                     </div>
                   }
@@ -206,7 +208,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               </div>
             </div>
             <div styleName="graduation-estimate">
-              We project your child will graduate in
+              Your child will graduate in
               <span styleName="graduation-display">
                 {graduatesIn(date)}
                 <Tooltip
@@ -215,7 +217,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                       <h6>Why is this important?</h6>
                       <p>
                         Your child&apos;s birthdate predicts the year they will
-                        graduate and begin using their Florida Prepaid Plan,
+                        graduate high school and begin using their Florida Prepaid Plan,
                         based on child’s age/grade on or before{" "}
                         {` ${format(cutoff, "MMMM D, YYYY")}`}. The date entered
                         must be today or earlier.
