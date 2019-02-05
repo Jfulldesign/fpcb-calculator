@@ -58,12 +58,14 @@
 }
 
 .def--college {
+  background-color: var(--color-light-gray);
 }
 
 .def--fees {
 }
 
 .def--dorm {
+  background-color: var(--color-light-gray);
 }
 
 .def--cost {
