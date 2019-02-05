@@ -130,8 +130,8 @@ export default class BirthdateInput extends React.Component<Props, State> {
           tabIndex="0"
           arrow
         >
-          <MaskedInput
-            mask="11/11/1111"
+          <input
+            type="date"
             value={this.state.value}
             placeholder={
               this.state.active ? "MM/DD/YYYY" : "Enter MM/DD/YYYY for payment estimates"
