@@ -23,7 +23,9 @@ export default class PlanTable extends React.Component<Props> {
   componentDidMount() {
     new ScrollHint(".js-scrollable", { suggestiveShadow: true });
   }
-
+  handleClick = () => {
+    document.getElementById('date_entry').focus();
+  }
   render() {
     const { plans, date, focus, paymentType } = this.props;
     const pidx = date == null ? 0 : priceIndex(date);
@@ -241,13 +243,13 @@ export default class PlanTable extends React.Component<Props> {
                   )} */}
                   </td>
                 ) : [ 
-                  (index == 1 ? 
+                  (index == 0 ? 
                    (
-                  <td colspan="5"
+                  <td colSpan="5"
                     styleName={`plan--${id} plan--cost ${computedStyle}`}
                     key={`plan--${id}--cost`}
                   >
-                    <div styleName="college-price">
+                    <div styleName="college-price clickable" onClick={this.handleClick}>
                       <span>
                         Enter Birthdate
                         
