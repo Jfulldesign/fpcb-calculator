@@ -220,21 +220,13 @@ export default class PlanTable extends React.Component<Props> {
                   dimmed: focus != null && id !== focus
                 });
 
-                return (
+                return date ? (
                   <td
                     styleName={`plan--${id} plan--cost ${computedStyle}`}
                     key={`plan--${id}--cost`}
                   >
                     <div styleName="college-price">
-                      {date ? (
-                        <span styleName="estimate">{`$${price.toLocaleString()}`}</span>
-                      ) : (
-                        <span>
-                          Enter Birthdate
-                          <br />
-                          to Calculate
-                        </span>
-                      )}
+                      <span styleName="estimate">{`$${price.toLocaleString()}`}</span>
                     </div>
                     <a
                       href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
@@ -243,10 +235,34 @@ export default class PlanTable extends React.Component<Props> {
                       Enroll Online
                     </a>
                     {/* {date && (
-                      <a href="" styleName="email">
-                        Email Prices
-                      </a>
-                    )} */}
+                    <a href="" styleName="email">
+                      Email Prices
+                    </a>
+                  )} */}
+                  </td>
+                ) : (
+                  <td
+                    styleName={`plan--${id} plan--cost ${computedStyle}`}
+                    key={`plan--${id}--cost`}
+                  >
+                    <div styleName="college-price">
+                      <span>
+                        Enter Birthdate
+                        <br />
+                        to Calculate
+                      </span>
+                    </div>
+                    <a
+                      href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
+                      styleName="enroll"
+                    >
+                      Enroll Online
+                    </a>
+                    {/* {date && (
+                    <a href="" styleName="email">
+                      Email Prices
+                    </a>
+                  )} */}
                   </td>
                 );
               })}
