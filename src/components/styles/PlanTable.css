@@ -350,16 +350,16 @@
   border-bottom: 5px solid var(--color-gray);
 
   .college-price {
-    color: var(--color-dark-gray);
-
-    &:after {
+    color: var(--color-blue);
+    padding-bottom:20px;
+    /* &:after {
       display: block;
       content: "";
       height: 1px;
       width: 60%;
       background-color: var(--color-gray);
       margin: 20px auto;
-    }
+    } */
 
     .estimate {
       color: var(--color-blue);

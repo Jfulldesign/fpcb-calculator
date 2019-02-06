@@ -132,7 +132,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
         >
           <input
             type="date"
-            value={this.state.value}
+            value={this.state.value ? this.state.value : ""}
             placeholder={
               this.state.active ? "MM/DD/YYYY" : "Enter MM/DD/YYYY for payment estimates"
             }

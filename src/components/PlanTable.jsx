@@ -214,12 +214,12 @@ export default class PlanTable extends React.Component<Props> {
                   </button>
                 </Tooltip>
               </td>
-              {plans.map(({ id, estimatedCost }) => {
+              {plans.map(({ id, estimatedCost }, index) => {
                 const price = pidx == null ? "–" : estimatedCost[pidx];
                 const computedStyle = cx({
                   dimmed: focus != null && id !== focus
                 });
-
+                
                 return date ? (
                   <td
                     styleName={`plan--${id} plan--cost ${computedStyle}`}
@@ -240,15 +240,17 @@ export default class PlanTable extends React.Component<Props> {
                     </a>
                   )} */}
                   </td>
-                ) : (
-                  <td
+                ) : [ 
+                  (index == 1 ? 
+                   (
+                  <td colspan="5"
                     styleName={`plan--${id} plan--cost ${computedStyle}`}
                     key={`plan--${id}--cost`}
                   >
                     <div styleName="college-price">
                       <span>
                         Enter Birthdate
-                        <br />
+                        
                         to Calculate
                       </span>
                     </div>
@@ -264,7 +266,7 @@ export default class PlanTable extends React.Component<Props> {
                     </a>
                   )} */}
                   </td>
-                );
+                ) : null)];
               })}
             </tr>
           </tbody>
