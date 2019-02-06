@@ -42,7 +42,7 @@
 .def--info {
   font-size: 16px;
   vertical-align: bottom;
-  padding: 20px 20px 20px 0;
+  padding: 20px 20px 20px 10px;
 
   &:after {
     display: block;
@@ -55,27 +55,27 @@
 }
 
 .def--uni {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .def--college {
   background-color: var(--color-light-gray);
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .def--fees {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .def--dorm {
   background-color: var(--color-light-gray);
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .def--cost {
   vertical-align: top;
   padding-top: 20px;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .plan--info {
