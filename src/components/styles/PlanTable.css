@@ -55,22 +55,27 @@
 }
 
 .def--uni {
+  padding-left: 20px;
 }
 
 .def--college {
   background-color: var(--color-light-gray);
+  padding-left: 20px;
 }
 
 .def--fees {
+  padding-left: 20px;
 }
 
 .def--dorm {
   background-color: var(--color-light-gray);
+  padding-left: 20px;
 }
 
 .def--cost {
   vertical-align: top;
   padding-top: 20px;
+  padding-left: 20px;
 }
 
 .plan--info {
