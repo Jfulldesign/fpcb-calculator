@@ -73,6 +73,10 @@
 }
 
 .def--cost {
+  padding-left: 10px;
+}
+
+.def--enroll {
   vertical-align: top;
   padding-top: 20px;
   padding-left: 10px;
@@ -272,7 +276,8 @@
 .plan--college,
 .plan--fees,
 .plan--dorm,
-.plan--cost {
+.plan--cost,
+.plan--enroll {
   position: relative;
   text-align: center;
   font-size: 16px;
@@ -345,13 +350,10 @@
 
 .plan--cost {
   text-align: center;
-  border-right: 1px solid var(--color-gray);
-  border-left: 1px solid var(--color-gray);
-  border-bottom: 5px solid var(--color-gray);
+  border-bottom: 1px solid var(--color-gray);
 
   .college-price {
     color: var(--color-blue);
-    padding-bottom:20px;
     /* &:after {
       display: block;
       content: "";
@@ -367,6 +369,30 @@
   }
   .clickable {
     cursor: pointer;
+  }
+}
+
+.plan--enroll {
+  text-align: center;
+  border-right: 1px solid var(--color-gray);
+  border-left: 1px solid var(--color-gray);
+  border-bottom: 5px solid var(--color-gray);
+
+  .college-price {
+    color: var(--color-blue);
+    padding-bottom: 20px;
+    /* &:after {
+      display: block;
+      content: "";
+      height: 1px;
+      width: 60%;
+      background-color: var(--color-gray);
+      margin: 20px auto;
+    } */
+
+    .estimate {
+      color: var(--color-blue);
+    }
   }
 
   a {

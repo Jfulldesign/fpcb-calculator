@@ -140,6 +140,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             onChange={this.onChange}
             aria-label="Enter birthdate for payment estimates"
             id="date_entry"
+            data-hj-whitelist
           />
         </Tooltip>
         {expand === false ? (

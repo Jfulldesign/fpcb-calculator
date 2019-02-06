@@ -45,9 +45,9 @@ export default class PaymentPlanSelector extends React.Component<Props> {
           onChange={this.onChange}
           checked={paymentType === "monthly"}
         />
-        <label htmlFor="pay-monthly">
+        <label htmlFor="pay-monthly" data-hj-whitelist>
           Monthly{" "}
-          <span styleName="description">{PAYMENT_COUNT[pidx]} payments</span>
+          <span styleName="description" data-hj-whitelist>{PAYMENT_COUNT[pidx]} payments</span>
         </label>
 
         <input
@@ -59,7 +59,7 @@ export default class PaymentPlanSelector extends React.Component<Props> {
           checked={paymentType === "short"}
           onChange={this.onChange}
         />
-        <label htmlFor="pay-short">
+        <label htmlFor="pay-short" data-hj-whitelist>
           5 Year<span styleName="description">55 payments</span>
         </label>
 
@@ -71,7 +71,7 @@ export default class PaymentPlanSelector extends React.Component<Props> {
           checked={paymentType === "single"}
           onChange={this.onChange}
         />
-        <label htmlFor="pay-single">
+        <label htmlFor="pay-single" data-hj-whitelist>
           Lump Sum<span styleName="description">One payment</span>
         </label>
 

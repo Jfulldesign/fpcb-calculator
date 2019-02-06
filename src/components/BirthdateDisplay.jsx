@@ -128,13 +128,13 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     return (
       <div styleName="birthdate-display-container">
         <div styleName="birthdate-display">
-          <dl>
+          <dl data-hj-whitelist>
             <dt>Birthdate</dt>
-            <dd>{format(dispDate, "MM/DD/YYYY")}</dd>
+            <dd data-hj-whitelist>{format(dispDate, "MM/DD/YYYY")}</dd>
           </dl>
-          <dl>
+          <dl data-hj-whitelist>
             <dt>Child is</dt>
-            <dd>{describeChild(calcDate)}</dd>
+            <dd data-hj-whitelist>{describeChild(calcDate)}</dd>
           </dl>
           <Media.default query="(max-width: 599px)">
             {matches => (
@@ -200,9 +200,9 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     aria-label="Enter birthdate for payment estimates"
                   />
                 </Tooltip>
-                <div styleName="grade-adjust">
+                <div styleName="grade-adjust" data-hj-whitelist>
                   Your child is
-                  <span styleName="grade-display">
+                  <span styleName="grade-display" data-hj-whitelist>
                     {describeChild(calcDate)}
                     <Tooltip
                       html={
@@ -260,9 +260,9 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     </button>
                   </div>
                 </div>
-                <div styleName="graduation-estimate">
+                <div styleName="graduation-estimate" data-hj-whitelist>
                   Your child will graduate in
-                  <span styleName="graduation-display">
+                  <span styleName="graduation-display" data-hj-whitelist>
                     {graduatesIn(calcDate)}
                     <Tooltip
                       html={

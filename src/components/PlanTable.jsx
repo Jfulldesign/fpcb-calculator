@@ -51,9 +51,9 @@ export default class PlanTable extends React.Component<Props> {
                   >
                     {note && <div styleName="note">{note}</div>}
                     <div styleName="info-container">
-                      <h3>{title}</h3>
+                      <h3 data-hj-whitelist>{title}</h3>
                       <p>{description}</p>
-                      <div styleName="price">
+                      <div styleName="price" data-hj-whitelist>
                         {!date && <span styleName="starting">Starting at</span>}
                         {formatMoney(price)}
                         {paymentType !== "single" && (
@@ -80,7 +80,7 @@ export default class PlanTable extends React.Component<Props> {
                     {state === 0 ? (
                       <i className="fa fa-minus" />
                     ) : (
-                      <div styleName="stack--hours">
+                      <div styleName="stack--hours" data-hj-whitelist>
                         <IconUni styleName="icon icon--uni" />
                         {state} Hours
                       </div>
@@ -104,7 +104,7 @@ export default class PlanTable extends React.Component<Props> {
                     {college === 0 ? (
                       <i className="fa fa-minus" />
                     ) : (
-                      <div styleName="stack--hours">
+                      <div styleName="stack--hours" data-hj-whitelist>
                         <IconCollege styleName="icon icon--college" />
                         {college} Hours
                       </div>
@@ -171,7 +171,7 @@ export default class PlanTable extends React.Component<Props> {
                 return (
                   <td
                     styleName={`plan--${id} plan--dorm ${computedStyle}`}
-                    key={`plan--${id}--dorm`}
+                    key={`plan--${id}--dorm`} data-hj-whitelist
                   >
                     {dorm ? (
                       <React.Fragment>
@@ -225,37 +225,42 @@ export default class PlanTable extends React.Component<Props> {
                 return date ? (
                   <td
                     styleName={`plan--${id} plan--cost ${computedStyle}`}
-                    key={`plan--${id}--cost`}
+                    key={`plan--${id}--cost`} data-hj-whitelist
                   >
-                    <div styleName="college-price">
-                      <span styleName="estimate">{`$${price.toLocaleString()}`}</span>
+                    <div styleName="college-price" data-hj-whitelist>
+                      <span styleName="estimate" data-hj-whitelist>{`$${price.toLocaleString()}`}</span>
                     </div>
-                    <a
-                      href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
-                      styleName="enroll"
-                    >
-                      Enroll Online
-                    </a>
-                    {/* {date && (
-                    <a href="" styleName="email">
-                      Email Prices
-                    </a>
-                  )} */}
                   </td>
                 ) : [ 
                   (index == 0 ? 
                    (
                   <td colSpan="5"
-                    styleName={`plan--${id} plan--cost ${computedStyle}`}
-                    key={`plan--${id}--cost`}
+                    styleName={`plan--cost`}
+                    key={`plan--cost`}
                   >
                     <div styleName="college-price clickable" onClick={this.handleClick}>
                       <span>
-                        Enter Birthdate
-                        
-                        to Calculate
+                        Enter Your Child's Birthdate to Calculate
                       </span>
                     </div>
+                  </td>
+                ) : null)];
+              })}
+              </tr>
+            <tr>
+              <td styleName="def def--cost">&nbsp;</td>
+                
+              {plans.map(({ id, estimatedCost }) => {
+                const price = pidx == null ? "–" : estimatedCost[pidx];
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+                
+                return date ? (
+                  <td 
+                    styleName={`plan--${id} plan--enroll ${computedStyle}`}
+                    key={`plan--${id}--enroll`}
+                  >
                     <a
                       href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
                       styleName="enroll"
@@ -268,9 +273,26 @@ export default class PlanTable extends React.Component<Props> {
                     </a>
                   )} */}
                   </td>
-                ) : null)];
+                ) : (
+                  <td
+                  styleName={`plan--${id} plan--enroll ${computedStyle}`}
+                  key={`plan--${id}--enroll`}
+                >
+                  <a
+                    href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
+                    styleName="enroll"
+                  >
+                    Enroll Online
+                  </a>
+                  {/* {date && (
+                  <a href="" styleName="email">
+                    Email Prices
+                  </a>
+                )} */}
+                </td>
+                );
               })}
-            </tr>
+              </tr>
           </tbody>
         </table>
       </div>
