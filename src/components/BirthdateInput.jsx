@@ -113,7 +113,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
 
     return (
       <form styleName={styleName}>
-        <span>Your Child&apos;s Birthdate</span>
+        <span>Enter your child&apos;s birthdate for plan prices:</span>
         <Tooltip
           styleName="date-input-tooltip-container"
           html={
@@ -134,11 +134,11 @@ export default class BirthdateInput extends React.Component<Props, State> {
             type="date"
             value={this.state.value ? this.state.value : ""}
             placeholder={
-              this.state.active ? "MM/DD/YYYY" : "Enter MM/DD/YYYY for payment estimates"
+              this.state.active ? "MM/DD/YYYY" : "MM/DD/YYYY"
             }
             onFocus={this.onFocus}
             onChange={this.onChange}
-            aria-label="Enter birthdate for payment estimates"
+            aria-label="Enter your child's birthdate for plan prices"
             id="date_entry"
             data-hj-whitelist
           />

@@ -4,7 +4,7 @@ import React from "react";
 import cx from "classnames";
 import ScrollHint from "scroll-hint";
 import { Tooltip } from "react-tippy";
-import { priceIndex, formatMoney } from "util/maths";
+import { priceIndex, graduatesIn, formatMoney } from "util/maths";
 import { DORM } from "util/constants";
 import type { Plan, PlanID, PaymentSchedule } from "util/types.flow.js";
 import "./styles/PlanTable.css";
@@ -189,33 +189,34 @@ export default class PlanTable extends React.Component<Props> {
               })}
             </tr>
             <tr>
-              <td styleName="def def--cost">
-                Estimated Future Benefit
-                <Tooltip
-                  html={
-                    <div className="tip">
-                      <p>
-                        This is an estimate of the amount we anticipate to pay
-                        for tuition and fees covered by your plan. The estimate
-                        is based on current in-state tuition and fees,
-                        anticipated inflation and historical usage patterns. The
-                        actual benefit (costs paid in the future) may be higher
-                        or lower. However, the actual benefit will never be less
-                        than the price you pay for a plan - you cannot lose
-                        money.
-                      </p>
-                    </div>
-                  }
-                  position="bottom"
-                  trigger="mouseenter"
-                  tabIndex="0"
-                  arrow
-                >
+              <td styleName={`def def--cost`} data-hj-whitelist>Estimated future benefit
+              {date ? <span> beginning in {graduatesIn(date)}.</span> : null}
+                
+              <Tooltip html={
+                  <div className="tip">
+                    <p>
+                      This is an estimate of the amount we anticipate to pay
+                      for tuition and fees covered by your plan. The estimate
+                      is based on current in-state tuition and fees,
+                      anticipated inflation and historical usage patterns. The
+                      actual benefit (costs paid in the future) may be higher
+                      or lower. However, the actual benefit will never be less
+                      than the price you pay for a plan - you cannot lose
+                      money.
+                    </p>
+                  </div>
+                      }
+                      position="bottom"
+                      trigger="mouseenter"
+                      tabIndex="0"
+                      arrow
+                    >
                   <button styleName="info-tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
               </td>
+              
               {plans.map(({ id, estimatedCost }, index) => {
                 const price = pidx == null ? "–" : estimatedCost[pidx];
                 const computedStyle = cx({

@@ -8,6 +8,13 @@
     max-width: 100%;
     line-height: 18px;
     height: 0;
+    td {
+      vertical-align: middle;
+      &.def--info {
+        font-size: 16px;
+        vertical-align: bottom;
+      }
+    }
   }
 
   i {
@@ -36,13 +43,13 @@
 
 .def {
   width: 160px;
-  padding-right: 20px;
+  padding: 10px 15px;
 }
 
 .def--info {
   font-size: 16px;
-  vertical-align: bottom;
-  padding: 20px 20px 20px 10px;
+  padding: 20px 15px;
+  padding-bottom: 0;
 
   &:after {
     display: block;
@@ -55,31 +62,26 @@
 }
 
 .def--uni {
-  padding-left: 10px;
 }
 
 .def--college {
-  background-color: var(--color-light-gray);
+  background-color: var(--color-light-gray) !important;
   padding-left: 10px;
 }
 
 .def--fees {
-  padding-left: 10px;
 }
 
 .def--dorm {
-  background-color: var(--color-light-gray);
-  padding-left: 10px;
+  background-color: var(--color-light-gray) !important;
 }
 
 .def--cost {
-  padding-left: 10px;
 }
 
 .def--enroll {
   vertical-align: top;
   padding-top: 20px;
-  padding-left: 10px;
 }
 
 .plan--info {
@@ -272,6 +274,10 @@
 .icon--college {
 }
 
+.plan--info {
+  padding-bottom: 0;
+}
+
 .plan--uni,
 .plan--college,
 .plan--fees,
@@ -315,7 +321,6 @@
 }
 
 .plan--uni {
-  padding-top: 0;
 }
 
 .plan--college:after {

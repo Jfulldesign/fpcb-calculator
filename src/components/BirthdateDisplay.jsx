@@ -192,12 +192,12 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     placeholder={
                       this.state.active
                         ? ""
-                        : "Enter MM/DD/YYYY for payment estimates"
+                        : "MM/DD/YYYY"
                     }
                     onBlur={this.onBlur}
                     onFocus={this.onFocus}
                     onChange={this.onChange}
-                    aria-label="Enter birthdate for payment estimates"
+                    aria-label="Enter your child's birthdate for plan prices"
                   />
                 </Tooltip>
                 <div styleName="grade-adjust" data-hj-whitelist>

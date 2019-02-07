@@ -39,24 +39,30 @@
 
     h1,
     h2 {
-      font-family: "Open Sans";
-      font-weight: 300;
-      color: var(--color-blue);
+      font-family: Questrial;
       text-align: center;
-      margin: 10px 0;
-      font-size: 30px;
+      margin: 5px 0;
 
       @media (min-width: 599px) {
         text-align: left;
       }
     }
 
+    h1 {
+      color: var(--color-blue);
+      font-size: 44px;
+      line-height: 100%;
+      font-weight: 400;
+    }
+
     h2 {
+      font-family: Open Sans;
       color: var(--color-black);
-      font-size: 24px;
+      font-size: 30px;
+      font-weight: 300;
 
       @media (min-width: 599px) {
-        line-height: 30px;
+        line-height: 125%;
       }
     }
 
@@ -114,7 +120,7 @@
     }
 
     .header-content {
-      width: 45%;
+      width: 50%;
       z-index: 5;
     }
   }
