@@ -8,11 +8,16 @@
     max-width: 100%;
     line-height: 18px;
     height: 0;
-    td {
-      vertical-align: middle;
-      &.def--info {
-        font-size: 16px;
-        vertical-align: bottom;
+    tr {
+      td {
+        vertical-align: middle;
+        &.def--info {
+          font-size: 16px;
+          vertical-align: bottom;
+        }
+      }
+      &:nth-child(2n + 3):nth-last-child(2n + 3) {
+        background-color: rgba(0, 0, 0, 0.05);
       }
     }
   }
@@ -323,31 +328,7 @@
 .plan--uni {
 }
 
-.plan--college:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--color-lighter-gray);
-  z-index: -1;
-}
-
 .plan--dorm {
-  padding: 15px;
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-lighter-gray);
-    z-index: -1;
-  }
-
   .starting {
     display: block;
   }
@@ -359,14 +340,6 @@
 
   .college-price {
     color: var(--color-blue);
-    /* &:after {
-      display: block;
-      content: "";
-      height: 1px;
-      width: 60%;
-      background-color: var(--color-gray);
-      margin: 20px auto;
-    } */
 
     .estimate {
       color: var(--color-blue);
@@ -386,14 +359,6 @@
   .college-price {
     color: var(--color-blue);
     padding-bottom: 20px;
-    /* &:after {
-      display: block;
-      content: "";
-      height: 1px;
-      width: 60%;
-      background-color: var(--color-gray);
-      margin: 20px auto;
-    } */
 
     .estimate {
       color: var(--color-blue);
