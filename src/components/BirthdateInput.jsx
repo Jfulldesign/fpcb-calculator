@@ -2,7 +2,8 @@
 
 import React from "react";
 import cx from "classnames";
-import MaskedInput from "react-maskedinput";
+import MaskedInput from "react-text-mask";
+import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { Tooltip } from "react-tippy";
 import { parse, format, addYears, subYears, isValid, getYear } from "date-fns";
 import { gatedKeyPress } from "util/keyboard";
@@ -19,7 +20,7 @@ type Props = {
   onHasCalcDate: Date => void,
   onHasDispDate: Date => void
 };
-
+const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy');
 type State = {
   active: boolean,
   expand: boolean,
@@ -141,6 +142,21 @@ export default class BirthdateInput extends React.Component<Props, State> {
             aria-label="Enter your child's birthdate for plan prices"
             id="date_entry"
             data-hj-whitelist
+          />
+          <MaskedInput
+            mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+            guide={true}
+            pattern="\d*"
+            keepCharPositions={true}
+            value={this.state.value}
+            pipe={autoCorrectedDatePipe}
+            placeholder={
+              this.state.active ? "MM/DD/YYYY" : "MM/DD/YYYY"
+            }
+            onFocus={this.onFocus}
+            onChange={this.onChange}
+            aria-label="Enter your child's birthdate for plan prices"
+            id="date_entry_ie11"
           />
         </Tooltip>
         {expand === false ? (
