@@ -186,6 +186,7 @@
   .review-dates {
     display: flex;
     flex-direction: column;
+    text-align:center;
   }
 
   .grade-adjust {
