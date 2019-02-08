@@ -21,6 +21,13 @@ type Props = {
   onHasDispDate: Date => void
 };
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy');
+
+// Safari 3.0+ "[object HTMLElementConstructor]" 
+let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+// Internet Explorer 6-11
+let isIE = /*@cc_on!@*/false || !!document.documentMode;
+
 type State = {
   active: boolean,
   expand: boolean,
@@ -111,7 +118,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
       active: this.state.active,
       "birthdate-input": true
     });
-
+    if(!isIE && !isSafari){
     return (
       <form styleName={styleName}>
         <span>Enter your child&apos;s birthdate for plan prices:</span>
@@ -131,6 +138,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
           tabIndex="0"
           arrow
         >
+        
           <input
             type="date"
             value={this.state.value ? this.state.value : ""}
@@ -143,21 +151,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             id="date_entry"
             data-hj-whitelist
           />
-          <MaskedInput
-            mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
-            guide={true}
-            pattern="\d*"
-            keepCharPositions={true}
-            value={this.state.value}
-            pipe={autoCorrectedDatePipe}
-            placeholder={
-              this.state.active ? "MM/DD/YYYY" : "MM/DD/YYYY"
-            }
-            onFocus={this.onFocus}
-            onChange={this.onChange}
-            aria-label="Enter your child's birthdate for plan prices"
-            id="date_entry_ie11"
-          />
+          
         </Tooltip>
         {expand === false ? (
           <div styleName="button-container">
@@ -261,6 +255,148 @@ export default class BirthdateInput extends React.Component<Props, State> {
           </div>
         )}
       </form>
-    );
+    )
+                 } else {
+
+      return (
+        <form styleName={styleName}>
+          <span>Enter your child&apos;s birthdate for plan prices:</span>
+          <Tooltip
+            styleName="date-input-tooltip-container"
+            html={
+              <div className="tip">
+                <p>
+                  Prepaid Plans are only available for students in the 11th grade
+                  or below and children born on, or before, April 30,{" "}
+                  {getYear(addYears(cutoff, 1))}.
+                </p>
+              </div>
+            }
+            open={dateError}
+            position="top"
+            tabIndex="0"
+            arrow
+          >
+          
+           <MaskedInput
+            mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+            guide={true}
+            pattern="\d*"
+            keepCharPositions={true}
+            value={this.state.value}
+            pipe={autoCorrectedDatePipe}
+            placeholder={
+              this.state.active ? "MM/DD/YYYY" : "MM/DD/YYYY"
+            }
+            onFocus={this.onFocus}
+            onChange={this.onChange}
+            aria-label="Enter your child's birthdate for plan prices"
+            id="date_entry"
+          />
+          </Tooltip>
+          {expand === false ? (
+            <div styleName="button-container">
+              <button
+                disabled={!isValidDate(new Date(value))}
+                onClick={this.onSubmit}
+                onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSubmit)}
+              >
+                Start Calculating
+              </button>
+            </div>
+          ) : (
+            <div styleName="review-dates">
+              <div styleName="grade-adjust">
+                Your child is
+                <span styleName="grade-display">
+                  {describeChild(date)}
+                  <Tooltip
+                    html={
+                      <div className="tip">
+                        <h6>Why is this important?</h6>
+                        <p>
+                          Your child&apos;s age and grade predicts the year they will
+                          graduate high school and begin using their Florida Prepaid Plan. The
+                          beneficiary has up to 10 years following high school graduation to
+                          use a Florida Prepaid Plan. You may enroll any Florida
+                          resident with a valid Social Security number, age
+                          newborn through 11th grade, in a Prepaid Plan. For newborns, the
+                          Social Security Number is not required when the Application is submitted,
+                          but it must be provided shortly thereafter.
+                        </p>
+                      </div>
+                    }
+                    position="bottom"
+                    trigger="mouseenter"
+                    tabIndex="0"
+                    arrow
+                  >
+                    <button type="button" styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+                </span>
+                <div styleName="grade-adjust-buttons">
+                  <button
+                    disabled={didx <= -1 || !isInSchool || age <= 4}
+                    onClick={this.subtractYear}
+                    onKeyPress={gatedKeyPress(
+                      ["Space", "Enter"],
+                      this.subtractYear
+                    )}
+                  >
+                    <i className="fa fa-minus-circle" />
+                    Subtract Year
+                  </button>
+                  <button
+                    disabled={didx >= 1 || !isInSchool || age >= 16}
+                    onClick={this.addYear}
+                    onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
+                  >
+                    <i className="fa fa-plus-circle" />
+                    Add Year
+                  </button>
+                </div>
+              </div>
+              <div styleName="graduation-estimate">
+                Your child will graduate in
+                <span styleName="graduation-display">
+                  {graduatesIn(date)}
+                  <Tooltip
+                    html={
+                      <div className="tip">
+                        <h6>Why is this important?</h6>
+                        <p>
+                          Your child&apos;s birthdate predicts the year they will
+                          graduate high school and begin using their Florida Prepaid Plan,
+                          based on child’s age/grade on or before{" "}
+                          {` ${format(cutoff, "MMMM D, YYYY")}`}. The date entered
+                          must be today or earlier.
+                        </p>
+                      </div>
+                    }
+                    position="top"
+                    trigger="mouseenter"
+                    tabIndex="0"
+                    arrow
+                  >
+                    <button type="button" styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+                </span>
+              </div>
+              <button
+                styleName="button-submit"
+                onClick={this.onSetDate}
+                onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
+              >
+                Show My Rates
+              </button>
+            </div>
+          )}
+        </form>
+      )
+    };
   }
 }
