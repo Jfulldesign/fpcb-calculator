@@ -28,7 +28,7 @@ import "./styles/BirthdateDisplay.css";
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy');
 
-// Safari 3.0+ "[object HTMLElementConstructor]" 
+// Safari 3.0+ "[object HTMLElementConstructor]"
 let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
 
 // Internet Explorer 6-11
@@ -61,12 +61,24 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     this.addYear = this.addYear.bind(this);
     this.subtractYear = this.subtractYear.bind(this);
     this.onSetDate = this.onSetDate.bind(this);
-    this.state = {
-      editActive: false,
-      calcDate: props.calcDate,
-      dateError: false,
-      value: format(props.dispDate, "MM/DD/YYYY")
-    };
+    if(isSafari || isIE){
+      this.state = {
+        editActive: false,
+        calcDate: props.calcDate,
+        dateError: false,
+        value: format(props.dispDate, "MM/DD/YYYY")
+        // value: format(props.dispDate, "YYYY-MM-DD")
+      };
+    } else {
+      this.state = {
+        editActive: false,
+        calcDate: props.calcDate,
+        dateError: false,
+        // value: format(props.dispDate, "MM/DD/YYYY")
+        value: format(props.dispDate, "YYYY-MM-DD")
+      };
+    }
+
 
   }
 
@@ -125,8 +137,6 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   render() {
-    console.log('hey');
-
     const { editActive, dateError, value } = this.state;
     const { dispDate, calcDate } = this.props;
     const age = getAge(calcDate);
@@ -186,7 +196,10 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 >
                   <input
                     type="date"
-                    value={this.state.value ? format(this.state.value, 'YYYY-MM-DD') : ""}
+                    // value={value}
+                    value={this.state.value}
+                    // value={this.state.value ? this.state.value : ""}
+                    // value={this.state.value ? format(this.state.value, 'YYYY-MM-DD') : ""}
                     placeholder={
                       this.state.active ? "MM/DD/YYYY" : "MM/DD/YYYY"
                     }
@@ -299,7 +312,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
       </div>
     )
     } else {
-      return( 
+      return(
       <div styleName="birthdate-display-container">
         <div styleName="birthdate-display">
           <dl data-hj-whitelist>

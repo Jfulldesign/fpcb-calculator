@@ -22,7 +22,7 @@ type Props = {
 };
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy');
 
-// Safari 3.0+ "[object HTMLElementConstructor]" 
+// Safari 3.0+ "[object HTMLElementConstructor]"
 let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
 
 // Internet Explorer 6-11
@@ -72,9 +72,8 @@ export default class BirthdateInput extends React.Component<Props, State> {
     if (target instanceof HTMLInputElement) {
       const value = target.value;
       const date = parse(value);
-
       if (isValidDate(date)) {
-        this.setState({ date, value, dateError: false });
+        this.setState({ date, value, dateError: false, didx: 0 });
         this.props.onHasCalcDate(date);
       } else if (isValid(date)) {
         this.setState({ value, dateError: true });
@@ -138,7 +137,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
           tabIndex="0"
           arrow
         >
-        
+
           <input
             type="date"
             value={this.state.value ? this.state.value : ""}
@@ -151,7 +150,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             id="date_entry"
             data-hj-whitelist
           />
-          
+
         </Tooltip>
         {expand === false ? (
           <div styleName="button-container">
@@ -277,7 +276,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             tabIndex="0"
             arrow
           >
-          
+
            <MaskedInput
             mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
             guide={true}
