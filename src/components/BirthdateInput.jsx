@@ -87,12 +87,15 @@ export default class BirthdateInput extends React.Component<Props, State> {
     const { date, didx } = this.state;
     event.preventDefault();
     this.setState({ date: subYears(date, 1), didx: didx + 1 });
+    this.props.onHasCalcDate(subYears(date, 1));
+
   };
 
   subtractYear = (event: Event) => {
     const { date, didx } = this.state;
     event.preventDefault();
     this.setState({ date: addYears(date, 1), didx: didx - 1 });
+    this.props.onHasCalcDate(addYears(date, 1));
   };
 
   onSubmit = (event: Event) => {

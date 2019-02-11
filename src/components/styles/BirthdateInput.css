@@ -63,6 +63,7 @@
     }
   }
 
+
   .button-container {
     height: 0;
     overflow: hidden;
@@ -169,4 +170,9 @@
 
 .button-submit {
   align-self: center;
+}
+@-moz-document url-prefix() {
+  input[type="date"] {
+    width: auto;
+  }
 }
