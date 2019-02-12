@@ -62,8 +62,5 @@ export function isValidDate(d: ?Date): boolean {
 }
 
 export function formatMoney(n: number): string {
-  return n.toLocaleString(undefined, {
-    style: "currency",
-    currency: "USD"
-  });
+  return '$'+(n).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
 }
