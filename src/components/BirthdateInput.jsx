@@ -88,7 +88,6 @@ export default class BirthdateInput extends React.Component<Props, State> {
     event.preventDefault();
     this.setState({ date: subYears(date, 1), didx: didx + 1 });
     this.props.onHasCalcDate(subYears(date, 1));
-
   };
 
   subtractYear = (event: Event) => {
@@ -258,8 +257,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
         )}
       </form>
     )
-                 } else {
-
+    } else {
       return (
         <form styleName={styleName}>
           <span>Enter your child&apos;s birthdate for plan prices:</span>

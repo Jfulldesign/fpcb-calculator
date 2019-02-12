@@ -27,7 +27,6 @@ export function describeChild(date: Date, cut?: Date = cutoff): ?string {
   if (isFuture(date)) return;
   const age = differenceInYears(cut, date);
   if (age >= 18) return;
-
   if (date > cut) return "a newborn";
   if (age === 0) return "an infant";
   if (age > 0 && age < 5) return `${age} ${pluralize("years", age)} old`;

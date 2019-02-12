@@ -321,7 +321,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
           </dl>
           <dl data-hj-whitelist>
             <dt>Child is</dt>
-            <dd data-hj-whitelist>{describeChild(calcDate)}</dd>
+            <dd data-hj-whitelist>{describeChild(this.state.calcDate)}</dd>
           </dl>
           <Media.default query="(max-width: 599px)">
             {matches => (
@@ -392,7 +392,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 <div styleName="grade-adjust" data-hj-whitelist>
                   Your child is
                   <span styleName="grade-display" data-hj-whitelist>
-                    {describeChild(calcDate)}
+                    {describeChild(this.state.calcDate)}
                     <Tooltip
                       html={
                         <div className="tip">
