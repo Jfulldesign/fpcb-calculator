@@ -60,6 +60,8 @@ class FPCBCalculators
         );
       }
 
+    }
+
     public function registerAssets()
     {
         array_push($this->script_handles, Register_glob('*.js', 'wp_register_script'));
