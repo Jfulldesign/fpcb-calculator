@@ -41,8 +41,14 @@ class FPCBCalculators
     public $script_handles = array();
     public $style_handles = array();
 
+    function check_uri($url) {
+        if (strpos($_SERVER['REQUEST_URI'], $url) === 0) return TRUE;
+        else return FALSE;
+    }
     public function init()
     {
+      // only load calculator assets for page it is displayed on
+      if($this->check_uri('/prepaid-plans/plans-and-pricing') ){
         add_action('init', array($this, 'registerAssets'), 9999);
         add_action('wp_enqueue_scripts', array($this, 'loadAssets'), 9999);
 
@@ -52,6 +58,8 @@ class FPCBCalculators
                 echo ('<div class="hook--calculators"></div>');
             }
         );
+      }
+
     }
 
     public function registerAssets()
