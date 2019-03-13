@@ -86,7 +86,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
 
     return (
       <React.Fragment>
-        <div styleName={styleName}>
+        <div styleName={styleName} id="plan-list-container">
           <h4>What does this plan cover?</h4>
           <ol>
             <li>
@@ -187,7 +187,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${
                 plan.id
               }`}
-              styleName="enroll"
+              styleName="enroll" className="planenroll_url" id={`planenroll_url-${plan.id}`}
             >
               Enroll Online
             </a>
@@ -205,7 +205,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               <h2>Send me a copy</h2>
               <h3>Lorem ispum dolor sit amet.</h3>
               <button onClick={this.closeModal} styleName="button-close">
-                <i className="fa fa-times" />
+                <i className="fas fa-times" />
               </button>
               <form>
                 <div styleName="emails">

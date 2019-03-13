@@ -9,10 +9,11 @@ import PlanCarousel from "components/PlanCarousel";
 import BirthdateInput from "components/BirthdateInput";
 import BirthdateDisplay from "components/BirthdateDisplay";
 import PaymentPlanSelector from "components/PaymentPlanSelector";
+import { addYears, isValid } from "date-fns";
 
 import heroImage from "assets/hero.jpg";
 import { PLANS } from "util/constants";
-import { priceIndex } from "util/maths";
+import { isValidDate, priceIndex } from "util/maths";
 import type { PaymentSchedule, PlanID } from "util/types.flow.js";
 import "./styles/App.css";
 
@@ -25,12 +26,14 @@ type State = {
 
 const query = qs.parse(window.location.search);
 
+console.log(!isNaN(Date.parse(query.dispDate)));
 export default class App extends React.Component<{}, State> {
+  
   state = {
-    dispDate: null,
-    calcDate: null,
+    dispDate: !isNaN(Date.parse(query.dispDate)) ? new Date(query.dispDate) : null,
+    calcDate: !isNaN(Date.parse(query.dispDate)) ? addYears(new Date(query.dispDate), query.didx ? query.didx : 0) : null,
     focus: query.focus,
-    paymentType: "monthly"
+    paymentType: query.paymentType ? query.paymentType : "monthly"
   };
 
   constructor(props: Props) {

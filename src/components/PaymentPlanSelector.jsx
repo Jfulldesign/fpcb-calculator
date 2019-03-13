@@ -37,6 +37,7 @@ export default class PaymentPlanSelector extends React.Component<Props> {
 
     return (
       <div styleName="payment-selector">
+        <div id="active-container" styleName="payment-selector-container" className="pay-month">
         <input
           type="radio"
           id="pay-monthly"
@@ -44,10 +45,13 @@ export default class PaymentPlanSelector extends React.Component<Props> {
           value="monthly"
           onChange={this.onChange}
           checked={paymentType === "monthly"}
+          className="activator activator-pay"
         />
-        <label htmlFor="pay-monthly" data-hj-whitelist>
+        <label htmlFor="pay-monthly" className="activator activator-label" data-hj-whitelist>
           Monthly{" "}
-          <span styleName="description" data-hj-whitelist>{PAYMENT_COUNT[pidx]} payments</span>
+          <span styleName="description" data-hj-whitelist>
+            <span id="payment_months">{PAYMENT_COUNT[pidx]}</span> payments
+          </span>
         </label>
 
         <input
@@ -58,8 +62,9 @@ export default class PaymentPlanSelector extends React.Component<Props> {
           disabled={pidx > 14}
           checked={paymentType === "short"}
           onChange={this.onChange}
+          className="activator activator-pay"
         />
-        <label htmlFor="pay-short" data-hj-whitelist>
+        <label htmlFor="pay-short" className="activator activator-label" data-hj-whitelist>
           5 Year<span styleName="description">55 payments</span>
         </label>
 
@@ -70,43 +75,44 @@ export default class PaymentPlanSelector extends React.Component<Props> {
           value="single"
           checked={paymentType === "single"}
           onChange={this.onChange}
+          className="activator activator-pay"
         />
-        <label htmlFor="pay-single" data-hj-whitelist>
+        <label htmlFor="pay-single" className="activator activator-label" data-hj-whitelist>
           Lump Sum<span styleName="description">One payment</span>
         </label>
-
-        <Tooltip
-          html={
-            <div className="tip">
-              <h6>What are my payment options?</h6>
-              <p>
-                The monthly payment option breaks down plan prices into monthly
-                payments through the year your child graduates from high school.
-              </p>
-              <p>
-                The 5-Year option breaks down plan prices into 55 monthly
-                payments over five years.
-              </p>
-              <p>
-                Both the monthly and 5-year options include an interest fee that
-                is determined by the contract year and will not change.
-              </p>
-              <p>
-                If you decide to make one lump-sum payment, there is no interest
-                fee applied.
-              </p>
-            </div>
-          }
-          position="bottom"
-          trigger="mouseenter"
-          tabIndex="0"
-          arrow
-        >
-          <button styleName="info-tooltip">
-            <i className="fa fa-info-circle" />
-          </button>
-        </Tooltip>
       </div>
+      <Tooltip
+        html={
+          <div className="tip">
+            <h6>What are my payment options?</h6>
+            <p>
+              The monthly payment option breaks down plan prices into monthly
+              payments through the year your child graduates from high school.
+            </p>
+            <p>
+              The 5-Year option breaks down plan prices into 55 monthly
+              payments over five years.
+            </p>
+            <p>
+              Both the monthly and 5-year options include an interest fee that
+              is determined by the contract year and will not change.
+            </p>
+            <p>
+              If you decide to make one lump-sum payment, there is no interest
+              fee applied.
+            </p>
+          </div>
+        }
+        position="bottom"
+        trigger="mouseenter"
+        tabIndex="0"
+        arrow
+      >
+        <button styleName="info-tooltip">
+          <i className="fa fa-info-circle" />
+        </button>
+      </Tooltip>
+    </div>
     );
   }
 }

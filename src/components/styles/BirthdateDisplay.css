@@ -9,13 +9,13 @@
 }
 
 .date-input-tooltip-container {
-  width: 70%;
+  width: 100%;
   margin: 0 auto 10px;
 }
 
 .birthdate-display {
   display: flex;
-  padding: 10px 20px;
+  padding: 10px;
   border: 1px solid white;
   justify-content: space-between;
   background: var(--color-light-gray);
@@ -31,30 +31,43 @@
     justify-content: space-evenly;
   }
 
-  dl {
-    margin: 0;
+  .birthdate-result-container {
+    display: flex;
+    width: 75%;
 
-    @media (min-width: 599px) {
-      text-align: center;
+    dl {
+      margin: 0;
+
+      &:first-child {
+        width: 45%;
+      }
+      &:last-child {
+        width: 55%;
+      }
+
+      @media (min-width: 599px) {
+        text-align: center;
+      }
     }
-  }
 
-  dt {
-    font-size: 12px;
-    font-weight: 300;
+    dt {
+      font-size: 12px;
+      font-weight: 300;
+      margin: 0;
 
-    @media (min-width: 599px) {
-      font-size: 16px;
+      @media (min-width: 599px) {
+        font-size: 16px;
+      }
     }
-  }
 
-  dd {
-    font-size: 14px;
-    font-weight: 700;
+    dd {
+      font-size: 14px;
+      font-weight: 700;
 
-    @media (min-width: 599px) {
-      font-size: 24px;
-      font-weight: 600;
+      @media (min-width: 599px) {
+        font-size: 24px;
+        font-weight: 600;
+      }
     }
   }
 
@@ -107,11 +120,12 @@
     width: 100%;
     border: none;
     margin: 10px 0 5px;
-    padding: 5px 0;
+    padding: 10px;
     font-weight: 600;
     border-radius: 5px;
     text-indent: 10px;
     transition: all 0.2s ease;
+    text-align: center;
 
     &::placeholder {
       color: var(--color-black);
@@ -130,12 +144,13 @@
   .button-close {
     appearance: none;
     border: 0;
+    border-radius: 0;
     position: absolute;
     top: 0;
     right: 0;
-    color: var(--color-dark-gray);
-    background: none;
-    font-size: 30px;
+    color: #fff;
+    background: var(--color-dark-blue);
+    font-size: 20px;
     padding: 10px;
     margin: 0;
     line-height: 0;
@@ -147,8 +162,8 @@
     left: 0;
     right: 0;
     height: 350px;
-    overflow: hidden;
     pointer-events: none;
+    overflow: hidden;
 
     .display-edit {
       background: var(--color-blue);
@@ -157,7 +172,7 @@
       top: 0;
       left: 0;
       color: white;
-      padding: 25px 0;
+      padding: 20px 10px 10px 10px;
       transform: translateY(-100%);
       transition: transform 0.2s ease;
       will-change: transform;
@@ -186,7 +201,14 @@
   .review-dates {
     display: flex;
     flex-direction: column;
-    text-align:center;
+    text-align: center;
+
+    span {
+      &.update-info {
+        width: calc(100% - 60px);
+        display: block;
+      }
+    }
   }
 
   .grade-adjust {
@@ -201,16 +223,16 @@
     font-size: 24px;
     font-weight: 700;
     color: var(--color-gray);
-    margin: 10px 0 10px 34px;
+    margin: 0 0 0 20px;
 
     @media (min-width: 599px) {
-      margin: 10px 0;
+      margin: 0;
     }
   }
 
   .grade-adjust-buttons {
     line-height: 0;
-    margin: 5px 0 15px;
+    margin: 5px 0 0 0;
 
     button {
       padding: 0;
@@ -229,6 +251,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 15px 0 0 0;
   }
 
   .graduation-display {

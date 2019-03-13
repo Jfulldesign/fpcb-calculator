@@ -63,7 +63,6 @@
     }
   }
 
-
   .button-container {
     height: 0;
     overflow: hidden;
@@ -76,7 +75,7 @@
   button {
     background: white;
     padding: 14px 28px;
-    margin: 14px;
+    margin: 5px 0 5px 10px;
     border: none;
     text-align: center;
     font-size: 18px;
@@ -84,6 +83,12 @@
     color: var(--color-blue);
     border-radius: 4px;
     transition: color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+
+    &.button-submit {
+      margin: 10px 0 0 0;
+    }
 
     &:focus {
       outline: 0;
@@ -110,7 +115,7 @@
     }
 
     @media (min-width: 599px) {
-      margin: 10px;
+      margin: 5px 10px;
     }
   }
 }
@@ -118,12 +123,16 @@
 .review-dates {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  transition: height 1s ease;
 }
 
 .grade-adjust {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15px;
+  transition: height 1s ease;
 }
 
 .grade-display {
@@ -132,12 +141,13 @@
   font-size: 24px;
   font-weight: 700;
   color: var(--color-gray);
-  margin-left: 34px;
+  margin-left: 15px;
+  transition: height 1s ease;
 }
 
 .grade-adjust-buttons {
   line-height: 0;
-  margin: 5px 0 15px;
+  margin: 5px 0;
 
   button {
     padding: 0;
@@ -156,6 +166,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15px;
 }
 
 .graduation-display {
@@ -164,7 +175,7 @@
   font-size: 24px;
   font-weight: 700;
   color: var(--color-gray);
-  margin-left: 34px;
+  margin-left: 15px;
 }
 
 .button-submit {

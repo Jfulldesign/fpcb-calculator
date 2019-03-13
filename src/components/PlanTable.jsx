@@ -1,6 +1,7 @@
 // @flow
 
 import React from "react";
+import Modal from 'react-modal';
 import cx from "classnames";
 import ScrollHint from "scroll-hint";
 import { Tooltip } from "react-tippy";
@@ -19,16 +20,47 @@ type Props = {
   paymentType: PaymentSchedule
 };
 
-export default class PlanTable extends React.Component<Props> {
+// type State = {
+//   modalAcitve: boolean,
+//   numEmails: number
+// };
+
+export default class PlanTable extends React.Component<Props, State> {
   componentDidMount() {
     new ScrollHint(".js-scrollable", { suggestiveShadow: true });
   }
   handleClick = () => {
     document.getElementById('date_entry').focus();
   }
+  
+  constructor() {
+    super();
+
+    this.state = { modalAcitve: false, numEmails: 1 };
+    // this.openModal = this.openModal.bind(this);
+    // this.closeModal = this.closeModal.bind(this);
+    // this.addEmail = this.addEmail.bind(this);
+    // this.removeEmail = this.removeEmail.bind(this);
+  }
+  // openModal() {
+  //   this.setState({ modalAcitve: true });
+  // }
+  // closeModal() {
+  //   this.setState({ modalAcitve: false });
+  // }
+  // addEmail = (event: Event) => {
+  //   event.preventDefault();
+  //   this.setState({ numEmails: this.state.numEmails + 1 });
+  // }
+  // removeEmail = (event: Event) => {
+  //   event.preventDefault();
+  //   this.setState({ numEmails: this.state.numEmails - 1 });
+  // }
+  
   render() {
     const { plans, date, focus, paymentType } = this.props;
     const pidx = date == null ? 0 : priceIndex(date);
+    const { numEmails } = this.state;
 
     return (
       <div styleName="plan-table" className="js-scrollable">
@@ -51,11 +83,11 @@ export default class PlanTable extends React.Component<Props> {
                   >
                     {note && <div styleName="note">{note}</div>}
                     <div styleName="info-container">
-                      <h3 data-hj-whitelist>{title}</h3>
+                      <h3 data-hj-whitelist id={`plan_name-${id}`} className={`${id}`}>{title}</h3>
                       <p>{description}</p>
-                      <div styleName="price" data-hj-whitelist>
+                      <div styleName="price" data-hj-whitelist className="plan-price-all plan-price-desk">
                         {!date && <span styleName="starting">Starting at</span>}
-                        {formatMoney(price)}
+                        <span id={`plan_price-${id}`}>{formatMoney(price)}</span>
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
                         )}
@@ -82,7 +114,7 @@ export default class PlanTable extends React.Component<Props> {
                     ) : (
                       <div styleName="stack--hours" data-hj-whitelist>
                         <IconUni styleName="icon icon--uni" />
-                        {state} Hours
+                        <span styleName="space-after" id={`state_hours-${id}`}>{state}</span> Hours
                       </div>
                     )}
                   </td>
@@ -106,7 +138,7 @@ export default class PlanTable extends React.Component<Props> {
                     ) : (
                       <div styleName="stack--hours" data-hj-whitelist>
                         <IconCollege styleName="icon icon--college" />
-                        {college} Hours
+                        <span styleName="space-after" id={`college_hours-${id}`}>{college}</span> Hours
                       </div>
                     )}
                   </td>
@@ -176,7 +208,7 @@ export default class PlanTable extends React.Component<Props> {
                     {dorm ? (
                       <React.Fragment>
                         {!date && <span styleName="starting">Starting at</span>}
-                        {formatMoney(DORM.prices[paymentType][pidx])}
+                        <span id={`dorm_price-${id}`}>{formatMoney(DORM.prices[paymentType][pidx])}</span>
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
                         )}
@@ -190,7 +222,7 @@ export default class PlanTable extends React.Component<Props> {
             </tr>
             <tr>
               <td styleName={`def def--cost`} data-hj-whitelist>Estimated future benefit
-              {date ? <span> beginning in {graduatesIn(date)}.</span> : null}
+              {date ? <span> beginning in <span id="graduation-display">{graduatesIn(date)}</span>.</span> : null}
                 
               <Tooltip html={
                   <div className="tip">
@@ -229,7 +261,7 @@ export default class PlanTable extends React.Component<Props> {
                     key={`plan--${id}--cost`} data-hj-whitelist
                   >
                     <div styleName="college-price" data-hj-whitelist>
-                      <span styleName="estimate" data-hj-whitelist>{`$${price.toLocaleString()}`}</span>
+                      <span styleName="estimate" data-hj-whitelist id={`benefit_price-${id}`}>{`$${price.toLocaleString()}`}</span>
                     </div>
                   </td>
                 ) : [ 
@@ -264,15 +296,54 @@ export default class PlanTable extends React.Component<Props> {
                   >
                     <a
                       href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
-                      styleName="enroll"
+                      styleName="enroll" className="planenroll_url" id={`planenroll_url-${id}`}
                     >
                       Enroll Online
                     </a>
-                    {/* {date && (
-                    <a href="" styleName="email">
+                    {/* <button href="" className="emailpricesbutton" styleName="email" onClick={this.openModal}>
                       Email Prices
-                    </a>
-                  )} */}
+                    </button>
+                    <Modal
+                      isOpen={this.state.modalAcitve}
+                      onAfterOpen={this.afterOpenModal}
+                      onRequestClose={this.closeModal}
+                      className="modal"
+                      contentLabel="Email My Prices"
+                    >
+                      <h2>Send me a copy</h2>
+                      <h3>Lorem ispum dolor sit amet.</h3>
+                      <button onClick={this.closeModal} className="button-close">
+                        <i className="fas fa-times" />
+                      </button>
+                      <form>
+                        <div className="emails">
+                          {[...Array(numEmails)].map((_, idx) => (
+                            <input
+                              type="email"
+                              key={`email--${idx}`}
+                              name={`email--${idx}`}
+                              placeholder="Email Address"
+                            />
+                          ))}
+                          {numEmails > 1 && (
+                            <button href="#" className="remove-email" onClick={this.removeEmail}>
+                              <i className="fa fa-minus-circle" />
+                            </button>
+                          )}
+                        </div>
+                        <button className="add-email" onClick={this.addEmail}>
+                          Send a copy to another address
+                          <i className="fa fa-plus-circle" />
+                        </button>
+                        <div className="optin">
+                          <input type="checkbox" id="join-mailing-list" />
+                          <label htmlFor="join-mailing-list">
+                            I would like to join the mailing list.
+                          </label>
+                        </div>
+                        <button type="submit">Send My Results</button>
+                      </form>
+                    </Modal> */}
                   </td>
                 ) : (
                   <td
@@ -281,15 +352,10 @@ export default class PlanTable extends React.Component<Props> {
                 >
                   <a
                     href={`https://customeraccess.myfloridaprepaid.com/selectpath.aspx?plan=${id}`}
-                    styleName="enroll"
+                    styleName="enroll" className="planenroll_url" id={`planenroll_url-${id}`}
                   >
                     Enroll Online
                   </a>
-                  {/* {date && (
-                  <a href="" styleName="email">
-                    Email Prices
-                  </a>
-                )} */}
                 </td>
                 );
               })}

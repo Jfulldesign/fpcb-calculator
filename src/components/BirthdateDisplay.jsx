@@ -149,14 +149,16 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     return (
       <div styleName="birthdate-display-container">
         <div styleName="birthdate-display">
-          <dl data-hj-whitelist>
-            <dt>Birthdate</dt>
-            <dd data-hj-whitelist>{format(dispDate, "MM/DD/YYYY")}</dd>
-          </dl>
-          <dl data-hj-whitelist>
-            <dt>Child is</dt>
-            <dd data-hj-whitelist>{describeChild(calcDate)}</dd>
-          </dl>
+          <div styleName="birthdate-result-container">
+            <dl>
+              <dt>Birthdate</dt>
+              <dd id="dob">{format(dispDate, "MM/DD/YYYY")}</dd>
+            </dl>
+            <dl>
+              <dt>Child is</dt>
+              <dd id="graduation-display">{describeChild(calcDate)}</dd>
+            </dl>
+          </div>
           <Media.default query="(max-width: 599px)">
             {matches => (
               <button
@@ -175,9 +177,10 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 onClick={this.onClose}
                 onKeyPress={gatedKeyPress(["Space", "Enter"], this.onClose)}
               >
-                <i className="fa fa-times-circle" />
+                <i className="fas fa-times" />
               </button>
               <div styleName="review-dates">
+              <span className="update-info">Edit my child's information:</span>
                 <Tooltip
                   styleName="date-input-tooltip-container"
                   html={
@@ -210,9 +213,9 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     data-hj-whitelist
                   />
                 </Tooltip>
-                <div styleName="grade-adjust" data-hj-whitelist>
+                <div styleName="grade-adjust">
                   Your child is
-                  <span styleName="grade-display" data-hj-whitelist>
+                  <span styleName="grade-display">
                     {describeChild(calcDate)}
                     <Tooltip
                       html={
@@ -239,6 +242,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       </button>
                     </Tooltip>
                   </span>
+                  
+                {isInSchool  &&
                   <div styleName="grade-adjust-buttons">
                     <button
                       disabled={
@@ -268,11 +273,11 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     >
                       <i className="fa fa-plus-circle" />
                     </button>
-                  </div>
+                  </div>}
                 </div>
-                <div styleName="graduation-estimate" data-hj-whitelist>
+                <div styleName="graduation-estimate">
                   Your child will graduate in
-                  <span styleName="graduation-display" data-hj-whitelist>
+                  <span styleName="graduation-display">
                     {graduatesIn(calcDate)}
                     <Tooltip
                       html={
@@ -302,6 +307,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   styleName="button-submit"
                   onClick={this.onSetDate}
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
+                  className="activator activator-update"
+                  id="update-info-2"
                 >
                   Update My Child’s Information
                 </button>
@@ -315,13 +322,13 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
       return(
       <div styleName="birthdate-display-container">
         <div styleName="birthdate-display">
-          <dl data-hj-whitelist>
+          <dl>
             <dt>Birthdate</dt>
-            <dd data-hj-whitelist>{format(dispDate, "MM/DD/YYYY")}</dd>
+            <dd>{format(dispDate, "MM/DD/YYYY")}</dd>
           </dl>
-          <dl data-hj-whitelist>
+          <dl>
             <dt>Child is</dt>
-            <dd data-hj-whitelist>{describeChild(this.state.calcDate)}</dd>
+            <dd>{describeChild(this.state.calcDate)}</dd>
           </dl>
           <Media.default query="(max-width: 599px)">
             {matches => (
@@ -341,7 +348,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 onClick={this.onClose}
                 onKeyPress={gatedKeyPress(["Space", "Enter"], this.onClose)}
               >
-                <i className="fa fa-times-circle" />
+                <i className="fas fa-times" />
               </button>
               <div styleName="review-dates">
                 <Tooltip
@@ -389,9 +396,9 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     aria-label="Enter your child's birthdate for plan prices"
                   />
                 </Tooltip>
-                <div styleName="grade-adjust" data-hj-whitelist>
+                <div styleName="grade-adjust">
                   Your child is
-                  <span styleName="grade-display" data-hj-whitelist>
+                  <span styleName="grade-display">
                     {describeChild(this.state.calcDate)}
                     <Tooltip
                       html={
@@ -449,9 +456,9 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     </button>
                   </div>
                 </div>
-                <div styleName="graduation-estimate" data-hj-whitelist>
+                <div styleName="graduation-estimate">
                   Your child will graduate in
-                  <span styleName="graduation-display" data-hj-whitelist>
+                  <span styleName="graduation-display">
                     {graduatesIn(calcDate)}
                     <Tooltip
                       html={
@@ -481,6 +488,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   styleName="button-submit"
                   onClick={this.onSetDate}
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
+                  className="activator activator-update"
+                  id="update-info-1"
                 >
                   Update My Child’s Information
                 </button>

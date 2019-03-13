@@ -1,13 +1,37 @@
 .payment-selector {
   display: flex;
   align-items: center;
+  position: relative;
+  width: 100%;
+
+  .payment-selector-container {
+    width: calc(100% - 26px);
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 33.333%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      z-index: -1;
+      background-color: var(--color-blue);
+      transition: all 0.2s ease;
+    }
+  }
 
   input[type="radio"] {
     display: none;
   }
 
   label {
-    background-color: white;
+    background-color: transparent;
     padding: 10px;
     flex-basis: 0;
     flex-grow: 1;
@@ -17,7 +41,9 @@
     border-left: 0;
     margin-bottom: 0;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
 
     &:last-of-type {
       border-radius: 0 5px 5px 0;
@@ -36,8 +62,15 @@
   }
 
   input[type="radio"]:checked + label {
-    background-color: var(--color-blue);
     color: white;
+
+    &:last-of-type:after {
+      left: 0;
+    }
+
+    &:first-of-type:after {
+      left: 0;
+    }
   }
 
   input[type="radio"]:disabled + label {
@@ -48,6 +81,7 @@
     margin-left: 5px;
     background: transparent;
     color: var(--color-yellow);
+    width: 26px;
 
     i {
       font-size: 24px !important;

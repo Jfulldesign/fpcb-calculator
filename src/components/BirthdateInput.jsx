@@ -57,6 +57,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
     this.subtractYear = this.subtractYear.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSetDate = this.onSetDate.bind(this);
+    this.onClickLoad = this.onClickLoad.bind(this);
   }
 
   onBlur = () => {
@@ -74,7 +75,8 @@ export default class BirthdateInput extends React.Component<Props, State> {
       const date = parse(value);
       if (isValidDate(date)) {
         this.setState({ date, value, dateError: false, didx: 0 });
-        this.props.onHasCalcDate(date);
+        // this.props.onHasCalcDate(date);
+        this.setState({ expand: true });
       } else if (isValid(date)) {
         this.setState({ value, dateError: true });
       } else {
@@ -87,14 +89,14 @@ export default class BirthdateInput extends React.Component<Props, State> {
     const { date, didx } = this.state;
     event.preventDefault();
     this.setState({ date: subYears(date, 1), didx: didx + 1 });
-    this.props.onHasCalcDate(subYears(date, 1));
+    // this.props.onHasCalcDate(subYears(date, 1));
   };
 
   subtractYear = (event: Event) => {
     const { date, didx } = this.state;
     event.preventDefault();
     this.setState({ date: addYears(date, 1), didx: didx - 1 });
-    this.props.onHasCalcDate(addYears(date, 1));
+    // this.props.onHasCalcDate(addYears(date, 1));
   };
 
   onSubmit = (event: Event) => {
@@ -110,6 +112,10 @@ export default class BirthdateInput extends React.Component<Props, State> {
       this.props.onHasDispDate(addYears(date, didx));
     }
   };
+  
+  onClickLoad = (event: Event) => {
+    this.onSetDate;
+  };
 
   render() {
     const { value, didx, date, expand, dateError } = this.state;
@@ -121,7 +127,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
     });
     if(!isIE && !isSafari){
     return (
-      <form styleName={styleName}>
+      <form id="birthday-form" styleName={styleName}>
         <span>Enter your child&apos;s birthdate for plan prices:</span>
         <Tooltip
           styleName="date-input-tooltip-container"
@@ -151,25 +157,26 @@ export default class BirthdateInput extends React.Component<Props, State> {
             aria-label="Enter your child's birthdate for plan prices"
             id="date_entry"
             data-hj-whitelist
+            name="dob"
           />
 
         </Tooltip>
         {expand === false ? (
           <div styleName="button-container">
-            <button
+            {/* <button
               disabled={!isValidDate(new Date(value))}
               onClick={this.onSubmit}
               onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSubmit)}
             >
               Start Calculating
-            </button>
+            </button> */}
           </div>
         ) : (
           <div styleName="review-dates">
-            <div styleName="grade-adjust">
+            <div styleName="grade-adjust" >
               Your child is
               <span styleName="grade-display">
-                {describeChild(date)}
+              <span id="childs_age">{describeChild(date)}</span>
                 <Tooltip
                   html={
                     <div className="tip">
@@ -196,32 +203,34 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   </button>
                 </Tooltip>
               </span>
-              <div styleName="grade-adjust-buttons">
-                <button
-                  disabled={didx <= -1 || !isInSchool || age <= 4}
-                  onClick={this.subtractYear}
-                  onKeyPress={gatedKeyPress(
-                    ["Space", "Enter"],
-                    this.subtractYear
-                  )}
-                >
-                  <i className="fa fa-minus-circle" />
-                  Subtract Year
-                </button>
-                <button
-                  disabled={didx >= 1 || !isInSchool || age >= 16}
-                  onClick={this.addYear}
-                  onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
-                >
-                  <i className="fa fa-plus-circle" />
-                  Add Year
-                </button>
-              </div>
+              {isInSchool  &&
+                <div styleName="grade-adjust-buttons">
+                  <button
+                    disabled={didx <= -1 || !isInSchool || age <= 4}
+                    onClick={this.subtractYear}
+                    onKeyPress={gatedKeyPress(
+                      ["Space", "Enter"],
+                      this.subtractYear
+                    )}
+                  >
+                    <i className="fa fa-minus-circle" />
+                    Subtract Year
+                  </button>
+                  <button
+                    disabled={didx >= 1 || !isInSchool || age >= 16}
+                    onClick={this.addYear}
+                    onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
+                  >
+                    <i className="fa fa-plus-circle" />
+                    Add Year
+                  </button>
+                </div>
+              }
             </div>
             <div styleName="graduation-estimate">
               Your child will graduate in
               <span styleName="graduation-display">
-                {graduatesIn(date)}
+                <span id="graduates_in">{graduatesIn(date)}</span>
                 <Tooltip
                   html={
                     <div className="tip">
@@ -250,6 +259,8 @@ export default class BirthdateInput extends React.Component<Props, State> {
               styleName="button-submit"
               onClick={this.onSetDate}
               onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
+              className="activator activator-submit"
+              id="show-rates"
             >
               Show My Rates
             </button>
@@ -259,7 +270,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
     )
     } else {
       return (
-        <form styleName={styleName}>
+        <form id="birthday-form" styleName={styleName}>
           <span>Enter your child&apos;s birthdate for plan prices:</span>
           <Tooltip
             styleName="date-input-tooltip-container"
@@ -292,6 +303,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             onChange={this.onChange}
             aria-label="Enter your child's birthdate for plan prices"
             id="date_entry"
+            name="dob"
           />
           </Tooltip>
           {expand === false ? (
@@ -309,7 +321,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               <div styleName="grade-adjust">
                 Your child is
                 <span styleName="grade-display">
-                  {describeChild(date)}
+              <span id="childs_age">{describeChild(date)}</span>
                   <Tooltip
                     html={
                       <div className="tip">
@@ -361,7 +373,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               <div styleName="graduation-estimate">
                 Your child will graduate in
                 <span styleName="graduation-display">
-                  {graduatesIn(date)}
+                <span id="graduates_in">{graduatesIn(date)}</span>
                   <Tooltip
                     html={
                       <div className="tip">
@@ -390,6 +402,8 @@ export default class BirthdateInput extends React.Component<Props, State> {
                 styleName="button-submit"
                 onClick={this.onSetDate}
                 onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
+                className="activator activator-submit"
+                id="show-rates"
               >
                 Show My Rates
               </button>

@@ -22,13 +22,14 @@ const PlanCard = ({ plan, type, date }: Props) => {
   const price = pidx == null ? "–" : plan.prices[type][pidx];
 
   return (
-    <div styleName={styleName}>
-      <h1 styleName="title">{plan.title}</h1>
+    <div styleName={styleName} className="plan-price-all plan-price-mob">
+      <h1 styleName="title" className="planname" id={`planname-${plan.id}`}>{plan.title}</h1>
       <p>{plan.description}</p>
       <div styleName="price">
         {!date && <span styleName="starting">Starting at</span>}
-        {formatMoney(price)}
+        <span className="plan_price" id={`plan_price-${plan.id}`}>{formatMoney(price)}</span>
         {type !== "single" && <span styleName="per"> / month</span>}
+        {type == "single" && <span styleName="per">&nbsp;</span>}
       </div>
       {plan.note && <div styleName="note">{plan.note}</div>}
     </div>

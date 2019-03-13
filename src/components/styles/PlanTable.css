@@ -71,7 +71,7 @@
 
 .def--college {
   background-color: var(--color-light-gray) !important;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 .def--fees {
@@ -97,6 +97,15 @@
   border-top: 1px solid var(--color-gray);
   border-right: 1px solid var(--color-gray);
   border-left: 1px solid var(--color-gray);
+
+  &:after {
+    display: block;
+    content: "";
+    height: 1px;
+    width: 60%;
+    background-color: var(--color-gray);
+    margin: -1px auto 0 auto;
+  }
 
   .info-container {
     display: flex;
@@ -124,11 +133,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-size: 24px;
     font-weight: 700;
     line-height: 0.85em;
     min-height: 51px;
-    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 10px;
 
     .starting {
       color: var(--color-dark-gray);
@@ -138,15 +149,6 @@
 
     .per {
       font-size: 16px;
-    }
-
-    &:after {
-      display: block;
-      content: "";
-      height: 1px;
-      width: 60%;
-      background-color: var(--color-gray);
-      margin-top: 10px;
     }
   }
 
@@ -304,6 +306,10 @@
     justify-content: center;
   }
 
+  .space-after {
+    margin-right: 3px;
+  }
+
   &.dimmed {
     color: var(--color-dark-gray);
 
@@ -372,6 +378,7 @@
     background-color: var(--color-blue);
     border-radius: 5px;
     font-size: 14px;
+    transition: opacity 0.2s ease;
 
     &.email {
       background: white;
@@ -386,6 +393,10 @@
 
     a.enroll {
       background-color: var(--color-c2);
+      &:hover {
+        // background-color: #f37021;
+        opacity: 0.85;
+      }
     }
   }
 
@@ -394,6 +405,10 @@
 
     a.enroll {
       background-color: var(--color-c4);
+      &:hover {
+        // background-color: #802755;
+        opacity: 0.85;
+      }
     }
   }
 
@@ -402,6 +417,10 @@
 
     a.enroll {
       background-color: var(--color-p2);
+      &:hover {
+        // background-color: #0D1E56;
+        opacity: 0.85;
+      }
     }
   }
 
@@ -410,6 +429,10 @@
 
     a.enroll {
       background-color: var(--color-u1);
+      &:hover {
+        // background-color: #b90037;
+        opacity: 0.85;
+      }
     }
   }
 
@@ -418,6 +441,10 @@
 
     a.enroll {
       background-color: var(--color-u4);
+      &:hover {
+        // background-color: #00846d;
+        opacity: 0.85;
+      }
     }
   }
 
