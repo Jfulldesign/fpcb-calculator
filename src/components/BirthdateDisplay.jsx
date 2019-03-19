@@ -242,7 +242,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       </button>
                     </Tooltip>
                   </span>
-                  
+
                 {isInSchool  &&
                   <div styleName="grade-adjust-buttons">
                     <button
@@ -322,14 +322,16 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
       return(
       <div styleName="birthdate-display-container">
         <div styleName="birthdate-display">
-          <dl>
-            <dt>Birthdate</dt>
-            <dd>{format(dispDate, "MM/DD/YYYY")}</dd>
-          </dl>
-          <dl>
-            <dt>Child is</dt>
-            <dd>{describeChild(this.state.calcDate)}</dd>
-          </dl>
+          <div styleName="birthdate-result-container">
+            <dl>
+              <dt>Birthdate</dt>
+              <dd id="dob">{format(dispDate, "MM/DD/YYYY")}</dd>
+            </dl>
+            <dl>
+              <dt>Child is</dt>
+              <dd id="graduation-display">{describeChild(this.state.calcDate)}</dd>
+            </dl>
+          </div>
           <Media.default query="(max-width: 599px)">
             {matches => (
               <button
