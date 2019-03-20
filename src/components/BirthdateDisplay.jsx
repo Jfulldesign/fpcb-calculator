@@ -4,6 +4,9 @@ import React from "react";
 import cx from "classnames";
 import MaskedInput from "react-text-mask";
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
+import { PAYMENT_COUNT } from "util/constants";
+import type { PaymentSchedule } from "util/types.flow.js";
+import { priceIndex } from "util/maths";
 import { Media } from "react-fns";
 import { Tooltip } from "react-tippy";
 import {
@@ -38,7 +41,8 @@ type Props = {
   calcDate: Date,
   dispDate: Date,
   onHasDispDate: Date => void,
-  onHasCalcDate: Date => void
+  onHasCalcDate: Date => void,
+  paymentType: PaymentSchedule
 };
 
 type State = {
@@ -137,7 +141,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   render() {
-    const { editActive, dateError, value } = this.state;
+    const { editActive, dateError, value, paymentType } = this.state;
     const { dispDate, calcDate } = this.props;
     const age = getAge(calcDate);
     const isInSchool = calcDate != null && age >= 4;
@@ -309,6 +313,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
                   className="activator activator-update"
                   id="update-info-2"
+                  checked={paymentType === "monthly"}
                 >
                   Update My Child’s Information
                 </button>
@@ -384,7 +389,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     ]}
                     guide={true}
                     pattern="\d*"
-                    value={this.state.value}
+                    value={value}
                     placeholder={
                       this.state.active
                         ? ""
@@ -396,14 +401,12 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     onFocus={this.onFocus}
                     onChange={this.onChange}
                     aria-label="Enter your child's birthdate for plan prices"
-                    id="date_entry"
-                    data-hj-whitelist
                   />
                 </Tooltip>
                 <div styleName="grade-adjust">
                   Your child is
                   <span styleName="grade-display">
-                    {describeChild(calcDate)}
+                    {describeChild(this.state.calcDate)}
                     <Tooltip
                       html={
                         <div className="tip">
@@ -494,6 +497,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSetDate)}
                   className="activator activator-update"
                   id="update-info-1"
+                  checked={paymentType === "monthly"}
                 >
                   Update My Child’s Information
                 </button>

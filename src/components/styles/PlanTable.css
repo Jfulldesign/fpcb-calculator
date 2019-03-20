@@ -130,15 +130,18 @@
   }
 
   .price {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     font-size: 24px;
     font-weight: 700;
     line-height: 0.85em;
-    min-height: 51px;
-    height: 50px;
+    height: 60px;
     position: relative;
     margin-bottom: 10px;
 
