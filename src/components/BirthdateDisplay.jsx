@@ -384,7 +384,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     ]}
                     guide={true}
                     pattern="\d*"
-                    value={value}
+                    value={this.state.value}
                     placeholder={
                       this.state.active
                         ? ""
@@ -396,12 +396,14 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     onFocus={this.onFocus}
                     onChange={this.onChange}
                     aria-label="Enter your child's birthdate for plan prices"
+                    id="date_entry"
+                    data-hj-whitelist
                   />
                 </Tooltip>
                 <div styleName="grade-adjust">
                   Your child is
                   <span styleName="grade-display">
-                    {describeChild(this.state.calcDate)}
+                    {describeChild(calcDate)}
                     <Tooltip
                       html={
                         <div className="tip">

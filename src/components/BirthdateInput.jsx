@@ -112,7 +112,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
       this.props.onHasDispDate(addYears(date, didx));
     }
   };
-  
+
   onClickLoad = (event: Event) => {
     this.onSetDate;
   };
@@ -163,13 +163,13 @@ export default class BirthdateInput extends React.Component<Props, State> {
         </Tooltip>
         {expand === false ? (
           <div styleName="button-container">
-            {/* <button
+            { <button
               disabled={!isValidDate(new Date(value))}
               onClick={this.onSubmit}
               onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSubmit)}
             >
               Start Calculating
-            </button> */}
+            </button> }
           </div>
         ) : (
           <div styleName="review-dates">
