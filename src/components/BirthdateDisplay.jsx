@@ -215,6 +215,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     aria-label="Enter your child's birthdate for plan prices"
                     id="date_entry"
                     data-hj-whitelist
+                    className="updater"
                   />
                 </Tooltip>
                 <div styleName="grade-adjust">
@@ -250,6 +251,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 {isInSchool  &&
                   <div styleName="grade-adjust-buttons">
                     <button
+                      className="btn-adjuster"
                       disabled={
                         differenceInYears(dispDate, calcDate) < 0 ||
                         !isInSchool ||
@@ -264,6 +266,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       <i className="fa fa-minus-circle" />
                     </button>
                     <button
+                      className="btn-adjuster"
                       disabled={
                         differenceInYears(dispDate, calcDate) > 0 ||
                         !isInSchool ||
@@ -434,6 +437,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   </span>
                   <div styleName="grade-adjust-buttons">
                     <button
+                      className="btn-adjuster"
                       disabled={
                         differenceInYears(dispDate, calcDate) < 0 ||
                         !isInSchool ||
@@ -448,6 +452,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       <i className="fa fa-minus-circle" />
                     </button>
                     <button
+                      className="btn-adjuster"
                       disabled={
                         differenceInYears(dispDate, calcDate) > 0 ||
                         !isInSchool ||

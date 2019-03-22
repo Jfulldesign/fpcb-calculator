@@ -326,12 +326,12 @@ export default class PlanTable extends React.Component<Props, State> {
                             />
                           ))}
                           {numEmails > 1 && (
-                            <button href="#" className="remove-email" onClick={this.removeEmail}>
+                            <button href="#" className="remove-email" className="btn-adjuster" onClick={this.removeEmail}>
                               <i className="fa fa-minus-circle" />
                             </button>
                           )}
                         </div>
-                        <button className="add-email" onClick={this.addEmail}>
+                        <button className="add-email" className="btn-adjuster" onClick={this.addEmail}>
                           Send a copy to another address
                           <i className="fa fa-plus-circle" />
                         </button>

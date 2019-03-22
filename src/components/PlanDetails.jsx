@@ -218,12 +218,12 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                     />
                   ))}
                   {numEmails > 1 && (
-                    <button styleName="remove-email" onClick={this.removeEmail}>
+                    <button styleName="remove-email" className="btn-adjuster" onClick={this.removeEmail}>
                       <i className="fa fa-minus-circle" />
                     </button>
                   )}
                 </div>
-                <button styleName="add-email" onClick={this.addEmail}>
+                <button styleName="add-email" className="btn-adjuster" onClick={this.addEmail}>
                   Send a copy to another address
                   <i className="fa fa-plus-circle" />
                 </button>
