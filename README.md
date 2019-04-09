@@ -19,6 +19,8 @@ To deploy changes to calculator to the staging server, you will need to get the 
 
 Complete the `yarn build` and `yarn package` functions on your local repo. This will create files in the fpcb-calculators⁩/dist folder of this repo.
 
+### Deploy to Florida Prepaid Staging
+
 Manually copy the files from your local fpcb-calculators⁩/dist to your local Git repo for my-florida-prepaid in the folder /wp-content⁩/plugins⁩/fpcb-calculators⁩. Make sure to delete previous contents in the plugins/fpcb-calculators.
 
 Commit changes to the my-florida-prepaid repo, then push to staging as normal for that repo via
