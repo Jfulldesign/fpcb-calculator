@@ -84,7 +84,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     {note && <div styleName="note">{note}</div>}
                     <div styleName="info-container">
                       <h3 data-hj-whitelist id={`plan_name-${id}`} className={`${id}`}>{title}</h3>
-                      <p>{description}</p>
+                      {/* <p>{description}</p> */}
                       <div styleName="price" data-hj-whitelist className="plan-price-all plan-price-desk">
                         {!date && <span styleName="starting">Starting at</span>}
                         <span id={`plan_price-${id}`}>{formatMoney(price)}</span>
@@ -280,6 +280,290 @@ export default class PlanTable extends React.Component<Props, State> {
                 ) : null)];
               })}
               </tr>
+              
+            <tr>
+              <td styleName="def def--nationwide">
+              Use Plan Value Nationwide{" "}
+                
+                <Tooltip html={
+                    <div className="tip">
+                      <p>
+                        This is an estimate of the amount we anticipate to pay
+                        for tuition and fees covered by your plan. The estimate
+                        is based on current in-state tuition and fees,
+                        anticipated inflation and historical usage patterns. The
+                        actual benefit (costs paid in the future) may be higher
+                        or lower. However, the actual benefit will never be less
+                        than the price you pay for a plan - you cannot lose
+                        money.
+                      </p>
+                    </div>
+                        }
+                        position="bottom"
+                        trigger="mouseenter"
+                        tabIndex="0"
+                        arrow
+                      >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+              </td>
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--nationwide ${computedStyle}`}
+                    key={`plan--${id}--nationwide`}
+                  >
+                    <i className="fa fa-check" />
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <td styleName="def def--gift">
+              Gift Contributions Accepted{" "}
+                
+                <Tooltip html={
+                    <div className="tip">
+                      <p>
+                        This is an estimate of the amount we anticipate to pay
+                        for tuition and fees covered by your plan. The estimate
+                        is based on current in-state tuition and fees,
+                        anticipated inflation and historical usage patterns. The
+                        actual benefit (costs paid in the future) may be higher
+                        or lower. However, the actual benefit will never be less
+                        than the price you pay for a plan - you cannot lose
+                        money.
+                      </p>
+                    </div>
+                        }
+                        position="bottom"
+                        trigger="mouseenter"
+                        tabIndex="0"
+                        arrow
+                      >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+              </td>
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--gift ${computedStyle}`}
+                    key={`plan--${id}--gift`}
+                  >
+                    <i className="fa fa-check" />
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <td styleName="def def--transfer">
+              Transfer or Cancel at Any Time{" "}
+                
+                <Tooltip html={
+                    <div className="tip">
+                      <p>
+                        This is an estimate of the amount we anticipate to pay
+                        for tuition and fees covered by your plan. The estimate
+                        is based on current in-state tuition and fees,
+                        anticipated inflation and historical usage patterns. The
+                        actual benefit (costs paid in the future) may be higher
+                        or lower. However, the actual benefit will never be less
+                        than the price you pay for a plan - you cannot lose
+                        money.
+                      </p>
+                    </div>
+                        }
+                        position="bottom"
+                        trigger="mouseenter"
+                        tabIndex="0"
+                        arrow
+                      >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+              </td>
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--transfer ${computedStyle}`}
+                    key={`plan--${id}--transfer`}
+                  >
+                    <i className="fa fa-check" />
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <td styleName="def def--scholarships">
+              Use with Scholarships{" "}
+                
+                <Tooltip html={
+                    <div className="tip">
+                      <p>
+                        This is an estimate of the amount we anticipate to pay
+                        for tuition and fees covered by your plan. The estimate
+                        is based on current in-state tuition and fees,
+                        anticipated inflation and historical usage patterns. The
+                        actual benefit (costs paid in the future) may be higher
+                        or lower. However, the actual benefit will never be less
+                        than the price you pay for a plan - you cannot lose
+                        money.
+                      </p>
+                    </div>
+                        }
+                        position="bottom"
+                        trigger="mouseenter"
+                        tabIndex="0"
+                        arrow
+                      >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+              </td>
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--scholarships ${computedStyle}`}
+                    key={`plan--${id}--scholarships`}
+                  >
+                    <i className="fa fa-check" />
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <td styleName="def def--coverage">
+              Coverage for up to 10 years after matriculation.{" "}
+                
+                <Tooltip html={
+                    <div className="tip">
+                      <p>
+                        This is an estimate of the amount we anticipate to pay
+                        for tuition and fees covered by your plan. The estimate
+                        is based on current in-state tuition and fees,
+                        anticipated inflation and historical usage patterns. The
+                        actual benefit (costs paid in the future) may be higher
+                        or lower. However, the actual benefit will never be less
+                        than the price you pay for a plan - you cannot lose
+                        money.
+                      </p>
+                    </div>
+                        }
+                        position="bottom"
+                        trigger="mouseenter"
+                        tabIndex="0"
+                        arrow
+                      >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+              </td>
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--coverage ${computedStyle}`}
+                    key={`plan--${id}--coverage`}
+                  >
+                    <i className="fa fa-check" />
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <td styleName="def def--move">
+              Plans move with you{" "}
+                
+                <Tooltip html={
+                    <div className="tip">
+                      <p>
+                        This is an estimate of the amount we anticipate to pay
+                        for tuition and fees covered by your plan. The estimate
+                        is based on current in-state tuition and fees,
+                        anticipated inflation and historical usage patterns. The
+                        actual benefit (costs paid in the future) may be higher
+                        or lower. However, the actual benefit will never be less
+                        than the price you pay for a plan - you cannot lose
+                        money.
+                      </p>
+                    </div>
+                        }
+                        position="bottom"
+                        trigger="mouseenter"
+                        tabIndex="0"
+                        arrow
+                      >
+                    <button styleName="info-tooltip">
+                      <i className="fa fa-info-circle" />
+                    </button>
+                  </Tooltip>
+              </td>
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--move ${computedStyle}`}
+                    key={`plan--${id}--move`}
+                  >
+                    <i className="fa fa-check" />
+                  </td>
+                );
+              })}
+            </tr>
+            
+            <tr>
+              <td styleName="def def--description">&nbsp;</td>
+              {plans.map(({ id, description }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--description ${computedStyle}`}
+                    key={`plan--${id}--description`}
+                  >
+                    <p>{description}</p>
+                  </td>
+                );
+              })}
+            </tr>
+              
+              
+              
+              
+              
+              
+              
             <tr>
               <td styleName="def def--cost">&nbsp;</td>
                 
@@ -300,50 +584,6 @@ export default class PlanTable extends React.Component<Props, State> {
                     >
                       Enroll Online
                     </a>
-                    {/* <button href="" className="emailpricesbutton" styleName="email" onClick={this.openModal}>
-                      Email Prices
-                    </button>
-                    <Modal
-                      isOpen={this.state.modalAcitve}
-                      onAfterOpen={this.afterOpenModal}
-                      onRequestClose={this.closeModal}
-                      className="modal"
-                      contentLabel="Email My Prices"
-                    >
-                      <h2>Send me a copy</h2>
-                      <h3>Lorem ispum dolor sit amet.</h3>
-                      <button onClick={this.closeModal} className="button-close">
-                        <i className="fas fa-times" />
-                      </button>
-                      <form>
-                        <div className="emails">
-                          {[...Array(numEmails)].map((_, idx) => (
-                            <input
-                              type="email"
-                              key={`email--${idx}`}
-                              name={`email--${idx}`}
-                              placeholder="Email Address"
-                            />
-                          ))}
-                          {numEmails > 1 && (
-                            <button href="#" className="remove-email" className="btn-adjuster" onClick={this.removeEmail}>
-                              <i className="fa fa-minus-circle" />
-                            </button>
-                          )}
-                        </div>
-                        <button className="add-email" className="btn-adjuster" onClick={this.addEmail}>
-                          Send a copy to another address
-                          <i className="fa fa-plus-circle" />
-                        </button>
-                        <div className="optin">
-                          <input type="checkbox" id="join-mailing-list" />
-                          <label htmlFor="join-mailing-list">
-                            I would like to join the mailing list.
-                          </label>
-                        </div>
-                        <button type="submit">Send My Results</button>
-                      </form>
-                    </Modal> */}
                   </td>
                 ) : (
                   <td
@@ -362,6 +602,7 @@ export default class PlanTable extends React.Component<Props, State> {
               </tr>
           </tbody>
         </table>
+        <div styleName="plan-caveat">Actual plan pricing will be announced at the start of 2020 Open Enrollment.</div>
       </div>
     );
   }

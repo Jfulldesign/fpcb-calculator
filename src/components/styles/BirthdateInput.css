@@ -70,6 +70,20 @@
     @media (min-width: 599px) {
       height: auto;
     }
+
+    .plan-caveat {
+      display: block;
+      padding: 0 25px;
+      font-size: 16px;
+      line-height: 18px;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      font-style: italic;
+
+      @media (min-width: 599px) {
+      }
+    }
   }
 
   button {
