@@ -84,7 +84,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     {note && <div styleName="note">{note}</div>}
                     <div styleName="info-container">
                       <h3 data-hj-whitelist id={`plan_name-${id}`} className={`${id}`}>{title}</h3>
-                      {/* <p>{description}</p> */}
+                      <p>{description}</p>
                       <div styleName="price" data-hj-whitelist className="plan-price-all plan-price-desk">
                         {!date && <span styleName="starting">Starting at</span>}
                         <span id={`plan_price-${id}`}>{formatMoney(price)}</span>
@@ -281,7 +281,7 @@ export default class PlanTable extends React.Component<Props, State> {
               })}
               </tr>
               
-            <tr>
+            {/* <tr>
               <td styleName="def def--nationwide">
               Use Plan Value Nationwide{" "}
                 
@@ -556,7 +556,7 @@ export default class PlanTable extends React.Component<Props, State> {
                   </td>
                 );
               })}
-            </tr>
+            </tr> */}
               
               
               
@@ -602,7 +602,7 @@ export default class PlanTable extends React.Component<Props, State> {
               </tr>
           </tbody>
         </table>
-        <div styleName="plan-caveat">Actual plan pricing will be announced at the start of 2020 Open Enrollment.</div>
+        <div styleName="plan-caveat">Sample pricing through April 30, 2019. Actual plan pricing will be announced at the start of 2020 Open Enrollment.</div>
       </div>
     );
   }

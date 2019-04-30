@@ -237,7 +237,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               </form>
             </Modal>
           </div>
-          <div styleName="plan-caveat">Actual plan pricing will be announced at the start of 2020 Open Enrollment.</div>
+          <div styleName="plan-caveat">Sample pricing through April 30, 2019. Actual plan pricing will be announced at the start of 2020 Open Enrollment.</div>
         </div>
       </React.Fragment>
     );

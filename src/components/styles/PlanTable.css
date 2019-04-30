@@ -22,6 +22,9 @@
       &:nth-last-child(2) {
         background-color: transparent;
       }
+      &:last-child {
+        background-color: transparent !important;
+      }
     }
   }
 
@@ -414,6 +417,7 @@
   text-align: center;
   border-right: 1px solid var(--color-gray);
   border-left: 1px solid var(--color-gray);
+  border-top: 1px solid var(--color-gray);
   border-bottom: 5px solid var(--color-gray);
 
   .college-price {
@@ -525,7 +529,7 @@
   font-size: 16px;
   line-height: 18px;
   text-align: center;
-  margin-top: 10px;
+  margin: 10px auto;
   font-weight: bold;
   font-style: italic;
 
