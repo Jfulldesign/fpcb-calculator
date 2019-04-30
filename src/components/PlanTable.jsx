@@ -602,8 +602,9 @@ export default class PlanTable extends React.Component<Props, State> {
               </tr>
           </tbody>
         </table>
-        <div styleName="plan-caveat">Sample pricing through April 30, 2019. Actual plan pricing will be announced at the start of 2020 Open Enrollment.</div>
+        <div styleName="plan-caveat">The chart above reflects plan pricing from February 1 - April 30, 2019. <br />Sample pricing through April 30, 2019. Actual plan pricing will be announced at the start of 2020 Open Enrollment.</div>
       </div>
+      
     );
   }
 }
