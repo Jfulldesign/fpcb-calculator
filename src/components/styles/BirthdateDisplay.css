@@ -126,7 +126,7 @@
     text-indent: 10px;
     transition: all 0.2s ease;
     text-align: center;
-
+    background-color: white;
     &::placeholder {
       color: var(--color-black);
     }
