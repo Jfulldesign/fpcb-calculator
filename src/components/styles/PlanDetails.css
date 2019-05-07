@@ -44,12 +44,12 @@
     list-style: none;
     margin-bottom: 20px;
     position: relative;
-
+    pointer-events: none;
     li {
       display: flex;
       padding: 10px;
       align-items: center;
-
+      pointer-events: all;
       svg {
         width: 30px;
         height: 100%;
