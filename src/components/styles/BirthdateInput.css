@@ -48,7 +48,7 @@
     transition: all 0.2s ease;
     text-align: center;
     text-transform: uppercase;
-
+    background-color: white;
     &::placeholder {
       color: var(--color-black);
     }
