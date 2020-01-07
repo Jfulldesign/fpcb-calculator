@@ -137,7 +137,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                       </div>
                     }
                     position="bottom"
-                    trigger="mouseenter"
+                    trigger="click"
                     tabIndex="0"
                     arrow
                   >

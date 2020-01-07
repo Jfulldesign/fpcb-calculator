@@ -168,9 +168,7 @@ export default class PlanTable extends React.Component<Props, State> {
             <tr>
               <td styleName="def def--dorm">
                 Option to add a Dormitory Plan.{" "}
-                <a href="/prepaid-plans/faqs/#dormitory-specific-questions">
-                  Learn more.
-                </a>
+                
                 <Tooltip
                   html={
                     <div className="tip">
@@ -181,12 +179,13 @@ export default class PlanTable extends React.Component<Props, State> {
                         plan can also be used at some fraternity or sorority
                         houses (if those houses are overseen by the State
                         University) or dormitory housing costs at other colleges
-                        nationwide. A maximum of four years may be purchased.
+                        nationwide. A maximum of four years may be purchased. <a href="/prepaid-plans/faqs/#dormitory-specific-questions">Learn more.</a>
                       </p>
                     </div>
                   }
                   position="bottom"
                   trigger="mouseenter"
+                  interactive="true"
                   tabIndex="0"
                   arrow
                 >
@@ -240,6 +239,7 @@ export default class PlanTable extends React.Component<Props, State> {
                       }
                       position="bottom"
                       trigger="mouseenter"
+                  interactive="true"
                       tabIndex="0"
                       arrow
                     >
