@@ -81,10 +81,9 @@ export default class App extends React.Component<{}, State> {
           <div styleName="header-content">
             <img src={heroImage} alt="Mother and baby" />
             <div styleName="header-copy">
-              <h1>Start Saving for College</h1>
+              <h1>Start Saving For College For Less</h1>
               <h2>
-                Find the guaranteed Florida Prepaid College Plan that fits your
-                budget and never lose your investment.
+              For a limited time, we’re offering reduced Prepaid Plan pricing. Find the plan that fits your budget.
               </h2>
             </div>
             {dispDate == null ? (
