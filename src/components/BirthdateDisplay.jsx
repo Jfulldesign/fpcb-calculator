@@ -270,7 +270,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       disabled={
                         differenceInYears(dispDate, calcDate) > 0 ||
                         !isInSchool ||
-                        age >= 17
+                        age >= 16
                       }
                       onClick={this.addYear}
                       onKeyPress={gatedKeyPress(
@@ -409,7 +409,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                 <div styleName="grade-adjust">
                   Your child is
                   <span styleName="grade-display">
-                    {describeChild(this.state.calcDate)}
+                    {describeChild(calcDate)}
                     <Tooltip
                       html={
                         <div className="tip">
@@ -456,7 +456,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       disabled={
                         differenceInYears(dispDate, calcDate) > 0 ||
                         !isInSchool ||
-                        age >= 17
+                        age >= 16
                       }
                       onClick={this.addYear}
                       onKeyPress={gatedKeyPress(
