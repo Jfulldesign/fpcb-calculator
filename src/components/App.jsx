@@ -3,6 +3,7 @@
 import React from "react";
 import cx from "classnames";
 import qs from "query-string";
+import moment from "moment";
 import { Media } from "react-fns";
 import PlanTable from "components/PlanTable";
 import PlanCarousel from "components/PlanCarousel";
@@ -23,15 +24,14 @@ type State = {
   focus: ?PlanID,
   paymentType: PaymentSchedule
 };
+let query = qs.parse(window.location.search);
+let parsedDate = moment(query.dispDate, "MM-DD-YYYY");
 
-const query = qs.parse(window.location.search);
-
-console.log(!isNaN(Date.parse(query.dispDate)));
 export default class App extends React.Component<{}, State> {
   
   state = {
-    dispDate: !isNaN(Date.parse(query.dispDate)) ? new Date(query.dispDate) : null,
-    calcDate: !isNaN(Date.parse(query.dispDate)) ? addYears(new Date(query.dispDate), query.didx ? query.didx : 0) : null,
+    dispDate: typeof query.dispDate !== 'undefined' ? parsedDate : null,
+    calcDate: typeof query.dispDate !== 'undefined' ? addYears(parsedDate, query.didx ? query.didx : 0) : null,
     focus: query.focus,
     paymentType: query.paymentType ? query.paymentType : "monthly"
   };

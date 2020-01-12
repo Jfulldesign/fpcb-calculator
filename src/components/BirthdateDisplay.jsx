@@ -149,6 +149,11 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
       "edit-container": true,
       active: editActive
     });
+    setTimeout(function(){
+      window.resetListeners();
+
+    }, 250);
+
     if(!isIE && !isSafari){
     return (
       <div styleName="birthdate-display-container">
@@ -337,7 +342,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
             </dl>
             <dl>
               <dt>Child is</dt>
-              <dd id="graduation-display">{describeChild(this.state.calcDate)}</dd>
+              <dd id="graduation-display">{describeChild(calcDate)}</dd>
             </dl>
           </div>
           <Media.default query="(max-width: 599px)">
@@ -393,6 +398,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     guide={true}
                     pattern="\d*"
                     value={value}
+                    id="update_entry"
                     placeholder={
                       this.state.active
                         ? ""
