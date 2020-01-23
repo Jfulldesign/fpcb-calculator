@@ -96,13 +96,13 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                   <span>
                     <strong>{plan.credits.college} credit hours</strong> at a
                     Florida College
-                    {plan.credits.state > 0 ? " and " : ". "}
+                    {plan.credits.state > 0 ? " and " : " "}
                   </span>
                 )}
                 {plan.credits.state > 0 && (
                   <span>
                     <strong>{plan.credits.state} semester credit hours</strong>{" "}
-                    at a State University.
+                    at a State University
                   </span>
                 )}
               </div>
@@ -110,7 +110,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
             <li>
               <IconMortar />
               <div>
-                Covers tuition and most fees.{" "}
+                Covers tuition and most fees{" "}
                 <a href="/existing-customers/fees/">Learn more about fees</a>
               </div>
             </li>
