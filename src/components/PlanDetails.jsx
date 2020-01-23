@@ -111,7 +111,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               <IconMortar />
               <div>
                 Covers tuition and most fees.{" "}
-                <a href="/existing-customers/fees/">Learn more about fees</a>.
+                <a href="/existing-customers/fees/">Learn more about fees</a>
               </div>
             </li>
             {plan.dorm && (
@@ -152,7 +152,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
               <li>
                 <IconMoney />
                 <div>
-                  Estimated Future Benefit in {graduatesIn(date)} is{" "}
+                  Estimated Future Savings in {graduatesIn(date)} is{" "}
                   {futurePrice}
                   <Tooltip
                     html={
