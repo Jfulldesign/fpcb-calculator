@@ -148,7 +148,7 @@ export default class PlanTable extends React.Component<Props, State> {
             <tr>
               <td styleName="def def--fees">
                 Covers tuition and most fees{" "}
-                <a href="/existing-customers/fees/">Learn about fees</a>
+                <a className="question-mark-link" href="/existing-customers/fees/">Learn about fees</a>
               </td>
               {plans.map(({ id }) => {
                 const computedStyle = cx({
@@ -220,7 +220,7 @@ export default class PlanTable extends React.Component<Props, State> {
               })}
             </tr>
             <tr>
-              <td styleName={`def def--cost`} data-hj-whitelist>Estimated future savings{" "}
+              <td styleName={`def def--cost`} data-hj-whitelist>Estimated {date ? null : <span>future</span>} payout{" "}
               {date ? <span> beginning in <span id="year-display">{graduatesIn(date)}</span>.</span> : null}
                 
               <Tooltip html={
