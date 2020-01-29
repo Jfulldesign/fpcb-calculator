@@ -221,7 +221,7 @@ export default class PlanTable extends React.Component<Props, State> {
             </tr>
             <tr>
               <td styleName={`def def--cost`} data-hj-whitelist>Estimated {date ? null : <span>future</span>} payout{" "}
-              {date ? <span> beginning in <span id="year-display">{graduatesIn(date)}</span>.</span> : null}
+              {date ? <span> beginning in <span id="year-display">{graduatesIn(date)}</span></span> : null}
                 
               <Tooltip html={
                   <div className="tip">
