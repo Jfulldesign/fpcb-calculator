@@ -191,11 +191,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
             >
               Enroll Online
             </a>
-            {/* {date !== null && (
-              <a href="#" styleName="email" onClick={this.openModal}>
-                Email Prices
-              </a>
-            )} */}
+           
             <Modal
               styleName="modal"
               isOpen={this.state.modalAcitve}

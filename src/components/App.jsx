@@ -28,10 +28,11 @@ let query = qs.parse(window.location.search);
 let parsedDate = moment(query.dispDate, "MM-DD-YYYY");
 let dateValid = isValidDate(new Date(query.dispDate));
 
+
 export default class App extends React.Component<{}, State> {
   state = {
-    dispDate: typeof query.dispDate !== 'undefined' && dateValid ? parsedDate : null,
-    calcDate: typeof query.dispDate !== 'undefined' && dateValid ? addYears(parsedDate, query.didx ? query.didx : 0) : null,
+    dispDate: typeof query.dispDate !== 'undefined' ? parsedDate : null,
+    calcDate: typeof query.dispDate !== 'undefined' ? addYears(parsedDate, query.didx ? query.didx : 0) : null,
     focus: query.focus,
     paymentType: query.paymentType ? query.paymentType : "monthly"
   };
