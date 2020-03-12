@@ -177,6 +177,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               Your child is
               <span styleName="grade-display">
               <span id="childs_age">{describeChild(date)}</span>
+              {describeChild(date) === "a newborn" ? (
                 <Tooltip
                   html={
                     <div className="tip">
@@ -202,6 +203,33 @@ export default class BirthdateInput extends React.Component<Props, State> {
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
+              ) : (
+<Tooltip
+                  html={
+                    <div className="tip">
+                      <h6>Why is this important?</h6>
+                      <p>
+                        Your child&apos;s age and grade predicts the year they will
+                        graduate high school and begin using their Florida Prepaid Plan. The
+                        beneficiary has up to 10 years following high school graduation to
+                        use a Florida Prepaid Plan. You may enroll any Florida
+                        resident with a valid Social Security number, age
+                        newborn through 11th grade, in a Prepaid Plan. For newborns, the
+                        Social Security Number is not required when the Application is submitted,
+                        but it must be provided shortly thereafter.
+                      </p>
+                    </div>
+                  }
+                  position="bottom"
+                  trigger="mouseenter"
+                  tabIndex="0"
+                  arrow
+                >
+                  <button type="button" styleName="info-tooltip">
+                    <i className="fa fa-info-circle" />
+                  </button>
+                </Tooltip>
+              )}
               </span>
               {isInSchool  &&
                 <div styleName="grade-adjust-buttons">

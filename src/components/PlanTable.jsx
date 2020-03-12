@@ -113,7 +113,6 @@ export default class PlanTable extends React.Component<Props, State> {
                       <i className="fa fa-minus" />
                     ) : (
                       <div styleName="stack--hours" data-hj-whitelist>
-                        <IconUni styleName="icon icon--uni" />
                         <span styleName="space-after" id={`state_hours-${id}`}>{state}</span> Hours
                       </div>
                     )}
@@ -137,7 +136,6 @@ export default class PlanTable extends React.Component<Props, State> {
                       <i className="fa fa-minus" />
                     ) : (
                       <div styleName="stack--hours" data-hj-whitelist>
-                        <IconCollege styleName="icon icon--college" />
                         <span styleName="space-after" id={`college_hours-${id}`}>{college}</span> Hours
                       </div>
                     )}
@@ -160,7 +158,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--fees ${computedStyle}`}
                     key={`plan--${id}--fees`}
                   >
-                    <i className="fa fa-check" />
+                    <i className="fa fa-check-circle" />
                   </td>
                 );
               })}
@@ -319,7 +317,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--nationwide ${computedStyle}`}
                     key={`plan--${id}--nationwide`}
                   >
-                    <i className="fa fa-check" />
+                    <i className="fa fa-check-circle" />
                   </td>
                 );
               })}
@@ -362,7 +360,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--gift ${computedStyle}`}
                     key={`plan--${id}--gift`}
                   >
-                    <i className="fa fa-check" />
+                    <i className="fa fa-check-circle" />
                   </td>
                 );
               })}
@@ -405,7 +403,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--transfer ${computedStyle}`}
                     key={`plan--${id}--transfer`}
                   >
-                    <i className="fa fa-check" />
+                    <i className="fa fa-check-circle" />
                   </td>
                 );
               })}
@@ -448,7 +446,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--scholarships ${computedStyle}`}
                     key={`plan--${id}--scholarships`}
                   >
-                    <i className="fa fa-check" />
+                    <i className="fa fa-check-circle" />
                   </td>
                 );
               })}
@@ -491,7 +489,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--coverage ${computedStyle}`}
                     key={`plan--${id}--coverage`}
                   >
-                    <i className="fa fa-check" />
+                    <i className="fa fa-check-circle" />
                   </td>
                 );
               })}
@@ -534,7 +532,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--move ${computedStyle}`}
                     key={`plan--${id}--move`}
                   >
-                    <i className="fa fa-check" />
+                    <i className="fa fa-check-circle" />
                   </td>
                 );
               })}
