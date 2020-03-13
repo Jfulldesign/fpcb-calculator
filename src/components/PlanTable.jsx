@@ -61,9 +61,12 @@ export default class PlanTable extends React.Component<Props, State> {
     const { plans, date, focus, paymentType } = this.props;
     const pidx = date == null ? 0 : priceIndex(date);
     const { numEmails } = this.state;
-
+    const styleName = cx({
+      "plan-table": true,
+      "has-date": date != null
+    });
     return (
-      <div styleName="plan-table" className="js-scrollable">
+      <div styleName={styleName} className="js-scrollable">
         <table>
           <tbody>
             <tr>
@@ -604,4 +607,5 @@ export default class PlanTable extends React.Component<Props, State> {
       
     );
   }
+  
 }
