@@ -135,7 +135,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             <div className="tip">
               <p>
                 Prepaid Plans are only available for students in the 11th grade
-                or below and children born on, or before, April 30,{" "}
+                or below and children born on, or before, May 31,{" "}
                 {getYear(addYears(cutoff, 1))}.
               </p>
             </div>
@@ -308,7 +308,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               <div className="tip">
                 <p>
                   Prepaid Plans are only available for students in the 11th grade
-                  or below and children born on, or before, April 30,{" "}
+                  or below and children born on, or before, May 31, {" "}
                   {getYear(addYears(cutoff, 1))}.
                 </p>
               </div>
