@@ -1,6 +1,6 @@
 .plan-table {
   padding-top: 40px;
-  overflow: unset !important;
+  overflow: auto !important;
   table {
     table-layout: fixed;
     width: 100%;

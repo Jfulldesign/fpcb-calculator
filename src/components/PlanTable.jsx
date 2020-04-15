@@ -27,7 +27,7 @@ type Props = {
 
 export default class PlanTable extends React.Component<Props, State> {
   componentDidMount() {
-    new ScrollHint(".js-scrollable", { suggestiveShadow: true });
+    new ScrollHint(".js-scrollable", { suggestiveShadow: false });
   }
   handleClick = () => {
     document.getElementById('date_entry').focus();
