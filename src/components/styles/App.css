@@ -28,7 +28,7 @@
       margin: 20px auto;
     }
 
-    @media (min-width: 769px) {
+    @media (min-width: 835px) {
       margin: 10px 0;
       padding-right: 20px;
 
@@ -97,7 +97,7 @@
       img {
         display: none;
 
-        @media (min-width: 769px) {
+        @media (min-width: 835px) {
           display: block;
         }
       }
@@ -112,7 +112,7 @@
     }
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 835px) {
     header {
       position: relative;
       display: flex;
