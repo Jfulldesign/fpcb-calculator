@@ -84,7 +84,7 @@ export default class App extends React.Component<{}, State> {
             <div styleName="header-copy">
             <h1>Start Saving for College</h1>
               <h2>
-                Find the guaranteed Florida Prepaid College Plan that fits your
+                Find the risk-free Florida Prepaid College Plan that fits your
                 budget and never lose your investment.
               </h2>
             </div>
