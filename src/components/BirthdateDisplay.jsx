@@ -298,7 +298,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                             Your child&apos;s birthdate predicts the year they
                             will graduate high school and begin using their Florida Prepaid
                             Plan, based on child’s age/grade on or before{" "}
-                            {format(addYears(cutoff, 1), "MMMM D, YYYY")}. The date entered
+                            {format(cutoff, "MMMM D, YYYY")}. The date entered
                             must be today or earlier.
                           </p>
                         </div>
@@ -371,7 +371,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     <div className="tip">
                       <p>
                         Prepaid Plans are only available for students in the
-                        11th grade or below and children born on or before today's date.
+                        11th grade or below and children born on, or before today's date.
                       </p>
                     </div>
                   }
@@ -484,7 +484,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                             Your child&apos;s birthdate predicts the year they
                             will graduate high school and begin using their Florida Prepaid
                             Plan, based on child’s age/grade on or before{" "}
-                            {format(addYears(cutoff, 1), "MMMM D, YYYY")}. The date entered
+                            {format(cutoff, "MMMM D, YYYY")}. The date entered
                             must be today or earlier.
                           </p>
                         </div>

@@ -5,7 +5,7 @@ import { differenceInYears, addYears, getYear, isFuture } from "date-fns";
 
 const currentYear = getYear(new Date());
 export const cutoff = isFuture(new Date(currentYear, 8, 1))
-  ? new Date(currentYear - 1, 8, 1)
+  ? new Date(currentYear, 8, 1)
   : new Date(currentYear, 8, 1);
 
 export function ordinal(i: number): string {
