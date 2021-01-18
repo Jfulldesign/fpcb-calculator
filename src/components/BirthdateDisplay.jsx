@@ -49,6 +49,7 @@ type State = {
   calcDate: Date,
   editActive: boolean,
   dateError: boolean,
+  dateErrorText: ?string,
   value: ?string
 };
 
@@ -70,6 +71,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
         editActive: false,
         calcDate: props.calcDate,
         dateError: false,
+        dateErrorText: "Prepaid Plans are only available for students in the 11th grade or below and children born on or before today's date.",
         value: format(props.dispDate, "MM/DD/YYYY")
         // value: format(props.dispDate, "YYYY-MM-DD")
       };
@@ -78,6 +80,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
         editActive: false,
         calcDate: props.calcDate,
         dateError: false,
+        dateErrorText: "Prepaid Plans are only available for students in the 11th grade or below and children born on or before today's date.",
         // value: format(props.dispDate, "MM/DD/YYYY")
         value: format(props.dispDate, "YYYY-MM-DD")
       };
@@ -104,9 +107,11 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
         this.props.onHasDispDate(date);
         this.props.onHasCalcDate(date);
       } else if (isValid(date)) {
+        this.setState({ dateErrorText: "Prepaid Plans are only available for students in the 11th grade or below and children born on or before today's date."})
         this.setState({ value, dateError: true });
       } else {
-        this.setState({ value, dateError: false });
+        this.setState({ dateErrorText: "Please enter a valid value. The field is incomplete or has an invalid date."})
+        this.setState({ value, dateError: true });
 
       }
     }
@@ -142,7 +147,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
   };
 
   render() {
-    const { editActive, dateError, value, paymentType } = this.state;
+    const { editActive, dateError, dateErrorText, value, paymentType } = this.state;
     const { dispDate, calcDate } = this.props;
     const age = getAge(calcDate);
     const isInSchool = calcDate != null && age >= 4;
@@ -196,8 +201,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   html={
                     <div className="tip">
                       <p>
-                        Prepaid Plans are only available for students in the
-                        11th grade or below and children born on or before today's date.
+                        { dateErrorText }
                       </p>
                     </div>
                   }
@@ -373,8 +377,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   html={
                     <div className="tip">
                       <p>
-                        Prepaid Plans are only available for students in the
-                        11th grade or below and children born on, or before today's date.
+                        { dateErrorText }
                       </p>
                     </div>
                   }

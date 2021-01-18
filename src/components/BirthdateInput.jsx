@@ -34,7 +34,8 @@ type State = {
   value: ?string,
   date: ?Date,
   didx: number,
-  dateError: boolean
+  dateError: boolean,
+  dateErrorText: ?string
 };
 
 export default class BirthdateInput extends React.Component<Props, State> {
@@ -47,7 +48,8 @@ export default class BirthdateInput extends React.Component<Props, State> {
       value: null,
       date: null,
       didx: 0,
-      dateError: false
+      dateError: false,
+      dateErrorText: "Prepaid Plans are only available for students in the 11th grade or below and children born on or before today's date."
     };
 
     this.onBlur = this.onBlur.bind(this);
@@ -78,10 +80,14 @@ export default class BirthdateInput extends React.Component<Props, State> {
         this.props.onHasCalcDate(date);
         this.setState({ expand: true });
       } else if (isValid(date)) {
+        this.setState({ dateErrorText: "Prepaid Plans are only available for students in the 11th grade or below and children born on or before today's date."})
         this.setState({ value, dateError: true });
+
       } else {
-        this.setState({ value, dateError: false });
+        this.setState({ dateErrorText: "Please enter a valid value. The field is incomplete or has an invalid date."})
+        this.setState({ value, dateError: true });
         this.setState({ expand: false });
+
       }
     }
   };
@@ -119,7 +125,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
   };
 
   render() {
-    const { value, didx, date, expand, dateError } = this.state;
+    const { value, didx, date, expand, dateError, dateErrorText } = this.state;
     const age = getAge(date);
     const isInSchool = date != null && age >= 4;
     const styleName = cx({
@@ -135,8 +141,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
           html={
             <div className="tip">
               <p>
-                Prepaid Plans are only available for students in the 11th grade
-                or below and children born on or before today's date.
+                { dateErrorText }
               </p>
             </div>
           }
@@ -306,8 +311,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
             html={
               <div className="tip">
                 <p>
-                  Prepaid Plans are only available for students in the 11th grade
-                  or below and children born on or before today's date.
+                  { dateErrorText }
                 </p>
               </div>
             }
