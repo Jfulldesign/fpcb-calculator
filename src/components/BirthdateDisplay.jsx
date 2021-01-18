@@ -29,7 +29,7 @@ import {
 } from "util/maths";
 import "./styles/BirthdateDisplay.css";
 
-const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy');
+const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy',{minYear:1970, maxYear:2099});
 
 // Safari 3.0+ "[object HTMLElementConstructor]"
 let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
@@ -107,6 +107,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
         this.setState({ value, dateError: true });
       } else {
         this.setState({ value, dateError: false });
+
       }
     }
   };
@@ -220,6 +221,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     id="date_entry"
                     data-hj-whitelist
                     className="updater"
+                    max={new Date().toISOString().split("T")[0]}
+                    min="1970-01-01"
                   />
                 </Tooltip>
                 <div styleName="grade-adjust">
@@ -395,6 +398,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     ]}
                     guide={true}
                     pattern="\d*"
+                    keepCharPositions={true}
                     value={value}
                     id="update_entry"
                     placeholder={

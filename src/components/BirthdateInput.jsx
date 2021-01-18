@@ -20,7 +20,7 @@ type Props = {
   onHasCalcDate: Date => void,
   onHasDispDate: Date => void
 };
-const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy');
+const autoCorrectedDatePipe = createAutoCorrectedDatePipe('mm/dd/yyyy',{minYear:1970, maxYear:2099});
 
 // Safari 3.0+ "[object HTMLElementConstructor]"
 let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
@@ -75,12 +75,13 @@ export default class BirthdateInput extends React.Component<Props, State> {
       const date = parse(value);
       if (isValidDate(date)) {
         this.setState({ date, value, dateError: false, didx: 0 });
-        // this.props.onHasCalcDate(date);
+        this.props.onHasCalcDate(date);
         this.setState({ expand: true });
       } else if (isValid(date)) {
         this.setState({ value, dateError: true });
       } else {
         this.setState({ value, dateError: false });
+        this.setState({ expand: false });
       }
     }
   };
@@ -148,15 +149,14 @@ export default class BirthdateInput extends React.Component<Props, State> {
           <input
             type="date"
             value={this.state.value ? this.state.value : ""}
-            placeholder={
-              this.state.active ? "MM/DD/YYYY" : "MM/DD/YYYY"
-            }
             onFocus={this.onFocus}
             onChange={this.onChange}
             aria-label="Enter your child's birthdate for plan prices"
             id="date_entry"
             data-hj-whitelist
             name="dob"
+            max={new Date().toISOString().split("T")[0]}
+            min="1970-01-01"
           />
 
         </Tooltip>
