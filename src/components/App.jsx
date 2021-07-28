@@ -12,7 +12,7 @@ import BirthdateDisplay from "components/BirthdateDisplay";
 import PaymentPlanSelector from "components/PaymentPlanSelector";
 import { addYears, isValid } from "date-fns";
 
-import heroImage from "assets/mom-baby-field.jpg";
+import heroImage from "assets/banner-dad-son-matchinghaircut.jpg";
 import { PLANS } from "util/constants";
 import { isValidDate, priceIndex } from "util/maths";
 import type { PaymentSchedule, PlanID } from "util/types.flow.js";
