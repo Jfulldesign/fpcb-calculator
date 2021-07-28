@@ -12,7 +12,7 @@ import BirthdateDisplay from "components/BirthdateDisplay";
 import PaymentPlanSelector from "components/PaymentPlanSelector";
 import { addYears, isValid } from "date-fns";
 
-import heroImage from "assets/hero.jpg";
+import heroImage from "assets/mom-baby-field.jpg";
 import { PLANS } from "util/constants";
 import { isValidDate, priceIndex } from "util/maths";
 import type { PaymentSchedule, PlanID } from "util/types.flow.js";
@@ -82,11 +82,11 @@ export default class App extends React.Component<{}, State> {
           <div styleName="header-content">
             <img src={heroImage} alt="Mother and baby" />
             <div styleName="header-copy">
-            <h1>Start Saving for College</h1>
+            {/* <h1>Start Saving for College</h1>
               <h2>
                 Find the risk-free Florida Prepaid College Plan that fits your
                 budget and never lose your investment.
-              </h2>
+              </h2> */}
             </div>
             {dispDate == null ? (
               <BirthdateInput
