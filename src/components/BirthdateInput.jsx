@@ -307,6 +307,8 @@ export default class BirthdateInput extends React.Component<Props, State> {
     } else {
       return (
         <form id="birthday-form" styleName={styleName}>
+          <h1>You Pick the Plan, We Handle The Rest</h1>
+        <div styleName="hero-copy">Our 529 Prepaid Plans are 100% risk-free, so you can never lose your investment. Find the plan that fits your family's budget and savings goals.</div>
           <span>Enter your child&apos;s birthdate for plan prices:</span>
           <Tooltip
             styleName="date-input-tooltip-container"

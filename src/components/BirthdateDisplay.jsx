@@ -344,6 +344,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
       return(
       <div styleName="birthdate-display-container">
         <div styleName="birthdate-display">
+        <h1>You Pick the Plan, We Handle The Rest</h1>
+          <div styleName="hero-copy" >Our 529 Prepaid Plans are 100% risk-free, so you can never lose your investment. Find the plan that fits your family's budget and savings goals.</div>
           <div styleName="birthdate-result-container">
             <dl>
               <dt>Birthdate</dt>
