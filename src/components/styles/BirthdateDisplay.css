@@ -14,7 +14,7 @@
 }
 
 .birthdate-display {
-  display: block;
+  display: flex;
   padding: 10px;
   border: 1px solid white;
   justify-content: space-between;
@@ -23,8 +23,8 @@
 
   .hero-copy {
     color: #9c2d3a;
-    margin: 20px;
-    margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 16px;
   }
 
@@ -38,7 +38,10 @@
     justify-content: space-around;
     justify-content: space-evenly;
   }
-
+  @media (max-width: 600px) {
+    flex-flow: column;
+    text-align: center;
+  }
   .birthdate-result-container {
     display: flex;
     width: 75%;
@@ -120,6 +123,7 @@
         width: 75%;
         padding: 10px;
         margin: 5px 0px;
+        margin-top: 20px;
         font-size: 16px;
       }
     }

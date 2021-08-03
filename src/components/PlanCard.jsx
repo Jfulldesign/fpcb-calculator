@@ -31,7 +31,7 @@ const PlanCard = ({ plan, type, date }: Props) => {
         {type !== "single" && <span styleName="per"> / month</span>}
         {type == "single" && <span styleName="per">&nbsp;</span>}
       </div>
-      {plan.note && <div styleName="note">{plan.note}</div>}
+      {/* {plan.note && <div styleName="note">{plan.note}</div>} */}
     </div>
   );
 };

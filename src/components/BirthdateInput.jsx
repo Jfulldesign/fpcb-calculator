@@ -174,7 +174,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
               onClick={this.onSubmit}
               onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSubmit)}
             >
-              Start Calculating
+              Show My Rates
             </button> }
           </div>
         ) : (
@@ -349,7 +349,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                 onClick={this.onSubmit}
                 onKeyPress={gatedKeyPress(["Space", "Enter"], this.onSubmit)}
               >
-                Start Calculating
+                Show My Rates
               </button>
             </div>
           ) : (

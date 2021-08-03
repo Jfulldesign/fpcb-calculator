@@ -84,7 +84,7 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--info ${computedStyle}`}
                     key={`plan--${id}--info`}
                   >
-                    {note && <div styleName="note">{note}</div>}
+                    {/* {note && <div styleName="note">{note}</div>} */}
                     <div styleName="info-container">
                       <h3 data-hj-whitelist id={`plan_name-${id}`} className={`${id}`}>{title}</h3>
                       <p>{description}</p>
