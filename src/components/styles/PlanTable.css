@@ -285,9 +285,9 @@ h1{
       font-size:25px;
       font-weight:400;
     }
-    .active {
+    /* .active {
       color: var(--color-c2);
-    }
+    } */
     p {
       color:#323232;
       font-size: 14px;
@@ -303,9 +303,9 @@ h1{
       font-size:25px;
       font-weight:400;
     }
-    .active {
+    /* .active {
       color: var(--color-c4);
-    }
+    } */
     p {
       color:#323232;
       font-size: 14px;
@@ -321,9 +321,9 @@ h1{
       font-size:25px;
       font-weight:400;
     }
-    .active {
+    /* .active {
       color: var(--color-p2);
-    }
+    } */
     p {
       color:#323232;
       font-size: 14px;
@@ -339,9 +339,9 @@ h1{
       font-size:25px;
       font-weight:400;     
     }
-    .active {
+    /* .active {
       color: var(--color-u1);
-    }
+    } */
     p {
       color:#323232;
       font-size: 14px;
@@ -357,9 +357,9 @@ h1{
       font-size:25px;
       font-weight:400;
     }
-    .active {
+    /* .active {
       color: var(--color-u4);
-    }
+    } */
     p {
       color:#323232;
       font-size: 14px;
