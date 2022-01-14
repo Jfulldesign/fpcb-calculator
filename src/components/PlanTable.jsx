@@ -175,7 +175,7 @@ export default class PlanTable extends React.Component<Props, State> {
                   tabIndex="0"
                   arrow
                 >
-                  <button styleName="info-tooltip">
+                  <button styleName="info-tooltip" aria-label="PlanTable Option to add a Dormitory Plan Info Tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
@@ -270,7 +270,7 @@ export default class PlanTable extends React.Component<Props, State> {
                       tabIndex="0"
                       arrow
                     >
-                  <button styleName="info-tooltip">
+                  <button styleName="info-tooltip" aria-label="PlanTable Our Estimated Plan Payout Info Tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>

@@ -141,7 +141,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                     tabIndex="0"
                     arrow
                   >
-                    <button styleName="info-tooltip">
+                    <button styleName="info-tooltip" aria-label="Option to add a Dormitory Plan Info Tooltip">
                       <i className="fa fa-info-circle" />
                     </button>
                   </Tooltip>
@@ -174,7 +174,7 @@ export default class PlanDetails extends React.PureComponent<Props, State> {
                     tabIndex="0"
                     arrow
                   >
-                    <button styleName="info-tooltip">
+                    <button styleName="info-tooltip" aria-label="Estimated Payout beginning in Info Tooltip">
                       <i className="fa fa-info-circle" />
                     </button>
                   </Tooltip>

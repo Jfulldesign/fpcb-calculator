@@ -208,7 +208,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   tabIndex="0"
                   arrow
                 >
-                  <button type="button" styleName="info-tooltip">
+                  <button type="button" styleName="info-tooltip" aria-label="BirthdateInput Child Grade Info Tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
@@ -234,7 +234,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   tabIndex="0"
                   arrow
                 >
-                  <button type="button" styleName="info-tooltip">
+                  <button type="button" styleName="info-tooltip" aria-label="BirthdateInput Child Grade Info Tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
@@ -244,6 +244,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                 <div styleName="grade-adjust-buttons">
                   <button
                     className="btn-adjuster"
+                    aria-label="BirthdateInput Minus Icon"
                     disabled={didx <= -1 || !isInSchool || age <= 4}
                     onClick={this.subtractYear}
                     onKeyPress={gatedKeyPress(
@@ -256,6 +257,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   </button>
                   <button
                     className="btn-adjuster"
+                    aria-label="BirthdateInput Plus Icon"
                     disabled={didx >= 1 || !isInSchool || age >= 16}
                     onClick={this.addYear}
                     onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}
@@ -288,7 +290,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   tabIndex="0"
                   arrow
                 >
-                  <button type="button" styleName="info-tooltip">
+                  <button type="button" styleName="info-tooltip" aria-label="BirthdateInput Child Graduation Info Tooltip">
                     <i className="fa fa-info-circle" />
                   </button>
                 </Tooltip>
@@ -390,6 +392,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                 <div styleName="grade-adjust-buttons">
                   <button
                     className="btn-adjuster"
+                    aria-label="BirthdateInput Minus Icon"
                     disabled={didx <= -1 || !isInSchool || age <= 4}
                     onClick={this.subtractYear}
                     onKeyPress={gatedKeyPress(
@@ -402,6 +405,7 @@ export default class BirthdateInput extends React.Component<Props, State> {
                   </button>
                   <button
                     className="btn-adjuster"
+                    aria-label="BirthdateInput Plus Icon"
                     disabled={didx >= 1 || !isInSchool || age >= 16}
                     onClick={this.addYear}
                     onKeyPress={gatedKeyPress(["Space", "Enter"], this.addYear)}

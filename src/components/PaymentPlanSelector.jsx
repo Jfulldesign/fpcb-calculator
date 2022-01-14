@@ -108,7 +108,7 @@ export default class PaymentPlanSelector extends React.Component<Props> {
         tabIndex="0"
         arrow
       >
-        <button styleName="info-tooltip">
+        <button styleName="info-tooltip" aria-label="PaymentPlanSelector Info Tooltip">
           <i className="fa fa-info-circle" />
         </button>
       </Tooltip>

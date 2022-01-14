@@ -156,7 +156,8 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
       active: editActive
     });
     setTimeout(function(){
-      window.resetListeners();
+      if (window.resetListeners)
+        window.resetListeners();
     }, 250);
 
     if(!isIE && !isSafari){
@@ -195,6 +196,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
             <div styleName="display-edit">
               <button
                 styleName="button-close"
+                aria-label="BirthdateDisplay Button Close"
                 onClick={this.onClose}
                 onKeyPress={gatedKeyPress(["Space", "Enter"], this.onClose)}
               >
@@ -259,7 +261,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       tabIndex="0"
                       arrow
                     >
-                      <button styleName="info-tooltip">
+                      <button styleName="info-tooltip" aria-label="BirthdateDisplay Child Grade Info Tooltip">
                         <i className="fa fa-info-circle" />
                       </button>
                     </Tooltip>
@@ -269,6 +271,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   <div styleName="grade-adjust-buttons">
                     <button
                       className="btn-adjuster"
+                      aria-label="BirthdateDisplay Minus Icon"
                       disabled={
                         differenceInYears(dispDate, calcDate) < 0 ||
                         !isInSchool ||
@@ -284,6 +287,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     </button>
                     <button
                       className="btn-adjuster"
+                      aria-label="BirthdateDisplay Plus Icon"
                       disabled={
                         differenceInYears(dispDate, calcDate) > 0 ||
                         !isInSchool ||
@@ -457,6 +461,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                   <div styleName="grade-adjust-buttons">
                     <button
                       className="btn-adjuster"
+                      aria-label="BirthdateDisplay Minus Icon"
                       disabled={
                         differenceInYears(dispDate, calcDate) < 0 ||
                         !isInSchool ||
@@ -472,6 +477,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                     </button>
                     <button
                       className="btn-adjuster"
+                      aria-label="BirthdateDisplay Plus Icon"
                       disabled={
                         differenceInYears(dispDate, calcDate) > 0 ||
                         !isInSchool ||
@@ -509,7 +515,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
                       tabIndex="0"
                       arrow
                     >
-                      <button styleName="info-tooltip">
+                      <button styleName="info-tooltip" aria-label="BirthdateDisplay Child Graduation Info Tooltip">
                         <i className="fa fa-info-circle" />
                       </button>
                     </Tooltip>
