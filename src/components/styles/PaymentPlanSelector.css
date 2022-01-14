@@ -23,7 +23,7 @@
       bottom: 0;
       position: absolute;
       z-index: -1;
-      background-color: var(--color-blue);
+      /* background-color: var(--color-blue); */
       transition: all 0.2s ease;
     }
   }
@@ -39,7 +39,7 @@
     flex-grow: 1;
     text-align: center;
     color: var(--color-blue);
-    border: 2px solid var(--color-blue);
+    border: 2px solid var(--color-u1);
     border-left: 0;
     margin-bottom: 0;
     cursor: pointer;
@@ -53,18 +53,19 @@
 
     &:first-of-type {
       border-radius: 5px 0 0 5px;
-      border-left: 2px solid var(--color-blue);
+      border-left: 2px solid var(--color-u1);
     }
 
     .description {
       display: block;
-      font-weight: 300;
+      font-weight: 700;
       font-size: 12px;
     }
   }
 
   input[type="radio"]:checked + label {
     color: white;
+    background: var(--color-u1);
 
     &:last-of-type:after {
       left: 0;

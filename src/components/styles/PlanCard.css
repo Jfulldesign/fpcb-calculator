@@ -23,6 +23,10 @@
     border-bottom: 5px solid var(--color-u1);
 
     .title {
+      /* color: var(--color-u1); */
+      color: #10264d;
+    }
+    .active.title {
       color: var(--color-u1);
     }
 
@@ -35,6 +39,10 @@
     border-bottom: 5px solid var(--color-u4);
 
     .title {
+      /* color: var(--color-u4); */
+      color: #10264d;
+    }
+    .active.title {
       color: var(--color-u4);
     }
 
@@ -47,6 +55,10 @@
     border-bottom: 5px solid var(--color-p2);
 
     .title {
+      /* color: var(--color-p2); */
+      color: #10264d;
+    }
+    .active.title {
       color: var(--color-p2);
     }
 
@@ -59,6 +71,10 @@
     border-bottom: 5px solid var(--color-c2);
 
     .title {
+      /* color: var(--color-c2); */
+      color: #10264d;
+    }
+    .active.title {
       color: var(--color-c2);
     }
 
@@ -71,6 +87,10 @@
     border-bottom: 5px solid var(--color-c4);
 
     .title {
+      /* color: var(--color-c4); */
+      color: #10264d;
+    }
+    .active.title {
       color: var(--color-c4);
     }
 

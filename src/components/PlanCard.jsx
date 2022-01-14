@@ -23,7 +23,7 @@ const PlanCard = ({ plan, type, date }: Props) => {
 
   return (
     <div styleName={styleName} className="plan-price-all plan-price-mob">
-      <h1 styleName="title" className="planname" id={`plan_name-${plan.id}`}>{plan.title}</h1>
+      <h1 styleName={date ? `active title`:`title`} className="planname" id={`plan_name-${plan.id}`}>{plan.title}</h1>
       <p>{plan.description}</p>
       <div styleName="price">
         {!date && <span styleName="starting">Starting at</span>}

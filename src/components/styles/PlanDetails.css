@@ -109,31 +109,36 @@
 
   &.plan--U1 {
     .enroll {
-      background: var(--color-u1);
+      /* background: var(--color-u1); */
+      background: #9d2d3b;
     }
   }
 
   &.plan--U4 {
     .enroll {
-      background: var(--color-u4);
+      /* background: var(--color-u4); */
+      background: #9d2d3b;
     }
   }
 
   &.plan--P2 {
     .enroll {
-      background: var(--color-p2);
+      /* background: var(--color-p2); */
+      background: #9d2d3b;
     }
   }
 
   &.plan--C2 {
     .enroll {
-      background: var(--color-c2);
+      /* background: var(--color-c2); */
+      background: #9d2d3b;
     }
   }
 
   &.plan--C4 {
     .enroll {
-      background: var(--color-c4);
+      /* background: var(--color-c4); */
+      background: #9d2d3b;
     }
   }
 }

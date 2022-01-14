@@ -1,3 +1,10 @@
+h1{
+  font-weight: 500;
+    font-size: 50px;
+    margin-top:10px;
+    margin-bottom: 30px;
+  color:#12254d;
+}
 .plan-table {
   padding-top: 40px;
   overflow: auto !important;
@@ -8,23 +15,27 @@
     max-width: 100%;
     line-height: 18px;
     height: 0;
+    .tr-active {
+      background-color: transparent !important;
+    }
     tr {
       &:nth-child(1) td {
         color: #555555;
       }
       &:nth-child(1n + 2) td {
         border-left: 1px solid var(--color-gray);
+        border-top: 1px solid var(--color-gray);
       }
       &:last-child td:first-child {
         border-left: 0;
       }
-      &:nth-last-child(2) td {
+      &:nth-last-child(5) td {
         border-bottom: 1px solid var(--color-gray);
       }
-      &:nth-child(2) {
-        border-top: 3px solid #d7d7d7;
+      &:nth-child(5) {
+        border-top: 1px solid var(--color-gray);
       }
-      &:nth-child(2n + 2) {
+      &:nth-child(5n + 5) {
         background-color: rgba(0, 0, 0, 0.05);
       }
       td {
@@ -59,16 +70,20 @@
   }
 
   :global(.fa-check-circle) {
-    color: var(--color-blue);
+    color: #11244c;
+    font-size: 28px;
+  }
+  :global(.inactive.fa-check-circle) {
+    color: #1a2eab;
   }
   &.has-date {
     td {
       &:last-child {
-        border-right: solid 1px var(--color-green);
+        border-right: solid 1px var(--color-gray);
       }
-      &:nth-last-child(2) {
+      /* &:nth-last-child(2) {
         border-right: solid 1px var(--color-green);
-      }
+      } */
     }
   }
 }
@@ -115,6 +130,9 @@
 }
 
 .def--fees {
+  a {
+    text-decoration: underline;
+  }
 }
 
 .def--nationwide {
@@ -200,8 +218,9 @@
     justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 700;
+    color:#11244c;
     line-height: 0.85em;
     height: 60px;
     position: relative;
@@ -262,9 +281,17 @@
 
   &.plan--C2 {
     h3 {
+      color: #10264d;
+      font-size:25px;
+      font-weight:400;
+    }
+    .active {
       color: var(--color-c2);
     }
-
+    p {
+      color:#323232;
+      font-size: 14px;
+     }
     .note {
       background-color: var(--color-c2);
     }
@@ -272,9 +299,17 @@
 
   &.plan--C4 {
     h3 {
+      color: #10264d;
+      font-size:25px;
+      font-weight:400;
+    }
+    .active {
       color: var(--color-c4);
     }
-
+    p {
+      color:#323232;
+      font-size: 14px;
+     }
     .note {
       background-color: var(--color-c4);
     }
@@ -282,9 +317,17 @@
 
   &.plan--P2 {
     h3 {
+      color: #10264d;
+      font-size:25px;
+      font-weight:400;
+    }
+    .active {
       color: var(--color-p2);
     }
-
+    p {
+      color:#323232;
+      font-size: 14px;
+     }
     .note {
       background-color: var(--color-p2);
     }
@@ -292,9 +335,17 @@
 
   &.plan--U1 {
     h3 {
+      color: #10264d;
+      font-size:25px;
+      font-weight:400;     
+    }
+    .active {
       color: var(--color-u1);
     }
-
+    p {
+      color:#323232;
+      font-size: 14px;
+    }
     .note {
       background-color: var(--color-u1);
     }
@@ -302,9 +353,17 @@
 
   &.plan--U4 {
     h3 {
+      color: #10264d;
+      font-size:25px;
+      font-weight:400;
+    }
+    .active {
       color: var(--color-u4);
     }
-
+    p {
+      color:#323232;
+      font-size: 14px;
+    }
     .note {
       background-color: var(--color-u4);
     }
@@ -372,7 +431,7 @@
   font-size: 16px;
   /* font-weight: 700; */
   /* color: var(--color-blue); */
-  padding: 30px 20px;
+  padding: 30px 15px;
   border-right: 1px solid var(--color-gray);
   border-left: 1px solid var(--color-gray);
 
@@ -380,6 +439,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color:#11244c;
+    font-size:16px;
   }
 
   .space-after {
@@ -420,7 +481,7 @@
   text-align: center;
 
   .college-price {
-    color: #b2b2b2;
+    color: #1e3255;
 
     .estimate {
       color: var(--color-blue);
@@ -493,10 +554,10 @@
   }
 
   &.plan--C2 {
-    border-bottom-color: var(--color-c2);
+    border-bottom-color: #3b2d51;
 
     a.enroll {
-      background-color: var(--color-c2);
+      background-color: #9d2d3b;
       &:hover {
         // background-color: #f37021;
         opacity: 0.85;
@@ -505,10 +566,10 @@
   }
 
   &.plan--C4 {
-    border-bottom-color: var(--color-c4);
+    border-bottom-color: #3b2d51;
 
     a.enroll {
-      background-color: var(--color-c4);
+      background-color:  #9d2d3b;
       &:hover {
         // background-color: #802755;
         opacity: 0.85;
@@ -517,10 +578,10 @@
   }
 
   &.plan--P2 {
-    border-bottom-color: var(--color-p2);
+    border-bottom-color: #3b2d51;
 
     a.enroll {
-      background-color: var(--color-p2);
+      background-color: #9d2d3b;
       &:hover {
         // background-color: #0D1E56;
         opacity: 0.85;
@@ -529,10 +590,10 @@
   }
 
   &.plan--U1 {
-    border-bottom-color: var(--color-u1);
+    border-bottom-color: #3b2d51;
 
     a.enroll {
-      background-color: var(--color-u1);
+      background-color:  #9d2d3b;
       &:hover {
         // background-color: #b90037;
         opacity: 0.85;
@@ -541,10 +602,10 @@
   }
 
   &.plan--U4 {
-    border-bottom-color: var(--color-u4);
+    border-bottom-color: #3b2d51;
 
     a.enroll {
-      background-color: var(--color-u4);
+      background-color: #9d2d3b;
       &:hover {
         // background-color: #00846d;
         opacity: 0.85;

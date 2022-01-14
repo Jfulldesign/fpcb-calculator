@@ -157,15 +157,17 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
     });
     setTimeout(function(){
       window.resetListeners();
-
     }, 250);
 
     if(!isIE && !isSafari){
     return (
       <div styleName="birthdate-display-container">
         <div styleName="birthdate-display">
-        <h1>You Pick the Plan, We Handle The Rest</h1>
-          <div styleName="hero-copy" >Our 529 Prepaid Plans are 100% risk-free, so you can never lose your investment. Find the plan that fits your family's budget and savings goals.</div>
+          <h1>Your plan that is 100% worry-free.</h1>
+          <div styleName="hero-copy" >With a 529 Prepaid Plan for every budget, you can lock in the future cost of tuition and most fees for less.</div>
+          <div styleName="hero-copy"><div style={{color: '#1b1c20', display: 'flex'}}><i className="fa fa-check-circle" styleName="fa-check-circle"></i> Use in-state or out</div></div>
+          <div styleName="hero-copy"><div style={{color: '#1b1c20', display: 'flex'}}><i className="fa fa-check-circle" styleName="fa-check-circle"></i> Works great with scholarships and financial aid</div></div>
+          <div styleName="hero-copy"><div style={{color: '#1b1c20', display: 'flex'}}><i className="fa fa-check-circle" styleName="fa-check-circle"></i>  Cancel anytime for a full refund</div></div>
           <div styleName="birthdate-result-container">
           
             <dl>
@@ -177,7 +179,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
               <dd id="graduation-display">{describeChild(calcDate)}</dd>
             </dl>
           </div>
-          <Media.default query="(max-width: 599px)">
+          {!editActive && <Media.default query="(max-width: 599px)">
             {matches => (
               <button
                 styleName="edit"
@@ -188,6 +190,7 @@ export default class BirthdateDisplay extends React.Component<Props, State> {
               </button>
             )}
           </Media.default>
+          }
           <div styleName={editStyleName}>
             <div styleName="display-edit">
               <button

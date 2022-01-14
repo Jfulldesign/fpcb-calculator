@@ -67,11 +67,12 @@ export default class PlanTable extends React.Component<Props, State> {
     });
     return (
       <div styleName={styleName} className="js-scrollable">
+        <div align="center"><h1>You pick the plan, we manage the rest.</h1></div>
         <table>
           <tbody>
             <tr>
               <td styleName="def def--info">
-                <strong>What does each plan cover?</strong>
+                <strong></strong>
               </td>
               {plans.map(({ id, title, description, prices, note }) => {
                 const price = pidx == null ? "–" : prices[paymentType][pidx];
@@ -86,10 +87,10 @@ export default class PlanTable extends React.Component<Props, State> {
                   >
                     {/* {note && <div styleName="note">{note}</div>} */}
                     <div styleName="info-container">
-                      <h3 data-hj-whitelist id={`plan_name-${id}`} className={`${id}`}>{title}</h3>
+                      <h3 data-hj-whitelist id={`plan_name-${id}`} className={`${id}`} styleName={date ? `active`:``}>{title}</h3>
                       <p>{description}</p>
                       <div styleName="price" data-hj-whitelist className="plan-price-all plan-price-desk">
-                        {!date && <span styleName="starting">Starting at</span>}
+                        <span styleName="starting">Starting at</span>
                         <span id={`plan_price-${id}`}>{formatMoney(price)}</span>
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
@@ -99,57 +100,11 @@ export default class PlanTable extends React.Component<Props, State> {
                   </td>
                 );
               })}
-            </tr>
-            <tr>
-              <td styleName="def def--uni">State University Credit Hours</td>
-              {plans.map(({ id, credits: { state } }) => {
-                const computedStyle = cx({
-                  dimmed: focus != null && id !== focus
-                });
-
-                return (
-                  <td
-                    styleName={`plan--${id} plan--uni ${computedStyle}`}
-                    key={`plan--${id}--uni`}
-                  >
-                    {state === 0 ? (
-                      <i className="fa fa-minus" />
-                    ) : (
-                      <div styleName="stack--hours" data-hj-whitelist>
-                        <span styleName="space-after" id={`state_hours-${id}`}>{state}</span> Hours
-                      </div>
-                    )}
-                  </td>
-                );
-              })}
-            </tr>
-            <tr>
-              <td styleName="def def--college">Florida College Credit Hours</td>
-              {plans.map(({ id, credits: { college } }) => {
-                const computedStyle = cx({
-                  dimmed: focus != null && id !== focus
-                });
-
-                return (
-                  <td
-                    styleName={`plan--${id} plan--college ${computedStyle}`}
-                    key={`plan--${id}--college`}
-                  >
-                    {college === 0 ? (
-                      <i className="fa fa-minus" />
-                    ) : (
-                      <div styleName="stack--hours" data-hj-whitelist>
-                        <span styleName="space-after" id={`college_hours-${id}`}>{college}</span> Hours
-                      </div>
-                    )}
-                  </td>
-                );
-              })}
-            </tr>
+            </tr>            
             <tr>
               <td styleName="def def--fees">
-                Covers tuition and most fees{" "}
-                <a className="question-mark-link" href="/existing-customers/fees/" target="_blank">Learn about fees</a>
+                Covers <a href="/existing-customers/tuition-and-fees/" target="_blank">Tuition and Most Fees{" "}
+              </a>
               </td>
               {plans.map(({ id }) => {
                 const computedStyle = cx({
@@ -161,7 +116,37 @@ export default class PlanTable extends React.Component<Props, State> {
                     styleName={`plan--${id} plan--fees ${computedStyle}`}
                     key={`plan--${id}--fees`}
                   >
-                    <i className="fa fa-check-circle" />
+                    <i className={!date ? "inactive fa fa-check-circle": "fa fa-check-circle"} />
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <td styleName="def def--college">Total Credit Hours</td>
+              {plans.map(({ id, credits: { college }, credits: { state } }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--college ${computedStyle}`}
+                    key={`plan--${id}--college`}
+                  >
+                    {college === 0 ? (
+                      <i/>
+                    ) : (
+                      <div styleName="stack--hours" data-hj-whitelist>
+                        <span styleName="space-after" id={`college_hours-${id}`}>{college}</span>College Hours
+                      </div>
+                    )}
+                    {state === 0 ? (
+                      <i/>
+                    ) : (
+                      <div styleName="stack--hours" data-hj-whitelist>
+                        <span styleName="space-after" id={`state_hours-${id}`}>{state}</span>University Hours
+                      </div>
+                    )}
                   </td>
                 );
               })}
@@ -169,7 +154,7 @@ export default class PlanTable extends React.Component<Props, State> {
             <tr>
               <td styleName="def def--dorm">
                 Option to add a Dormitory Plan{" "}
-                
+
                 <Tooltip
                   html={
                     <div className="tip">
@@ -220,9 +205,50 @@ export default class PlanTable extends React.Component<Props, State> {
                 );
               })}
             </tr>
-            <tr>
-              <td styleName={`def def--cost`} data-hj-whitelist>Estimated {date ? null : <span>future</span>} payout{" "}
-              {date ? <span> beginning in <span id="year-display">{graduatesIn(date)}</span></span> : null}
+            {/* {date && <tr>
+              <td styleName="def def--fees">Can Be Used Nationwide{" "}
+                <Tooltip html={
+                  <div className="tip">
+                    <p>
+                      This is an estimate of the amount we anticipate to pay
+                      for tuition and fees covered by your plan. The estimate
+                      is based on current in-state tuition and fees,
+                      anticipated inflation and historical usage patterns. The
+                      actual benefit (costs paid in the future) may be higher
+                      or lower. However, the actual benefit will never be less
+                      than the price you pay for a plan - you cannot lose
+                      money.
+                    </p>
+                  </div>
+                      }
+                      position="bottom"
+                      trigger="mouseenter"
+                      tabIndex="0"
+                      arrow
+                    >
+                  <button styleName="info-tooltip">
+                    <i className="fa fa-info-circle" />
+                  </button>
+                </Tooltip>
+              </td>
+
+              {plans.map(({ id }) => {
+                const computedStyle = cx({
+                  dimmed: focus != null && id !== focus
+                });
+
+                return (
+                  <td
+                    styleName={`plan--${id} plan--fees ${computedStyle}`}
+                    key={`plan--${id}--fees`}
+                  >
+                    <i className="fa fa-check-circle" />
+                  </td>
+                );
+              })}
+            </tr>} */}
+            <tr styleName={date?`tr-active`:``}>
+              <td styleName={`def def--cost`} data-hj-whitelist>Our Estimated Plan Payout{" "}
                 
               <Tooltip html={
                   <div className="tip">
