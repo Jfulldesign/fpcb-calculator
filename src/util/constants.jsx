@@ -11,7 +11,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "U4",
       title: "4-Year Florida University Plan",
       description:
-        "Widest variety of bachelor’s degree options from one of Florida’s 12 State Universities.",
+        "Earn a BA from a state university",
       dorm: true,
       note: (
         <span className="note-inner">
@@ -27,6 +27,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       },
       prices: {
         single: [
+          28558.62,
           28558.62,
           28405.35,
           28237.48,
@@ -48,25 +49,27 @@ export const PLANS: Map<PlanID, Plan> = new Map([
         ],
         monthly: [
           180.51,
-          184.82,
-          189.88,
-          196.04,
-          203.25,
-          211.95,
-          222.48,
-          235.46,
-          251.28,
-          270.90,
-          295.56,
-          327.24,
-          368.73,
-          425.34,
-          506.75,
-          633.46,
-          857.35,
-          1362.78
+          185.82,
+          191.01,
+          197.25,
+          204.51,
+          213.20,
+          223.74,
+          236.68,
+          252.45,
+          272.10,
+          296.87,
+          328.79,
+          370.71,
+          428.02,
+          510.64,
+          639.58,
+          867.80,
+          1383.06,
+          3662.85          
         ],
         short: [
+          547.79,
           547.79,
           544.85,
           541.63,
@@ -80,8 +83,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
           519.07,
           516.62,
           513.86,
-          510.64,
-          506.75
+          510.64          
         ]
       },
       estimatedCost: [
@@ -113,7 +115,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "U1",
       title: "1-Year Florida University Plan",
       description:
-        "Most flexible plan allows you or other family members to buy one year of State University at a time as your budget allows, up to four years.",
+        "Allows you and family members to buy one year of state university at a time, up to four years",
       dorm: true,
       credits: {
         state: 30,
@@ -121,6 +123,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       },
       prices: {
         single: [
+          7145.32,
           7145.32,
           7130.13,
           7083.83,
@@ -142,25 +145,27 @@ export const PLANS: Map<PlanID, Plan> = new Map([
         ],
         monthly: [
           45.16,
-          46.39,
-          47.63,
-          49.14,
-          50.95,
-          53.17,
-          55.74,
-          58.96,
-          62.92,
-          67.84,
-          74.06,
-          82.03,
-          92.50,
-          106.80,
-          127.40,
-          159.52,
-          216.37,
-          344.56
+          46.49,
+          47.95,
+          49.48,
+          51.27,
+          53.45,
+          56.13,
+          59.30,
+          63.22,
+          68.14,
+          74.34,
+          82.39,
+          92.92,
+          107.37,
+          128.22,
+          160.79,
+          218.52,
+          349.04,
+          926.09          
         ],
         short: [
+          137.06,
           137.06,
           136.76,
           135.88,
@@ -174,8 +179,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
           130.07,
           129.50,
           128.90,
-          128.22,
-          127.40
+          128.22
         ]
       },
       estimatedCost: [
@@ -207,7 +211,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "P2",
       title: "2 + 2 Florida Plan",
       description:
-        "Best of both worlds...save money on lower-level courses while receiving a bachelor’s degree from one of Florida’s State Universities.",
+        "Earn an AA at a state college and guaranteed admission into a state university",
       dorm: true,
       credits: {
         state: 60,
@@ -215,6 +219,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       },
       prices: {
         single: [
+          22911.17,
           22911.17,
           22881.11,
           22759.09,
@@ -232,29 +237,31 @@ export const PLANS: Map<PlanID, Plan> = new Map([
           20844.74,
           20601.43,
           20312.48,
-          19979.54
+          19979.54          
         ],
         monthly: [
           144.81,
-          148.87,
-          153.04,
-          157.74,
-          163.26,
-          169.97,
-          178.06,
-          188.05,
-          200.25,
-          215.45,
-          234.64,
-          259.36,
-          291.82,
-          336.16,
-          399.82,
-          498.74,
-          673.66,
-          1068.92
+          149.07,
+          153.86,
+          158.98,
+          164.55,
+          171.26,
+          179.43,
+          189.43,
+          201.62,
+          216.85,
+          236.10,
+          261.02,
+          293.81,
+          338.75,
+          403.57,
+          504.63,
+          683.24,
+          1086.73,
+          2873.01
         ],
         short: [
+          439.46,
           439.46,
           438.88,
           436.54,
@@ -268,8 +275,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
           412.07,
           409.45,
           406.68,
-          403.57,
-          399.82
+          403.57          
         ]
       },
       estimatedCost: [
@@ -301,7 +307,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "C4",
       title: "4-Year Florida College Plan",
       description:
-        "Most convenient and affordable way to earn a bachelor’s degree from a Florida College in high-demand fields.",
+        "Earn a bachelor's degree(BA) from a state college",
       dorm: false,
       credits: {
         state: 0,
@@ -309,6 +315,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       },
       prices: {
         single: [
+          18337.38,
           18337.38,
           18337.38,
           18275.51,
@@ -331,24 +338,26 @@ export const PLANS: Map<PlanID, Plan> = new Map([
         monthly: [
           115.90,
           119.31,
-          122.89,
-          126.32,
-          130.39,
-          135.36,
-          141.40,
-          148.92,
-          158.14,
-          169.65,
-          184.19,
-          202.96,
-          227.62,
-          261.28,
-          309.57,
-          384.49,
-          516.89,
-          816.13
+          123.31,
+          127.66,
+          131.78,
+          136.78,
+          142.88,
+          150.43,
+          159.67,
+          171.24,
+          185.91,
+          204.91,
+          229.92,
+          264.22,
+          313.68,
+          390.72,
+          526.73,
+          833.84,
+          2193.58
         ],
         short: [
+          351.73,
           351.73,
           351.73,
           350.54,
@@ -362,8 +371,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
           323.49,
           320.42,
           317.21,
-          313.68,
-          309.57
+          313.68
         ]
       },
       estimatedCost: [
@@ -395,7 +403,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "C2",
       title: "2-Year Florida College Plan",
       description:
-        "Most affordable way to earn an AA degree from a Florida College and guaranteed admission to one of Florida’s State Universities.",
+        "Earn an associate's degree(AA) or trade certificate from a state college",
       dorm: false,
       credits: {
         state: 0,
@@ -403,6 +411,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       },
       prices: {
         single: [
+          8495.74,
           8495.74,
           8458.08,
           8420.07,
@@ -420,29 +429,31 @@ export const PLANS: Map<PlanID, Plan> = new Map([
           7480.64,
           7327.76,
           7151.64,
-          6958.57
+          6958.57          
         ],
         monthly: [
           53.70,
-          55.03,
-          56.62,
-          58.58,
-          60.76,
-          63.07,
-          65.92,
-          69.47,
-          73.81,
-          79.18,
-          85.95,
-          94.66,
-          106.07,
-          121.53,
-          143.49,
-          177.40,
-          237.18,
-          372.29
+          55.28,
+          56.88,
+          58.82,
+          61.11,
+          63.73,
+          66.58,
+          70.13,
+          74.49,
+          79.92,
+          86.77,
+          95.62,
+          107.24,
+          123.12,
+          145.90,
+          181.10,
+          243.02,
+          382.62,
+          1000.63
         ],
         short: [
+          162.96,
           162.96,
           162.24,
           161.51,
@@ -456,8 +467,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
           150.95,
           149.44,
           147.81,
-          145.90,
-          143.49
+          145.90          
         ]
       },
       estimatedCost: [
@@ -492,6 +502,7 @@ export const DORM = {
       7728.24,
       7728.24,
       7728.24,
+      7728.24,
       7659.83,
       7616.63,
       7616.63,
@@ -512,23 +523,25 @@ export const DORM = {
       48.85,
       50.28,
       51.97,
-      53.51,
-      55.50,
+      53.98,
+      55.82,
       58.22,
-      61.25,
-      64.53,
-      68.85,
-      73.97,
-      80.56,
-      89.48,
-      101.04,
-      116.11,
-      137.77,
-      172.29,
-      233.36,
-      370.66
+      61.46,
+      65.16,
+      69.19,
+      74.56,
+      81.06,
+      89.62,
+      101.37,
+      117.29,
+      139.39,
+      173.89,
+      236.03,
+      376.46,
+      996.26      
     ],
     short: [
+      148.24,
       148.24,
       148.24,
       148.24,
@@ -542,8 +555,7 @@ export const DORM = {
       141.48,
       141.26,
       140.81,
-      139.39,
-      137.77
+      139.39
     ]
   }
 };
