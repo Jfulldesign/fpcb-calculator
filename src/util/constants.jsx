@@ -11,7 +11,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "U4",
       title: "4-Year Florida University Plan",
       description:
-        "Earn a BA from a state university",
+        "Earn a bachelor's degree from a state university",
       dorm: true,
       note: (
         <span className="note-inner">
@@ -307,7 +307,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "C4",
       title: "4-Year Florida College Plan",
       description:
-        "Earn a bachelor's degree(BA) from a state college",
+        "Earn a bachelor's degree (BA) from a state college",
       dorm: false,
       credits: {
         state: 0,
@@ -403,7 +403,7 @@ export const PLANS: Map<PlanID, Plan> = new Map([
       id: "C2",
       title: "2-Year Florida College Plan",
       description:
-        "Earn an associate's degree(AA) or trade certificate from a state college",
+        "Earn an associate's degree (AA) or trade certificate from a state college",
       dorm: false,
       credits: {
         state: 0,
