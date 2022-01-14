@@ -227,7 +227,7 @@ h1{
     margin-bottom: 16px;
 
     .starting {
-      color: var(--color-dark-gray);
+      color: #767774;
       font-size: 12px;
       letter-spacing: 0.075em;
       font-weight: 600;
