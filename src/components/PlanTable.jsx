@@ -90,7 +90,7 @@ export default class PlanTable extends React.Component<Props, State> {
                       <h3 data-hj-whitelist id={`plan_name-${id}`} className={`${id}`}>{title}</h3>
                       <p>{description}</p>
                       <div styleName="price" data-hj-whitelist className="plan-price-all plan-price-desk">
-                        <span styleName="starting">Starting at</span>
+                        {!date && <span styleName="starting">Starting at</span>}
                         <span id={`plan_price-${id}`}>{formatMoney(price)}</span>
                         {paymentType !== "single" && (
                           <span styleName="per"> / month</span>
